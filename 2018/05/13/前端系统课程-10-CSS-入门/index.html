@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="CSS 的历史 1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。 1998 年，W3C 发布了应用最广泛的 CSS2。 2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。  CSS 编译器 LESS SASS / SCSS PostCSS  学习资源 MDN CSS Tricks 阮一峰 / 张鑫旭博客 Codro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-13T15:41:57.997Z">
+<meta property="og:updated_time" content="2018-05-13T16:13:15.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 10. CSS 入门">
 <meta name="twitter:description" content="CSS 的历史 1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。 1998 年，W3C 发布了应用最广泛的 CSS2。 2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。  CSS 编译器 LESS SASS / SCSS PostCSS  学习资源 MDN CSS Tricks 阮一峰 / 张鑫旭博客 Codro">
@@ -110,49 +110,34 @@
 <li>CSS 文档</li>
 </ul>
 <h2 id="开始写-CSS"><a href="#开始写-CSS" class="headerlink" title="开始写 CSS"></a>开始写 CSS</h2><ol>
-<li><p>引入方法：</p>
-<ul>
+<li>引入方法：<ul>
 <li>内联样式；</li>
 <li><code>&lt;style&gt;</code> 标签；</li>
 <li>外部样式，使用 <code>&lt;link&gt;</code> 标签引入；</li>
 <li>导入方式，使用 <code>@import url()</code> 方式，这种方式不推荐使用。</li>
 </ul>
 </li>
-<li><p>善用开发者工具。</p>
-</li>
+<li>善用开发者工具。</li>
 <li><p>常用样式：</p>
 <ul>
-<li><p>清除列表默认样式 <code>list-style: none</code>；</p>
-</li>
-<li><p>浮动 <code>float</code>；</p>
-</li>
+<li>清除列表默认样式 <code>list-style: none</code>；</li>
+<li>浮动 <code>float</code>；</li>
 <li><p>清除浮动 <code>clear: both;</code>，常用方式，给<strong>浮动元素的父元素</strong>加此类名：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">claer</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>子元素选择器 <code>&gt;</code>；</p>
 </li>
-<li><p>背景颜色 <code>background</code>；</p>
-</li>
-<li><p>文字颜色 <code>color</code>；</p>
-</li>
-<li><p>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</p>
-</li>
-<li><p>外边距 <code>margin</code>；</p>
-</li>
-<li><p>内边距 <code>padding</code>；</p>
-</li>
-<li><p>文字加粗 <code>font-weight: bold</code>；</p>
-</li>
-<li><p>伪类选择器，鼠标移入 <code>:hover</code>；</p>
-</li>
-<li><p>展示为块级元素<code>display: block</code>；</p>
-</li>
-<li><p>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</p>
-</li>
-<li><p>文字大小 <code>font-size</code>；</p>
-</li>
-<li><p>文字字体 <code>font-family</code>；</p>
-</li>
+<li>背景颜色 <code>background</code>；</li>
+<li>文字颜色 <code>color</code>；</li>
+<li>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</li>
+<li>外边距 <code>margin</code>；</li>
+<li>内边距 <code>padding</code>；</li>
+<li>文字加粗 <code>font-weight: bold</code>；</li>
+<li>伪类选择器，鼠标移入 <code>:hover</code>；</li>
+<li>展示为块级元素<code>display: block</code>；</li>
+<li>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</li>
+<li>文字大小 <code>font-size</code>；</li>
+<li>文字字体 <code>font-family</code>；</li>
 </ul>
 </li>
 </ol>
@@ -160,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjh4znzks0006v8mxngdulolo" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjh50seap0009j0mxh3nlk372" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -172,9 +157,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/05/13/前端系统课程-03-软件安装/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/12/前端系统课程-09-HTML-2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端系统课程 - 03. 软件安装</div>
+      <div class="article-nav-title">前端系统课程 - 09. HTML(2)</div>
     </a>
   
 </nav>
@@ -229,19 +214,19 @@
           </li>
         
           <li>
-            <a href="/2018/05/13/前端系统课程-03-软件安装/">前端系统课程 - 03. 软件安装</a>
-          </li>
-        
-          <li>
             <a href="/2018/05/12/前端系统课程-09-HTML-2/">前端系统课程 - 09. HTML(2)</a>
           </li>
         
           <li>
-            <a href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/">前端系统课程 - 02. 计算机是如何存储数据的</a>
+            <a href="/2018/05/05/前端系统课程-04-命令行基础/">前端系统课程 - 04. 命令行基础</a>
           </li>
         
           <li>
-            <a href="/2018/05/01/前端系统课程-01-开班/">前端系统课程 - 01. 开班</a>
+            <a href="/2018/05/03/前端系统课程-03-软件安装/">前端系统课程 - 03. 软件安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/">前端系统课程 - 02. 计算机是如何存储数据的</a>
           </li>
         
       </ul>
