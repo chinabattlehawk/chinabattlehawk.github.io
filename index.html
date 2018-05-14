@@ -173,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjh50seap0009j0mxh3nlk372" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjh6aztlu0009hsmxc6i12sf0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -211,7 +211,89 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjh50seap0005j0mxfkuqvtsv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjh6aztlu0006hsmx222zcutd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-05-脚本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/06/前端系统课程-05-脚本/" class="article-date">
+  <time datetime="2018-05-06T13:43:01.000Z" itemprop="datePublished">2018-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/06/前端系统课程-05-脚本/">前端系统课程 05. 脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初识脚本"><a href="#初识脚本" class="headerlink" title="初识脚本"></a>初识脚本</h2><ul>
+<li><p>可以用戏剧舞台上的脚本（剧本）来理解脚本。脚本上有着舞台提示及各个人物之间的台词。</p>
+</li>
+<li><p>编程领域的脚本就是告诉计算机，按照脚本上的编写好的命令来运行。</p>
+</li>
+</ul>
+<h2 id="写个脚本"><a href="#写个脚本" class="headerlink" title="写个脚本"></a>写个脚本</h2><ul>
+<li><p>非 Windows 系统中写好的脚本需要添加可执行权限，使用 <code>chmod +x</code> 命令来为文件添加好权限后，文件在用 <code>ls</code> 命令查看时，文字颜色为红色。</p>
+</li>
+<li><p>使用 <code>sh</code> 命令（shell）可以执行写好的脚本。</p>
+</li>
+<li><p>如果想在命令行工具中直接运行脚本，可以将脚本目录添加至 PATH 中，修改 .bashrc 文件，将 <code>export PATH=&quot;脚本目录的绝对路径:$PATH&quot;</code> 这行命令添加到文件末尾，保存；然后运行 <code>source ~/.bashrc</code> 就生效了。</p>
+</li>
+<li><p>使用 <code>type</code> 命令可以显示命令寻找过程；<code>which</code> 命令可以显示命令寻找结果。</p>
+</li>
+<li><p>文件后缀名在命令行中的用处不大。</p>
+</li>
+</ul>
+<h2 id="脚本参数"><a href="#脚本参数" class="headerlink" title="脚本参数"></a>脚本参数</h2><ul>
+<li><p>用 <code>$1</code> 代表第一个参数，依次类推。</p>
+</li>
+<li><p>判断目录是否存在，在脚本中用 <code>-d</code>。</p>
+</li>
+<li><p>脚本中的 <code>if...eles</code> 语句。 </p>
+</li>
+<li><p>在 <code>exit</code> 后面设置返回值。</p>
+</li>
+<li><p>善于使用翻译软件和谷歌搜索。</p>
+</li>
+</ul>
+<h2 id="Node-js-脚本"><a href="#Node-js-脚本" class="headerlink" title="Node.js 脚本"></a>Node.js 脚本</h2><ul>
+<li><p>Node.js 的脚本和 Bash 脚本都是脚本，Bash 能做的，Node.js 脚本也能做，只是语法不同。</p>
+</li>
+<li><p>Bash 中需要指定 Node.js 脚本的运行方式为 <code>node</code>，不然会使用默认的 <code>sh</code> 来运行。</p>
+</li>
+<li><p>使用 shebang 命令可以指定当前脚本的运行环境。</p>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>脚本是给机器一行行执行的文本。</p>
+</li>
+<li><p>抄脚本一定要抄对，不要缺空格少点的。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjh6aztlu0005hsmxw60rut9r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -355,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjh50seap0006j0mx0bf6pwhl" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjh6aztlu0004hsmxcbug8gh3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -464,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjh50seaf0004j0mxpmmbe728" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjh6aztlu000bhsmxsqo4jrxn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -545,7 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjh50seaf0002j0mxrzd1qx5z" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjh6aztlk0002hsmxu76oybg4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -580,9 +662,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><ul>
-<li>看一次是不够的，做一次是不够的。（概率学家坐飞机）</li>
-<li>忘记是正常的，知道如何重新记起来就好，重复记忆久而久之自然会记住。</li>
-<li>不要中断学习超过一周。</li>
+<li><p>看一次是不够的，做一次是不够的。（概率学家坐飞机）</p>
+</li>
+<li><p>忘记是正常的，知道如何重新记起来就好，重复记忆久而久之自然会记住。</p>
+</li>
+<li><p>不要中断学习超过一周。</p>
+</li>
 </ul>
 <h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2><ul>
 <li><p>C：Copy，抄代码，复制别人的代码。</p>
@@ -644,7 +729,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjh50seaf0001j0mx683d8z8g" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjh6aztlk0001hsmx1nyxb2zz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -727,7 +812,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2017/05/10/简单认识-HTTP-协议/" data-id="cjh50seb9000gj0mxzu4e2kg5" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2017/05/10/简单认识-HTTP-协议/" data-id="cjh6aztme000ihsmxryntf5r5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应试笔记/">应试笔记</a></li></ul>
@@ -774,7 +859,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/Hello-World/" data-id="cjh50sea50000j0mxzl0fktoi" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2016/08/31/Hello-World/" data-id="cjh6aztla0000hsmxbldysp9g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -837,15 +922,15 @@
           </li>
         
           <li>
+            <a href="/2018/05/06/前端系统课程-05-脚本/">前端系统课程 05. 脚本</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/05/前端系统课程-04-命令行基础/">前端系统课程 - 04. 命令行基础</a>
           </li>
         
           <li>
             <a href="/2018/05/03/前端系统课程-03-软件安装/">前端系统课程 - 03. 软件安装</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/">前端系统课程 - 02. 计算机是如何存储数据的</a>
           </li>
         
       </ul>
