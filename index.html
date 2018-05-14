@@ -207,7 +207,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ul>
+<li><p><code>&lt;a&gt;</code> 标签和 <code>&lt;button&gt;</code> 标签的选择：</p>
+<ul>
+<li><p>如果要跳转到一个链接，用 <code>&lt;a&gt;</code> 标签；</p>
+</li>
+<li><p>如果要弹出提示或进行提交等操作，则可以使用 <code>&lt;button&gt;</code> 标签。</p>
+</li>
+</ul>
+</li>
+<li><p><code>&lt;main&gt;</code> 标签代表整个页面最主要的部分，每个页面中只能有一个 <code>main</code> 标签。</p>
+</li>
+<li><p><code>&lt;section&gt;</code> 标签代表一个章节，一般用于一个完整文章或独立区块。</p>
+</li>
+<li><p><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> 表示 6 个等级的标题，其中 <code>&lt;h1&gt;</code> 在整个页面一般也只有一个。</p>
+</li>
+<li><p><code>&lt;nav&gt;</code> 标签表示导航，有导航性质的列表或菜单，要用此标签包裹。</p>
+</li>
+<li><p><code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签没有语义，只是用来划分区域的，所以在使用这两种标签时，要给它们指定类名来使其语义化。</p>
+</li>
+</ul>
+<h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h2><ul>
+<li><p>使用“src”属性可以指定 iframe 窗口打开的网址。</p>
+</li>
+<li><p>使用“name”属性可以和 <code>&lt;a&gt;</code> 标签配合，使指定的 iframe 窗口打开新网页。</p>
+</li>
+<li><p>将“frameborder”属性设置为“0”可以去除 iframe 窗口自带的边框。</p>
+</li>
+</ul>
+<h2 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h2><ul>
+<li><p>“target”属性有四个值，它们分别是：</p>
+<ul>
+<li><p>_blank：代表在新窗口打开链接；</p>
+</li>
+<li><p>_self：代表在当前窗口或当前 iframe 窗口打开链接；</p>
+</li>
+<li><p>_parent：代表在当前 iframe 窗口外的父级窗口打开链接；</p>
+</li>
+<li><p>_top：代表在当前 iframe 窗口外的最顶层祖先窗口打开链接。</p>
+</li>
+</ul>
+</li>
+<li><p>“download”属性，一般用在链接是一个需要下载的文件时，此属性会强制将目标链接的“Content-type”转换为“application/octet-stream”，使目标链接成为下载链接。</p>
+</li>
+<li><p>“href”属性值：</p>
+<ul>
+<li><p>如果只写了域名，会把这个值当作文件来打开，例如 <code>href=&quot;qq.com&quot;</code>；当这种情况发生在是用 HTTP 协议打开时，会在网站的根目录寻找这个文件。</p>
+</li>
+<li><p>如果不写协议，会把这个值按照当前协议来打开，例如 <code>href=&quot;//qq.com&quot;</code>；当用文件协议打开网页时，便按照文件协议打开链接；当用 HTTP 协议打开时，便按照 HTTP 协议打开，才能正常访问目标网址。</p>
+</li>
+<li><p>只有在把协议写全的时候，才能在协议不同的情况下，正常跳转到链接地址，正常应该写：<code>href=&quot;http://qq.com</code>。</p>
+</li>
+<li><p>如果值是一个查询参数时，会向链接发起 GET 请求，页面会被刷新，例如：<code>href=&quot;?name=user&quot;</code>。</p>
+</li>
+<li><p>如果值是一个锚点时，会跳转到当前页的对应锚点位置；而如果只写一个“#”号，则会跳转到当前页面的顶部，两种情况都不会刷新页面；例如：<code>href=&quot;#&quot;</code>，这种方式可以做“回到顶部”的功能。</p>
+</li>
+<li><p>如果值是一个伪协议，例如：<code>href=&quot;javascript:void(0);&quot;</code>，则会执行伪协议后面的脚本代码，例子中的意思是返回值为“0”，也就是什么都不做，最终达到的效果就是去除了 <code>&lt;a&gt;</code> 标签的默认操作，这样就得到了一个能点击，却不会有反应的 <code>&lt;a&gt;</code> 标签；<code>void(0)</code> 其实可以不写也可以。其他的伪协议还有”mailto“等……老师没说。</p>
+</li>
+<li><p>如果值为空，点击 <code>&lt;a&gt;</code> 标签就会刷新当前页面。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="form-标签"><a href="#form-标签" class="headerlink" title="form 标签"></a>form 标签</h2><ul>
+<li>“action”属性用来设置表单提交的地址。</li>
+<li>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式；</li>
+<li>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</li>
+<li>form 表单中必须有提交按钮；如果 form 表单中有一个没有指定类型的 button 按钮，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</li>
+<li>form 表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</li>
+<li>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。</li>
+<li></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -287,7 +358,8 @@
 </ul>
 <h2 id="什么是HTML"><a href="#什么是HTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h2><p>HTML（HyperText Markup Language，超文本标记语言），超级文本标记语言是标准通用标记语言，它通过标记符号来标记要显示的网页中的各个部分。</p>
 <h2 id="HTML版本"><a href="#HTML版本" class="headerlink" title="HTML版本"></a>HTML版本</h2><p>版本从 1.0 到 4.01，再到现在的 HTML5 版本，目前 HTML5.2 也已经发布。</p>
-<h2 id="HTML规范"><a href="#HTML规范" class="headerlink" title="HTML规范"></a>HTML规范</h2><p>规范由 W3C 制定，W3C会根据浏览器的实际情况总结文档。</p>
+<p>“H5”和 HTML5 不是一个概念，所谓的“H5”页面其实只是在微信中能展示的页面，甚至可以用 HTML4.01 做出来。</p>
+<h2 id="HTML规范"><a href="#HTML规范" class="headerlink" title="HTML规范"></a>HTML规范</h2><p>规范由 W3C 制定，W3C 会根据浏览器的实际情况总结文档。</p>
 <h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p>文档类型，用来标识 HTML 文档的版本，以判定文档遵循何种规范。目前使用的 HTML5 的文档类型应该写作：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="HTML标签"><a href="#HTML标签" class="headerlink" title="HTML标签"></a>HTML标签</h2><ul>
@@ -393,7 +465,7 @@
 </li>
 </ul>
 <h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>要使用 HTTP 协议（或 TCP/IP 协议）访问一个设备，只指定 IP 是不够的，还必须指定端口（Port）。</p>
-<p>端口是一个编号，而不是一种硬件。</p>
+<p>端口不是一种硬件，而是一个编号。</p>
 <p>一个服务器不一定只提供一种服务，那么一个 IP 是无法告诉服务器要使用的是哪种服务的。所以需要用一个端口，对应一种服务。例如：通常使用 80 端口提供 HTTP 服务，使用 443 端口提供 HTTPS 服务，使用 21 端口提供 FTP 服务等等……</p>
 <p>端口号从 0 到 1023 号端口都有对应的服务，具体可以谷歌查询。</p>
 <p>每个机器有 65535（2 的 16 次方减 1）个端口，这些端口遵循一些规定：</p>
@@ -488,8 +560,8 @@
 <h3 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h3><p>在命令行中，使用 <code>curl</code> 命令可以访问一个域名。例如：</p>
 <p><code>curl -s -v -H &quot;xxx&quot; -- &quot;https://www.baidu.com&quot;</code></p>
 <p>响应数据如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; &lt;div id=lg&gt; &lt;img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129&gt; &lt;/div&gt; &lt;form id=form name=f action=//www.baidu.com/s class=fm&gt; &lt;input type=hidden name=bdorz_come value=1&gt; &lt;input type=hidden name=ie value=utf-8&gt; &lt;input type=hidden name=f value=8&gt; &lt;input type=hidden name=rsv_bp value=1&gt; &lt;input type=hidden name=rsv_idx value=1&gt; &lt;input type=hidden name=tn value=baidu&gt;&lt;span class="bg s_ipt_wr"&gt;&lt;input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus&gt;&lt;/span&gt;&lt;span class="bg s_btn_wr"&gt;&lt;input type=submit id=su value=百度一下 class="bg s_btn"&gt;&lt;/span&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=u1&gt; &lt;a href=http://news.baidu.com name=tj_trnews class=mnav&gt;新闻&lt;/a&gt; &lt;a href=http://www.hao123.com name=tj_trhao123 class=mnav&gt;hao123&lt;/a&gt; &lt;a href=http://map.baidu.com name=tj_trmap class=mnav&gt;地图&lt;/a&gt; &lt;a href=http://v.baidu.com name=tj_trvideo class=mnav&gt;视频&lt;/a&gt; &lt;a href=http://tieba.baidu.com name=tj_trtieba class=mnav&gt;贴吧&lt;/a&gt; &lt;noscript&gt; &lt;a href=http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb&gt;登录&lt;/a&gt; &lt;/noscript&gt; &lt;script&gt;document.write('&lt;a href="http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u='+ encodeURIComponent(window.location.href+ (window.location.search === "" ? "?" : "&amp;")+ "bdorz_come=1")+ '" name="tj_login" class="lb"&gt;登录&lt;/a&gt;');&lt;/script&gt; &lt;a href=//www.baidu.com/more/ name=tj_briicon class=bri style="display: block;"&gt;更多产品&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=ftCon&gt; &lt;div id=ftConw&gt; &lt;p id=lh&gt; &lt;a href=http://home.baidu.com&gt;关于百度&lt;/a&gt; &lt;a href=http://ir.baidu.com&gt;About Baidu&lt;/a&gt; &lt;/p&gt; &lt;p id=cp&gt;&amp;copy;2017&amp;nbsp;Baidu&amp;nbsp;&lt;a href=http://www.baidu.com/duty/&gt;使用百度前必读&lt;/a&gt;&amp;nbsp; &lt;a href=http://jianyi.baidu.com/ class=cp-feedback&gt;意见反馈&lt;/a&gt;&amp;nbsp;京ICP证030173号&amp;nbsp; &lt;img src=//www.baidu.com/img/gs.gif&gt; &lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;</span><br><span class="line">* STATE: INIT =&gt; CONNECT handle 0x48ef160; line 1404 (connection #-5000)</span><br><span class="line">* Rebuilt URL to: http://www.baidu.com/</span><br><span class="line">* Added connection 0. The cache now contains 1 members</span><br><span class="line">* STATE: CONNECT =&gt; WAITRESOLVE handle 0x48ef160; line 1440 (connection #0)</span><br><span class="line">*   Trying 61.135.169.125...</span><br><span class="line">* TCP_NODELAY set</span><br><span class="line">* STATE: WAITRESOLVE =&gt; WAITCONNECT handle 0x48ef160; line 1521 (connection #0)</span><br><span class="line">* Connected to www.baidu.com (61.135.169.125) port 80 (#0)</span><br><span class="line">* STATE: WAITCONNECT =&gt; SENDPROTOCONNECT handle 0x48ef160; line 1573 (connection #0)</span><br><span class="line">* Marked for [keep alive]: HTTP default</span><br><span class="line">* STATE: SENDPROTOCONNECT =&gt; DO handle 0x48ef160; line 1591 (connection #0)</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> GET / HTTP/1.1</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Host: www.baidu.com</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> User-Agent: curl/7.59.0</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Accept: */*</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br><span class="line">* STATE: DO =&gt; DO_DONE handle 0x48ef160; line 1670 (connection #0)</span><br><span class="line">* STATE: DO_DONE =&gt; WAITPERFORM handle 0x48ef160; line 1795 (connection #0)</span><br><span class="line">* STATE: WAITPERFORM =&gt; PERFORM handle 0x48ef160; line 1811 (connection #0)</span><br><span class="line">* HTTP 1.1 or later with persistent connection, pipelining supported</span><br><span class="line">&lt; HTTP/1.1 200 OK</span><br><span class="line">* Server bfe/1.0.8.18 is not blacklisted</span><br><span class="line">&lt; Server: bfe/1.0.8.18</span><br><span class="line">&lt; Date: Mon, 07 May 2018 08:02:59 GMT</span><br><span class="line">&lt; Content-Type: text/html</span><br><span class="line">&lt; Content-Length: 2381</span><br><span class="line">&lt; Last-Modified: Mon, 23 Jan 2017 13:27:32 GMT</span><br><span class="line">&lt; Connection: Keep-Alive</span><br><span class="line">&lt; ETag: "588604c4-94d"</span><br><span class="line">&lt; Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform</span><br><span class="line">&lt; Pragma: no-cache</span><br><span class="line">&lt; Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/</span><br><span class="line">&lt; Accept-Ranges: bytes</span><br><span class="line">&lt;</span><br><span class="line">&#123; [2381 bytes data]</span><br><span class="line">* STATE: PERFORM =&gt; DONE handle 0x48ef160; line 1980 (connection #0)</span><br><span class="line">* multi_done</span><br><span class="line">* Connection #0 to host www.baidu.com left intact</span><br><span class="line">* Expire cleared</span><br></pre></td></tr></table></figure>
-<p>其中红色大于号开头的行，便是请求的内容；而后面的小于号开头的行则是返回内容。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; &lt;div id=lg&gt; &lt;img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129&gt; &lt;/div&gt; &lt;form id=form name=f action=//www.baidu.com/s class=fm&gt; &lt;input type=hidden name=bdorz_come value=1&gt; &lt;input type=hidden name=ie value=utf-8&gt; &lt;input type=hidden name=f value=8&gt; &lt;input type=hidden name=rsv_bp value=1&gt; &lt;input type=hidden name=rsv_idx value=1&gt; &lt;input type=hidden name=tn value=baidu&gt;&lt;span class="bg s_ipt_wr"&gt;&lt;input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus&gt;&lt;/span&gt;&lt;span class="bg s_btn_wr"&gt;&lt;input type=submit id=su value=百度一下 class="bg s_btn"&gt;&lt;/span&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=u1&gt; &lt;a href=http://news.baidu.com name=tj_trnews class=mnav&gt;新闻&lt;/a&gt; &lt;a href=http://www.hao123.com name=tj_trhao123 class=mnav&gt;hao123&lt;/a&gt; &lt;a href=http://map.baidu.com name=tj_trmap class=mnav&gt;地图&lt;/a&gt; &lt;a href=http://v.baidu.com name=tj_trvideo class=mnav&gt;视频&lt;/a&gt; &lt;a href=http://tieba.baidu.com name=tj_trtieba class=mnav&gt;贴吧&lt;/a&gt; &lt;noscript&gt; &lt;a href=http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb&gt;登录&lt;/a&gt; &lt;/noscript&gt; &lt;script&gt;document.write('&lt;a href="http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u='+ encodeURIComponent(window.location.href+ (window.location.search === "" ? "?" : "&amp;")+ "bdorz_come=1")+ '" name="tj_login" class="lb"&gt;登录&lt;/a&gt;');&lt;/script&gt; &lt;a href=//www.baidu.com/more/ name=tj_briicon class=bri style="display: block;"&gt;更多产品&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=ftCon&gt; &lt;div id=ftConw&gt; &lt;p id=lh&gt; &lt;a href=http://home.baidu.com&gt;关于百度&lt;/a&gt; &lt;a href=http://ir.baidu.com&gt;About Baidu&lt;/a&gt; &lt;/p&gt; &lt;p id=cp&gt;&amp;copy;2017&amp;nbsp;Baidu&amp;nbsp;&lt;a href=http://www.baidu.com/duty/&gt;使用百度前必读&lt;/a&gt;&amp;nbsp; &lt;a href=http://jianyi.baidu.com/ class=cp-feedback&gt;意见反馈&lt;/a&gt;&amp;nbsp;京ICP证030173号&amp;nbsp; &lt;img src=//www.baidu.com/img/gs.gif&gt; &lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;</span><br><span class="line">* STATE: INIT =&gt; CONNECT handle 0x48ef160; line 1404 (connection #-5000)</span><br><span class="line">* Rebuilt URL to: http://www.baidu.com/</span><br><span class="line">* Added connection 0. The cache now contains 1 members</span><br><span class="line">* STATE: CONNECT =&gt; WAITRESOLVE handle 0x48ef160; line 1440 (connection #0)</span><br><span class="line">*   Trying 61.135.169.125...</span><br><span class="line">* TCP_NODELAY set</span><br><span class="line">* STATE: WAITRESOLVE =&gt; WAITCONNECT handle 0x48ef160; line 1521 (connection #0)</span><br><span class="line">* Connected to www.baidu.com (61.135.169.125) port 80 (#0)</span><br><span class="line">* STATE: WAITCONNECT =&gt; SENDPROTOCONNECT handle 0x48ef160; line 1573 (connection #0)</span><br><span class="line">* Marked for [keep alive]: HTTP default</span><br><span class="line">* STATE: SENDPROTOCONNECT =&gt; DO handle 0x48ef160; line 1591 (connection #0)</span><br><span class="line"><span class="meta">&gt;</span> GET / HTTP/1.1</span><br><span class="line"><span class="meta">&gt;</span> Host: www.baidu.com</span><br><span class="line"><span class="meta">&gt;</span> User-Agent: curl/7.59.0</span><br><span class="line"><span class="meta">&gt;</span> Accept: */*</span><br><span class="line"><span class="meta">&gt;</span></span><br><span class="line">* STATE: DO =&gt; DO_DONE handle 0x48ef160; line 1670 (connection #0)</span><br><span class="line">* STATE: DO_DONE =&gt; WAITPERFORM handle 0x48ef160; line 1795 (connection #0)</span><br><span class="line">* STATE: WAITPERFORM =&gt; PERFORM handle 0x48ef160; line 1811 (connection #0)</span><br><span class="line">* HTTP 1.1 or later with persistent connection, pipelining supported</span><br><span class="line">&lt; HTTP/1.1 200 OK</span><br><span class="line">* Server bfe/1.0.8.18 is not blacklisted</span><br><span class="line">&lt; Server: bfe/1.0.8.18</span><br><span class="line">&lt; Date: Mon, 07 May 2018 08:02:59 GMT</span><br><span class="line">&lt; Content-Type: text/html</span><br><span class="line">&lt; Content-Length: 2381</span><br><span class="line">&lt; Last-Modified: Mon, 23 Jan 2017 13:27:32 GMT</span><br><span class="line">&lt; Connection: Keep-Alive</span><br><span class="line">&lt; ETag: "588604c4-94d"</span><br><span class="line">&lt; Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform</span><br><span class="line">&lt; Pragma: no-cache</span><br><span class="line">&lt; Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/</span><br><span class="line">&lt; Accept-Ranges: bytes</span><br><span class="line">&lt;</span><br><span class="line">&#123; [2381 bytes data]</span><br><span class="line">* STATE: PERFORM =&gt; DONE handle 0x48ef160; line 1980 (connection #0)</span><br><span class="line">* multi_done</span><br><span class="line">* Connection #0 to host www.baidu.com left intact</span><br><span class="line">* Expire cleared</span><br></pre></td></tr></table></figure>
+<p>其中以大于号开头的行，便是请求的内容；而后面的小于号开头的行则是返回内容。</p>
 <h3 id="GET-与-POST"><a href="#GET-与-POST" class="headerlink" title="GET 与 POST"></a>GET 与 POST</h3><p>改用 POST 请求，<code>curl -X POST -s -v -H &quot;xxx&quot; -- &quot;https://www.baidu.com&quot;</code>，返回“页面不存在”页面……</p>
 <p>两者的区别可以从字面意思理解，“GET”就是获取数据，“POST”就是提交数据。</p>
 <h3 id="请求的格式"><a href="#请求的格式" class="headerlink" title="请求的格式"></a>请求的格式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 动词 路径 协议/版本</span><br><span class="line">2 key1: value1 // 例如：Content-Type: application/x-www-form-urlencoded</span><br><span class="line">  key2: value2 // 例如：Host: www.baidu.com </span><br><span class="line">  key3: value3 // 例如：User-Agent: curl/7.54.0</span><br><span class="line">  ...</span><br><span class="line">3</span><br><span class="line">4 要上传的数据</span><br></pre></td></tr></table></figure>

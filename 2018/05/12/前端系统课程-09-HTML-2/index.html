@@ -7,15 +7,18 @@
   
   <title>前端系统课程 - 09. HTML (2) | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="课程笔记">
+  <meta name="description" content="常用标签 &amp;lt;a&amp;gt; 标签和 &amp;lt;button&amp;gt; 标签的选择：  如果要跳转到一个链接，用 &amp;lt;a&amp;gt; 标签；  如果要弹出提示或进行提交等操作，则可以使用 &amp;lt;button&amp;gt; 标签。    &amp;lt;main&amp;gt; 标签代表整个页面最主要的部分，每个页面中只能有一个 main 标签。  &amp;lt;section&amp;gt; 标签代表一个章节，一般用于一个完整文章或独">
+<meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 - 09. HTML (2)">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="常用标签 &amp;lt;a&amp;gt; 标签和 &amp;lt;button&amp;gt; 标签的选择：  如果要跳转到一个链接，用 &amp;lt;a&amp;gt; 标签；  如果要弹出提示或进行提交等操作，则可以使用 &amp;lt;button&amp;gt; 标签。    &amp;lt;main&amp;gt; 标签代表整个页面最主要的部分，每个页面中只能有一个 main 标签。  &amp;lt;section&amp;gt; 标签代表一个章节，一般用于一个完整文章或独">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T14:51:35.869Z">
+<meta property="og:updated_time" content="2018-05-14T16:28:26.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 09. HTML (2)">
+<meta name="twitter:description" content="常用标签 &amp;lt;a&amp;gt; 标签和 &amp;lt;button&amp;gt; 标签的选择：  如果要跳转到一个链接，用 &amp;lt;a&amp;gt; 标签；  如果要弹出提示或进行提交等操作，则可以使用 &amp;lt;button&amp;gt; 标签。    &amp;lt;main&amp;gt; 标签代表整个页面最主要的部分，每个页面中只能有一个 main 标签。  &amp;lt;section&amp;gt; 标签代表一个章节，一般用于一个完整文章或独">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -88,7 +91,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ul>
+<li><p><code>&lt;a&gt;</code> 标签和 <code>&lt;button&gt;</code> 标签的选择：</p>
+<ul>
+<li><p>如果要跳转到一个链接，用 <code>&lt;a&gt;</code> 标签；</p>
+</li>
+<li><p>如果要弹出提示或进行提交等操作，则可以使用 <code>&lt;button&gt;</code> 标签。</p>
+</li>
+</ul>
+</li>
+<li><p><code>&lt;main&gt;</code> 标签代表整个页面最主要的部分，每个页面中只能有一个 <code>main</code> 标签。</p>
+</li>
+<li><p><code>&lt;section&gt;</code> 标签代表一个章节，一般用于一个完整文章或独立区块。</p>
+</li>
+<li><p><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> 表示 6 个等级的标题，其中 <code>&lt;h1&gt;</code> 在整个页面一般也只有一个。</p>
+</li>
+<li><p><code>&lt;nav&gt;</code> 标签表示导航，有导航性质的列表或菜单，要用此标签包裹。</p>
+</li>
+<li><p><code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签没有语义，只是用来划分区域的，所以在使用这两种标签时，要给它们指定类名来使其语义化。</p>
+</li>
+</ul>
+<h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h2><ul>
+<li><p>使用“src”属性可以指定 iframe 窗口打开的网址。</p>
+</li>
+<li><p>使用“name”属性可以和 <code>&lt;a&gt;</code> 标签配合，使指定的 iframe 窗口打开新网页。</p>
+</li>
+<li><p>将“frameborder”属性设置为“0”可以去除 iframe 窗口自带的边框。</p>
+</li>
+</ul>
+<h2 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h2><ul>
+<li><p>“target”属性有四个值，它们分别是：</p>
+<ul>
+<li><p>_blank：代表在新窗口打开链接；</p>
+</li>
+<li><p>_self：代表在当前窗口或当前 iframe 窗口打开链接；</p>
+</li>
+<li><p>_parent：代表在当前 iframe 窗口外的父级窗口打开链接；</p>
+</li>
+<li><p>_top：代表在当前 iframe 窗口外的最顶层祖先窗口打开链接。</p>
+</li>
+</ul>
+</li>
+<li><p>“download”属性，一般用在链接是一个需要下载的文件时，此属性会强制将目标链接的“Content-type”转换为“application/octet-stream”，使目标链接成为下载链接。</p>
+</li>
+<li><p>“href”属性值：</p>
+<ul>
+<li><p>如果只写了域名，会把这个值当作文件来打开，例如 <code>href=&quot;qq.com&quot;</code>；当这种情况发生在是用 HTTP 协议打开时，会在网站的根目录寻找这个文件。</p>
+</li>
+<li><p>如果不写协议，会把这个值按照当前协议来打开，例如 <code>href=&quot;//qq.com&quot;</code>；当用文件协议打开网页时，便按照文件协议打开链接；当用 HTTP 协议打开时，便按照 HTTP 协议打开，才能正常访问目标网址。</p>
+</li>
+<li><p>只有在把协议写全的时候，才能在协议不同的情况下，正常跳转到链接地址，正常应该写：<code>href=&quot;http://qq.com</code>。</p>
+</li>
+<li><p>如果值是一个查询参数时，会向链接发起 GET 请求，页面会被刷新，例如：<code>href=&quot;?name=user&quot;</code>。</p>
+</li>
+<li><p>如果值是一个锚点时，会跳转到当前页的对应锚点位置；而如果只写一个“#”号，则会跳转到当前页面的顶部，两种情况都不会刷新页面；例如：<code>href=&quot;#&quot;</code>，这种方式可以做“回到顶部”的功能。</p>
+</li>
+<li><p>如果值是一个伪协议，例如：<code>href=&quot;javascript:void(0);&quot;</code>，则会执行伪协议后面的脚本代码，例子中的意思是返回值为“0”，也就是什么都不做，最终达到的效果就是去除了 <code>&lt;a&gt;</code> 标签的默认操作，这样就得到了一个能点击，却不会有反应的 <code>&lt;a&gt;</code> 标签；<code>void(0)</code> 其实可以不写也可以。其他的伪协议还有”mailto“等……老师没说。</p>
+</li>
+<li><p>如果值为空，点击 <code>&lt;a&gt;</code> 标签就会刷新当前页面。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="form-标签"><a href="#form-标签" class="headerlink" title="form 标签"></a>form 标签</h2><ul>
+<li>“action”属性用来设置表单提交的地址。</li>
+<li>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式；</li>
+<li>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</li>
+<li>form 表单中必须有提交按钮；如果 form 表单中有一个没有指定类型的 button 按钮，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</li>
+<li>form 表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</li>
+<li>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。</li>
+<li></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
