@@ -16,7 +16,7 @@
 <meta property="og:description" content="编程基础：首先成为程序员，再成为前端开发工程师。而一个程序员需要知道：  硬件与软件：计算机的运行原理；（荐书《编码》）  最大的软件：操作系统；  自己写软件：数据结构和算法；（荐书《数据结构与算法结构》）  多人写软件：软件工程。（荐书《代码大全》）   前端为什么学编程基础？——防止成为井底之蛙。 计算机存储汉字的过程： 内存内部的电容通过充电与否来存储 0 和 1，存储 1 就充电，存储">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/RAM.gif">
-<meta property="og:updated_time" content="2018-05-14T13:29:34.900Z">
+<meta property="og:updated_time" content="2018-05-14T14:30:18.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 02. 计算机是如何存储数据的">
 <meta name="twitter:description" content="编程基础：首先成为程序员，再成为前端开发工程师。而一个程序员需要知道：  硬件与软件：计算机的运行原理；（荐书《编码》）  最大的软件：操作系统；  自己写软件：数据结构和算法；（荐书《数据结构与算法结构》）  多人写软件：软件工程。（荐书《代码大全》）   前端为什么学编程基础？——防止成为井底之蛙。 计算机存储汉字的过程： 内存内部的电容通过充电与否来存储 0 和 1，存储 1 就充电，存储">
@@ -111,19 +111,19 @@
 </li>
 <li><p>通过十进制和二进制之间的转换，计算机便可以只用二进制数 0 和 1 来存储十进制数；为了方便书写，一般会将二进制数写为十六进制数，因为单个十六进制数正好可以存 4 位二进制数。（<em>扩展：负数使用补码形式存储，小数使用浮点数形式存储</em>）</p>
 </li>
-<li><p>用数字可以为字符编号，于是出现了字符集，例如 ASCII（美国信息交换标准代码）；按照这个标准，如果要存储字母 a，那么就存储十进制数 97 对应的二进制数 0110 0001（十六进制数为 61）。</p>
+<li><p>用数字可以为字符编号，于是出现了字符集，例如“ASCII（美国信息交换标准代码）“；按照这个标准，如果要存储字母“a”，那么就存储十进制数 97 对应的二进制数 0110 0001（十六进制数为 61）。</p>
 </li>
-<li><p>既然可以存储字符，那么汉字也不是问题，扩充字符集就可以了，将每个汉字对应不同的编号。例如最早的汉字字符集 GB2312 （中国国家标准简体中文字符集），和一度被广泛使用的微软推出的 GBK 字符集。</p>
+<li><p>既然可以存储字符，那么汉字也不是问题，扩充字符集就可以了，将每个汉字对应不同的编号。例如最早的汉字字符集“GB2312（中国国家标准简体中文字符集）”，以及一度被广泛使用的微软推出的“GBK 字符集”。AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
 </li>
-<li><p>为了统一存储世界上所有的字符，Unicode 联盟推出了 Unicode 字符集 。</p>
+<li><p>为了统一存储世界上所有的字符，Unicode 联盟推出了“Unicode 字符集”。</p>
 </li>
-<li><p>解决了所有字符的存储方法，但还缺乏一种高性价比的存储方式，于是出现了字符编码。如果使用 Unicode 字符集最初的低效方式，存储字母 a 和汉字“你”的方式如下：</p>
+<li><p>解决了所有字符的存储方法，但还缺乏一种高性价比的存储方式，于是出现了字符编码。如果使用“Unicode 字符集”最初的低效方式，存储字母“a”和汉字“你”的方式如下：</p>
 <p><code>a =&gt; 00000000 00000000 00000000 01100001 = 0061</code></p>
 <p><code>你 =&gt; 00000000 00000000 01001111 01100000 = 4F60</code></p>
 <p>这样的方式浪费了存储资源，从而出现了比较节省存储资源的方式——字符编码：</p>
 <p><code>a =&gt; 01100001</code></p>
 <p><code>你 =&gt; 11100100 10111101 10100000</code></p>
-<p>当存储的是单个字母的时候，使用 1 个字节（Byte）来存储，而存储汉字或其他字符，则用两个或以上的字节来存储；第一个字节带有识别后续字节的编码，后续字节的前两位用来作为让第一个字节识别的标识，这就是 UTF-8 编码：</p>
+<p>当存储的是单个字母的时候，使用 1 个字节（Byte）来存储，而存储汉字或其他字符，则用两个或以上的字节来存储；第一个字节带有识别后续字节的编码，后续字节的前两位用来作为让第一个字节识别的标识，这就是“UTF-8 编码”：</p>
 <p><code>1字节 0xxxxxxx</code></p>
 <p><code>2字节 110xxxxx 10xxxxxx</code></p>
 <p><code>3字节 1110xxxx 10xxxxxx 10xxxxxx</code></p>
@@ -132,15 +132,15 @@
 <p><code>6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
 </li>
 </ol>
-<h2 id="现实问题："><a href="#现实问题：" class="headerlink" title="现实问题："></a>现实问题：</h2><p>由于历史原因，早期的软件和网站是在 GBK 字符集的年代诞生的，而没有赶上 Unicode 字符集和 UTF-8 编码，所以还是有大量应用 GBK 字符集的软件和网站。</p>
-<p>也是由于时间原因，JavaScript 使用了 Unicode 字符集，却没有使用 UTF-8 编码，所以 ES5 及之前的标准无法表示 \uFFFF 之后的字符，某些情况下会出 bug。例如 JavaScript 会将一个超出范围的单个字符的长度识别为 2：</p>
+<h2 id="现实问题："><a href="#现实问题：" class="headerlink" title="现实问题："></a>现实问题：</h2><p>由于历史原因，早期的软件和网站是在“GBK 字符集”的年代诞生的，而没有赶上“Unicode 字符集”和“UTF-8 编码”，所以还是有大量应用“GBK 字符集”的软件和网站。</p>
+<p>也是由于时间原因，JavaScript 使用了“Unicode 字符集”，却没有使用 UTF-8 编码，所以 ES5 及之前的标准无法表示 \uFFFF 之后的字符，某些情况下会出 bug。例如 JavaScript 会将一个超出范围的单个字符的长度识别为 2：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">'\u1D306'</span>;</span><br><span class="line">alert(str1); <span class="comment">//ᴰ6，一个字符和数字字符6；</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">'𝌆'</span>;</span><br><span class="line">alert(str2.length); <span class="comment">//明明是一个字符，却显示长度为2；</span></span><br></pre></td></tr></table></figure>
-<p>所以，现在在各种编程当中，一定都要用 UTF-8 编码！</p>
+<p>所以，现在在各种编程当中，一定都要用“UTF-8 编码”！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjh6aztlk0002hsmxu76oybg4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjh6dbdjb0002q8mx1q2hpt6p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -218,19 +218,19 @@
           </li>
         
           <li>
-            <a href="/2018/05/12/前端系统课程-09-HTML-2/">前端系统课程 - 09. HTML(2)</a>
+            <a href="/2018/05/12/前端系统课程-09-HTML-2/">前端系统课程 - 09. HTML (2)</a>
           </li>
         
           <li>
-            <a href="/2018/05/06/前端系统课程-05-脚本/">前端系统课程 05. 脚本</a>
+            <a href="/2018/05/12/前端系统课程-08-HTML-1/">前端系统课程 - 08. HTML (1)</a>
           </li>
         
           <li>
-            <a href="/2018/05/05/前端系统课程-04-命令行基础/">前端系统课程 - 04. 命令行基础</a>
+            <a href="/2018/05/07/前端系统课程-07-Node-js-Server/">前端系统课程 - 07. Node.js Server</a>
           </li>
         
           <li>
-            <a href="/2018/05/03/前端系统课程-03-软件安装/">前端系统课程 - 03. 软件安装</a>
+            <a href="/2018/05/07/前端系统课程-06-HTTP-入门/">前端系统课程 - 06. HTTP 入门</a>
           </li>
         
       </ul>
