@@ -89,52 +89,83 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="CSS-的历史"><a href="#CSS-的历史" class="headerlink" title="CSS 的历史"></a>CSS 的历史</h2><ol>
-<li>1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。</li>
-<li>1998 年，W3C 发布了应用最广泛的 CSS2。</li>
-<li>2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。</li>
+<li><p>1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。</p>
+</li>
+<li><p>1998 年，W3C 发布了应用最广泛的 CSS2。</p>
+</li>
+<li><p>2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。</p>
+</li>
 </ol>
 <h2 id="CSS-编译器"><a href="#CSS-编译器" class="headerlink" title="CSS 编译器"></a>CSS 编译器</h2><ul>
-<li>LESS</li>
-<li>SASS / SCSS</li>
-<li>PostCSS</li>
+<li><p>LESS</p>
+</li>
+<li><p>SASS / SCSS</p>
+</li>
+<li><p>PostCSS</p>
+</li>
 </ul>
 <h2 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h2><ul>
-<li>MDN</li>
-<li>CSS Tricks</li>
-<li>阮一峰 / 张鑫旭博客</li>
-<li>Codrops</li>
-<li>《CSS 揭秘》</li>
-<li>CSS 文档</li>
+<li><p>MDN</p>
+</li>
+<li><p>CSS Tricks</p>
+</li>
+<li><p>阮一峰 / 张鑫旭博客</p>
+</li>
+<li><p>Codrops</p>
+</li>
+<li><p>《CSS 揭秘》</p>
+</li>
+<li><p>CSS 文档</p>
+</li>
 </ul>
 <h2 id="开始写-CSS"><a href="#开始写-CSS" class="headerlink" title="开始写 CSS"></a>开始写 CSS</h2><ol>
-<li>引入方法：<ul>
-<li>内联样式；</li>
-<li><code>&lt;style&gt;</code> 标签；</li>
-<li>外部样式，使用 <code>&lt;link&gt;</code> 标签引入；</li>
-<li>导入方式，使用 <code>@import url()</code> 方式，这种方式不推荐使用。</li>
+<li><p>引入方法：</p>
+<ul>
+<li><p>内联样式；</p>
+</li>
+<li><p><code>&lt;style&gt;</code> 标签；</p>
+</li>
+<li><p>外部样式，使用 <code>&lt;link&gt;</code> 标签引入；</p>
+</li>
+<li><p>导入方式，使用 <code>@import url()</code> 方式，这种方式不推荐使用。</p>
+</li>
 </ul>
 </li>
-<li>善用开发者工具。</li>
+<li><p>善用开发者工具。</p>
+</li>
 <li><p>常用样式：</p>
 <ul>
-<li>清除列表默认样式 <code>list-style: none</code>；</li>
-<li>浮动 <code>float</code>；</li>
+<li><p>清除列表默认样式 <code>list-style: none</code>；</p>
+</li>
+<li><p>浮动 <code>float</code>；</p>
+</li>
 <li><p>清除浮动 <code>clear: both;</code>，常用方式，给<strong>浮动元素的父元素</strong>加此类名：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">claer</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>子元素选择器 <code>&gt;</code>；</p>
 </li>
-<li>背景颜色 <code>background</code>；</li>
-<li>文字颜色 <code>color</code>；</li>
-<li>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</li>
-<li>外边距 <code>margin</code>；</li>
-<li>内边距 <code>padding</code>；</li>
-<li>文字加粗 <code>font-weight: bold</code>；</li>
-<li>伪类选择器，鼠标移入 <code>:hover</code>；</li>
-<li>展示为块级元素<code>display: block</code>；</li>
-<li>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</li>
-<li>文字大小 <code>font-size</code>；</li>
-<li>文字字体 <code>font-family</code>；</li>
+<li><p>背景颜色 <code>background</code>；</p>
+</li>
+<li><p>文字颜色 <code>color</code>；</p>
+</li>
+<li><p>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</p>
+</li>
+<li><p>外边距 <code>margin</code>；</p>
+</li>
+<li><p>内边距 <code>padding</code>；</p>
+</li>
+<li><p>文字加粗 <code>font-weight: bold</code>；</p>
+</li>
+<li><p>伪类选择器，鼠标移入 <code>:hover</code>；</p>
+</li>
+<li><p>展示为块级元素<code>display: block</code>；</p>
+</li>
+<li><p>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</p>
+</li>
+<li><p>文字大小 <code>font-size</code>；</p>
+</li>
+<li><p>文字字体 <code>font-family</code>；</p>
+</li>
 </ul>
 </li>
 </ol>
@@ -216,31 +247,48 @@
       
         <h2 id="初识命令行"><a href="#初识命令行" class="headerlink" title="初识命令行"></a>初识命令行</h2><p>课程里讲的命令行主要是 Linux 或 Unix 系统里的命令行，在 Windows 中 cmd 中不一定适用。</p>
 <ul>
-<li><code>~</code> 表示当前用户目录，第一个 <code>/</code> 表示整个硬盘（没有盘符的系统），<code>.</code> 表示当前目录，<code>..</code> 表示副目录，<code>$</code> 表示可以输入命令的状态（可更改）。</li>
-<li>基本命令：<ul>
-<li>创建目录（make directory）：<code>mkdir</code>；</li>
-<li>删除（remove）：<code>rm</code>；</li>
-<li>移动/重命名（move）：<code>move</code>；</li>
-<li>复制（copy）：<code>cp</code>；</li>
-<li>罗列（list）：<code>ls</code>；</li>
-<li>改变目录（change directory）：<code>cd</code>；</li>
-<li>…</li>
+<li><p><code>~</code> 表示当前用户目录，第一个 <code>/</code> 表示整个硬盘（没有盘符的系统），<code>.</code> 表示当前目录，<code>..</code> 表示副目录，<code>$</code> 表示可以输入命令的状态（可更改）。</p>
+</li>
+<li><p>基本命令：</p>
+<ul>
+<li><p>创建目录（make directory）：<code>mkdir</code>；</p>
+</li>
+<li><p>删除（remove）：<code>rm</code>；</p>
+</li>
+<li><p>移动/重命名（move）：<code>move</code>；</p>
+</li>
+<li><p>复制（copy）：<code>cp</code>；</p>
+</li>
+<li><p>罗列（list）：<code>ls</code>；</p>
+</li>
+<li><p>改变目录（change directory）：<code>cd</code>；</p>
+</li>
+<li><p>…</p>
+</li>
 </ul>
 </li>
-<li>命令缩写规则：一般是删除元音字母（a、e、i、o、u），保留前 2 到 3 个辅音字母。</li>
+<li><p>命令缩写规则：一般是删除元音字母（a、e、i、o、u），保留前 2 到 3 个辅音字母。</p>
+</li>
 </ul>
 <h2 id="绝对路径与相对路径"><a href="#绝对路径与相对路径" class="headerlink" title="绝对路径与相对路径"></a>绝对路径与相对路径</h2><p>以 <code>/</code> 开头的是绝对路径，反之就是相对路径。</p>
 <h2 id="体验命令行"><a href="#体验命令行" class="headerlink" title="体验命令行"></a>体验命令行</h2><ul>
-<li>如果在创建文件夹时，文件夹名称中有特殊字符（如空格），那么名称要用引号包裹。</li>
-<li>命令后面还可以加“选项”来完成更多的操作。</li>
-<li>更多的命令可以自行谷歌，命令释义可以参照<a href="https://explainshell.com" target="_blank" rel="noopener">这里</a>。</li>
+<li><p>如果在创建文件夹时，文件夹名称中有特殊字符（如空格），那么名称要用引号包裹。</p>
+</li>
+<li><p>命令后面还可以加“选项”来完成更多的操作。</p>
+</li>
+<li><p>更多的命令可以自行谷歌，命令释义可以参照<a href="https://explainshell.com" target="_blank" rel="noopener">这里</a>。</p>
+</li>
 </ul>
 <h2 id="Git-操作"><a href="#Git-操作" class="headerlink" title="Git 操作"></a>Git 操作</h2><p>先要生成 SSH key，前面的课程学过了，有一些注意事项：</p>
 <ul>
-<li>一台设备只需要一个 key；</li>
-<li>一个 key 可以访问你的所有仓库；</li>
-<li>如果有新设备连接 GitHub，要在新设备上重新生成一个 key，再把这个 key 也上传到 GitHub，新的 key 可以和以前的 key 共存；</li>
-<li>如果把 key 从电脑中删除，可以重新生成一个替换被删除的 key。</li>
+<li><p>一台设备只需要一个 key；</p>
+</li>
+<li><p>一个 key 可以访问你的所有仓库；</p>
+</li>
+<li><p>如果有新设备连接 GitHub，要在新设备上重新生成一个 key，再把这个 key 也上传到 GitHub，新的 key 可以和以前的 key 共存；</p>
+</li>
+<li><p>如果把 key 从电脑中删除，可以重新生成一个替换被删除的 key。</p>
+</li>
 </ul>
 <h2 id="配置-Git"><a href="#配置-Git" class="headerlink" title="配置 Git"></a>配置 Git</h2><p>五行命令：</p>
 <p><code>git config --global user.name yourname</code></p>
@@ -251,35 +299,56 @@
 <p>依次运行。</p>
 <h2 id="使用-Git"><a href="#使用-Git" class="headerlink" title="使用 Git"></a>使用 Git</h2><p>使用 Git 的方式有很多种，主要的三种：</p>
 <ul>
-<li>只在本地使用：<ol>
-<li>创建并进入一个目录；</li>
-<li>使用 <code>git init</code> 命令将这个目录设定为 Git 仓库，称为初始化仓库；</li>
-<li>在这个仓库里可以创建文件或目录后，可以通过 <code>git status -sb</code>（-s，summary，意思是显示总结；-b，branch，意思是显示总结和分支；这两个设置让显示结果更易读）命令查看它们的状态（目录为空时会忽略），文件状态会在文件名前面显示，例如没有关联的文件前面显示 <code>??</code>；</li>
-<li>使用 <code>git add</code> 命令将文件添加到中转区，之后被添加的文件状态会显示 <code>A</code>，表示文件已被标记为准备提交到仓库的状态；</li>
-<li>使用 <code>git commit -m&quot;提交信息&quot;</code> 命令来将中转区的文件提交到仓库；</li>
-<li>如果文件内容有改动，文件状态会变为右边的红 <code>M</code>，再将文件 add 后，状态会变为绿色的左 <code>M</code>，再用 commit 命令将文件提交到仓库。</li>
-<li>如果要删除文件，删除文件后，再 add 删除文件的文件名，这是状态变为了 <code>D</code>，再 commit 后，仓库文件也就被删除了；</li>
-<li>可以使用 <code>git log</code> 命令就可以看到文件改动历史；</li>
-<li>记住顺序就是先 add 再 commit 就可以了。</li>
+<li><p>只在本地使用：</p>
+<ol>
+<li><p>创建并进入一个目录；</p>
+</li>
+<li><p>使用 <code>git init</code> 命令将这个目录设定为 Git 仓库，称为初始化仓库；</p>
+</li>
+<li><p>在这个仓库里可以创建文件或目录后，可以通过 <code>git status -sb</code>（-s，summary，意思是显示总结；-b，branch，意思是显示总结和分支；这两个设置让显示结果更易读）命令查看它们的状态（目录为空时会忽略），文件状态会在文件名前面显示，例如没有关联的文件前面显示 <code>??</code>；</p>
+</li>
+<li><p>使用 <code>git add</code> 命令将文件添加到中转区，之后被添加的文件状态会显示 <code>A</code>，表示文件已被标记为准备提交到仓库的状态；</p>
+</li>
+<li><p>使用 <code>git commit -m&quot;提交信息&quot;</code> 命令来将中转区的文件提交到仓库；</p>
+</li>
+<li><p>如果文件内容有改动，文件状态会变为右边的红 <code>M</code>，再将文件 add 后，状态会变为绿色的左 <code>M</code>，再用 commit 命令将文件提交到仓库。</p>
+</li>
+<li><p>如果要删除文件，删除文件后，再 add 删除文件的文件名，这是状态变为了 <code>D</code>，再 commit 后，仓库文件也就被删除了；</p>
+</li>
+<li><p>可以使用 <code>git log</code> 命令就可以看到文件改动历史；</p>
+</li>
+<li><p>记住顺序就是先 add 再 commit 就可以了。</p>
+</li>
 </ol>
 </li>
-<li>将本地仓库上传到 GitHub；<ol>
-<li>在 GitHub 上新建一个仓库，名称最好与本地仓库的统一；</li>
-<li>然后使用 SSH 类型的仓库地址，进行同步操作：<ul>
-<li>运行 <code>git remote add origin git@github:xxx/name.git</code>，最后一段就是仓库地址；</li>
-<li>运行 <code>git push -u origin master</code>，这就将本地的仓库推送到了 GitHub 上。 </li>
+<li><p>将本地仓库上传到 GitHub；</p>
+<ol>
+<li><p>在 GitHub 上新建一个仓库，名称最好与本地仓库的统一；</p>
+</li>
+<li><p>然后使用 SSH 类型的仓库地址，进行同步操作：</p>
+<ul>
+<li><p>运行 <code>git remote add origin git@github:xxx/name.git</code>，最后一段就是仓库地址；</p>
+</li>
+<li><p>运行 <code>git push -u origin master</code>，这就将本地的仓库推送到了 GitHub 上。 </p>
+</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>下载 GitHub 上的仓库。<br>直接使用 <code>git clone</code> 命令，加上仓库的 SSH 类型的仓库地址，就可以将仓库下载到指定位置了。</li>
+<li><p>下载 GitHub 上的仓库。</p>
+<p>直接使用 <code>git clone</code> 命令，加上仓库的 SSH 类型的仓库地址，就可以将仓库下载到指定位置了。</p>
+</li>
 </ul>
 <h2 id="如何上传更新"><a href="#如何上传更新" class="headerlink" title="如何上传更新"></a>如何上传更新</h2><p>如果本地目录有任何变动，按照以下顺序就能上传：</p>
 <ol>
-<li>先 <code>git add</code> 目录；</li>
-<li>再 <code>git commit -m &quot;massage&quot;</code> 目录；</li>
-<li>然后使用 <code>git pull</code> 命令拉取，与远程目录合并；这一步是为了防止有别的更改本地仓库没有同步过；</li>
-<li>最后再 <code>git push</code> 就可以将变动的目录上传到远程仓库。</li>
+<li><p>先 <code>git add</code> 目录；</p>
+</li>
+<li><p>再 <code>git commit -m &quot;massage&quot;</code> 目录；</p>
+</li>
+<li><p>然后使用 <code>git pull</code> 命令拉取，与远程目录合并；这一步是为了防止有别的更改本地仓库没有同步过；</p>
+</li>
+<li><p>最后再 <code>git push</code> 就可以将变动的目录上传到远程仓库。</p>
+</li>
 </ol>
 <p>还有其他的命令，需要长期学习。</p>
 
@@ -321,31 +390,50 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="工具的重要性："><a href="#工具的重要性：" class="headerlink" title="工具的重要性："></a>工具的重要性：</h2><ul>
-<li>工欲善其事，必先利其器。</li>
-<li>使用合适好用的工具，提高写代码的效率。</li>
-<li>不同的情况下，使用不同的工具。</li>
-<li>收费工具往往比免费工具靠谱。</li>
-<li>需要花时间学习工具的使用方法，才能更好地利用工具。</li>
+<li><p>工欲善其事，必先利其器。</p>
+</li>
+<li><p>使用合适好用的工具，提高写代码的效率。</p>
+</li>
+<li><p>不同的情况下，使用不同的工具。</p>
+</li>
+<li><p>收费工具往往比免费工具靠谱。</p>
+</li>
+<li><p>需要花时间学习工具的使用方法，才能更好地利用工具。</p>
+</li>
 </ul>
 <h2 id="各种工具的安装和配置："><a href="#各种工具的安装和配置：" class="headerlink" title="各种工具的安装和配置："></a>各种工具的安装和配置：</h2><ul>
-<li>科学上网；</li>
-<li>取色工具；</li>
-<li>编辑器和 IDE 工具：VSCode、Sublime Text 3、WebStorm …</li>
-<li>开发工具：Node.js、Git、npm …</li>
-<li>npm 配置命令：</li>
+<li><p>科学上网；</p>
+</li>
+<li><p>取色工具；</p>
+</li>
+<li><p>编辑器和 IDE 工具：VSCode、Sublime Text 3、WebStorm …</p>
+</li>
+<li><p>开发工具：Node.js、Git、npm …</p>
+</li>
+<li><p>npm 配置命令：</p>
+</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org/</span><br><span class="line">npm config set loglevel http</span><br><span class="line">npm config set progress fasle</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>GitHub 新建仓库：</p>
 <ol>
-<li>登录 GitHub 后，找到并点击“ New repository ”（新仓库）按钮；</li>
-<li>设置新仓库的名称后，点 “ Create repository ”（创建仓库）按钮；</li>
-<li>在本地新建一个与仓库同名的文件夹，并在当前目录打开 Git Bash，或者在 Git Bash 进入到这个新文件夹中；</li>
-<li>在 GitHub 页面的个人菜单中，进入 Settings 页面，然后通过 “SSH and GPG keys” 选项的 “New SSH key” 按钮，创建一个新 SSH kye，步骤是：<ul>
-<li>在 Git Bash 中输入 <code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@xxx.com&quot;</code>，后面的邮箱对应自己的邮箱，输入完毕后回车确认；</li>
-<li>确认前面的命令后，会提示 <code>Enter file in which to save the key (括号内会显示一个路径表示保存文件的路径):</code>，看到这个提示后，点击一次回车，后面再出现提示，再点击回车，一共 3 次，最后会看到一个字符组成的像票据的图，就可以了；<br><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">具体方法</a></li>
-<li>在 GitBash 中运行命令 <code>cat ~/.ssh/id_rsa.pub</code> 后会输出一串已刚才设置的邮箱结尾的 SSH key，把这个 key 全部复制；</li>
-<li>回到创建页面，在 Title 中输入任意标题（比如日期），把刚才复制的内容粘贴到 Key 中，然后确认添加就行了。</li>
+<li><p>登录 GitHub 后，找到并点击“ New repository ”（新仓库）按钮；</p>
+</li>
+<li><p>设置新仓库的名称后，点 “ Create repository ”（创建仓库）按钮；</p>
+</li>
+<li><p>在本地新建一个与仓库同名的文件夹，并在当前目录打开 Git Bash，或者在 Git Bash 进入到这个新文件夹中；</p>
+</li>
+<li><p>在 GitHub 页面的个人菜单中，进入 Settings 页面，然后通过 “SSH and GPG keys” 选项的 “New SSH key” 按钮，创建一个新 SSH kye，步骤是：</p>
+<ul>
+<li><p>在 Git Bash 中输入 <code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@xxx.com&quot;</code>，后面的邮箱对应自己的邮箱，输入完毕后回车确认；</p>
+</li>
+<li><p>确认前面的命令后，会提示 <code>Enter file in which to save the key (括号内会显示一个路径表示保存文件的路径):</code>，看到这个提示后，点击一次回车，后面再出现提示，再点击回车，一共 3 次，最后会看到一个字符组成的像票据的图，就可以了；</p>
+<p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">具体方法</a></p>
+</li>
+<li><p>在 GitBash 中运行命令 <code>cat ~/.ssh/id_rsa.pub</code> 后会输出一串已刚才设置的邮箱结尾的 SSH key，把这个 key 全部复制；</p>
+</li>
+<li><p>回到创建页面，在 Title 中输入任意标题（比如日期），把刚才复制的内容粘贴到 Key 中，然后确认添加就行了。</p>
+</li>
 </ul>
 </li>
 <li><p>首次使用 Git，要在 GItBash 中，设置自己的用户名和邮箱，命令为：</p>
@@ -412,10 +500,14 @@
       
         <h2 id="编程基础："><a href="#编程基础：" class="headerlink" title="编程基础："></a>编程基础：</h2><p>首先成为程序员，再成为前端开发工程师。而一个程序员需要知道：</p>
 <ul>
-<li>硬件与软件：计算机的运行原理；（荐书《编码》）</li>
-<li>最大的软件：操作系统；</li>
-<li>自己写软件：数据结构和算法；（荐书《数据结构与算法结构》）</li>
-<li>多人写软件：软件工程。（荐书《代码大全》）</li>
+<li><p>硬件与软件：计算机的运行原理；（荐书《编码》）</p>
+</li>
+<li><p>最大的软件：操作系统；</p>
+</li>
+<li><p>自己写软件：数据结构和算法；（荐书《数据结构与算法结构》）</p>
+</li>
+<li><p>多人写软件：软件工程。（荐书《代码大全》）</p>
+</li>
 </ul>
 <p>前端为什么学编程基础？——<strong>防止成为井底之蛙</strong>。</p>
 <h2 id="计算机存储汉字的过程："><a href="#计算机存储汉字的过程：" class="headerlink" title="计算机存储汉字的过程："></a>计算机存储汉字的过程：</h2><ol>
@@ -424,9 +516,12 @@
 </li>
 <li><p>通过十进制和二进制之间的转换，计算机便可以只用二进制数 0 和 1 来存储十进制数；为了方便书写，一般会将二进制数写为十六进制数，因为单个十六进制数正好可以存 4 位二进制数。（<em>扩展：负数使用补码形式存储，小数使用浮点数形式存储</em>）</p>
 </li>
-<li>用数字可以为字符编号，于是出现了字符集，例如 ASCII（美国信息交换标准代码）；按照这个标准，如果要存储字母 a，那么就存储十进制数 97 对应的二进制数 0110 0001（十六进制数为 61）。</li>
-<li>既然可以存储字符，那么汉字也不是问题，扩充字符集就可以了，将每个汉字对应不同的编号。例如最早的汉字字符集 GB2312 （中国国家标准简体中文字符集），和一度被广泛使用的微软推出的 GBK 字符集。</li>
-<li>为了统一存储世界上所有的字符，Unicode 联盟推出了 Unicode 字符集 。</li>
+<li><p>用数字可以为字符编号，于是出现了字符集，例如 ASCII（美国信息交换标准代码）；按照这个标准，如果要存储字母 a，那么就存储十进制数 97 对应的二进制数 0110 0001（十六进制数为 61）。</p>
+</li>
+<li><p>既然可以存储字符，那么汉字也不是问题，扩充字符集就可以了，将每个汉字对应不同的编号。例如最早的汉字字符集 GB2312 （中国国家标准简体中文字符集），和一度被广泛使用的微软推出的 GBK 字符集。</p>
+</li>
+<li><p>为了统一存储世界上所有的字符，Unicode 联盟推出了 Unicode 字符集 。</p>
+</li>
 <li><p>解决了所有字符的存储方法，但还缺乏一种高性价比的存储方式，于是出现了字符编码。如果使用 Unicode 字符集最初的低效方式，存储字母 a 和汉字“你”的方式如下：</p>
 <p><code>a =&gt; 00000000 00000000 00000000 01100001 = 0061</code></p>
 <p><code>你 =&gt; 00000000 00000000 01001111 01100000 = 4F60</code></p>
@@ -485,12 +580,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><ul>
-<li><p>看一次是不够的，做一次是不够的。（概率学家坐飞机）</p>
-</li>
-<li><p>忘记是正常的，知道如何重新记起来就好，重复记忆久而久之自然会记住。</p>
-</li>
-<li><p>不要中断学习超过一周。</p>
-</li>
+<li>看一次是不够的，做一次是不够的。（概率学家坐飞机）</li>
+<li>忘记是正常的，知道如何重新记起来就好，重复记忆久而久之自然会记住。</li>
+<li>不要中断学习超过一周。</li>
 </ul>
 <h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2><ul>
 <li><p>C：Copy，抄代码，复制别人的代码。</p>
