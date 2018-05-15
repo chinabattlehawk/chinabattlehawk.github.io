@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="常用标签 &amp;lt;a&amp;gt; 标签和 &amp;lt;button&amp;gt; 标签的选择：  如果要跳转到一个链接，用 &amp;lt;a&amp;gt; 标签；  如果要弹出提示或进行提交等操作，则可以使用 &amp;lt;button&amp;gt; 标签。    &amp;lt;main&amp;gt; 标签代表整个页面最主要的部分，每个页面中只能有一个 main 标签。  &amp;lt;section&amp;gt; 标签代表一个章节，一般用于一个完整文章或独">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T16:28:26.804Z">
+<meta property="og:updated_time" content="2018-05-15T15:49:34.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 09. HTML (2)">
 <meta name="twitter:description" content="常用标签 &amp;lt;a&amp;gt; 标签和 &amp;lt;button&amp;gt; 标签的选择：  如果要跳转到一个链接，用 &amp;lt;a&amp;gt; 标签；  如果要弹出提示或进行提交等操作，则可以使用 &amp;lt;button&amp;gt; 标签。    &amp;lt;main&amp;gt; 标签代表整个页面最主要的部分，每个页面中只能有一个 main 标签。  &amp;lt;section&amp;gt; 标签代表一个章节，一般用于一个完整文章或独">
@@ -154,14 +154,56 @@
 </li>
 </ul>
 <h2 id="form-标签"><a href="#form-标签" class="headerlink" title="form 标签"></a>form 标签</h2><ul>
-<li>“action”属性用来设置表单提交的地址。</li>
-<li>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式；</li>
-<li>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</li>
-<li>form 表单中必须有提交按钮；如果 form 表单中有一个没有指定类型的 button 按钮，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</li>
-<li>form 表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</li>
-<li>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。</li>
-<li></li>
+<li><p>“action”属性用来设置表单提交的地址。</p>
+</li>
+<li><p>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式；</p>
+</li>
+<li><p>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</p>
+</li>
+<li><p>表单中必须有提交按钮；如果 form 表单中有一个没有类型的 <code>&lt;button&gt;</code> 标签，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</p>
+</li>
+<li><p>表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</p>
+</li>
+<li><p>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。  </p>
+</li>
 </ul>
+<h2 id="input-标签"><a href="#input-标签" class="headerlink" title="input 标签"></a>input 标签</h2><ul>
+<li><p>最主要的就是“type”属性，不同的值代表不同的输入方式，例如：“button”代表普通按钮，“submit”代表提交按钮，“checkbox”代表复选框等等，如果不设置，默认是“text”类型；</p>
+</li>
+<li><p>要让 <code>&lt;input&gt;</code> 标签与指定内容关联，使之点击时获得焦点，要使用 <code>&lt;label&gt;</code> 标签包裹指定内容，并将其“for”属性与 <code>&lt;input&gt;</code> 标签的“id”属性设置为同一个值；</p>
+</li>
+<li><p>使用“radio”类型的 <code>&lt;input&gt;</code> 标签可以做出单选按钮，要让多个单选按钮具有排外性，就得把这些按钮的“name”属性设置为同一个。</p>
+</li>
+</ul>
+<h2 id="select-标签"><a href="#select-标签" class="headerlink" title="select 标签"></a>select 标签</h2><ul>
+<li><p>使用这个标签可以做下拉菜单，菜单的每一项，要用 <code>&lt;option&gt;</code> 标签包裹；</p>
+</li>
+<li><p>要让某一项默认为选中状态，可以给此项添加“selected”属性并设置值为“true”，像此类的状态属性的属性值都可以省略，只要属性存在，浏览器就会使它的值自动为“true”；</p>
+</li>
+<li><p>使用“disabled”属性可以使选项成为非可选状态；</p>
+</li>
+<li><p>为 <code>&lt;select&gt;</code> 标签添加“multiple”属性，可以使之成为多选菜单；</p>
+</li>
+</ul>
+<h2 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h2><ul>
+<li><p>这个标签被称为“文本域”，是用来输入和提交大量文字的文本框；</p>
+</li>
+<li><p>默认情况下，文本框可以自由调整大小，如果要禁用这种效果，需要给 <code>&lt;textarea&gt;</code> 添加样式：<code>resize: none</code>；</p>
+</li>
+<li><p>虽然文本域有设定宽和高的属性，但使用 CSS 样式设置最为靠谱；</p>
+</li>
+</ul>
+<h2 id="table-标签"><a href="#table-标签" class="headerlink" title="table 标签"></a>table 标签</h2><ul>
+<li><p>按照规范，<code>&lt;table&gt;</code> 标签的子元素可以是 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 和 <code>&lt;colgroup&gt;</code>；</p>
+</li>
+<li><p><code>&lt;colgroup&gt;</code> 标签的子标签是 <code>&lt;col&gt;</code> 标签，可以通过它来为每一列进行不同的设置，如宽度，背景色等，实际开发很少使用；</p>
+</li>
+<li><p><code>&lt;table&gt;</code> 标签的子标签都可以省略，除了 <code>&lt;colgroup&gt;</code> 标签，其余的会自动生成；另外，如果这些标签的顺序颠倒，浏览器也会自动纠正为 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 的顺序。</p>
+</li>
+<li><p><code>&lt;table&gt;</code> 标签的“border”属性可以设置表格的边框，但是每个表格元素都会有，如果要合并这些边框，可以给 <code>&lt;table&gt;</code> 标签添加样式 <code>border-collapse: collapse</code>。</p>
+</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上的标签只是初步的介绍，实际这些标签还有很多属性可以设置。这些设置不需要全部记住，在实际开发中，多加练习，就会把最有价值的属性设置烂熟于心。</p>
 
       
     </div>
