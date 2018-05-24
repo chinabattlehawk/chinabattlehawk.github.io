@@ -7,13 +7,13 @@
   
   <title>前端强化课程 - 第 4 章: 页面架构 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="布局方案水平居中 基本使用两层嵌套就可以了，HTML 代码如下： 123&amp;lt;div class=&quot;parent&quot;&amp;gt;    &amp;lt;div class=&quot;child&quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt; 不同的实现代码如下：  inline-block + text-align：  123456.parent&amp;#123;    text-align: cente">
+  <meta name="description" content="布局方案本节只是介绍了常用的一些页面布局如何实现，并没有进行很系统的划分，例如区分父元素和子元素的定宽定高等情况。今后会搜集 水平居中 基本使用两层嵌套就可以了，HTML 代码如下： 123&amp;lt;div class=&quot;parent&quot;&amp;gt;    &amp;lt;div class=&quot;child&quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt; 样式代码如下：  inline-block">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端强化课程 - 第 4 章: 页面架构">
 <meta property="og:url" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="布局方案水平居中 基本使用两层嵌套就可以了，HTML 代码如下： 123&amp;lt;div class=&quot;parent&quot;&amp;gt;    &amp;lt;div class=&quot;child&quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt; 不同的实现代码如下：  inline-block + text-align：  123456.parent&amp;#123;    text-align: cente">
+<meta property="og:description" content="布局方案本节只是介绍了常用的一些页面布局如何实现，并没有进行很系统的划分，例如区分父元素和子元素的定宽定高等情况。今后会搜集 水平居中 基本使用两层嵌套就可以了，HTML 代码如下： 123&amp;lt;div class=&quot;parent&quot;&amp;gt;    &amp;lt;div class=&quot;child&quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt; 样式代码如下：  inline-block">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/horizontal.png">
 <meta property="og:image" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/vertical.png">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/layout_1.png">
 <meta property="og:image" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/layout_2.png">
 <meta property="og:image" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/layout_3.png">
-<meta property="og:updated_time" content="2018-05-24T10:56:22.300Z">
+<meta property="og:updated_time" content="2018-05-24T15:02:38.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端强化课程 - 第 4 章: 页面架构">
-<meta name="twitter:description" content="布局方案水平居中 基本使用两层嵌套就可以了，HTML 代码如下： 123&amp;lt;div class=&quot;parent&quot;&amp;gt;    &amp;lt;div class=&quot;child&quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt; 不同的实现代码如下：  inline-block + text-align：  123456.parent&amp;#123;    text-align: cente">
+<meta name="twitter:description" content="布局方案本节只是介绍了常用的一些页面布局如何实现，并没有进行很系统的划分，例如区分父元素和子元素的定宽定高等情况。今后会搜集 水平居中 基本使用两层嵌套就可以了，HTML 代码如下： 123&amp;lt;div class=&quot;parent&quot;&amp;gt;    &amp;lt;div class=&quot;child&quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt; 样式代码如下：  inline-block">
 <meta name="twitter:image" content="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/horizontal.png">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
@@ -98,14 +98,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="布局方案"><a href="#布局方案" class="headerlink" title="布局方案"></a>布局方案</h1><h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/horizontal.png" alt="水品居中"></p>
+        <h1 id="布局方案"><a href="#布局方案" class="headerlink" title="布局方案"></a>布局方案</h1><p>本节只是介绍了常用的一些页面布局如何实现，并没有进行很系统的划分，例如区分父元素和子元素的定宽定高等情况。今后会搜集</p>
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/horizontal.png" alt="水品居中"></p>
 <p>基本使用两层嵌套就可以了，HTML 代码如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>DEMO<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不同的实现代码如下：</p>
+<p>样式代码如下：</p>
 <ol>
-<li><code>inline-block</code> + <code>text-align</code>：</li>
+<li><p><code>inline-block</code> + <code>text-align</code>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>优点：兼容性好（低版本 IE 可以用 <code>display: inline</code> + <code>zoom: 1</code> 兼容）；</p>
 </li>
@@ -113,9 +115,10 @@
 </li>
 </ul>
 <ol start="2">
-<li><code>table</code> + <code>margin</code>：</li>
-</ol>
+<li><p><code>table</code> + <code>margin</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：代码简单；</p>
 </li>
@@ -123,9 +126,10 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>absolute</code> + <code>transform</code>：</li>
-</ol>
+<li><p><code>absolute</code> + <code>transform</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：居中元素不会影响周围元素；</p>
 </li>
@@ -133,9 +137,10 @@
 </li>
 </ul>
 <ol start="4">
-<li><code>flex</code> + <code>justify-content</code> / <code>margin</code>：</li>
-</ol>
+<li><p><code>flex</code> + <code>justify-content</code> / <code>margin</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="comment">/*justify-content: center;*/</span></span><br><span class="line">    <span class="comment">/*为父元素设置此属性后，子元素可以不设置margin属性*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：效果最好最靠谱；</p>
 </li>
@@ -145,11 +150,12 @@
 <h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/vertical.png" alt="垂直居中"></p>
 <p>HTML 结构仍然是两层：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>DEMO<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不同的实现代码如下：</p>
+<p>样式代码如下：</p>
 <ol>
-<li><code>table-cell</code> + <code>vertical-align</code>：</li>
-</ol>
+<li><p><code>table-cell</code> + <code>vertical-align</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：兼容性好；</p>
 </li>
@@ -157,9 +163,10 @@
 </li>
 </ul>
 <ol start="2">
-<li><code>absolute</code> + <code>transform</code>：</li>
-</ol>
+<li><p><code>absolute</code> + <code>transform</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：居中元素不会影响周围元素；</p>
 </li>
@@ -167,9 +174,10 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>flex</code> + <code>align-items</code></li>
-</ol>
+<li><p><code>flex</code> + <code>align-items</code></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：效果最好最靠谱；</p>
 </li>
@@ -179,24 +187,28 @@
 <h2 id="中心居中"><a href="#中心居中" class="headerlink" title="中心居中"></a>中心居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/center.png" alt="中心居中"></p>
 <p>基本就是将水平居中和垂直居中的方法组合使用，直接上样式代码：</p>
 <ol>
-<li>第一种：</li>
-</ol>
+<li><p>第一种：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ol start="2">
-<li>第二种：</li>
-</ol>
+<li><p>第二种：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>第三种：</li>
+</li>
 </ol>
+<ol start="3">
+<li><p>第三种：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h2 id="一列定宽与一列自适应布局"><a href="#一列定宽与一列自适应布局" class="headerlink" title="一列定宽与一列自适应布局"></a>一列定宽与一列自适应布局</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_1.png" alt="布局示例"></p>
 <p>基本 HTML 结构：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Left<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
-<li><code>float</code> + <code>margin</code>：</li>
-</ol>
+<li><p><code>float</code> + <code>margin</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：简单易懂，兼容性较好；</p>
 </li>
@@ -204,11 +216,12 @@
 </li>
 </ul>
 <ol start="2">
-<li><code>float</code> + <code>margin</code> + （fix）：</li>
-</ol>
+<li><p><code>float</code> + <code>margin</code> + （fix）：</p>
 <p>上一种方法的改进版，在左浮动元素外包一层右浮动元素，右浮动元素宽度撑满父元素，同时设置右浮动元素的左外边距为<strong>负</strong>左浮动元素宽即可，但左浮动元素要用定位属性将层级提高。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Left<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right-fix"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right-fix</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: right;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right-fix</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: right;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>优点：简单易懂，兼容性较好；</p>
 </li>
@@ -216,10 +229,11 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>float</code> + <code>overflow</code>：</li>
-</ol>
+<li><p><code>float</code> + <code>overflow</code>：</p>
 <p>将自适应元素加上 <code>overflow: hidden</code>，触发自适应元素的 BFC 模式，隔离与浮动盒子的关系。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：样式简单，最好用；</p>
 </li>
@@ -227,9 +241,10 @@
 </li>
 </ul>
 <ol start="4">
-<li><code>flex</code>：</li>
-</ol>
+<li><p><code>flex</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：简单优雅；</p>
 </li>
@@ -239,9 +254,10 @@
 <h2 id="一列不定宽一列自适应布局："><a href="#一列不定宽一列自适应布局：" class="headerlink" title="一列不定宽一列自适应布局："></a>一列不定宽一列自适应布局：</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_2.png" alt="布局示例"></p>
 <p>HTML 代码与上一种布局相同。</p>
 <ol>
-<li><code>float</code> + <code>overflow</code>：</li>
-</ol>
+<li><p><code>float</code> + <code>overflow</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/*内容宽度任意设置*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：可以非常好的支持此类布局；</p>
 </li>
@@ -249,9 +265,10 @@
 </li>
 </ul>
 <ol start="2">
-<li><code>flex</code>：</li>
-</ol>
+<li><p><code>flex</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/*内容宽度任意设置*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：很好很强大；</p>
 </li>
@@ -259,12 +276,13 @@
 </li>
 </ul>
 <h2 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_3.png" alt="布局示例"></p>
-<p>等高布局的结构代码与上面两种的双列布局相同，就不重复写了。不同方式如下：</p>
+<p>等高布局的结构代码与上面两种的双列布局相同，就不重复写了。不同的实现方式如下：</p>
 <ol>
-<li><code>float</code> + <code>overflow</code>：</li>
-</ol>
+<li><p><code>float</code> + <code>overflow</code>：</p>
 <p>称为“伪等高”，子元素都设置 <code>padding-bottom</code> 为极大值，同时设置 <code>margin-bottom</code> 为负极大值来抵消，父元素和右侧子元素设置 <code>overflow:hidden</code> 截取最高的子元素高度来模拟出等高。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>,</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：兼容性好；</p>
 </li>
@@ -272,9 +290,10 @@
 </li>
 </ul>
 <ol start="2">
-<li><code>flex</code>：</li>
-</ol>
+<li><p><code>flex</code>：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: stretch;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="comment">/*千万别设置高度*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：非常好用，最舒服的布局方式；</p>
 </li>
@@ -282,19 +301,20 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>table</code>：</li>
-</ol>
+<li><p><code>table</code>：</p>
 <p>这是一种“多功能”布局，通过设置不同的属性，可以用这种方式实现以上三种布局，先看等高布局：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">table-layout</span>: fixed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>,</span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <ul>
 <li><p>优点：天然的等高特性；</p>
 </li>
 <li><p>缺点：不能设置外边距，只能用内边距做间隔，但是如果有背景色或背景图，需要另外设置 <code>background-clip: content-box</code>；左侧定宽需要时，需要父元素设置 <code>table-layout: fixed</code> 用来使布局优先，提升性能；不支持 IE8 及更低版本；</p>
-</li>
-</ul>
 <p>等高布局也包含一列定宽一列自适应布局，如果要设定左侧高度，只能给左边的元素设置 <code>padding-bottom</code>。</p>
 <p>再来看一列不定宽一列自适应布局，需要将 <code>table-layout: fixed</code> 去掉，因为是内容决定宽度，而不是布局优先；另外在不定宽元素中要设置 <code>width: 0.1%</code>，用百分比是要兼容IE8；</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>,</span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0.1%</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/*内容宽度任意设置*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <ul>
 <li><p>优点：适用性广，</p>
 </li>
