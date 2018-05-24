@@ -66,6 +66,134 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-12-CSS-布局与定位-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" class="article-date">
+  <time datetime="2018-05-18T14:14:36.000Z" itemprop="datePublished">2018-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/18/前端系统课程-12-CSS-布局与定位-2/">前端系统课程 12. CSS 布局与定位 (2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><ul>
+<li>所有的非空标签，都可以使用伪类；</li>
+<li>伪类中的 <code>:before</code> 和 <code>:after</code> 默认是内联元素，可以看做一个 <code>&lt;span&gt;</code> 标签</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjhhukkbu000miwmxiw6xtblf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-11-CSS-布局与定位-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" class="article-date">
+  <time datetime="2018-05-17T14:28:42.000Z" itemprop="datePublished">2018-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/17/前端系统课程-11-CSS-布局与定位-1/">前端系统课程 11. CSS 布局与定位 (1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文档流与高度"><a href="#文档流与高度" class="headerlink" title="文档流与高度"></a>文档流与高度</h2><ul>
+<li><p>元素的自动高度，是由其内部所有文档流元素的高度总和决定的（注意“决定”不代表“相等”）。</p>
+</li>
+<li><p>文档流就是文档内元素流动的方向。</p>
+<ul>
+<li><p>行内元素（内联元素）的流动方向是从左往右，当一行不够时换行；</p>
+</li>
+<li><p>块级元素（外联元素）的流动方向是从上往下，每个块级元素独占一行，宽度不影响这个特性；</p>
+</li>
+</ul>
+</li>
+<li><p>行内元素中的文字换行时，默认是不会将一个完整的英文单词或连续的字母和数字截断的，而会将汉字截断；如果想让换行时截断任意字符，可以给行内元素添加属性 <code>word-break: break-all</code>。</p>
+</li>
+<li><p>字体的居中不是以中线对齐，而是以基线对齐。</p>
+</li>
+<li><p>字体的默认行高是由每种字体内置的推荐行高决定的，不同的字体有不同的推荐行高。</p>
+</li>
+<li><p>行内元素的自动高度等于默认行高、上下内边距以及上下边框的总和。</p>
+</li>
+<li><p>实际开发中，尽量不使用 <code>height</code> 属性设置元素的高度。</p>
+</li>
+</ul>
+<h2 id="脱离文档流与定位"><a href="#脱离文档流与定位" class="headerlink" title="脱离文档流与定位"></a>脱离文档流与定位</h2><ul>
+<li><p>除了浮动属性外，使用元素的定位属性也可以使元素脱离文档流，例如相对定位和固定定位。</p>
+</li>
+<li><p>当子元素脱离文档流后，父元素的高度会塌陷。</p>
+</li>
+<li><p>元素脱离文档流后，元素拥有行内块级元素特性，元素的自动宽度由内部的内容决定。</p>
+</li>
+<li><p>固定定位 <code>fixed</code> 会使元素相对于 <code>&lt;body&gt;</code> 元素定位。</p>
+</li>
+<li><p>使用绝对定位 <code>absolute</code> 定位元素时，一般要将元素的父元素设置为相对定位 <code>relative</code>，简称“子绝父相”。</p>
+</li>
+</ul>
+<h2 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h2><ul>
+<li><p>使用 <code>background-position</code> 属相来设置背景图的定位方式。</p>
+</li>
+<li><p>使用 <code>background-size</code> 属性来设置背景图的填充方式。</p>
+</li>
+</ul>
+<h2 id="边框的妙用"><a href="#边框的妙用" class="headerlink" title="边框的妙用"></a>边框的妙用</h2><p>利用加粗加大的边框，配合不同的样式属性，可以做出很多不同的效果，例如做个三角形：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-left-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图标资源"><a href="#图标资源" class="headerlink" title="图标资源"></a>图标资源</h2><ul>
+<li><p>iconfont.com 了解一下。</p>
+</li>
+<li><p><code>&lt;svg&gt;</code> 元素的宽高需要同时设置；颜色设置使用 <code>fill</code> 属性。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjhhukkc4000oiwmx6658rjvj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-10-CSS-入门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/13/前端系统课程-10-CSS-入门/" class="article-date">
@@ -171,11 +299,17 @@
 </ul>
 </li>
 </ol>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>不要记住了缩写，就忘记了全写，例如 <code>margin</code>、<code>border</code>、<code>padding</code> 等属性。</p>
+</li>
+<li><p>当 <code>height</code> 的值和 <code>line-height</code> 的值相同时，或者 <code>line-height</code> 的值与 <code>padding-top</code>、<code>padding-bottom</code> 的值加起来等于 <code>height</code> 的值，并且 <code>padding</code> 是上下相等的情况时，文字会垂直居中。</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjh6dbdjy000iq8mxvrdg013h" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjhhukkbu000kiwmxax60lrqw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -326,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjh6dbdjv000gq8mx8s4jzslw" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjhhukkbk000iiwmxg060dlat" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -423,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjh6dbdjs000eq8mxebal20sf" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjhhukkbk000giwmxoj7jir3r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -527,7 +661,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjh6dbdjo000bq8mx5rry4zb9" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjhhukkbk000eiwmx6yqtcfoc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -671,7 +805,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjh6dbdjm0009q8mx2a3q9b4j" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjhhukkba000ciwmxs666u0s2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -753,7 +887,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjh6dbdji0006q8mxzq3rp3wv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjhhukkba000aiwmx1159e6j8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -897,7 +1031,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjh6dbdjh0005q8mxo65eqgmv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjhhukkba0009iwmxjb2gwezg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1006,190 +1140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjh6dbdjf0004q8mxi1iooc3e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-02-计算机是如何存储数据的" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" class="article-date">
-  <time datetime="2018-05-02T14:36:02.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/">前端系统课程 - 02. 计算机是如何存储数据的</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="编程基础："><a href="#编程基础：" class="headerlink" title="编程基础："></a>编程基础：</h2><p>首先成为程序员，再成为前端开发工程师。而一个程序员需要知道：</p>
-<ul>
-<li><p>硬件与软件：计算机的运行原理；（荐书《编码》）</p>
-</li>
-<li><p>最大的软件：操作系统；</p>
-</li>
-<li><p>自己写软件：数据结构和算法；（荐书《数据结构与算法结构》）</p>
-</li>
-<li><p>多人写软件：软件工程。（荐书《代码大全》）</p>
-</li>
-</ul>
-<p>前端为什么学编程基础？——<strong>防止成为井底之蛙</strong>。</p>
-<h2 id="计算机存储汉字的过程："><a href="#计算机存储汉字的过程：" class="headerlink" title="计算机存储汉字的过程："></a>计算机存储汉字的过程：</h2><ol>
-<li><p>内存内部的电容通过充电与否来存储 0 和 1，存储 1 就充电，存储 0 就不充电；而读取时，电量大于 50% 就识别为 1，电量小于 50% 就识别为 0；这样便实现了二进制数的存储。</p>
-<p><img src="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/RAM.gif" alt="RAM 存储 0 和 1 的过程"></p>
-</li>
-<li><p>通过十进制和二进制之间的转换，计算机便可以只用二进制数 0 和 1 来存储十进制数；为了方便书写，一般会将二进制数写为十六进制数，因为单个十六进制数正好可以存 4 位二进制数。（<em>扩展：负数使用补码形式存储，小数使用浮点数形式存储</em>）</p>
-</li>
-<li><p>用数字可以为字符编号，于是出现了字符集，例如“ASCII（美国信息交换标准代码）“；按照这个标准，如果要存储字母“a”，那么就存储十进制数 97 对应的二进制数 0110 0001（十六进制数为 61）。</p>
-</li>
-<li><p>既然可以存储字符，那么汉字也不是问题，扩充字符集就可以了，将每个汉字对应不同的编号。例如最早的汉字字符集“GB2312（中国国家标准简体中文字符集）”，以及一度被广泛使用的微软推出的“GBK 字符集”。AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
-</li>
-<li><p>为了统一存储世界上所有的字符，Unicode 联盟推出了“Unicode 字符集”。</p>
-</li>
-<li><p>解决了所有字符的存储方法，但还缺乏一种高性价比的存储方式，于是出现了字符编码。如果使用“Unicode 字符集”最初的低效方式，存储字母“a”和汉字“你”的方式如下：</p>
-<p><code>a =&gt; 00000000 00000000 00000000 01100001 = 0061</code></p>
-<p><code>你 =&gt; 00000000 00000000 01001111 01100000 = 4F60</code></p>
-<p>这样的方式浪费了存储资源，从而出现了比较节省存储资源的方式——字符编码：</p>
-<p><code>a =&gt; 01100001</code></p>
-<p><code>你 =&gt; 11100100 10111101 10100000</code></p>
-<p>当存储的是单个字母的时候，使用 1 个字节（Byte）来存储，而存储汉字或其他字符，则用两个或以上的字节来存储；第一个字节带有识别后续字节的编码，后续字节的前两位用来作为让第一个字节识别的标识，这就是“UTF-8 编码”：</p>
-<p><code>1字节 0xxxxxxx</code></p>
-<p><code>2字节 110xxxxx 10xxxxxx</code></p>
-<p><code>3字节 1110xxxx 10xxxxxx 10xxxxxx</code></p>
-<p><code>4字节 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
-<p><code>5字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
-<p><code>6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
-</li>
-</ol>
-<h2 id="现实问题："><a href="#现实问题：" class="headerlink" title="现实问题："></a>现实问题：</h2><p>由于历史原因，早期的软件和网站是在“GBK 字符集”的年代诞生的，而没有赶上“Unicode 字符集”和“UTF-8 编码”，所以还是有大量应用“GBK 字符集”的软件和网站。</p>
-<p>也是由于时间原因，JavaScript 使用了“Unicode 字符集”，却没有使用 UTF-8 编码，所以 ES5 及之前的标准无法表示 \uFFFF 之后的字符，某些情况下会出 bug。例如 JavaScript 会将一个超出范围的单个字符的长度识别为 2：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">'\u1D306'</span>;</span><br><span class="line">alert(str1); <span class="comment">//ᴰ6，一个字符和数字字符6；</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">'𝌆'</span>;</span><br><span class="line">alert(str2.length); <span class="comment">//明明是一个字符，却显示长度为2；</span></span><br></pre></td></tr></table></figure>
-<p>所以，现在在各种编程当中，一定都要用“UTF-8 编码”！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjh6dbdjb0002q8mx1q2hpt6p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-01-开班" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/01/前端系统课程-01-开班/" class="article-date">
-  <time datetime="2018-05-01T12:32:18.000Z" itemprop="datePublished">2018-05-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/01/前端系统课程-01-开班/">前端系统课程 - 01. 开班</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><ul>
-<li><p>看一次是不够的，做一次是不够的。（概率学家坐飞机）</p>
-</li>
-<li><p>忘记是正常的，知道如何重新记起来就好，重复记忆久而久之自然会记住。</p>
-</li>
-<li><p>不要中断学习超过一周。</p>
-</li>
-</ul>
-<h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2><ul>
-<li><p>C：Copy，抄代码，复制别人的代码。</p>
-<ul>
-<li><p>搜索：用谷歌，尽量不用百度。</p>
-</li>
-<li><p>参考：抵制 w3school.com 和 w3school.com.cn，推荐使用 MDN（Mozilla Developer Network）。</p>
-</li>
-<li><p>工具：使用 JS Bin 或 js.jirenuo.com。（CSS Animation / window.open）</p>
-</li>
-</ul>
-</li>
-<li><p>R：Run，跑代码，将抄来的代码运行起来，调试代码。</p>
-<ul>
-<li>运行代码，观察运行后的结果。</li>
-</ul>
-</li>
-<li><p>M：Modify，改代码，修改代码来尝试得到不同结果。 </p>
-<ul>
-<li>修改、增删各种参数或属性，再次观察结果哪里有所改变，推断修改过的代码与结果之间的关联。</li>
-</ul>
-</li>
-</ul>
-<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><ul>
-<li><p>HTML - MDN；</p>
-</li>
-<li><p>CSS - 《CSS 揭秘》，CSS Tricks；</p>
-</li>
-<li><p>JavaScript - 《JavaScript 高级程序设计》，阮一峰博客和书；</p>
-</li>
-<li><p>HTTP - 《图解 HTTP》；</p>
-</li>
-<li><p>其他 - GitHub，<strong>读书看质不看量</strong>。</p>
-</li>
-</ul>
-<h2 id="知识分类"><a href="#知识分类" class="headerlink" title="知识分类"></a>知识分类</h2><ol>
-<li><p>工具使用知识：把软件上的按钮都试着点一遍。</p>
-</li>
-<li><p>概念知识：占大部分学习内容，记忆重点。</p>
-</li>
-<li><p>工程实践知识：难以直接学到，因为每个人遇到的问题是不同的，代码写的越多学到越多。</p>
-</li>
-<li><p>经验：踩的坑多了，经验就多了，所谓“人码合一”；要善于总结，每次比上次要进步。</p>
-</li>
-</ol>
-<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><ul>
-<li><p>十进制基准为 10，起始是 0 次幂，每进 1 位，幂次加 1；二进制则是以 2 为基准。</p>
-</li>
-<li><p>十进制手动向二进制转换，只能凑着转换；二进制手动转换十进制，将二进制数每位对应的 2 的幂都加起来。</p>
-</li>
-<li><p>小数从小数点后一位开始，十进制是从 10 的 1 次幂为分母开始，每向后 1 位，幂次加 1；二进制是从 2 的 1 次幂为分母开始。</p>
-</li>
-<li><p>不同进制之间的小数转换，可能会使有限小数变成无限小数，这是 JavaScript 中浮点数丢失精度的原因。</p>
-</li>
-<li><p>二进制向十六进制转换时，4 个二进制数正好可以存储 1 个十六进制数。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjh6dbdj90001q8mxgpeygcyi" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjhhukkaq0003iwmxzab4ghl3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1238,7 +1189,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
   </div>
 
@@ -1251,6 +1202,14 @@
       <ul>
         
           <li>
+            <a href="/2018/05/18/前端系统课程-12-CSS-布局与定位-2/">前端系统课程 12. CSS 布局与定位 (2)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/17/前端系统课程-11-CSS-布局与定位-1/">前端系统课程 11. CSS 布局与定位 (1)</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/13/前端系统课程-10-CSS-入门/">前端系统课程 - 10. CSS 入门</a>
           </li>
         
@@ -1260,14 +1219,6 @@
         
           <li>
             <a href="/2018/05/12/前端系统课程-08-HTML-1/">前端系统课程 - 08. HTML (1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/07/前端系统课程-07-Node-js-Server/">前端系统课程 - 07. Node.js Server</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/07/前端系统课程-06-HTTP-入门/">前端系统课程 - 06. HTTP 入门</a>
           </li>
         
       </ul>
