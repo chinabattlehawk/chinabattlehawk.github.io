@@ -140,6 +140,9 @@ body {
 .outer:after {
   clear: both;
 }
+.article-entry>highlight {
+  margin: 0 auto;
+}
 .inner {
   display: inline;
   float: left;
