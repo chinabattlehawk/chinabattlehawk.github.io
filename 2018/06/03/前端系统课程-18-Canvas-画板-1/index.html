@@ -5,20 +5,20 @@
   
 
   
-  <title>前端系统课程 16. JavaScript 初体验 | 南阳诸葛庐</title>
+  <title>前端系统课程 18. Canvas 画板 (1) | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="创建元素document.createElement(tagName) 括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 &amp;lt;div&amp;gt; 元素： var div = document.createElement(&amp;#39;div&amp;#39;)">
+  <meta name="description" content="鼠标事件 鼠标按下 onmousedown 鼠标移动 onmousemove 鼠标松开 onmouseup  鼠标位置screenX/Y 代表鼠标在整个屏幕的位置；clientX/Y 代表鼠标在窗口或文档的位置； canvas 标签由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。  &amp;lt;canvas&amp;gt; 标签和 &amp;lt;img&amp;gt">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端系统课程 16. JavaScript 初体验">
-<meta property="og:url" content="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/index.html">
+<meta property="og:title" content="前端系统课程 18. Canvas 画板 (1)">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="创建元素document.createElement(tagName) 括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 &amp;lt;div&amp;gt; 元素： var div = document.createElement(&amp;#39;div&amp;#39;)">
+<meta property="og:description" content="鼠标事件 鼠标按下 onmousedown 鼠标移动 onmousemove 鼠标松开 onmouseup  鼠标位置screenX/Y 代表鼠标在整个屏幕的位置；clientX/Y 代表鼠标在窗口或文档的位置； canvas 标签由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。  &amp;lt;canvas&amp;gt; 标签和 &amp;lt;img&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-27T15:24:57.053Z">
+<meta property="og:updated_time" content="2018-06-04T14:21:21.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端系统课程 16. JavaScript 初体验">
-<meta name="twitter:description" content="创建元素document.createElement(tagName) 括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 &amp;lt;div&amp;gt; 元素： var div = document.createElement(&amp;#39;div&amp;#39;)">
+<meta name="twitter:title" content="前端系统课程 18. Canvas 画板 (1)">
+<meta name="twitter:description" content="鼠标事件 鼠标按下 onmousedown 鼠标移动 onmousemove 鼠标松开 onmouseup  鼠标位置screenX/Y 代表鼠标在整个屏幕的位置；clientX/Y 代表鼠标在窗口或文档的位置； canvas 标签由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。  &amp;lt;canvas&amp;gt; 标签和 &amp;lt;img&amp;gt">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-前端系统课程-16-JavaScript-初体验" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-前端系统课程-18-Canvas-画板-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/27/前端系统课程-16-JavaScript-初体验/" class="article-date">
-  <time datetime="2018-05-27T14:17:03.000Z" itemprop="datePublished">2018-05-27</time>
+    <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/" class="article-date">
+  <time datetime="2018-06-03T06:46:01.000Z" itemprop="datePublished">2018-06-03</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端系统课程 16. JavaScript 初体验
+      前端系统课程 18. Canvas 画板 (1)
     </h1>
   
 
@@ -91,14 +91,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h2><p><code>document.createElement(tagName)</code></p>
-<p>括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 <code>&lt;div&gt;</code> 元素：</p>
-<p><code>var div = document.createElement(&#39;div&#39;)</code></p>
+        <h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><ul>
+<li>鼠标按下 <code>onmousedown</code></li>
+<li>鼠标移动 <code>onmousemove</code></li>
+<li>鼠标松开 <code>onmouseup</code></li>
+</ul>
+<h2 id="鼠标位置"><a href="#鼠标位置" class="headerlink" title="鼠标位置"></a>鼠标位置</h2><p><code>screenX/Y</code> 代表鼠标在整个屏幕的位置；<code>clientX/Y</code> 代表鼠标在窗口或文档的位置；</p>
+<h2 id="canvas-标签"><a href="#canvas-标签" class="headerlink" title="canvas 标签"></a>canvas 标签</h2><p>由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。</p>
+<ul>
+<li><code>&lt;canvas&gt;</code> 标签和 <code>&lt;img&gt;</code> 标签类似，自带宽和高属性；</li>
+<li>如果用 CSS 设置 Canvas 元素的宽高可能会导致图像扭曲，所以最好用它自带的宽高属性设置；</li>
+<li>使用 Canvas 之前需要先设置上下文，例如：<code>var canvasObj = canvasElem.getContext(&#39;2d&#39;)</code> ，将上下文设为平面；</li>
+<li>通过 <code>fillStyle</code> 属性设置填充颜色；</li>
+<li>使用 <code>fillRect()</code> 方法可填充出一个矩形，4 个参数分别为（矩形左上角距画布左上角）：X 轴距离，Y 轴距离，宽度，高度；</li>
+<li>通过 <code>strokeStyle</code> 属性设置描边颜色；</li>
+<li>使用 <code>strokeRect()</code> 方法可描绘出一个矩形，参数同上；</li>
+<li>使用 <code>clearRect()</code> 方法可生成一个方形橡皮擦，参数同上； </li>
+<li>使用 <code>arc()</code> 方法可以描绘出一个圆形，6 个参数分别为（圆心距画布左上角）：X 轴距离，Y 轴距离，半径，开始弧度，结束弧度，是否为逆时针；</li>
+<li>除了画矩形，画其他图形都要以 <code>beginPath()</code> 开始，以 <code>closePath()</code> 结束；</li>
+<li>使用 <code>lineWidth</code> 属性可以设置线的粗细；</li>
+<li>连续画线的关键在于，起始点与结束点的交替（beginPoint = newPoint）；</li>
+<li></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjimwd90i000l2cq2ihr26nv4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjimwd90s000v2cq2qoj1ytow" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -109,19 +128,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          前端系统课程 17. JavaScript 小作品
+          前端系统课程 19. Canvas 画板 (2)
         
       </div>
     </a>
   
   
-    <a href="/2018/05/26/前端系统课程-15-数据结构入门/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端系统课程 15. 数据结构入门</div>
+      <div class="article-nav-title">前端系统课程 17. JavaScript 小作品</div>
     </a>
   
 </nav>
