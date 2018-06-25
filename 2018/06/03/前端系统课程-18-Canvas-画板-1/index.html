@@ -7,18 +7,18 @@
   
   <title>前端系统课程 18. Canvas 画板 (1) | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="鼠标事件 鼠标按下 onmousedown 鼠标移动 onmousemove 鼠标松开 onmouseup  鼠标位置screenX/Y 代表鼠标在整个屏幕的位置；clientX/Y 代表鼠标在窗口或文档的位置； canvas 标签由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。  &amp;lt;canvas&amp;gt; 标签和 &amp;lt;img&amp;gt">
+  <meta name="description" content="鼠标事件句柄 鼠标按下 onmousedown  鼠标移动 onmousemove  鼠标松开 onmouseup   鼠标事件信息 screenX/Y 属性代表鼠标在整个屏幕的位置；  clientX/Y 属性代表鼠标相对于视口在窗口或文档的位置；  事件对象中的 button 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。   canvas 标签由于使用普通元素无法">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 18. Canvas 画板 (1)">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="鼠标事件 鼠标按下 onmousedown 鼠标移动 onmousemove 鼠标松开 onmouseup  鼠标位置screenX/Y 代表鼠标在整个屏幕的位置；clientX/Y 代表鼠标在窗口或文档的位置； canvas 标签由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。  &amp;lt;canvas&amp;gt; 标签和 &amp;lt;img&amp;gt">
+<meta property="og:description" content="鼠标事件句柄 鼠标按下 onmousedown  鼠标移动 onmousemove  鼠标松开 onmouseup   鼠标事件信息 screenX/Y 属性代表鼠标在整个屏幕的位置；  clientX/Y 属性代表鼠标相对于视口在窗口或文档的位置；  事件对象中的 button 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。   canvas 标签由于使用普通元素无法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T14:21:21.020Z">
+<meta property="og:updated_time" content="2018-06-25T04:50:04.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 18. Canvas 画板 (1)">
-<meta name="twitter:description" content="鼠标事件 鼠标按下 onmousedown 鼠标移动 onmousemove 鼠标松开 onmouseup  鼠标位置screenX/Y 代表鼠标在整个屏幕的位置；clientX/Y 代表鼠标在窗口或文档的位置； canvas 标签由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。  &amp;lt;canvas&amp;gt; 标签和 &amp;lt;img&amp;gt">
+<meta name="twitter:description" content="鼠标事件句柄 鼠标按下 onmousedown  鼠标移动 onmousemove  鼠标松开 onmouseup   鼠标事件信息 screenX/Y 属性代表鼠标在整个屏幕的位置；  clientX/Y 属性代表鼠标相对于视口在窗口或文档的位置；  事件对象中的 button 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。   canvas 标签由于使用普通元素无法">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -91,27 +91,65 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><ul>
-<li>鼠标按下 <code>onmousedown</code></li>
-<li>鼠标移动 <code>onmousemove</code></li>
-<li>鼠标松开 <code>onmouseup</code></li>
+        <h2 id="鼠标事件句柄"><a href="#鼠标事件句柄" class="headerlink" title="鼠标事件句柄"></a>鼠标事件句柄</h2><ul>
+<li><p>鼠标按下 <code>onmousedown</code></p>
+</li>
+<li><p>鼠标移动 <code>onmousemove</code></p>
+</li>
+<li><p>鼠标松开 <code>onmouseup</code></p>
+</li>
 </ul>
-<h2 id="鼠标位置"><a href="#鼠标位置" class="headerlink" title="鼠标位置"></a>鼠标位置</h2><p><code>screenX/Y</code> 代表鼠标在整个屏幕的位置；<code>clientX/Y</code> 代表鼠标在窗口或文档的位置；</p>
+<h2 id="鼠标事件信息"><a href="#鼠标事件信息" class="headerlink" title="鼠标事件信息"></a>鼠标事件信息</h2><ul>
+<li><p><code>screenX/Y</code> 属性代表鼠标在整个屏幕的位置；</p>
+</li>
+<li><p><code>clientX/Y</code> 属性代表鼠标相对于视口在窗口或文档的位置；</p>
+</li>
+<li><p>事件对象中的 <code>button</code> 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。</p>
+</li>
+</ul>
 <h2 id="canvas-标签"><a href="#canvas-标签" class="headerlink" title="canvas 标签"></a>canvas 标签</h2><p>由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。</p>
 <ul>
-<li><code>&lt;canvas&gt;</code> 标签和 <code>&lt;img&gt;</code> 标签类似，自带宽和高属性；</li>
-<li>如果用 CSS 设置 Canvas 元素的宽高可能会导致图像扭曲，所以最好用它自带的宽高属性设置；</li>
-<li>使用 Canvas 之前需要先设置上下文，例如：<code>var canvasObj = canvasElem.getContext(&#39;2d&#39;)</code> ，将上下文设为平面；</li>
-<li>通过 <code>fillStyle</code> 属性设置填充颜色；</li>
-<li>使用 <code>fillRect()</code> 方法可填充出一个矩形，4 个参数分别为（矩形左上角距画布左上角）：X 轴距离，Y 轴距离，宽度，高度；</li>
-<li>通过 <code>strokeStyle</code> 属性设置描边颜色；</li>
-<li>使用 <code>strokeRect()</code> 方法可描绘出一个矩形，参数同上；</li>
-<li>使用 <code>clearRect()</code> 方法可生成一个方形橡皮擦，参数同上； </li>
-<li>使用 <code>arc()</code> 方法可以描绘出一个圆形，6 个参数分别为（圆心距画布左上角）：X 轴距离，Y 轴距离，半径，开始弧度，结束弧度，是否为逆时针；</li>
-<li>除了画矩形，画其他图形都要以 <code>beginPath()</code> 开始，以 <code>closePath()</code> 结束；</li>
-<li>使用 <code>lineWidth</code> 属性可以设置线的粗细；</li>
-<li>连续画线的关键在于，起始点与结束点的交替（beginPoint = newPoint）；</li>
-<li></li>
+<li><p><code>&lt;canvas&gt;</code> 标签和 <code>&lt;img&gt;</code> 标签类似，默认是 inline-block 元素，并自带宽和高属性；</p>
+</li>
+<li><p>如果用 CSS 设置 Canvas 元素的宽高可能会导致图像扭曲，所以要用它自带的宽高属性设置；</p>
+</li>
+<li><p>使用 Canvas 之前需要先设置上下文，例如：<code>var ctx = canvasElem.getContext(&#39;2d&#39;)</code> ，将上下文设为平面；</p>
+</li>
+<li><p>通过 <code>fillStyle</code> 属性设置填充颜色，通过 <code>strokeStyle</code> 属性设置描边颜色，设置颜色要在填充或绘制动作之前；</p>
+</li>
+<li><p>使用 <code>fillRect()</code> 方法可填充出一个矩形，4 个参数分别为（矩形左上角距画布左上角）：X 轴距离，Y 轴距离，宽度，高度；</p>
+</li>
+<li><p>通过 <code>strokeStyle</code> 属性设置描边颜色；</p>
+</li>
+<li><p>使用 <code>strokeRect()</code> 方法可绘制出一个矩形，参数同上；</p>
+</li>
+<li><p>使用 <code>clearRect()</code> 方法将一个矩形区域的内容清除，利用这个方法可以做橡皮擦功能，参数同上； </p>
+</li>
+<li><p>利用 <code>globalCompositeOperation</code> 属性可以更方便的作出橡皮擦效果，这个属性的默认值是 <code>source-over</code> 意思是在画布已有像素上绘图时会将新像素叠加，而另一个值 <code>destination-out</code> 的作用是在已有像素基础上绘图时，绘制区域的已有像素会被重置为透明，类似刮刮卡效果；利用这个属性还可以设置画布颜色，更多属性可以探索；</p>
+</li>
+<li><p>使用 <code>arc()</code> 方法可以绘制出一个圆形，6 个参数分别为（圆心距画布左上角）：X 轴距离，Y 轴距离，半径，开始弧度，结束弧度（弧度以 π 为 180°），是否为逆时针；</p>
+</li>
+<li><p>除了矩形，生成其他图形都要以 <code>beginPath()</code> 开始，以 <code>closePath()</code> 结束；</p>
+</li>
+<li><p>使用 <code>lineWidth</code> 属性可以设置线的粗细；</p>
+</li>
+<li><p>设置 <code>lineCap = &#39;round&#39;</code> 可以使线条两端为圆弧；设置 <code>lineJion = &#39;round&#39;</code> 可以使线条转折为圆弧；</p>
+</li>
+<li><p>连续画线的关键在于，起始点位置与结束点位置的交替（beginPoint = newPoint）；</p>
+</li>
+<li><p>要让画布全屏，可以将画布宽高分别设置为视口宽高，一般使用 <code>document.documentElement.clientWidth/clientHeight</code> 属性的值，并在窗口改变大小时触发；</p>
+</li>
+<li><p>使用 <code>save()</code> 方法可以保存当前的画布信息，例如缩放设置，颜色设置等，并不是保存文件；</p>
+</li>
+<li><p>使用 <code>restore()</code> 方法可以还原上一次用 <code>save()</code> 方法保存的画布信息；</p>
+</li>
+<li><p>使用 <code>clip()</code> 方法可以将选中区域设置为剪辑区域，所有绘画动作都只能在这个剪辑区域操作；</p>
+</li>
+<li><p>利用 <code>save()</code>、<code>clip()</code> 以及 <code>restore()</code> 方法结合可以制作不同形状橡皮擦效果或刮刮卡效果，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果要将 Canvas 画好的图保存为图片，可以使用 <code>canvas.toDataURL()</code> 方法，它会将画布中的图案转变为 base64 编码格式的 PNG 图像并将其 Data URL 返回；方法中可以传入需要保存的文件类型的 MINE 类型参数，一般使用 表示 PNG 格式的 <code>image/png</code> 参数即可。另外，最新的浏览器一般都禁止了在新窗口打开 Data URL，所以需要将 Data URL 保存到一个 <code>&lt;a&gt;</code> 标签的 <code>href</code> 属性中，并给这个标签添加 <code>download</code> 属性设置保存的文件名，最后，触发 <code>&lt;a&gt;</code> 标签的 <code>click()</code> 方法即可打开并保存图片文件。新版火狐中，还需要将这个 <code>&lt;a&gt;</code> 标签添加到页面中才能触发点击事件。</p>
+</li>
 </ul>
 
       

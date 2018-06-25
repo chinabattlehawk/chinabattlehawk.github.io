@@ -7,18 +7,18 @@
   
   <title>前端系统课程 19. Canvas 画板 (2) | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="视口设置&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, scale=no&amp;quot;">
+  <meta name="description" content="视口设置原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下： &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mi">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 19. Canvas 画板 (2)">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="视口设置&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, scale=no&amp;quot;">
+<meta property="og:description" content="视口设置原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下： &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T14:57:15.026Z">
+<meta property="og:updated_time" content="2018-06-25T04:31:23.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 19. Canvas 画板 (2)">
-<meta name="twitter:description" content="视口设置&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, scale=no&amp;quot;">
+<meta name="twitter:description" content="视口设置原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下： &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mi">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -91,7 +91,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="视口设置"><a href="#视口设置" class="headerlink" title="视口设置"></a>视口设置</h2><p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, scale=no&quot;</code></p>
+        <h2 id="视口设置"><a href="#视口设置" class="headerlink" title="视口设置"></a>视口设置</h2><p>原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下：</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+<p>以上标签的 content 属性值，含义依次为：视口宽度，设置为了设备宽度；用户缩放，设置为禁用；初识缩放比例，设置为 1；最大缩放比例，设置为 1；最小缩放比例，设置为 1。</p>
+<h2 id="触摸事件句柄"><a href="#触摸事件句柄" class="headerlink" title="触摸事件句柄"></a>触摸事件句柄</h2><ul>
+<li><p>触摸开始（手指接触） <code>ontouchstart</code></p>
+</li>
+<li><p>触目移动（手指移动） <code>ontouchmove</code></p>
+</li>
+<li><p>触摸结束（手指抬起） <code>ontouchend</code></p>
+</li>
+</ul>
+<h2 id="触摸特性检测"><a href="#触摸特性检测" class="headerlink" title="触摸特性检测"></a>触摸特性检测</h2><p>可以使用 <code>in</code> 操作符，来检测 <code>window</code> 对象是否包含触摸事件 <code>onmovestart</code> 对应的属性，如果包含则返回 <code>true</code>，不包含则返回 <code>false</code>；而后通过返回值来设置要监听的事件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasTouch = <span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>, <span class="comment">// 检测是否为触摸设备</span></span><br><span class="line">    tapStart = hasTouch ? <span class="string">'touchstart'</span> : <span class="string">'mousedown'</span>,</span><br><span class="line">    tapMove = hasTouch ? <span class="string">'touchmove'</span> : <span class="string">'mousemove'</span>,</span><br><span class="line">    tapEnd = hasTouch ? <span class="string">'touchend'</span> : <span class="string">'mouseup'</span>; <span class="comment">// 监听不同设备事件</span></span><br></pre></td></tr></table></figure>
+<h2 id="触摸事件信息"><a href="#触摸事件信息" class="headerlink" title="触摸事件信息"></a>触摸事件信息</h2><p>要获取触摸事件信息，需要先获取触摸点；由于触控设备大都支持多点触控，所以事件对象会将触摸点作为一个集合（非数组）返回，但是一般只处理一个触摸点，就是集合的第 0 个对象，即 <code>touchEvent.touches[0]</code>。其他的位置属性基本上和鼠标事件信息类似。</p>
 
       
     </div>
