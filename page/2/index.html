@@ -66,6 +66,157 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-09-HTML-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/12/前端系统课程-09-HTML-2/" class="article-date">
+  <time datetime="2018-05-12T12:46:43.000Z" itemprop="datePublished">2018-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/12/前端系统课程-09-HTML-2/">前端系统课程 - 09. HTML (2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ul>
+<li><p><code>&lt;a&gt;</code> 标签和 <code>&lt;button&gt;</code> 标签的选择：</p>
+<ul>
+<li><p>如果要跳转到一个链接，用 <code>&lt;a&gt;</code> 标签；</p>
+</li>
+<li><p>如果要弹出提示或进行提交等操作，则可以使用 <code>&lt;button&gt;</code> 标签。</p>
+</li>
+</ul>
+</li>
+<li><p><code>&lt;main&gt;</code> 标签代表整个页面最主要的部分，每个页面中只能有一个 <code>main</code> 标签。</p>
+</li>
+<li><p><code>&lt;section&gt;</code> 标签代表一个章节，一般用于一个完整文章或独立区块。</p>
+</li>
+<li><p><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> 表示 6 个等级的标题，其中 <code>&lt;h1&gt;</code> 在整个页面一般也只有一个。</p>
+</li>
+<li><p><code>&lt;nav&gt;</code> 标签表示导航，有导航性质的列表或菜单，要用此标签包裹。</p>
+</li>
+<li><p><code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签没有语义，只是用来划分区域的，所以在使用这两种标签时，要给它们指定类名来使其语义化。</p>
+</li>
+</ul>
+<h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h2><ul>
+<li><p>使用“src”属性可以指定 iframe 窗口打开的网址。</p>
+</li>
+<li><p>使用“name”属性可以和 <code>&lt;a&gt;</code> 标签配合，使指定的 iframe 窗口打开新网页。</p>
+</li>
+<li><p>将“frameborder”属性设置为“0”可以去除 iframe 窗口自带的边框。</p>
+</li>
+</ul>
+<h2 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h2><ul>
+<li><p>“target”属性有四个值，它们分别是：</p>
+<ul>
+<li><p>_blank：代表在新窗口打开链接；</p>
+</li>
+<li><p>_self：代表在当前窗口或当前 iframe 窗口打开链接；</p>
+</li>
+<li><p>_parent：代表在当前 iframe 窗口外的父级窗口打开链接；</p>
+</li>
+<li><p>_top：代表在当前 iframe 窗口外的最顶层祖先窗口打开链接。</p>
+</li>
+</ul>
+</li>
+<li><p>“download”属性，一般用在链接是一个需要下载的文件时，此属性会强制将目标链接的“Content-type”转换为“application/octet-stream”，使目标链接成为下载链接。</p>
+</li>
+<li><p>“href”属性值：</p>
+<ul>
+<li><p>如果只写了域名，会把这个值当作文件来打开，例如 <code>href=&quot;qq.com&quot;</code>；当这种情况发生在是用 HTTP 协议打开时，会在网站的根目录寻找这个文件。</p>
+</li>
+<li><p>如果不写协议，会把这个值按照当前协议来打开，例如 <code>href=&quot;//qq.com&quot;</code>；当用文件协议打开网页时，便按照文件协议打开链接；当用 HTTP 协议打开时，便按照 HTTP 协议打开，才能正常访问目标网址。</p>
+</li>
+<li><p>只有在把协议写全的时候，才能在协议不同的情况下，正常跳转到链接地址，正常应该写：<code>href=&quot;http://qq.com</code>。</p>
+</li>
+<li><p>如果值是一个查询参数时，会向链接发起 GET 请求，页面会被刷新，例如：<code>href=&quot;?name=user&quot;</code>。</p>
+</li>
+<li><p>如果值是一个锚点时，会跳转到当前页的对应锚点位置；而如果只写一个“#”号，则会跳转到当前页面的顶部，两种情况都不会刷新页面；例如：<code>href=&quot;#&quot;</code>，这种方式可以做“回到顶部”的功能。</p>
+</li>
+<li><p>如果值是一个伪协议，例如：<code>href=&quot;javascript:void(0);&quot;</code>，则会执行伪协议后面的脚本代码，例子中的意思是返回值为“0”，也就是什么都不做，最终达到的效果就是去除了 <code>&lt;a&gt;</code> 标签的默认操作，这样就得到了一个能点击，却不会有反应的 <code>&lt;a&gt;</code> 标签；<code>void(0)</code> 其实可以不写也可以。其他的伪协议还有”mailto“等……老师没说。</p>
+</li>
+<li><p>如果值为空，点击 <code>&lt;a&gt;</code> 标签就会刷新当前页面。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="form-标签"><a href="#form-标签" class="headerlink" title="form 标签"></a>form 标签</h2><ul>
+<li><p>“action”属性用来设置表单提交的地址。</p>
+</li>
+<li><p>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式；</p>
+</li>
+<li><p>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</p>
+</li>
+<li><p>表单中必须有提交按钮；如果 form 表单中有一个没有类型的 <code>&lt;button&gt;</code> 标签，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</p>
+</li>
+<li><p>表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</p>
+</li>
+<li><p>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。  </p>
+</li>
+</ul>
+<h2 id="input-标签"><a href="#input-标签" class="headerlink" title="input 标签"></a>input 标签</h2><ul>
+<li><p>最主要的就是“type”属性，不同的值代表不同的输入方式，例如：“button”代表普通按钮，“submit”代表提交按钮，“checkbox”代表复选框等等，如果不设置，默认是“text”类型；</p>
+</li>
+<li><p>要让 <code>&lt;input&gt;</code> 标签与指定内容关联，使之点击时获得焦点，要使用 <code>&lt;label&gt;</code> 标签包裹指定内容，并将其“for”属性与 <code>&lt;input&gt;</code> 标签的“id”属性设置为同一个值；</p>
+</li>
+<li><p>使用“radio”类型的 <code>&lt;input&gt;</code> 标签可以做出单选按钮，要让多个单选按钮具有排外性，就得把这些按钮的“name”属性设置为同一个。</p>
+</li>
+</ul>
+<h2 id="select-标签"><a href="#select-标签" class="headerlink" title="select 标签"></a>select 标签</h2><ul>
+<li><p>使用这个标签可以做下拉菜单，菜单的每一项，要用 <code>&lt;option&gt;</code> 标签包裹；</p>
+</li>
+<li><p>要让某一项默认为选中状态，可以给此项添加“selected”属性并设置值为“true”，像此类的状态属性的属性值都可以省略，只要属性存在，浏览器就会使它的值自动为“true”；</p>
+</li>
+<li><p>使用“disabled”属性可以使选项成为非可选状态；</p>
+</li>
+<li><p>为 <code>&lt;select&gt;</code> 标签添加“multiple”属性，可以使之成为多选菜单；</p>
+</li>
+</ul>
+<h2 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h2><ul>
+<li><p>这个标签被称为“文本域”，是用来输入和提交大量文字的文本框；</p>
+</li>
+<li><p>默认情况下，文本框可以自由调整大小，如果要禁用这种效果，需要给 <code>&lt;textarea&gt;</code> 添加样式：<code>resize: none</code>；</p>
+</li>
+<li><p>虽然文本域有设定宽和高的属性，但使用 CSS 样式设置最为靠谱；</p>
+</li>
+</ul>
+<h2 id="table-标签"><a href="#table-标签" class="headerlink" title="table 标签"></a>table 标签</h2><ul>
+<li><p>按照规范，<code>&lt;table&gt;</code> 标签的子元素可以是 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 和 <code>&lt;colgroup&gt;</code>；</p>
+</li>
+<li><p><code>&lt;colgroup&gt;</code> 标签的子标签是 <code>&lt;col&gt;</code> 标签，可以通过它来为每一列进行不同的设置，如宽度，背景色等，实际开发很少使用；</p>
+</li>
+<li><p><code>&lt;table&gt;</code> 标签的子标签都可以省略，除了 <code>&lt;colgroup&gt;</code> 标签，其余的会自动生成；另外，如果这些标签的顺序颠倒，浏览器也会自动纠正为 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 的顺序。</p>
+</li>
+<li><p><code>&lt;table&gt;</code> 标签的“border”属性可以设置表格的边框，但是每个表格元素都会有，如果要合并这些边框，可以给 <code>&lt;table&gt;</code> 标签添加样式 <code>border-collapse: collapse</code>。</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><p>今天学的标签只是 HTML5 中很少的一部分，而且也只是初步的介绍，实际还有很多常用标签，这些标签也还有很多属性可以设置。标签的属性不需要全部记住，在实际开发中，多加练习，就会把最有价值的属性设置烂熟于心。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjiv4aci5000hp8q2jn4ldljz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-08-HTML-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/12/前端系统课程-08-HTML-1/" class="article-date">
@@ -151,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjiv3id4m000dy4q2u63psdy8" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjiv4aci5000fp8q2nw3z64an" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -255,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjiv3id4m000fy4q21e2232ge" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjiv4achv000ap8q2brpj19a3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -399,7 +550,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjiv3id4m0008y4q2hu4kpvni" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjiv4achv0005p8q203fxgcgr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -481,7 +632,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjiv3id4c0004y4q2xztwkvto" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjiv4aci5000dp8q2897v6i8z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -625,7 +776,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjiv3id4m000ay4q2ciahwez5" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjiv4achv0008p8q2wo1cpzny" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -732,7 +883,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjiv3id4c0003y4q2bk46bwb3" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjiv4achv0004p8q2z3v4gd15" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -813,7 +964,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjiv3id420001y4q2s7v685vx" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjiv4achv0003p8q2re4ikgae" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -915,7 +1066,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjiv3id4c0005y4q2ufe4kp2f" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjiv4achl0001p8q27646klvs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1265,56 +1416,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjiv3id420000y4q2m5zi6ni0" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjiv4achl0000p8q2e7cb8fx3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-博客使用指南" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/31/博客使用指南/" class="article-date">
-  <time datetime="2016-08-31T10:36:11.000Z" itemprop="datePublished">2016-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/博客使用指南/">博客使用指南 - Hello World! Hello Hexo!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjiv3id5q0010y4q25901dsyh" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -1372,23 +1478,23 @@
       <ul>
         
           <li>
-            <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 20 JavaScript 里的数据</a>
+            <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
           </li>
         
           <li>
-            <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 19. Canvas 画板 (2)</a>
+            <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
           </li>
         
           <li>
-            <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 18. Canvas 画板 (1)</a>
+            <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
           </li>
         
           <li>
-            <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/">前端系统课程 17. JavaScript 小作品</a>
+            <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
           </li>
         
           <li>
-            <a href="/2018/05/27/前端系统课程-16-JavaScript-初体验/">前端系统课程 16. JavaScript 初体验</a>
+            <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/">前端系统课程 - 17. JavaScript 小作品</a>
           </li>
         
       </ul>
