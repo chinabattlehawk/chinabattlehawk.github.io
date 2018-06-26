@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端系统课程 20 JavaScript 里的数据 | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript 历史 1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。 1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。  2015 年，ECMA 组织正式批准了 ECMAS">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端系统课程 20 JavaScript 里的数据">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="JavaScript 历史 1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。 1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。  2015 年，ECMA 组织正式批准了 ECMAS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-26T02:52:14.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端系统课程 20 JavaScript 里的数据">
+<meta name="twitter:description" content="JavaScript 历史 1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。 1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。  2015 年，ECMA 组织正式批准了 ECMAS">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端系统课程-20-JavaScript-里的数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/" class="article-date">
+  <time datetime="2018-06-25T14:09:39.000Z" itemprop="datePublished">2018-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端系统课程 20 JavaScript 里的数据
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript-历史"><a href="#JavaScript-历史" class="headerlink" title="JavaScript 历史"></a>JavaScript 历史</h2><ul>
+<li>1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。</li>
+<li>1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。 </li>
+<li>2015 年，ECMA 组织正式批准了 ECMAScript 6 语言标准，定名为《ECMAScript 2015 标准》。 </li>
+<li>其他历史参考红宝书或阮一峰的书……</li>
+</ul>
+<h2 id="JavaScript-的数据类型"><a href="#JavaScript-的数据类型" class="headerlink" title="JavaScript 的数据类型"></a>JavaScript 的数据类型</h2><p>JavaScript 中有七种数据类型，分别是：</p>
+<ul>
+<li><p>Number（数字）</p>
+</li>
+<li><p>String（字符串）</p>
+</li>
+<li><p>Boolean（布尔值）</p>
+</li>
+<li><p>Undefined（未定义）</p>
+</li>
+<li><p>Null（空）</p>
+</li>
+<li><p>Symbol（符号，ES6 版本新增）</p>
+</li>
+<li><p>Object（对象）</p>
+</li>
+</ul>
+<h2 id="数据类型的扩展知识"><a href="#数据类型的扩展知识" class="headerlink" title="数据类型的扩展知识"></a>数据类型的扩展知识</h2><ul>
+<li><p>Number 类型表示数字，数字一般以二进制、八进制、十进制及十六进制表示；由于进制转换的原因，数字如果有前导 0，转换后可能出现意外的 Bug（例如八进制转换），所以实际开发一般都使用十进制；如果不是参与运算的数字（例如手机号码），那么一般使用字符串存储。</p>
+</li>
+<li><p>String 类型表示字符串，空字符串只是一对单引号或双引号，其中只有一个空格也不是空字符串；</p>
+</li>
+<li><p>包裹字符串的引号，一般推荐使用单引号，这样和 HTML 代码配合比较方便；另外，表示字符串的引号，是一种形式，并不是内容，可以理解为类似数组的方括号；</p>
+</li>
+<li><p>区分正斜杠和反斜杠，可以参照汉字“八”，撇就是正斜杠，捺就是反斜杠；转义符是反斜杠，单行注释是双正斜杠；</p>
+</li>
+<li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法；</p>
+</li>
+<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串；值为 true（真）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）；</p>
+</li>
+<li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>；</p>
+</li>
+<li><p>对象中的属性名可以是任意字符串，包括空字符串；如果属性名是数字，在访问时会自动转换为字符串，但是如果不是数字也不是字符串，则需要符合标识符的命名规则；然而如果属性名是字符串或数字，那么访问时就需要使用方括号运算符而不能使用点运算符的方式，除非字符串属性名符合标识符的命名规则；</p>
+</li>
+<li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除；</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li>访问对象的属性时，如果在方括号内的属性名是一个数值运算，那么会先运算得出的结果数值，然后再将数值转换为字符串；</li>
+<li>要知道一个对象有哪些键名，可以使用对象的 <code>keys()</code> 方法；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjiv3id5q0012y4q22ltbqp62" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 19. Canvas 画板 (2)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 20 JavaScript 里的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 19. Canvas 画板 (2)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 18. Canvas 画板 (1)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/">前端系统课程 17. JavaScript 小作品</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/27/前端系统课程-16-JavaScript-初体验/">前端系统课程 16. JavaScript 初体验</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

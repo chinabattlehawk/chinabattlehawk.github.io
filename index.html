@@ -66,6 +66,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-20-JavaScript-里的数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/" class="article-date">
+  <time datetime="2018-06-25T14:09:39.000Z" itemprop="datePublished">2018-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 20 JavaScript 里的数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript-历史"><a href="#JavaScript-历史" class="headerlink" title="JavaScript 历史"></a>JavaScript 历史</h2><ul>
+<li>1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。</li>
+<li>1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。 </li>
+<li>2015 年，ECMA 组织正式批准了 ECMAScript 6 语言标准，定名为《ECMAScript 2015 标准》。 </li>
+<li>其他历史参考红宝书或阮一峰的书……</li>
+</ul>
+<h2 id="JavaScript-的数据类型"><a href="#JavaScript-的数据类型" class="headerlink" title="JavaScript 的数据类型"></a>JavaScript 的数据类型</h2><p>JavaScript 中有七种数据类型，分别是：</p>
+<ul>
+<li><p>Number（数字）</p>
+</li>
+<li><p>String（字符串）</p>
+</li>
+<li><p>Boolean（布尔值）</p>
+</li>
+<li><p>Undefined（未定义）</p>
+</li>
+<li><p>Null（空）</p>
+</li>
+<li><p>Symbol（符号，ES6 版本新增）</p>
+</li>
+<li><p>Object（对象）</p>
+</li>
+</ul>
+<h2 id="数据类型的扩展知识"><a href="#数据类型的扩展知识" class="headerlink" title="数据类型的扩展知识"></a>数据类型的扩展知识</h2><ul>
+<li><p>Number 类型表示数字，数字一般以二进制、八进制、十进制及十六进制表示；由于进制转换的原因，数字如果有前导 0，转换后可能出现意外的 Bug（例如八进制转换），所以实际开发一般都使用十进制；如果不是参与运算的数字（例如手机号码），那么一般使用字符串存储。</p>
+</li>
+<li><p>String 类型表示字符串，空字符串只是一对单引号或双引号，其中只有一个空格也不是空字符串；</p>
+</li>
+<li><p>包裹字符串的引号，一般推荐使用单引号，这样和 HTML 代码配合比较方便；另外，表示字符串的引号，是一种形式，并不是内容，可以理解为类似数组的方括号；</p>
+</li>
+<li><p>区分正斜杠和反斜杠，可以参照汉字“八”，撇就是正斜杠，捺就是反斜杠；转义符是反斜杠，单行注释是双正斜杠；</p>
+</li>
+<li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法；</p>
+</li>
+<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串；值为 true（真）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）；</p>
+</li>
+<li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>；</p>
+</li>
+<li><p>对象中的属性名可以是任意字符串，包括空字符串；如果属性名是数字，在访问时会自动转换为字符串，但是如果不是数字也不是字符串，则需要符合标识符的命名规则；然而如果属性名是字符串或数字，那么访问时就需要使用方括号运算符而不能使用点运算符的方式，除非字符串属性名符合标识符的命名规则；</p>
+</li>
+<li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除；</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li>访问对象的属性时，如果在方括号内的属性名是一个数值运算，那么会先运算得出的结果数值，然后再将数值转换为字符串；</li>
+<li>要知道一个对象有哪些键名，可以使用对象的 <code>keys()</code> 方法；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjiv3id5q0012y4q22ltbqp62" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/" class="article-date">
@@ -106,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjimwd91200122cq2ps9xwyv0" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjiv3id5q0013y4q290nh8nqe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -204,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjimwd90s000v2cq2qoj1ytow" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjiv3id5q000yy4q2q5xemns1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -252,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjimwd90q000t2cq2d8o9z5ug" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjiv3id5g000xy4q2l2ox3kn2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -293,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjimwd90i000l2cq2ihr26nv4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjiv3id56000sy4q2ch8juzqs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -390,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjimwd90p000r2cq28mtc9g78" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjiv3id56000uy4q2jzmgcwgz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -432,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjimwd90n000p2cq2k26vgzvl" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjiv3id56000ry4q2pmw3kegh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -518,7 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjimwd90k000n2cq29rw94rt1" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjiv3id4w000ly4q22q54m3hm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -645,7 +730,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjimwd90d000h2cq2faz96668" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjiv3id4w000jy4q2qv4j1y8b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -791,109 +876,12 @@
 <li><p><code>&lt;table&gt;</code> 标签的“border”属性可以设置表格的边框，但是每个表格元素都会有，如果要合并这些边框，可以给 <code>&lt;table&gt;</code> 标签添加样式 <code>border-collapse: collapse</code>。</p>
 </li>
 </ul>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上的标签只是 HTML5 中很少的一部分，而且也只是初步的介绍，实际还有很多常用标签，这些标签也还有很多属性可以设置。标签的属性不需要全部记住，在实际开发中，多加练习，就会把最有价值的属性设置烂熟于心。</p>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><p>今天学的标签只是 HTML5 中很少的一部分，而且也只是初步的介绍，实际还有很多常用标签，这些标签也还有很多属性可以设置。标签的属性不需要全部记住，在实际开发中，多加练习，就会把最有价值的属性设置烂熟于心。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjimwd90g000j2cq2gftt7jz5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-08-HTML-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/12/前端系统课程-08-HTML-1/" class="article-date">
-  <time datetime="2018-05-11T16:30:44.000Z" itemprop="datePublished">2018-05-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/12/前端系统课程-08-HTML-1/">前端系统课程 - 08. HTML (1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="说说简历"><a href="#说说简历" class="headerlink" title="说说简历"></a>说说简历</h2><p>简历最好挂在自己买的域名上，这样显得专业一点。</p>
-<h2 id="简历模板"><a href="#简历模板" class="headerlink" title="简历模板"></a>简历模板</h2><p>在追波网（dribbble.com）搜索 cv 或 resume 关键字，或者在五百丁上买。</p>
-<h2 id="简历内容"><a href="#简历内容" class="headerlink" title="简历内容"></a>简历内容</h2><ul>
-<li><p>必要的内容：</p>
-<ul>
-<li><p>个人信息：照片、姓名、性别、年龄、学校、所在城市、职位目标等；</p>
-</li>
-<li><p>教育经历；</p>
-</li>
-<li><p>工作经历；</p>
-</li>
-<li><p>项目经验。</p>
-</li>
-</ul>
-</li>
-<li><p>可选的内容：</p>
-<ul>
-<li><p>开源代码，GitHub 要经常使用；</p>
-</li>
-<li><p>博客链接：多写博客，自己搭建的最好；</p>
-</li>
-<li><p>外文翻译；</p>
-</li>
-<li><p>他人评价；</p>
-</li>
-<li><p>对公司业务的分析；</p>
-</li>
-</ul>
-</li>
-<li><p>没用的内容：</p>
-<ul>
-<li><p>自我评价；</p>
-</li>
-<li><p>对公司或产品的喜爱；</p>
-</li>
-<li><p>段子。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="什么是HTML"><a href="#什么是HTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h2><p>HTML（HyperText Markup Language，超文本标记语言），超级文本标记语言是标准通用标记语言，它通过标记符号来标记要显示的网页中的各个部分。</p>
-<h2 id="HTML版本"><a href="#HTML版本" class="headerlink" title="HTML版本"></a>HTML版本</h2><p>版本从 1.0 到 4.01，再到现在的 HTML5 版本，目前 HTML5.2 也已经发布。</p>
-<p>“H5”和 HTML5 不是一个概念，所谓的“H5”页面其实只是在微信中能展示的页面，甚至可以用 HTML4.01 做出来。</p>
-<h2 id="HTML规范"><a href="#HTML规范" class="headerlink" title="HTML规范"></a>HTML规范</h2><p>规范由 W3C 制定，W3C 会根据浏览器的实际情况总结文档。</p>
-<h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p>文档类型，用来标识 HTML 文档的版本，以判定文档遵循何种规范。目前使用的 HTML5 的文档类型应该写作：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="HTML标签"><a href="#HTML标签" class="headerlink" title="HTML标签"></a>HTML标签</h2><ul>
-<li><p>HTML5 规范中，<code>&lt;head&gt;</code> 标签、<code>&lt;body&gt;</code> 标签为空标签时，是可以省略的；即使不写 <code>html</code> 标签，也是符合规范的；如果不写，浏览器在渲染时会自动补全。</p>
-</li>
-<li><p>常见标签如：<code>&lt;p&gt;</code> 标签，含义是“paragraph”，段落的意思；<code>&lt;ul&gt;</code> 标签，含义是“unordered list”，意思是无序列表；<code>div</code> 标签，含义是“divide”，划分的意思，等等……</p>
-</li>
-<li><p>了解标签的语义化，就是要了解标签的含义，并且在对应的使用场景时，正确的使用标签；</p>
-</li>
-<li><p>各种浏览器都给除了 <code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签以外的 HTML 的标签定制了默认样式；</p>
-</li>
-<li><p>遇到不会的标签，或者需要了解标签的更多规范，移步 MDN。</p>
-</li>
-</ul>
-<h2 id="结构与样式分离"><a href="#结构与样式分离" class="headerlink" title="结构与样式分离"></a>结构与样式分离</h2><p>HTML 只是用来描述文档的结构，而文档以什么方式什么样子展示，那是 CSS 的事；例如内联元素与块级元素的区分，本质上是样式的区分，所以不归 HTML 管，HTML 中的内联与块级元素的概念，实际上是由 CSS 控制的，属于 CSS 中的概念。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjimwd907000d2cq2izzl7m8z" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjiv3id4m000hy4q2hvsxzssk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -909,7 +897,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -955,6 +943,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 20 JavaScript 里的数据</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 19. Canvas 画板 (2)</a>
           </li>
         
@@ -968,10 +960,6 @@
         
           <li>
             <a href="/2018/05/27/前端系统课程-16-JavaScript-初体验/">前端系统课程 16. JavaScript 初体验</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/26/前端系统课程-15-数据结构入门/">前端系统课程 15. 数据结构入门</a>
           </li>
         
       </ul>
