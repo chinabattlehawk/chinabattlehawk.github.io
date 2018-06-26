@@ -7,18 +7,18 @@
   
   <title>前端系统课程 - 21. JavaScript 里的类型 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String()">
+  <meta name="description" content="常见数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String(">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 - 21. JavaScript 里的类型">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String()">
+<meta property="og:description" content="常见数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T03:55:14.598Z">
+<meta property="og:updated_time" content="2018-06-26T15:31:54.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 21. JavaScript 里的类型">
-<meta name="twitter:description" content="数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String()">
+<meta name="twitter:description" content="常见数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String(">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -91,12 +91,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="数据类型的转换"><a href="#数据类型的转换" class="headerlink" title="数据类型的转换"></a>数据类型的转换</h2><ul>
+        <h2 id="常见数据类型的转换"><a href="#常见数据类型的转换" class="headerlink" title="常见数据类型的转换"></a>常见数据类型的转换</h2><ul>
 <li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型；</p>
 </li>
 <li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据转换为布尔值，简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
 </li>
-<li></li>
+<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14；后一种比较常用；</p>
+</li>
+</ul>
+<h2 id="内存中数据存储方式"><a href="#内存中数据存储方式" class="headerlink" title="内存中数据存储方式"></a>内存中数据存储方式</h2><ul>
+<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面；</p>
+</li>
+<li><p>堆（Heap）比栈（Stack）大，栈比堆快；</p>
+</li>
+<li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存；</p>
+</li>
+<li><p>当把一个基本数据类型赋值给一个变量时，变量中存储的就是这个数据本身；当把这个变量赋值给另外一个变量时，相当于将它保存的数据本身，复制一个拷贝，再赋值给新变量，之后，两个变量各拥有一份相互独立的数据；</p>
+</li>
+<li><p>当把一个复杂数据类型赋值给一个变量时，变量中存储的是这个数据在堆内存中的地址，这种关系称为“引用”；当把这个变量赋值给另外一个变量时，相当于把保存的引用地址，复制一个拷贝，再赋值给新变量，之后，两个变量引用的是同一个数据，相当于两个人拥有同一张代表同一个数据的“名片”；</p>
+</li>
+</ul>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环应用可能会造成内存泄露</strong>；</p>
+<h2 id="试题解析"><a href="#试题解析" class="headerlink" title="试题解析"></a>试题解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">//b = &#123;n: 1&#125;;</span></span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;; <span class="comment">//&#123;n: 1, x: &#123;n: 2&#125;&#125;，a = &#123;n: 2&#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//[object, Object]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>上面的题中，第三行的关键点在于确定当时的 <code>a</code> 变量是哪一个；</p>
+</li>
+<li><p>编译器是从上到下依次执行，但是各种操作符除了有优先级之分，还有从右往左和从左往右两种关联性，而属性访问操作符优先级比赋值操作符的优先级要高，所以先确定了 <code>a.x</code> 的 <code>a</code> 引用的依然是 <code>{n: 1}</code> 这个数据，并在这个数据中添加了一个属性 <code>x</code>，此时 <code>x</code> 只是声明后未定义等待赋值的状态，就是说源数据成为了 <code>{n: 1, x: undefined}</code>；</p>
+</li>
+<li><p>然后赋值运算符从右往左执行，先将 <code>a</code> 变量中的数据，赋值为了 <code>{n: 2}</code> 的地址，再将这个地址，赋值给了 <code>{n: 1, x: undefined}</code> 这个对象中的 <code>x</code> 属性，此时数据成为了 <code>{n: 1, x: {n: 2}}</code> ；</p>
+</li>
+<li><p>第四行访问 <code>a.x</code>，此时的 <code>a</code> 引用的数据已经是 <code>{n: 2}</code> ，里面并没有 <code>x</code> 这个属性，故打印出的结果为 <code>undefined</code>；</p>
+</li>
+<li><p>第五行访问 <code>b.x</code>，此时的 <code>b</code> 引用的数据依然是原来包含 <code>n: 1</code> 键值的那个数据，而此时这个数据已经有了 <code>x</code> 这个属性，并且值为另一个对象引用地址，这个地址对应的数据是 <code>{n: 2}</code>，将其隐性地使用 <code>toString()</code> 方法转换为字符串后，打印出的结果便是 <code>[object Object]</code>；</p>
+</li>
+</ul>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><ul>
+<li><p>如果一个对象<strong>没有被引用</strong>，它就是垃圾数据，将被垃圾回收器清理掉；</p>
+</li>
+<li><p>垃圾回收器会在页面运行时，按照浏览器设定好的机制循环作业；</p>
+</li>
+</ul>
+<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><ul>
+<li><p>拷贝即复制，复制后的数据与原数据，完全独立且互不影响，就称为“深拷贝”；基本数据类型之间的复制，都是深拷贝；</p>
+</li>
+<li><p>其实基本数据类型之间的复制谈不上什么”深浅“，深拷贝与浅拷贝主要是对于对象数据之间的复制而言的；</p>
+</li>
+<li><p>如果将一个对象赋值给一个变量，实际是将这个对象的引用地址保存在里变量当中，那么当复制这个变量到另一个变量时，只是把这个引用地址，存到了新的变量中；当通过新的变量改变对象的属性后，访问原先的变量也能发现对象的属性变化；这种程度的复制，就是“浅拷贝”；</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串；</p>
+</li>
+<li><p>数组的某个元素为空元素（即两个逗号之间没有任何值）时，便称为这个数组存在空位；空位不影响数组的长度；如果读取空位，会返回 <code>undefined</code>，但是把一个元素赋值为 <code>undefined</code> 后，这个元素不属于空位；如果使用 <code>delete</code> 操作符删除某个元素，那么这个元素对应的位置便成为了空位；使用 <code>for...in</code> 语句、数组的 <code>forEach()</code> 方法以及对象的 <code>keys()</code> 方法遍历数组时， 空位都会被跳过。</p>
+</li>
 </ul>
 
       
