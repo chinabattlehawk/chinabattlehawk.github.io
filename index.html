@@ -88,7 +88,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="数据类型的转换"><a href="#数据类型的转换" class="headerlink" title="数据类型的转换"></a>数据类型的转换</h2><ul>
+<li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型；</p>
+</li>
+<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据转换为布尔值，简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
+</li>
+<li></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -133,7 +140,7 @@
 </li>
 <li><p>2015 年，ECMA 组织正式批准了 ECMAScript 6 语言标准，定名为《ECMAScript 2015 标准》。 </p>
 </li>
-<li><p>了解跟多历史，可以参考红宝书或阮一峰的书……</p>
+<li><p>了解更多历史，可以参考红宝书或阮一峰的书……</p>
 </li>
 </ul>
 <h2 id="JavaScript-的数据类型"><a href="#JavaScript-的数据类型" class="headerlink" title="JavaScript 的数据类型"></a>JavaScript 的数据类型</h2><p>JavaScript 中有七种数据类型，分别是：</p>
@@ -164,7 +171,7 @@
 </li>
 <li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法；</p>
 </li>
-<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串；值为 true（真）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）；</p>
+<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串 <code>&#39;&#39;</code> 或 <code>&quot;&quot;</code>；值为 true（真）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）；</p>
 </li>
 <li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>；</p>
 </li>

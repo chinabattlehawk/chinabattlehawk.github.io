@@ -7,15 +7,18 @@
   
   <title>前端系统课程 - 21. JavaScript 里的类型 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="课程笔记">
+  <meta name="description" content="数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String()">
+<meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 - 21. JavaScript 里的类型">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T03:12:21.680Z">
+<meta property="og:updated_time" content="2018-06-26T03:55:14.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 21. JavaScript 里的类型">
+<meta name="twitter:description" content="数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String()">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -88,7 +91,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="数据类型的转换"><a href="#数据类型的转换" class="headerlink" title="数据类型的转换"></a>数据类型的转换</h2><ul>
+<li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型；</p>
+</li>
+<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据转换为布尔值，简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
+</li>
+<li></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
