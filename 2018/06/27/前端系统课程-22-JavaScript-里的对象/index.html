@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="全局对象 浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 window 对象；  全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 window 对象，它的私有属性常见的例如：document 对象、history对象、alert()、prompt(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T14:28:19.367Z">
+<meta property="og:updated_time" content="2018-06-27T15:00:41.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 22. JavaScript 里的对象">
 <meta name="twitter:description" content="全局对象 浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 window 对象；  全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 window 对象，它的私有属性常见的例如：document 对象、history对象、alert()、prompt(">
@@ -108,12 +108,10 @@
 </li>
 </ul>
 <h2 id="公共属性"><a href="#公共属性" class="headerlink" title="公共属性"></a>公共属性</h2><ul>
-<li><p>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链；</p>
-</li>
-<li><p>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例；</p>
-</li>
-<li><p>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>；</p>
-</li>
+<li>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链；</li>
+<li>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例；</li>
+<li>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>；</li>
+<li><code>__proto__</code> 是用来引用父函数的 <code>prototype</code> 属性的，类似于上线下线的关系，而 <code>__proto__</code> 就是下线；</li>
 </ul>
 <h2 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h2><p><code>Function</code> 对象的 <code>__proto__</code> 属性引用的是 <code>Function</code> 自身的 <code>prototype</code>，这是内置对象中的特殊情况；而 <code>Object</code> 对象的 <code>__proto__</code> 属性引用的也是 <code>Function</code> 对象的 <code>prototype</code>，这是因为 <code>Object</code> 对象也是由函数构造的。</p>
 
