@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="常见数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T15:45:41.970Z">
+<meta property="og:updated_time" content="2018-06-26T23:48:31.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 21. JavaScript 里的类型">
 <meta name="twitter:description" content="常见数据类型的转换 除了 Null 和 Undefined 类型，其他数据类型都可以使用 toString() 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 JSON.stringify() 方法）；比 toString() 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 String(">
@@ -94,15 +94,19 @@
         <h2 id="常见数据类型的转换"><a href="#常见数据类型的转换" class="headerlink" title="常见数据类型的转换"></a>常见数据类型的转换</h2><ul>
 <li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型；</p>
 </li>
-<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据转换为布尔值，简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
+<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据类型转换为布尔值；简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
 </li>
-<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14；后一种比较常用；</p>
+<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14，这种比较常用；</p>
 </li>
 </ul>
 <h2 id="内存中数据存储方式"><a href="#内存中数据存储方式" class="headerlink" title="内存中数据存储方式"></a>内存中数据存储方式</h2><ul>
-<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面；</p>
+<li><p>编译器会将分配到的内存分为代码区和数据区；</p>
 </li>
-<li><p>堆（Heap）比栈（Stack）大，栈比堆快；</p>
+<li><p>数据区分为 Stack（栈内存） 和 Heap（堆内存）；</p>
+</li>
+<li><p>堆比栈大，栈比堆快；</p>
+</li>
+<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面；</p>
 </li>
 <li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存；</p>
 </li>
@@ -149,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjiv4acip0011p8q2a93tfj5v" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjiwez9pr00146gq2hoxlsyhl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -159,6 +163,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 22. JavaScript 里的对象
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/" id="article-nav-older" class="article-nav-link-wrap">
@@ -214,6 +227,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
           </li>
         
@@ -227,10 +244,6 @@
         
           <li>
             <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/">前端系统课程 - 17. JavaScript 小作品</a>
           </li>
         
       </ul>

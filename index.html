@@ -66,6 +66,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-22-JavaScript-里的对象" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/" class="article-date">
+  <time datetime="2018-06-26T23:44:11.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
+<li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象；</p>
+</li>
+<li><p>全局对象的属性（或方法）分为公有属性和私有属性；公有属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等；</p>
+</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjiwez9pp00126gq2ev6z9hlz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-21-JavaScript-里的类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/" class="article-date">
@@ -91,15 +136,19 @@
         <h2 id="常见数据类型的转换"><a href="#常见数据类型的转换" class="headerlink" title="常见数据类型的转换"></a>常见数据类型的转换</h2><ul>
 <li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型；</p>
 </li>
-<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据转换为布尔值，简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
+<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据类型转换为布尔值；简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
 </li>
-<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14；后一种比较常用；</p>
+<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14，这种比较常用；</p>
 </li>
 </ul>
 <h2 id="内存中数据存储方式"><a href="#内存中数据存储方式" class="headerlink" title="内存中数据存储方式"></a>内存中数据存储方式</h2><ul>
-<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面；</p>
+<li><p>编译器会将分配到的内存分为代码区和数据区；</p>
 </li>
-<li><p>堆（Heap）比栈（Stack）大，栈比堆快；</p>
+<li><p>数据区分为 Stack（栈内存） 和 Heap（堆内存）；</p>
+</li>
+<li><p>堆比栈大，栈比堆快；</p>
+</li>
+<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面；</p>
 </li>
 <li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存；</p>
 </li>
@@ -146,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjiv4acip0011p8q2a93tfj5v" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjiwez9pr00146gq2hoxlsyhl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -226,6 +275,8 @@
 </li>
 <li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除；</p>
 </li>
+<li><p>使用 <code>typeof</code> 操作符对函数进行检测，返回值为反直觉的 <code>&#39;function&#39;</code>，而不是 <code>&#39;object&#39;</code>；但是检测值为 <code>null</code> 的数据，则会返回 <code>&#39;object&#39;</code>……</p>
+</li>
 </ul>
 <h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
 <li><p>访问对象的属性时，如果在方括号内的属性名是一个数字间运算，那么会先运算得出的结果数字，然后再将数字转换为字符串；</p>
@@ -237,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjiv4acif000vp8q2667dtbcb" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjiwez9pt00166gq2mpbe7p2p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -289,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjiv4acip000zp8q28p1yyuh6" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjiwez9pm000y6gq207ivq0yn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -387,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjiv4acif000tp8q2403o3i5v" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjiwez9po00106gq2ocy3q1qw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -435,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjiv4acif000rp8q2gkhq25ns" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjiwez9pl000w6gq23idoov4g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -476,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjiv4acif000pp8q26dk8vyqb" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjiwez9ph000s6gq2vzdhceeh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -573,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjiv4acif000xp8q2eorzuusd" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjiwez9pj000u6gq2jl3cbiab" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -615,7 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjiv4acif000np8q240uy3nyz" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjiwez9pd000o6gq2yi7eayqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -701,134 +752,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjiv4acif000lp8q2yz3nuyp4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-10-CSS-入门" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/13/前端系统课程-10-CSS-入门/" class="article-date">
-  <time datetime="2018-05-13T12:50:22.000Z" itemprop="datePublished">2018-05-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/前端系统课程-10-CSS-入门/">前端系统课程 - 10. CSS 入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="CSS-的历史"><a href="#CSS-的历史" class="headerlink" title="CSS 的历史"></a>CSS 的历史</h2><ol>
-<li><p>1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。</p>
-</li>
-<li><p>1998 年，W3C 发布了应用最广泛的 CSS2。</p>
-</li>
-<li><p>2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。</p>
-</li>
-</ol>
-<h2 id="CSS-编译器"><a href="#CSS-编译器" class="headerlink" title="CSS 编译器"></a>CSS 编译器</h2><ul>
-<li><p>LESS</p>
-</li>
-<li><p>SASS / SCSS</p>
-</li>
-<li><p>PostCSS</p>
-</li>
-</ul>
-<h2 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h2><ul>
-<li><p>MDN</p>
-</li>
-<li><p>CSS Tricks</p>
-</li>
-<li><p>阮一峰 / 张鑫旭博客</p>
-</li>
-<li><p>Codrops</p>
-</li>
-<li><p>《CSS 揭秘》</p>
-</li>
-<li><p>CSS 文档</p>
-</li>
-</ul>
-<h2 id="开始写-CSS"><a href="#开始写-CSS" class="headerlink" title="开始写 CSS"></a>开始写 CSS</h2><ol>
-<li><p>引入方法：</p>
-<ul>
-<li><p>内联样式；</p>
-</li>
-<li><p><code>&lt;style&gt;</code> 标签；</p>
-</li>
-<li><p>外部样式，使用 <code>&lt;link&gt;</code> 标签引入；</p>
-</li>
-<li><p>导入方式，使用 <code>@import url()</code> 方式，这种方式不推荐使用。</p>
-</li>
-</ul>
-</li>
-<li><p>善用开发者工具。</p>
-</li>
-<li><p>常用样式：</p>
-<ul>
-<li><p>清除列表默认样式 <code>list-style: none</code>；</p>
-</li>
-<li><p>浮动 <code>float</code>；</p>
-</li>
-<li><p>清除浮动 <code>clear: both;</code>，常用方式，给<strong>浮动元素的父元素</strong>加此类名：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">claer</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子元素选择器 <code>&gt;</code>；</p>
-</li>
-<li><p>背景颜色 <code>background</code>；</p>
-</li>
-<li><p>文字颜色 <code>color</code>；</p>
-</li>
-<li><p>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</p>
-</li>
-<li><p>外边距 <code>margin</code>；</p>
-</li>
-<li><p>内边距 <code>padding</code>；</p>
-</li>
-<li><p>文字加粗 <code>font-weight: bold</code>；</p>
-</li>
-<li><p>伪类选择器，鼠标移入 <code>:hover</code>；</p>
-</li>
-<li><p>展示为块级元素 <code>display: block</code>；</p>
-</li>
-<li><p>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</p>
-</li>
-<li><p>文字大小 <code>font-size</code>；</p>
-</li>
-<li><p>文字字体 <code>font-family</code>；</p>
-</li>
-<li><p>边框 <code>border</code> ；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>不要记住了缩写，就忘记了全写，例如 <code>margin</code>、<code>border</code>、<code>padding</code> 等属性；</p>
-</li>
-<li><p>当 <code>height</code> 的值和 <code>line-height</code> 的值相同时，或者 <code>line-height</code> 的值与 <code>padding-top</code>、<code>padding-bottom</code> 的值加起来等于 <code>height</code> 的值，并且 <code>padding</code> 是上下相等的情况时，文字会垂直居中。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjiv4aci5000jp8q2stndg15x" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjiwez9pb000m6gq2iilgfugd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -890,6 +814,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
           </li>
         
@@ -903,10 +831,6 @@
         
           <li>
             <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/">前端系统课程 - 17. JavaScript 小作品</a>
           </li>
         
       </ul>

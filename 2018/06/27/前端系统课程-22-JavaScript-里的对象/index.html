@@ -5,19 +5,20 @@
   
 
   
-  <title>博客使用指南 - Hello World! Hello Hexo! | 南阳诸葛庐</title>
+  <title>前端系统课程 - 22. JavaScript 里的对象 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="全局对象 浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 window 对象；  全局对象的属性（或方法）分为公有属性和私有属性；公有属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 window 对象，它的私有属性常见的例如：document 对象、history对象、alert()、prompt(">
+<meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客使用指南 - Hello World! Hello Hexo!">
-<meta property="og:url" content="https://blog.battlehawk.cn/2016/08/31/博客使用指南/index.html">
+<meta property="og:title" content="前端系统课程 - 22. JavaScript 里的对象">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="全局对象 浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 window 对象；  全局对象的属性（或方法）分为公有属性和私有属性；公有属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 window 对象，它的私有属性常见的例如：document 对象、history对象、alert()、prompt(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-15T05:42:52.106Z">
+<meta property="og:updated_time" content="2018-06-27T01:01:10.327Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客使用指南 - Hello World! Hello Hexo!">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="前端系统课程 - 22. JavaScript 里的对象">
+<meta name="twitter:description" content="全局对象 浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 window 对象；  全局对象的属性（或方法）分为公有属性和私有属性；公有属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 window 对象，它的私有属性常见的例如：document 对象、history对象、alert()、prompt(">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -68,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-博客使用指南" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-前端系统课程-22-JavaScript-里的对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/31/博客使用指南/" class="article-date">
-  <time datetime="2016-08-31T10:36:11.000Z" itemprop="datePublished">2016-08-31</time>
+    <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/" class="article-date">
+  <time datetime="2018-06-26T23:44:11.000Z" itemprop="datePublished">2018-06-27</time>
 </a>
     
   </div>
@@ -82,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      博客使用指南 - Hello World! Hello Hexo!
+      前端系统课程 - 22. JavaScript 里的对象
     </h1>
   
 
@@ -90,41 +91,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
+<li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象；</p>
+</li>
+<li><p>全局对象的属性（或方法）分为公有属性和私有属性；公有属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等；</p>
+</li>
+<li></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjiwez9pw001a6gq26i2m2f8w" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjiwez9pp00126gq2ev6z9hlz" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/09/24/前端强化课程-第-4-章-页面架构/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          前端强化课程 - 第 4 章: 页面架构
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/31/博客搭建方法/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">博客搭建方法</div>
+      <div class="article-nav-title">前端系统课程 - 21. JavaScript 里的类型</div>
     </a>
   
 </nav>
