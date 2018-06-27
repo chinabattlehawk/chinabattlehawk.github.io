@@ -91,10 +91,28 @@
         <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
 <li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象；</p>
 </li>
-<li><p>全局对象的属性（或方法）分为公有属性和私有属性；公有属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等；</p>
+<li><p>全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等；</p>
 </li>
-<li></li>
 </ul>
+<h2 id="基本数据类型与对象的区别"><a href="#基本数据类型与对象的区别" class="headerlink" title="基本数据类型与对象的区别"></a>基本数据类型与对象的区别</h2><ul>
+<li><p>基本数据类型没有且不能具备属性和方法，而复杂数据类型（对象）可以具备属性和方法；</p>
+</li>
+<li><p>使用 <code>new</code> 运算符可以创建一个指定对象的实例，例如 <code>var num = new Number(1)</code>；</p>
+</li>
+<li><p>当我们平时在对存有基本数据类型的变量使用 <code>toSring()</code> 等方法时，由于数据没有这些方法，所以编译器会隐性地临时将基本数据类型转换为对象，然后再调用其指定的方法，得出结果并返回，之后临时对象会被销毁；</p>
+</li>
+<li><p>当给一个基本数据类型添加属性时，编译器不会报错，它会像前面一样将基本数据类型转换为对象，再给这个临时对象添加属性，之后这个临时对象被销毁，也就访问不到添加给基本数据类型的属性了；</p>
+</li>
+</ul>
+<h2 id="公共属性"><a href="#公共属性" class="headerlink" title="公共属性"></a>公共属性</h2><ul>
+<li><p>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链；</p>
+</li>
+<li><p>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例；</p>
+</li>
+<li><p>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>；</p>
+</li>
+</ul>
+<h2 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h2><p><code>Function</code> 对象的 <code>__proto__</code> 属性引用的是 <code>Function</code> 自身的 <code>prototype</code>，这是内置对象中的特殊情况；而 <code>Object</code> 对象的 <code>__proto__</code> 属性引用的也是 <code>Function</code> 对象的 <code>prototype</code>，这是因为 <code>Object</code> 对象也是由函数构造的。</p>
 
       
     </div>
@@ -157,7 +175,7 @@
 <li><p>当把一个复杂数据类型赋值给一个变量时，变量中存储的是这个数据在堆内存中的地址，这种关系称为“引用”；当把这个变量赋值给另外一个变量时，相当于把保存的引用地址，复制一个拷贝，再赋值给新变量，之后，两个变量引用的是同一个数据，相当于两个人各拥有一张代表同一个数据的“名片”；</p>
 </li>
 </ul>
-<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环应用可能会造成内存泄露</strong>；</p>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环引用可能会造成内存泄露</strong>；</p>
 <h2 id="试题解析"><a href="#试题解析" class="headerlink" title="试题解析"></a>试题解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">//b = &#123;n: 1&#125;;</span></span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;; <span class="comment">//&#123;n: 1, x: &#123;n: 2&#125;&#125;，a = &#123;n: 2&#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//[object, Object]</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>上面的题中，第三行的关键点在于确定当时的 <code>a</code> 变量是哪一个；</p>
