@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="置顶导航栏英文 sticky navbar，通过监听页面滚动事件将导航栏设置为固定定位并置顶；涉及知识：  onscroll 页面滚动事件句柄，onmousewhell 鼠标滚轮滚动事件句柄；  获取窗口滚动距离 window.scrollX/Y，建议使用 window.pageXOffset/YOffset 来代替；   加载动画英文 loading animation，两个圆形从小变大，从深变">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T12:29:57.121Z">
+<meta property="og:updated_time" content="2018-06-30T14:50:45.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 23. 给简历添加 JavaScript (1)">
 <meta name="twitter:description" content="置顶导航栏英文 sticky navbar，通过监听页面滚动事件将导航栏设置为固定定位并置顶；涉及知识：  onscroll 页面滚动事件句柄，onmousewhell 鼠标滚轮滚动事件句柄；  获取窗口滚动距离 window.scrollX/Y，建议使用 window.pageXOffset/YOffset 来代替；   加载动画英文 loading animation，两个圆形从小变大，从深变">
@@ -118,7 +118,7 @@
 <li><p>解决问题的关键在于，马上开始着手解决问题；</p>
 </li>
 </ul>
-<h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
+<h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，就是让滚动条在指定时间内滚动到指定位置，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
 <ul>
 <li><p>在获取元素对象的属性时，一般推荐使用 <code>setAttribute()</code> 和 <code>getAttribute()</code> 方法，直接使用点运算符，可能会返回经过浏览器处理的结果，例如 <code>&lt;a&gt;</code> 标签中 <code>href</code> 的属性值；</p>
 </li>
@@ -128,14 +128,14 @@
 </li>
 <li><p>使用 <code>offsetTop</code> 属性可以获取元素相对于它的 <code>offsetParent</code> 元素的顶部的距离（不包含边框），这是一个只读属性，返回值是数字类型的像素数；由于无法直接获取到元素相对页面最顶端的距离，所以只能用这个属性结合 <code>offsetParent</code> 属性，一直获取到 <code>&lt;body&gt;</code> 标签以下的所有元素的 <code>offsetTop</code> 之和；与之相配套的属性是 <code>offsetLeft</code> 属性，代表相对左上角的距离；</p>
 </li>
-<li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标；</p>
+<li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标。</p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjizyguox000080q2tq7lofkx" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjj2huhyx00125sq2xop0m0on" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -145,6 +145,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 24. 给简历添加 JavaScript (2)
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/" id="article-nav-older" class="article-nav-link-wrap">
@@ -200,6 +209,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
           </li>
         
@@ -213,10 +226,6 @@
         
           <li>
             <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
           </li>
         
       </ul>

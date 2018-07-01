@@ -66,6 +66,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-02-计算机是如何存储数据的" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" class="article-date">
+  <time datetime="2018-05-02T14:36:02.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/">前端系统课程 - 02. 计算机是如何存储数据的</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="编程基础："><a href="#编程基础：" class="headerlink" title="编程基础："></a>编程基础：</h2><p>首先成为程序员，再成为前端开发工程师。而一个程序员需要知道：</p>
+<ul>
+<li><p>硬件与软件：计算机的运行原理；（荐书《编码》）</p>
+</li>
+<li><p>最大的软件：操作系统；</p>
+</li>
+<li><p>自己写软件：数据结构和算法；（荐书《数据结构与算法结构》）</p>
+</li>
+<li><p>多人写软件：软件工程。（荐书《代码大全》）</p>
+</li>
+</ul>
+<p>前端为什么学编程基础？——<strong>防止成为井底之蛙</strong>。</p>
+<h2 id="计算机存储汉字的过程："><a href="#计算机存储汉字的过程：" class="headerlink" title="计算机存储汉字的过程："></a>计算机存储汉字的过程：</h2><ol>
+<li><p>内存内部的电容通过充电与否来存储 0 和 1，存储 1 就充电，存储 0 就不充电；而读取时，电量大于 50% 就识别为 1，电量小于 50% 就识别为 0；这样便实现了二进制数的存储。</p>
+<p><img src="/2018/05/02/前端系统课程-02-计算机是如何存储数据的/RAM.gif" alt="RAM 存储 0 和 1 的过程"></p>
+</li>
+<li><p>通过十进制和二进制之间的转换，计算机便可以只用二进制数 0 和 1 来存储十进制数；为了方便书写，一般会将二进制数写为十六进制数，因为单个十六进制数正好可以存 4 位二进制数。（<em>扩展：负数使用补码形式存储，小数使用浮点数形式存储</em>）</p>
+</li>
+<li><p>用数字可以为字符编号，于是出现了字符集，例如“ASCII（美国信息交换标准代码）“；按照这个标准，如果要存储字母“a”，那么就存储十进制数 97 对应的二进制数 0110 0001（十六进制数为 61）。</p>
+</li>
+<li><p>既然可以存储字符，那么汉字也不是问题，扩充字符集就可以了，将每个汉字对应不同的编号。例如最早的汉字字符集“GB2312（中国国家标准简体中文字符集）”，以及一度被广泛使用的微软推出的“GBK 字符集”。</p>
+</li>
+<li><p>为了统一存储世界上所有的字符，Unicode 联盟推出了“Unicode 字符集”。</p>
+</li>
+<li><p>解决了所有字符的存储方法，但还缺乏一种高性价比的存储方式，于是出现了字符编码。如果使用“Unicode 字符集”最初的低效方式，存储字母“a”和汉字“你”的方式如下：</p>
+<p><code>a =&gt; 00000000 00000000 00000000 01100001 = 0061</code></p>
+<p><code>你 =&gt; 00000000 00000000 01001111 01100000 = 4F60</code></p>
+<p>这样的方式浪费了存储资源，从而出现了比较节省存储资源的方式——字符编码：</p>
+<p><code>a =&gt; 01100001</code></p>
+<p><code>你 =&gt; 11100100 10111101 10100000</code></p>
+<p>当存储的是单个字母的时候，使用 1 个字节（Byte）来存储，而存储汉字或其他字符，则用两个或以上的字节来存储；第一个字节带有识别后续字节的编码，后续字节的前两位用来作为让第一个字节识别的标识，这就是“UTF-8 编码”：</p>
+<p><code>1字节 0xxxxxxx</code></p>
+<p><code>2字节 110xxxxx 10xxxxxx</code></p>
+<p><code>3字节 1110xxxx 10xxxxxx 10xxxxxx</code></p>
+<p><code>4字节 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
+<p><code>5字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
+<p><code>6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</code></p>
+</li>
+</ol>
+<h2 id="现实问题："><a href="#现实问题：" class="headerlink" title="现实问题："></a>现实问题：</h2><p>由于历史原因，早期的软件和网站是在“GBK 字符集”的年代诞生的，而没有赶上“Unicode 字符集”和“UTF-8 编码”，所以还是有大量应用“GBK 字符集”的软件和网站。</p>
+<p>也是由于时间原因，JavaScript 使用了“Unicode 字符集”，却没有使用 UTF-8 编码，所以 ES5 及之前的标准无法表示 \uFFFF 之后的字符，某些情况下会出 bug。例如 JavaScript 会将一个超出范围的单个字符的长度识别为 2：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">'\u1D306'</span>;</span><br><span class="line">alert(str1); <span class="comment">//ᴰ6，一个字符和数字字符6；</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">'𝌆'</span>;</span><br><span class="line">alert(str2.length); <span class="comment">//明明是一个字符，却显示长度为2；</span></span><br></pre></td></tr></table></figure>
+<p>所以，现在在各种编程当中，一定都要用“UTF-8 编码”！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjj2huhxj00055sq2enriwfjc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-01-开班" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/01/前端系统课程-01-开班/" class="article-date">
@@ -156,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjizy78yz0004w0q2lg97irmc" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjj2huhxj00035sq2gnceqv28" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -506,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjizy78yp0000w0q2dfd8rmlp" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjj2huhx900005sq2bgf8lun0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -553,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjizy790h0018w0q2ygn2aaat" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjj2huhz7001c5sq29k3zahfw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -642,7 +723,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客搭建方法/" data-id="cjizy790k001bw0q2g45bhpjb" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客搭建方法/" data-id="cjj2huhz7001e5sq2vza4smf2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -702,6 +783,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
           </li>
         
@@ -715,10 +800,6 @@
         
           <li>
             <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
           </li>
         
       </ul>

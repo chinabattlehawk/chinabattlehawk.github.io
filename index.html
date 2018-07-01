@@ -66,6 +66,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-24-给简历添加-JavaScript-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" class="article-date">
+  <time datetime="2018-06-29T12:32:49.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ul>
+<li><p>用 JavaScript 实现动画的关键是 <code>window.setInterval()</code> 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 <code>setTimeout()</code> 使用方法类似；</p>
+</li>
+<li><p>页面滚动动画思路：</p>
+<ul>
+<li><p>使用 <code>window.pageXOffset</code> 属性获取当前页面滚动位置 currentTop，以及通过元素的 <code>offsetTop</code> 属性值来设定滚动目标位置 targetTop；</p>
+</li>
+<li><p>设定到目标位置的滚动总次数 n，当前滚动次数 x；</p>
+</li>
+<li><p>设定每次滚动的时间 t 为预设动画完成时间 / 滚动总次数，例如：<code>t = 200 / n</code>；</p>
+</li>
+<li><p>设定每次滚动的距离 step 为 (目标滚动位置 - 当前滚动位置) / 滚动总次数，即：<code>step = (targetTop - currentTop) / n</code>；</p>
+</li>
+<li><p>最后设置循环定时器，通过 <code>window.scrollTo()</code> 方法，在指定时间使页面滚动到指定位置，每次滚动之前，当前滚动次数加 1；在当前滚动次数达到设定的总次数后，说明已到达目标位置，此时便使用 <code>clearInterval()</code> 方法清除定时器，动画结束；下面是示例代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTop = <span class="built_in">window</span>.pageYOffset, <span class="comment">// 当前滚动位置</span></span><br><span class="line">    targetTop = getOffsetTop(id) &lt; <span class="number">200</span> ? <span class="number">80</span> : getOffsetTop(id), <span class="comment">// 目标滚动位置</span></span><br><span class="line">    n = <span class="number">25</span>, <span class="comment">// 滚动总次数</span></span><br><span class="line">    x = <span class="number">0</span>, <span class="comment">// 当前滚动次数</span></span><br><span class="line">    t = <span class="number">200</span> / n, <span class="comment">// 每次滚动时间</span></span><br><span class="line">    step = (targetTop - currentTop) / n, <span class="comment">// 每次滚动距离</span></span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === n) &#123; <span class="comment">// 当前滚动次数达到总次数</span></span><br><span class="line">            clearInterval(timer); <span class="comment">// 清除定时器</span></span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 跳出函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        x++; <span class="comment">// 当前次数自增</span></span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, currentTop + step * x) <span class="comment">// 滚动到当前次数该到的位置</span></span><br><span class="line">    &#125;, t);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="缓动"><a href="#缓动" class="headerlink" title="缓动"></a>缓动</h2><p>顾名思义，就是缓缓移动，让动画不那么生硬，就像 CSS 动画那样，可以设置不同的速度曲线，看起来有不同的线性效果。</p>
+<ul>
+<li><p>如果自己计算缓动函数（<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>）难度比较高，所以借助现有的成熟库更方便，例如：tween.js；示例代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">time</span>) </span>&#123; <span class="comment">// 设置动画循环时间</span></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    TWEEN.update(time);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coords = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;; <span class="comment">// 起始坐标数据</span></span><br><span class="line"><span class="keyword">var</span> tween = <span class="keyword">new</span> TWEEN.Tween(coords) <span class="comment">// 创建新实例并将坐标数据传入</span></span><br><span class="line">    .to(&#123; <span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;, <span class="number">1000</span>) <span class="comment">// 在1秒钟内移动到指定坐标</span></span><br><span class="line">    .easing(TWEEN.Easing.Quadratic.Out) <span class="comment">// 设置指定的缓动方式</span></span><br><span class="line">    .onUpdate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 此函数会在Tween每次将坐标数据更新后调用</span></span><br><span class="line">        <span class="comment">// 在函数内部就可以使用坐标数据来完成动画</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .start(); <span class="comment">// 立即启动实例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要学会在不懂的情况下搞定遇到的问题；</p>
+</li>
+</ul>
+<h2 id="菜单高亮"><a href="#菜单高亮" class="headerlink" title="菜单高亮"></a>菜单高亮</h2><p>通过在页面滚动时，</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjj2huhyx00145sq24vo316da" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-23-给简历添加-JavaScript-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/" class="article-date">
@@ -115,7 +181,7 @@
 <li><p>解决问题的关键在于，马上开始着手解决问题；</p>
 </li>
 </ul>
-<h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
+<h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，就是让滚动条在指定时间内滚动到指定位置，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
 <ul>
 <li><p>在获取元素对象的属性时，一般推荐使用 <code>setAttribute()</code> 和 <code>getAttribute()</code> 方法，直接使用点运算符，可能会返回经过浏览器处理的结果，例如 <code>&lt;a&gt;</code> 标签中 <code>href</code> 的属性值；</p>
 </li>
@@ -125,14 +191,14 @@
 </li>
 <li><p>使用 <code>offsetTop</code> 属性可以获取元素相对于它的 <code>offsetParent</code> 元素的顶部的距离（不包含边框），这是一个只读属性，返回值是数字类型的像素数；由于无法直接获取到元素相对页面最顶端的距离，所以只能用这个属性结合 <code>offsetParent</code> 属性，一直获取到 <code>&lt;body&gt;</code> 标签以下的所有元素的 <code>offsetTop</code> 之和；与之相配套的属性是 <code>offsetLeft</code> 属性，代表相对左上角的距离；</p>
 </li>
-<li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标；</p>
+<li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标。</p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjizyguox000080q2tq7lofkx" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjj2huhyx00125sq2xop0m0on" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -193,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjizy790f0016w0q2ma90jzia" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjj2huhz7001a5sq2khw87ykf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -289,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjizy790c0012w0q2sve5ng8v" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjj2huhyx00185sq2hiz6060d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -382,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjizy790d0014w0q2dd7s7wha" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjj2huhyx00165sq2tkvo43tr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -434,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjizy790a0010w0q21r3ib1kk" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjj2huhyx00115sq2efwmwxq5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -532,7 +598,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjizy7907000yw0q24sah2b4d" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjj2huhyd000r5sq2auvo5fct" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -580,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjizy7905000xw0q2yfdvbojs" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjj2huhyd000v5sq2oqs4p2l8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -621,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjizy78zk000nw0q2q8eq8o09" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjj2huhyd000t5sq2bj7uwlx4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -718,49 +784,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjizy78zi000lw0q29ftp8kh8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-12-CSS-布局与定位-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" class="article-date">
-  <time datetime="2018-05-18T14:14:36.000Z" itemprop="datePublished">2018-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/18/前端系统课程-12-CSS-布局与定位-2/">前端系统课程 - 12. CSS 布局与定位 (2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><ul>
-<li>所有的非空标签，都可以使用伪类；</li>
-<li>伪类中的 <code>:before</code> 和 <code>:after</code> 默认是内联元素，可以看做一个 <code>&lt;span&gt;</code> 标签</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjizy78zm000pw0q2daw3mlb2" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjj2huhy3000l5sq2ow2eg69u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -822,6 +846,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
           </li>
         
@@ -835,10 +863,6 @@
         
           <li>
             <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
           </li>
         
       </ul>
