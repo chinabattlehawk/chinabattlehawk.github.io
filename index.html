@@ -109,13 +109,14 @@
 </ul>
 <h2 id="缓动"><a href="#缓动" class="headerlink" title="缓动"></a>缓动</h2><p>顾名思义，就是缓缓移动，让动画不那么生硬，就像 CSS 动画那样，可以设置不同的速度曲线，看起来有不同的线性效果。</p>
 <ul>
-<li><p>如果自己计算缓动函数（<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>）难度比较高，所以借助现有的成熟库更方便，例如：tween.js；示例代码如下：</p>
+<li><p>如果自己计算缓动函数（<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>）难度比较高，所以借助现有的成熟库更方便，例如 tween.js，示例代码如下：</p>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">time</span>) </span>&#123; <span class="comment">// 设置动画循环时间</span></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    TWEEN.update(time);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coords = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;; <span class="comment">// 起始坐标数据</span></span><br><span class="line"><span class="keyword">var</span> tween = <span class="keyword">new</span> TWEEN.Tween(coords) <span class="comment">// 创建新实例并将坐标数据传入</span></span><br><span class="line">    .to(&#123; <span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;, <span class="number">1000</span>) <span class="comment">// 在1秒钟内移动到指定坐标</span></span><br><span class="line">    .easing(TWEEN.Easing.Quadratic.Out) <span class="comment">// 设置指定的缓动方式</span></span><br><span class="line">    .onUpdate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 此函数会在Tween每次将坐标数据更新后调用</span></span><br><span class="line">        <span class="comment">// 在函数内部就可以使用坐标数据来完成动画</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .start(); <span class="comment">// 立即启动实例</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要学会在不懂的情况下搞定遇到的问题。</p>
 </li>
 </ul>
-<h2 id="菜单高亮"><a href="#菜单高亮" class="headerlink" title="菜单高亮"></a>菜单高亮</h2><p>通过在页面滚动时，</p>
+<h2 id="菜单高亮"><a href="#菜单高亮" class="headerlink" title="菜单高亮"></a>菜单高亮</h2><p>通过在页面滚动时，计算不同区块相对顶部高度与当前页面滚动高度的差值，找到最小差值相对应的区块，让锚链接这个区块的菜单改变样式即可；由于差值可能是负数，比较时要先将差值全部取绝对值，可以使用内置数学对象的 <code>Math.abs()</code> 方法。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>还有一些其他动画效果，都很简单，就不一一赘述了；使用 JavaScript 操作 DOM 节点其实很简单，就是触发事件，然后找到相应节点，然后对其添加或删除类名，或者改变节点的其他属性，最终完成一个效果。</p>
 
       
     </div>
