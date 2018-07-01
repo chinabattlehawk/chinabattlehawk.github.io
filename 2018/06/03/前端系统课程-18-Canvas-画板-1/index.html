@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="鼠标事件句柄 鼠标按下 onmousedown  鼠标移动 onmousemove  鼠标松开 onmouseup   鼠标事件信息 screenX/Y 属性代表鼠标在整个屏幕的位置；  clientX/Y 属性代表鼠标相对于视口在窗口或文档的位置；  事件对象中的 button 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。   canvas 标签由于使用普通元素无法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T03:13:11.731Z">
+<meta property="og:updated_time" content="2018-07-01T08:30:18.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 18. Canvas 画板 (1)">
 <meta name="twitter:description" content="鼠标事件句柄 鼠标按下 onmousedown  鼠标移动 onmousemove  鼠标松开 onmouseup   鼠标事件信息 screenX/Y 属性代表鼠标在整个屏幕的位置；  clientX/Y 属性代表鼠标相对于视口在窗口或文档的位置；  事件对象中的 button 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。   canvas 标签由于使用普通元素无法">
@@ -146,7 +146,7 @@
 <li><p>使用 <code>clip()</code> 方法可以将选中区域设置为剪辑区域，所有绘画动作都只能在这个剪辑区域操作；</p>
 </li>
 <li><p>利用 <code>save()</code>、<code>clip()</code> 以及 <code>restore()</code> 方法结合可以制作不同形状橡皮擦效果或刮刮卡效果，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果要将 Canvas 画好的图保存为图片，可以使用 <code>canvas.toDataURL()</code> 方法，它会将画布中的图案转变为 base64 编码格式的 PNG 图像并将其 Data URL 返回；方法中可以传入需要保存的文件类型的 MINE 类型参数，一般使用 表示 PNG 格式的 <code>image/png</code> 参数即可。另外，最新的浏览器一般都禁止了在新窗口打开 Data URL，所以需要将 Data URL 保存到一个 <code>&lt;a&gt;</code> 标签的 <code>href</code> 属性中，并给这个标签添加 <code>download</code> 属性设置保存的文件名，最后，触发 <code>&lt;a&gt;</code> 标签的 <code>click()</code> 方法即可打开并保存图片文件。新版火狐中，还需要将这个 <code>&lt;a&gt;</code> 标签添加到页面中才能触发点击事件。</p>
 </li>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="TCP 与 UDP HTTP 协议的底层是由 TCP/IP 协议构建的。  TCP（Transmission Control Protocol，传输控制协议）。  UDP（User Datagram Protocol，用户数据报协议）。  TCP 和 UDP 的区别：  TCP 可靠（成功与否都能感知），面向连接、相对 UDP 较慢；  UDP 不可靠，不面向连接、相对 TCP 较快。     T">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T15:30:57.675Z">
+<meta property="og:updated_time" content="2018-07-01T09:10:02.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 07. Node.js Server">
 <meta name="twitter:description" content="TCP 与 UDP HTTP 协议的底层是由 TCP/IP 协议构建的。  TCP（Transmission Control Protocol，传输控制协议）。  UDP（User Datagram Protocol，用户数据报协议）。  TCP 和 UDP 的区别：  TCP 可靠（成功与否都能感知），面向连接、相对 UDP 较慢；  UDP 不可靠，不面向连接、相对 TCP 较快。     T">
@@ -119,21 +119,21 @@
 </li>
 </ol>
 <h2 id="内网与外网"><a href="#内网与外网" class="headerlink" title="内网与外网"></a>内网与外网</h2><ul>
-<li><p>电信提供 DNS 服务；</p>
+<li><p>电信提供 DNS 服务。</p>
 </li>
-<li><p>设备通过网线或 WIFI 与路由器连接；</p>
+<li><p>设备通过网线或 WIFI 与路由器连接。</p>
 </li>
-<li><p>路由器通过光纤与电信服务器连接，路由器会有一个外网 IP，这就是你在互联网中的地址，但是这个地址通常是不固定的，重启路由器可能被重新分配一个外网 IP；</p>
+<li><p>路由器通过光纤与电信服务器连接，路由器会有一个外网 IP，这就是你在互联网中的地址，但是这个地址通常是不固定的，重启路由器可能被重新分配一个外网 IP。</p>
 </li>
-<li><p>可以花钱租一个固定外网 IP，但一般只有企业才会使用固定 IP，用来提供稳定的服务；</p>
+<li><p>可以花钱租一个固定外网 IP，但一般只有企业才会使用固定 IP，用来提供稳定的服务。</p>
 </li>
-<li><p>路由器会创建一个内网，内网中的设备使用内网 IP，内网 IP 通常都是 192.168.xxx.xxx 的格式；</p>
+<li><p>路由器会创建一个内网，内网中的设备使用内网 IP，内网 IP 通常都是 192.168.xxx.xxx 的格式。</p>
 </li>
-<li><p>路由器自身也占用一个内网 IP，它同时拥有一个外网 IP 和内网 IP；</p>
+<li><p>路由器自身也占用一个内网 IP，它同时拥有一个外网 IP 和内网 IP。</p>
 </li>
-<li><p>内网中的设备可以互相访问，但是不能直接访问外网，只能通过路由器中转才能访问外网；</p>
+<li><p>内网中的设备可以互相访问，但是不能直接访问外网，只能通过路由器中转才能访问外网。</p>
 </li>
-<li><p>外网中的设备可以互相访问，但是不能直接访问内网，也只能通过路由器中转；</p>
+<li><p>外网中的设备可以互相访问，但是不能直接访问内网，也只能通过路由器中转。</p>
 </li>
 <li><p>路由器就是用来“指路”的，主要功能就是用来分发内容；</p>
 </li>
@@ -148,9 +148,9 @@
 <p>端口号从 0 到 1023 号端口都有对应的服务，具体可以谷歌查询。</p>
 <p>每个机器有 65535（2 的 16 次方减 1）个端口，这些端口遵循一些规定：</p>
 <ul>
-<li><p>0 到 1023（2 的 10 次方减 1）号端口是留给系统使用的，只有拥有管理员权限后，才能使用这 1024 个端口；</p>
+<li><p>0 到 1023（2 的 10 次方减 1）号端口是留给系统使用的，只有拥有管理员权限后，才能使用这 1024 个端口。</p>
 </li>
-<li><p>其他端口可以给普通用户使用；</p>
+<li><p>其他端口可以给普通用户使用。</p>
 </li>
 <li><p>如果一个端口正在提供服务，也就是被占用了，那么就不能再使用这个端口；除非先停止正在占用这个端口的服务。</p>
 </li>

@@ -101,8 +101,8 @@
 </li>
 <li><p>设定每次滚动的距离 step 为 (目标滚动位置 - 当前滚动位置) / 滚动总次数，即：<code>step = (targetTop - currentTop) / n</code>；</p>
 </li>
-<li><p>最后设置循环定时器，通过 <code>window.scrollTo()</code> 方法，在指定时间使页面滚动到指定位置，每次滚动之前，当前滚动次数加 1；在当前滚动次数达到设定的总次数后，说明已到达目标位置，此时便使用 <code>clearInterval()</code> 方法清除定时器，动画结束；下面是示例代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTop = <span class="built_in">window</span>.pageYOffset, <span class="comment">// 当前滚动位置</span></span><br><span class="line">    targetTop = getOffsetTop(id) &lt; <span class="number">200</span> ? <span class="number">80</span> : getOffsetTop(id), <span class="comment">// 目标滚动位置</span></span><br><span class="line">    n = <span class="number">25</span>, <span class="comment">// 滚动总次数</span></span><br><span class="line">    x = <span class="number">0</span>, <span class="comment">// 当前滚动次数</span></span><br><span class="line">    t = <span class="number">200</span> / n, <span class="comment">// 每次滚动时间</span></span><br><span class="line">    step = (targetTop - currentTop) / n, <span class="comment">// 每次滚动距离</span></span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === n) &#123; <span class="comment">// 当前滚动次数达到总次数</span></span><br><span class="line">            clearInterval(timer); <span class="comment">// 清除定时器</span></span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 跳出函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        x++; <span class="comment">// 当前次数自增</span></span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, currentTop + step * x) <span class="comment">// 滚动到当前次数该到的位置</span></span><br><span class="line">    &#125;, t);</span><br></pre></td></tr></table></figure>
+<li><p>最后设置循环定时器，通过 <code>window.scrollTo()</code> 方法，在指定时间使页面滚动到指定位置，每次滚动之前，当前滚动次数加 1；在当前滚动次数达到设定的总次数后，说明已到达目标位置，此时便使用 <code>clearInterval()</code> 方法清除定时器，动画结束。下面是示例代码：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTop = <span class="built_in">window</span>.pageYOffset, <span class="comment">// 当前滚动位置</span></span><br><span class="line">    targetTop = getOffsetTop(id) &lt; <span class="number">200</span> ? <span class="number">80</span> : getOffsetTop(id), <span class="comment">// 目标滚动位置</span></span><br><span class="line">    n = <span class="number">25</span>, <span class="comment">// 滚动总次数</span></span><br><span class="line">    x = <span class="number">0</span>, <span class="comment">// 当前滚动次数</span></span><br><span class="line">    t = <span class="number">200</span> / n, <span class="comment">// 每次滚动时间</span></span><br><span class="line">    step = (targetTop - currentTop) / n, <span class="comment">// 每次滚动距离</span></span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === n) &#123; <span class="comment">// 当前滚动次数达到总次数</span></span><br><span class="line">            clearInterval(timer); <span class="comment">// 清除定时器</span></span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 跳出函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        x++; <span class="comment">// 当前次数自增</span></span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, currentTop + step * x) <span class="comment">// 滚动到当前次数该到的位置</span></span><br><span class="line">     &#125;, t);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -110,9 +110,9 @@
 <h2 id="缓动"><a href="#缓动" class="headerlink" title="缓动"></a>缓动</h2><p>顾名思义，就是缓缓移动，让动画不那么生硬，就像 CSS 动画那样，可以设置不同的速度曲线，看起来有不同的线性效果。</p>
 <ul>
 <li><p>如果自己计算缓动函数（<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>）难度比较高，所以借助现有的成熟库更方便，例如：tween.js；示例代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">time</span>) </span>&#123; <span class="comment">// 设置动画循环时间</span></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    TWEEN.update(time);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coords = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;; <span class="comment">// 起始坐标数据</span></span><br><span class="line"><span class="keyword">var</span> tween = <span class="keyword">new</span> TWEEN.Tween(coords) <span class="comment">// 创建新实例并将坐标数据传入</span></span><br><span class="line">    .to(&#123; <span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;, <span class="number">1000</span>) <span class="comment">// 在1秒钟内移动到指定坐标</span></span><br><span class="line">    .easing(TWEEN.Easing.Quadratic.Out) <span class="comment">// 设置指定的缓动方式</span></span><br><span class="line">    .onUpdate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 此函数会在Tween每次将坐标数据更新后调用</span></span><br><span class="line">        <span class="comment">// 在函数内部就可以使用坐标数据来完成动画</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .start(); <span class="comment">// 立即启动实例</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">time</span>) </span>&#123; <span class="comment">// 设置动画循环时间</span></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    TWEEN.update(time);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coords = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;; <span class="comment">// 起始坐标数据</span></span><br><span class="line"><span class="keyword">var</span> tween = <span class="keyword">new</span> TWEEN.Tween(coords) <span class="comment">// 创建新实例并将坐标数据传入</span></span><br><span class="line">    .to(&#123; <span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;, <span class="number">1000</span>) <span class="comment">// 在1秒钟内移动到指定坐标</span></span><br><span class="line">    .easing(TWEEN.Easing.Quadratic.Out) <span class="comment">// 设置指定的缓动方式</span></span><br><span class="line">    .onUpdate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 此函数会在Tween每次将坐标数据更新后调用</span></span><br><span class="line">        <span class="comment">// 在函数内部就可以使用坐标数据来完成动画</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .start(); <span class="comment">// 立即启动实例</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>要学会在不懂的情况下搞定遇到的问题；</p>
+<li><p>要学会在不懂的情况下搞定遇到的问题。</p>
 </li>
 </ul>
 <h2 id="菜单高亮"><a href="#菜单高亮" class="headerlink" title="菜单高亮"></a>菜单高亮</h2><p>通过在页面滚动时，</p>
@@ -156,40 +156,40 @@
       
         <h2 id="置顶导航栏"><a href="#置顶导航栏" class="headerlink" title="置顶导航栏"></a>置顶导航栏</h2><p>英文 sticky navbar，通过监听页面滚动事件将导航栏设置为固定定位并置顶；涉及知识：</p>
 <ul>
-<li><p><code>onscroll</code> 页面滚动事件句柄，<code>onmousewhell</code> 鼠标滚轮滚动事件句柄；</p>
+<li><p><code>onscroll</code> 页面滚动事件句柄，<code>onmousewhell</code> 鼠标滚轮滚动事件句柄。</p>
 </li>
-<li><p>获取窗口滚动距离 <code>window.scrollX/Y</code>，建议使用 <code>window.pageXOffset/YOffset</code> 来代替；</p>
+<li><p>获取窗口滚动距离 <code>window.scrollX/Y</code>，建议使用 <code>window.pageXOffset/YOffset</code> 来代替。</p>
 </li>
 </ul>
 <h2 id="加载动画"><a href="#加载动画" class="headerlink" title="加载动画"></a>加载动画</h2><p>英文 loading animation，两个圆形从小变大，从深变浅，其中一个延迟动画即可；涉及知识：</p>
 <ul>
-<li><p><code>window.setTimeout(function, time)</code>，延迟定时器；</p>
+<li><p><code>window.setTimeout(function, time)</code>，延迟定时器。</p>
 </li>
-<li><p>动画连写参数（参数之间无逗号）：<code>animation(动画名 完成时间 速度曲线 延迟开始 次数 是否轮流)</code>;</p>
+<li><p>动画连写参数（参数之间无逗号）：<code>animation(动画名 完成时间 速度曲线 延迟开始 次数 是否轮流)</code>。</p>
 </li>
-<li><p>使用 Compass 导入 keyframe 函数时，参数内是动画名，括号后加花括号，里面写动画顺序和内容；</p>
+<li><p>使用 Compass 导入 keyframe 函数时，参数内是动画名，括号后加花括号，里面写动画顺序和内容。</p>
 </li>
 </ul>
 <h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><p>英文 slide menu，通过监听一级菜单的鼠标移入移除事件来将二级菜单显示或隐藏；涉及知识：</p>
 <ul>
-<li><p>鼠标移入移出事件句柄有两组，分别是：<code>onmouseover</code> / <code>onmouseout</code> 和 <code>onmouseenter</code> / <code>onmouseleave</code>；区别是：前者的子元素也会触发事件，后者的子元素不会触发事件；要分不同的情况来监听不同的事件；</p>
+<li><p>鼠标移入移出事件句柄有两组，分别是：<code>onmouseover</code> / <code>onmouseout</code> 和 <code>onmouseenter</code> / <code>onmouseleave</code>；区别是：前者的子元素也会触发事件，后者的子元素不会触发事件；要分不同的情况来监听不同的事件。</p>
 </li>
-<li><p>如何找到二级菜单，要看具体的元素结构；课程开始使用了 <code>nextSiblling</code> 方法，来获取一级菜单内链接的下一个兄弟节点（获取上一个兄弟节点的方法是 <code>previousSibling</code>），再通过 <code>nodeType</code> 属性不同的返回值判断节点类型（例如元素节点返回值为 1），还要判断元素的 <code>tagName</code> 属性（返回的标签名为大写字母）是否为预期的，如果需要向下获取并判断多次，可以使用 <code>while</code> 语句来循环寻找元素；</p>
+<li><p>如何找到二级菜单，要看具体的元素结构；课程开始使用了 <code>nextSiblling</code> 方法，来获取一级菜单内链接的下一个兄弟节点（获取上一个兄弟节点的方法是 <code>previousSibling</code>），再通过 <code>nodeType</code> 属性不同的返回值判断节点类型（例如元素节点返回值为 1），还要判断元素的 <code>tagName</code> 属性（返回的标签名为大写字母）是否为预期的，如果需要向下获取并判断多次，可以使用 <code>while</code> 语句来循环寻找元素。</p>
 </li>
-<li><p>自己实现的方法更接近原型，使用了 <code>onmouseover</code> 和 <code>onmouseout</code> 事件，这样二级菜单也可以同时触发显示动作，无需额外处理；CSS 方面，使用了定位属性和过渡动画做位移，代码更简洁，并且有回退动画效果；但是带来的问题是无法使用 <code>display: none</code> 来隐藏菜单，最后使用了 <code>visibility: hidden/visible</code> 来做隐藏和显示，虽然元素并未从页面完全消失，但不会影响体验；</p>
+<li><p>自己实现的方法更接近原型，使用了 <code>onmouseover</code> 和 <code>onmouseout</code> 事件，这样二级菜单也可以同时触发显示动作，无需额外处理；CSS 方面，使用了定位属性和过渡动画做位移，代码更简洁，并且有回退动画效果；但是带来的问题是无法使用 <code>display: none</code> 来隐藏菜单，最后使用了 <code>visibility: hidden/visible</code> 来做隐藏和显示，虽然元素并未从页面完全消失，但不会影响体验。</p>
 </li>
-<li><p>解决问题的关键在于，马上开始着手解决问题；</p>
+<li><p>解决问题的关键在于，马上开始着手解决问题。</p>
 </li>
 </ul>
 <h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，就是让滚动条在指定时间内滚动到指定位置，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
 <ul>
-<li><p>在获取元素对象的属性时，一般推荐使用 <code>setAttribute()</code> 和 <code>getAttribute()</code> 方法，直接使用点运算符，可能会返回经过浏览器处理的结果，例如 <code>&lt;a&gt;</code> 标签中 <code>href</code> 的属性值；</p>
+<li><p>在获取元素对象的属性时，一般推荐使用 <code>setAttribute()</code> 和 <code>getAttribute()</code> 方法，直接使用点运算符，可能会返回经过浏览器处理的结果，例如 <code>&lt;a&gt;</code> 标签中 <code>href</code> 的属性值。</p>
 </li>
-<li><p>使用 <code>document.querySelector()</code> 方法可以返回文档中匹配括号中指定 CSS 选择器的第一个元素，如果要想返回匹配的所有元素，可以使用 <code>document.querySelectorAll()</code> 方法；</p>
+<li><p>使用 <code>document.querySelector()</code> 方法可以返回文档中匹配括号中指定 CSS 选择器的第一个元素，如果要想返回匹配的所有元素，可以使用 <code>document.querySelectorAll()</code> 方法。</p>
 </li>
-<li><p>点击 <code>&lt;a&gt;</code> 标签时，要阻止它的默认事件，可以使用 <code>href=&quot;javascript:&quot;</code> 的方法，但是如果 <code>href</code> 属性另有他用怎么办？那就使用时间对象的阻止默认事件方法 <code>ev.preventDefault()</code>；</p>
+<li><p>点击 <code>&lt;a&gt;</code> 标签时，要阻止它的默认事件，可以使用 <code>href=&quot;javascript:&quot;</code> 的方法，但是如果 <code>href</code> 属性另有他用怎么办？那就使用时间对象的阻止默认事件方法 <code>ev.preventDefault()</code>。</p>
 </li>
-<li><p>使用 <code>offsetTop</code> 属性可以获取元素相对于它的 <code>offsetParent</code> 元素的顶部的距离（不包含边框），这是一个只读属性，返回值是数字类型的像素数；由于无法直接获取到元素相对页面最顶端的距离，所以只能用这个属性结合 <code>offsetParent</code> 属性，一直获取到 <code>&lt;body&gt;</code> 标签以下的所有元素的 <code>offsetTop</code> 之和；与之相配套的属性是 <code>offsetLeft</code> 属性，代表相对左上角的距离；</p>
+<li><p>使用 <code>offsetTop</code> 属性可以获取元素相对于它的 <code>offsetParent</code> 元素的顶部的距离（不包含边框），这是一个只读属性，返回值是数字类型的像素数；由于无法直接获取到元素相对页面最顶端的距离，所以只能用这个属性结合 <code>offsetParent</code> 属性，一直获取到 <code>&lt;body&gt;</code> 标签以下的所有元素的 <code>offsetTop</code> 之和；与之相配套的属性是 <code>offsetLeft</code> 属性，代表相对左上角的距离。</p>
 </li>
 <li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标。</p>
 </li>
@@ -233,26 +233,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
-<li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象；</p>
+<li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象。</p>
 </li>
-<li><p>全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等；</p>
+<li><p>全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等。</p>
 </li>
 </ul>
 <h2 id="基本数据类型与对象的区别"><a href="#基本数据类型与对象的区别" class="headerlink" title="基本数据类型与对象的区别"></a>基本数据类型与对象的区别</h2><ul>
-<li><p>基本数据类型没有且不能具备属性和方法，而复杂数据类型（对象）可以具备属性和方法；</p>
+<li><p>基本数据类型没有且不能具备属性和方法，而复杂数据类型（对象）可以具备属性和方法。</p>
 </li>
-<li><p>使用 <code>new</code> 运算符可以创建一个指定对象的实例，例如 <code>var num = new Number(1)</code>；</p>
+<li><p>使用 <code>new</code> 运算符可以创建一个指定对象的实例，例如 <code>var num = new Number(1)</code>。</p>
 </li>
-<li><p>当我们平时在对存有基本数据类型的变量使用 <code>toSring()</code> 等方法时，由于数据没有这些方法，所以编译器会隐性地临时将基本数据类型转换为对象，然后再调用其指定的方法，得出结果并返回，之后临时对象会被销毁；</p>
+<li><p>当我们平时在对存有基本数据类型的变量使用 <code>toSring()</code> 等方法时，由于数据没有这些方法，所以编译器会隐性地临时将基本数据类型转换为对象，然后再调用其指定的方法，得出结果并返回，之后临时对象会被销毁。</p>
 </li>
-<li><p>当给一个基本数据类型添加属性时，编译器不会报错，它会像前面一样将基本数据类型转换为对象，再给这个临时对象添加属性，之后这个临时对象被销毁，也就访问不到添加给基本数据类型的属性了；</p>
+<li><p>当给一个基本数据类型添加属性时，编译器不会报错，它会像前面一样将基本数据类型转换为对象，再给这个临时对象添加属性，之后这个临时对象被销毁，也就访问不到添加给基本数据类型的属性了。</p>
 </li>
 </ul>
 <h2 id="公共属性"><a href="#公共属性" class="headerlink" title="公共属性"></a>公共属性</h2><ul>
-<li>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链；</li>
-<li>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例；</li>
-<li>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>；</li>
-<li><code>__proto__</code> 是用来引用父函数的 <code>prototype</code> 属性的，类似于上线下线的关系，而 <code>__proto__</code> 就是下线；</li>
+<li>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链。</li>
+<li>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例。</li>
+<li>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>。</li>
+<li><code>__proto__</code> 是用来引用父函数的 <code>prototype</code> 属性的，类似于上线下线的关系，而 <code>__proto__</code> 就是下线。</li>
 </ul>
 <h2 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h2><p><code>Function</code> 对象的 <code>__proto__</code> 属性引用的是 <code>Function</code> 自身的 <code>prototype</code>，这是内置对象中的特殊情况；而 <code>Object</code> 对象的 <code>__proto__</code> 属性引用的也是 <code>Function</code> 对象的 <code>prototype</code>，这是因为 <code>Object</code> 对象也是由函数构造的。</p>
 
@@ -294,30 +294,30 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="常见数据类型的转换"><a href="#常见数据类型的转换" class="headerlink" title="常见数据类型的转换"></a>常见数据类型的转换</h2><ul>
-<li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型；</p>
+<li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型。</p>
 </li>
-<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据类型转换为布尔值；简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> ；</p>
+<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据类型转换为布尔值；简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> 。</p>
 </li>
-<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14，这种比较常用；</p>
+<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14，这种比较常用。</p>
 </li>
 </ul>
 <h2 id="内存中数据存储方式"><a href="#内存中数据存储方式" class="headerlink" title="内存中数据存储方式"></a>内存中数据存储方式</h2><ul>
-<li><p>编译器会将分配到的内存分为代码区和数据区；</p>
+<li><p>编译器会将分配到的内存分为代码区和数据区。</p>
 </li>
-<li><p>数据区分为 Stack（栈内存） 和 Heap（堆内存）；</p>
+<li><p>数据区分为 Stack（栈内存） 和 Heap（堆内存）。</p>
 </li>
-<li><p>堆比栈大，栈比堆快；</p>
+<li><p>堆比栈大，栈比堆快。</p>
 </li>
-<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面；</p>
+<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面。</p>
 </li>
-<li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存；</p>
+<li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存。</p>
 </li>
-<li><p>当把一个基本数据类型赋值给一个变量时，变量中存储的就是这个数据本身；当把这个变量赋值给另外一个变量时，相当于将它保存的数据本身，复制一个拷贝，再赋值给新变量，之后，两个变量各拥有一份相互独立的数据；</p>
+<li><p>当把一个基本数据类型赋值给一个变量时，变量中存储的就是这个数据本身；当把这个变量赋值给另外一个变量时，相当于将它保存的数据本身，复制一个拷贝，再赋值给新变量，之后，两个变量各拥有一份相互独立的数据。</p>
 </li>
-<li><p>当把一个复杂数据类型赋值给一个变量时，变量中存储的是这个数据在堆内存中的地址，这种关系称为“引用”；当把这个变量赋值给另外一个变量时，相当于把保存的引用地址，复制一个拷贝，再赋值给新变量，之后，两个变量引用的是同一个数据，相当于两个人各拥有一张代表同一个数据的“名片”；</p>
+<li><p>当把一个复杂数据类型赋值给一个变量时，变量中存储的是这个数据在堆内存中的地址，这种关系称为“引用”；当把这个变量赋值给另外一个变量时，相当于把保存的引用地址，复制一个拷贝，再赋值给新变量，之后，两个变量引用的是同一个数据，相当于两个人各拥有一张代表同一个数据的“名片”。</p>
 </li>
 </ul>
-<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环引用可能会造成内存泄露</strong>；</p>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环引用可能会造成内存泄露</strong>。</p>
 <h2 id="试题解析"><a href="#试题解析" class="headerlink" title="试题解析"></a>试题解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">//b = &#123;n: 1&#125;;</span></span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;; <span class="comment">//&#123;n: 1, x: &#123;n: 2&#125;&#125;，a = &#123;n: 2&#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//[object, Object]</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>上面的题中，第三行的关键点在于确定当时的 <code>a</code> 变量是哪一个；</p>
@@ -328,25 +328,25 @@
 </li>
 <li><p>第四行访问 <code>a.x</code>，此时的 <code>a</code> 引用的数据已经是 <code>{n: 2}</code> ，里面并没有 <code>x</code> 这个属性，故打印出的结果为 <code>undefined</code>；</p>
 </li>
-<li><p>第五行访问 <code>b.x</code>，此时的 <code>b</code> 引用的数据依然是原来包含 <code>n: 1</code> 键值的那个数据，而此时这个数据已经有了 <code>x</code> 这个属性，并且值为另一个对象引用地址，这个地址对应的数据是 <code>{n: 2}</code>，将其隐性地使用 <code>toString()</code> 方法转换为字符串后，打印出的结果便是 <code>[object Object]</code>；</p>
+<li><p>第五行访问 <code>b.x</code>，此时的 <code>b</code> 引用的数据依然是原来包含 <code>n: 1</code> 键值的那个数据，而此时这个数据已经有了 <code>x</code> 这个属性，并且值为另一个对象引用地址，这个地址对应的数据是 <code>{n: 2}</code>，将其隐性地使用 <code>toString()</code> 方法转换为字符串后，打印出的结果便是 <code>[object Object]</code>。</p>
 </li>
 </ul>
 <h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><ul>
-<li><p>如果一个对象<strong>没有被引用</strong>，它就是垃圾数据，将被垃圾回收器清理掉；</p>
+<li><p>如果一个对象<strong>没有被引用</strong>，它就是垃圾数据，将被垃圾回收器清理掉。</p>
 </li>
-<li><p>垃圾回收器会在页面运行时，按照浏览器设定好的机制循环作业；</p>
+<li><p>垃圾回收器会在页面运行时，按照浏览器设定好的机制循环作业。</p>
 </li>
 </ul>
 <h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><ul>
-<li><p>拷贝即复制，复制后的数据与原数据，完全独立且互不影响，就称为“深拷贝”；基本数据类型之间的复制，都是深拷贝；</p>
+<li><p>拷贝即复制，复制后的数据与原数据，完全独立且互不影响，就称为“深拷贝”；基本数据类型之间的复制，都是深拷贝。</p>
 </li>
-<li><p>其实基本数据类型之间的复制谈不上什么”深浅“，深拷贝与浅拷贝主要是对于对象数据之间的复制而言的；</p>
+<li><p>其实基本数据类型之间的复制谈不上什么”深浅“，深拷贝与浅拷贝主要是对于对象数据之间的复制而言的。</p>
 </li>
-<li><p>如果将一个对象赋值给一个变量，实际是将这个对象的引用地址保存在里变量当中，那么当复制这个变量到另一个变量时，只是把这个引用地址，存到了新的变量中；当通过新的变量改变对象的属性后，访问原先的变量也能发现对象的属性变化；这种程度的复制，就是“浅拷贝”；</p>
+<li><p>如果将一个对象赋值给一个变量，实际是将这个对象的引用地址保存在里变量当中，那么当复制这个变量到另一个变量时，只是把这个引用地址，存到了新的变量中；当通过新的变量改变对象的属性后，访问原先的变量也能发现对象的属性变化；这种程度的复制，就是“浅拷贝”。</p>
 </li>
 </ul>
 <h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串；</p>
+<li><p>JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串。</p>
 </li>
 <li><p>数组的某个元素为空元素（即两个逗号之间没有任何值）时，便称为这个数组存在空位；空位不影响数组的长度；如果读取空位，会返回 <code>undefined</code>，但是把一个元素赋值为 <code>undefined</code> 后，这个元素不属于空位；如果使用 <code>delete</code> 操作符删除某个元素，那么这个元素对应的位置便成为了空位；使用 <code>for...in</code> 语句、数组的 <code>forEach()</code> 方法以及对象的 <code>keys()</code> 方法遍历数组时， 空位都会被跳过。</p>
 </li>
@@ -419,21 +419,21 @@
 <h2 id="数据类型的扩展知识"><a href="#数据类型的扩展知识" class="headerlink" title="数据类型的扩展知识"></a>数据类型的扩展知识</h2><ul>
 <li><p>Number 类型表示数字，数字一般以二进制、八进制、十进制及十六进制表示；由于进制转换的原因，数字如果有前导 0，转换后可能出现意外的 Bug（例如八进制转换），所以实际开发一般都使用十进制；如果不是参与运算的数字（例如手机号码），那么一般使用字符串存储。</p>
 </li>
-<li><p>String 类型表示字符串，空字符串只是一对单引号或双引号，其中只有一个空格也不是空字符串；</p>
+<li><p>String 类型表示字符串，空字符串只是一对单引号或双引号，其中只有一个空格也不是空字符串。</p>
 </li>
-<li><p>包裹字符串的引号，一般推荐使用单引号，这样和 HTML 代码配合比较方便；另外，表示字符串的引号，是一种形式，并不是内容，可以理解为类似数组的方括号；</p>
+<li><p>包裹字符串的引号，一般推荐使用单引号，这样和 HTML 代码配合比较方便；另外，表示字符串的引号，是一种形式，并不是内容，可以理解为类似数组的方括号。</p>
 </li>
-<li><p>区分正斜杠和反斜杠，可以参照汉字“八”，撇就是正斜杠，捺就是反斜杠；转义符是反斜杠，单行注释是双正斜杠；</p>
+<li><p>区分正斜杠和反斜杠，可以参照汉字“八”，撇就是正斜杠，捺就是反斜杠；转义符是反斜杠，单行注释是双正斜杠。</p>
 </li>
-<li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法；</p>
+<li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法。</p>
 </li>
-<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假，称为“falsy”值）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串 <code>&#39;&#39;</code> 或 <code>&quot;&quot;</code>；值为 true（真，称为“truthy”值）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）；</p>
+<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假，称为“falsy”值）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串 <code>&#39;&#39;</code> 或 <code>&quot;&quot;</code>；值为 true（真，称为“truthy”值）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）。</p>
 </li>
-<li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>；</p>
+<li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>。</p>
 </li>
-<li><p>对象中的属性名可以是任意字符串，包括空字符串；如果属性名是数字，在访问时会自动转换为字符串，但是如果不是数字也不是字符串，则需要符合标识符的命名规则；然而如果属性名是字符串或数字，那么访问时就需要使用方括号运算符而不能使用点运算符的方式，除非字符串属性名符合标识符的命名规则；</p>
+<li><p>对象中的属性名可以是任意字符串，包括空字符串；如果属性名是数字，在访问时会自动转换为字符串，但是如果不是数字也不是字符串，则需要符合标识符的命名规则；然而如果属性名是字符串或数字，那么访问时就需要使用方括号运算符而不能使用点运算符的方式，除非字符串属性名符合标识符的命名规则。</p>
 </li>
-<li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除；</p>
+<li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除。</p>
 </li>
 <li><p>使用 <code>typeof</code> 操作符对函数进行检测，返回值为反直觉的 <code>&#39;function&#39;</code>，而不是 <code>&#39;object&#39;</code>；但是检测值为 <code>null</code> 的数据，则会返回 <code>&#39;object&#39;</code>……</p>
 </li>
@@ -589,7 +589,7 @@
 <li><p>使用 <code>clip()</code> 方法可以将选中区域设置为剪辑区域，所有绘画动作都只能在这个剪辑区域操作；</p>
 </li>
 <li><p>利用 <code>save()</code>、<code>clip()</code> 以及 <code>restore()</code> 方法结合可以制作不同形状橡皮擦效果或刮刮卡效果，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果要将 Canvas 画好的图保存为图片，可以使用 <code>canvas.toDataURL()</code> 方法，它会将画布中的图案转变为 base64 编码格式的 PNG 图像并将其 Data URL 返回；方法中可以传入需要保存的文件类型的 MINE 类型参数，一般使用 表示 PNG 格式的 <code>image/png</code> 参数即可。另外，最新的浏览器一般都禁止了在新窗口打开 Data URL，所以需要将 Data URL 保存到一个 <code>&lt;a&gt;</code> 标签的 <code>href</code> 属性中，并给这个标签添加 <code>download</code> 属性设置保存的文件名，最后，触发 <code>&lt;a&gt;</code> 标签的 <code>click()</code> 方法即可打开并保存图片文件。新版火狐中，还需要将这个 <code>&lt;a&gt;</code> 标签添加到页面中才能触发点击事件。</p>
 </li>
@@ -634,12 +634,12 @@
       
         <h2 id="JS-相关知识点"><a href="#JS-相关知识点" class="headerlink" title="JS 相关知识点"></a>JS 相关知识点</h2><ul>
 <li><p>图片加载错误事件：</p>
-<p> <code>error</code> ，事件句柄为 <code>onerror</code>；可以用它来指定图片加载失败时的替代图片；</p>
+<p> <code>error</code> ，事件句柄为 <code>onerror</code>；可以用它来指定图片加载失败时的替代图片。</p>
 </li>
 <li><p>元素的上一个兄弟元素：</p>
-<p><code>node.previousSibling</code>，用来获取指定元素的上一个兄弟元素；</p>
+<p><code>node.previousSibling</code>，用来获取指定元素的上一个兄弟元素。</p>
 </li>
-<li><p>元素的 <code>class</code> 属性在 JS 中需要用 <code>node.className</code> 或 <code>node[&#39;class&#39;]</code> 的方式访问，因为在 JS 中 class 是关键字；</p>
+<li><p>元素的 <code>class</code> 属性在 JS 中需要用 <code>node.className</code> 或 <code>node[&#39;class&#39;]</code> 的方式访问，因为在 JS 中 class 是关键字。</p>
 </li>
 </ul>
 <h2 id="CSS-相关知识点"><a href="#CSS-相关知识点" class="headerlink" title="CSS 相关知识点"></a>CSS 相关知识点</h2><h2 id="HTML-相关知识点"><a href="#HTML-相关知识点" class="headerlink" title="HTML 相关知识点"></a>HTML 相关知识点</h2>
@@ -725,57 +725,57 @@
 <li>计数排序中的“桶”，</li>
 </ul>
 <h2 id="队列（Queue）"><a href="#队列（Queue）" class="headerlink" title="队列（Queue）"></a>队列（Queue）</h2><ul>
-<li><p>可以理解为数据先进先出的方式；</p>
+<li><p>可以理解为数据先进先出的方式。</p>
 </li>
-<li><p>数组中的 <code>Array.push()</code> 方法将数据推入至数组末尾（先进），<code>Array.shift()</code> 方法将数组的第一个数据取出（先出），这就属于队列操作；</p>
+<li><p>数组中的 <code>Array.push()</code> 方法将数据推入至数组末尾（先进），<code>Array.shift()</code> 方法将数组的第一个数据取出（先出），这就属于队列操作。</p>
 </li>
-<li><p>现实生活中的排队；</p>
+<li><p>现实生活中的排队。</p>
 </li>
 </ul>
 <h2 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h2><ul>
-<li><p>可以理解为数据先进后出的方式；</p>
+<li><p>可以理解为数据先进后出的方式。</p>
 </li>
-<li><p>数组中的 <code>Array.push()</code> 方法将数据推入至数组末尾（先进），<code>Array.pop()</code> 方法将数组的末一个数据弹出（后出），这就属于栈操作；</p>
+<li><p>数组中的 <code>Array.push()</code> 方法将数据推入至数组末尾（先进），<code>Array.pop()</code> 方法将数组的末一个数据弹出（后出），这就属于栈操作。</p>
 </li>
-<li><p>现实生活中拆墙；</p>
+<li><p>现实生活中拆墙。</p>
 </li>
 </ul>
 <h2 id="链表（linked-List）"><a href="#链表（linked-List）" class="headerlink" title="链表（linked List）"></a>链表（linked List）</h2><ul>
-<li><p>数组由于其连续性而使得无法<strong>直接</strong>删除中间的某项，而链表可以；</p>
+<li><p>数组由于其连续性而使得无法<strong>直接</strong>删除中间的某项，而链表可以。</p>
 </li>
-<li><p>链表可以用哈希实现，例如 JS 中的多层嵌套的对象数据；</p>
+<li><p>链表可以用哈希实现，例如 JS 中的多层嵌套的对象数据。</p>
 </li>
-<li><p>链表中 head 和 node 的概念：head 指的就是链表中的第一个数据，其余的就是 node（包括 head 中包含的数据）；</p>
+<li><p>链表中 head 和 node 的概念：head 指的就是链表中的第一个数据，其余的就是 node（包括 head 中包含的数据）。</p>
 </li>
 </ul>
 <h2 id="树（Tree）"><a href="#树（Tree）" class="headerlink" title="树（Tree）"></a>树（Tree）</h2><ul>
-<li><p>层级结构、DOM结构等都属于树形结构；</p>
+<li><p>层级结构、DOM结构等都属于树形结构。</p>
 </li>
-<li><p>概念包含：层数（数据分层所在的不同位置）、深度（树形结构有多少层）、节点个数（数据节点的数量）；</p>
+<li><p>概念包含：层数（数据分层所在的不同位置）、深度（树形结构有多少层）、节点个数（数据节点的数量）。</p>
 </li>
-<li><p>二叉树：每层数据分支最多不超过两个的树形结构，两个分叉分别用“左子树”和“右子树”表示；</p>
+<li><p>二叉树：每层数据分支最多不超过两个的树形结构，两个分叉分别用“左子树”和“右子树”表示。</p>
 <ul>
-<li><p>满二叉树：每一层数据都是两个的二叉树；</p>
+<li><p>满二叉树：每一层数据都是两个的二叉树。</p>
 </li>
-<li><p>完全二叉树；除最后一层外，其余层都是满的，并且最后一层或是满的，或是只在右边缺少连续若干节点的二叉树；</p>
+<li><p>完全二叉树；除最后一层外，其余层都是满的，并且最后一层或是满的，或是只在右边缺少连续若干节点的二叉树。</p>
 </li>
-<li><p>以上两种二叉树都能用数组实现；</p>
+<li><p>以上两种二叉树都能用数组实现。</p>
 </li>
 </ul>
 </li>
-<li><p>其他树可以用哈希（对象）实现；</p>
+<li><p>其他树可以用哈希（对象）实现。</p>
 </li>
-<li><p>其他树例如：B 树，红黑树、AVL 树等；</p>
+<li><p>其他树例如：B 树，红黑树、AVL 树等。</p>
 </li>
 </ul>
 <h2 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h2><ul>
-<li><p>堆（二叉堆）可以视为一颗完全二叉树；</p>
+<li><p>堆（二叉堆）可以视为一颗完全二叉树。</p>
 </li>
-<li><p>二叉堆分为最大堆和最小堆；</p>
+<li><p>二叉堆分为最大堆和最小堆。</p>
 </li>
-<li><p>利用二叉树特性可以实现堆排序（）；</p>
+<li><p>利用二叉树特性可以实现堆排序。</p>
 </li>
-<li><p>堆排序的速度与快排相同；</p>
+<li><p>堆排序的速度与快排相同。</p>
 </li>
 <li><p><a href="https://www.cs.usfca.edu/~galles/visualization/HeapSort.html" target="_blank" rel="noopener">堆排序可视化</a>。</p>
 </li>
