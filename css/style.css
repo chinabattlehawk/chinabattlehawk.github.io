@@ -1345,7 +1345,7 @@ pre .javascript .function {
 }
 .widget ul ul,
 .widget ol ul {
-  list-style: disc;
+  list-style: circle;
 }
 .widget ul ol,
 .widget ol ol {
