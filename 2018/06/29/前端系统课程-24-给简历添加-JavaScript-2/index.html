@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="动画 用 JavaScript 实现动画的关键是 window.setInterval() 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 setTimeout() 使用方法类似；  页面滚动动画思路：  使用 window.pageXOffset 属性获取当前页面滚动位置 currentTop，以及通过元素的 offsetTop 属性值来设定滚动目标位置 targetTop；  设">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-01T10:28:48.542Z">
+<meta property="og:updated_time" content="2018-07-01T10:30:51.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 24. 给简历添加 JavaScript (2)">
 <meta name="twitter:description" content="动画 用 JavaScript 实现动画的关键是 window.setInterval() 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 setTimeout() 使用方法类似；  页面滚动动画思路：  使用 window.pageXOffset 属性获取当前页面滚动位置 currentTop，以及通过元素的 offsetTop 属性值来设定滚动目标位置 targetTop；  设">
@@ -100,9 +100,11 @@
 </li>
 <li><p>设定到目标位置的滚动总次数 n，当前滚动次数 x；</p>
 </li>
-<li><p>设定每次滚动的时间 t 为预设动画完成时间 / 滚动总次数，例如：<code>t = 200 / n</code>；</p>
+<li><p>设定每次滚动的时间 t 为预设动画完成时间 / 滚动总次数，例如：</p>
+<p> <code>t = 200 / n</code>；</p>
 </li>
-<li><p>设定每次滚动的距离 step 为 (目标滚动位置 - 当前滚动位置) / 滚动总次数，即：<code>step = (targetTop - currentTop) / n</code>；</p>
+<li><p>设定每次滚动的距离 step 为 (目标滚动位置 - 当前滚动位置) / 滚动总次数，即：</p>
+<p> <code>step = (targetTop - currentTop) / n</code>；</p>
 </li>
 <li><p>最后设置循环定时器，通过 <code>window.scrollTo()</code> 方法，在指定时间使页面滚动到指定位置，每次滚动之前，当前滚动次数加 1；在当前滚动次数达到设定的总次数后，说明已到达目标位置，此时便使用 <code>clearInterval()</code> 方法清除定时器，动画结束。下面是示例代码：</p>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTop = <span class="built_in">window</span>.pageYOffset, <span class="comment">// 当前滚动位置</span></span><br><span class="line">    targetTop = getOffsetTop(id) &lt; <span class="number">200</span> ? <span class="number">80</span> : getOffsetTop(id), <span class="comment">// 目标滚动位置</span></span><br><span class="line">    n = <span class="number">25</span>, <span class="comment">// 滚动总次数</span></span><br><span class="line">    x = <span class="number">0</span>, <span class="comment">// 当前滚动次数</span></span><br><span class="line">    t = <span class="number">200</span> / n, <span class="comment">// 每次滚动时间</span></span><br><span class="line">    step = (targetTop - currentTop) / n, <span class="comment">// 每次滚动距离</span></span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === n) &#123; <span class="comment">// 当前滚动次数达到总次数</span></span><br><span class="line">            clearInterval(timer); <span class="comment">// 清除定时器</span></span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 跳出函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        x++; <span class="comment">// 当前次数自增</span></span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, currentTop + step * x) <span class="comment">// 滚动到当前次数该到的位置</span></span><br><span class="line">     &#125;, t);</span><br></pre></td></tr></table></figure>
@@ -124,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjj2huhyx00145sq24vo316da" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjj3noki3001fpcq25zgelun4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -134,6 +136,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 25. JavaScript 数组
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -176,7 +187,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
   </div>
 
@@ -187,6 +198,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
+          </li>
         
           <li>
             <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
@@ -202,10 +217,6 @@
         
           <li>
             <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
           </li>
         
       </ul>
