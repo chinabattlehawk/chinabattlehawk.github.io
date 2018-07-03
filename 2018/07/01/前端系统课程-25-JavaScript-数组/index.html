@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="标准库 在 JavaScript 内部预先内置的属性和方法，也就是内置 API，称为标准库。  在 3 个基本数据类型对应的全局方法前加 new 操作符和不加的区别是：加了会把参数里的数据转换成对象，不加的话只进行相应的转换；至于函数和数组，加不加无所谓。   数组 数组和对象的区别，根本在于它们的公共属性不同，也就是 __proto__ 的原型链不同。  用对象可以模拟数组存储数据的方式，但由于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T02:41:28.694Z">
+<meta property="og:updated_time" content="2018-07-02T10:49:28.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 25. JavaScript 数组">
 <meta name="twitter:description" content="标准库 在 JavaScript 内部预先内置的属性和方法，也就是内置 API，称为标准库。  在 3 个基本数据类型对应的全局方法前加 new 操作符和不加的区别是：加了会把参数里的数据转换成对象，不加的话只进行相应的转换；至于函数和数组，加不加无所谓。   数组 数组和对象的区别，根本在于它们的公共属性不同，也就是 __proto__ 的原型链不同。  用对象可以模拟数组存储数据的方式，但由于">
@@ -100,7 +100,7 @@
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
 <li><p>数组和对象的区别，根本在于它们的公共属性不同，也就是 <code>__proto__</code> 的原型链不同。</p>
 </li>
-<li><p>用对象可以模拟数组存储数据的方式，但由于原型链不同，所以这样的“数组”是“伪数组”；典型的伪数组是函数参数列表 <code>arguments</code> 对象。</p>
+<li><p>用对象可以模拟数组存储数据的方式，但由于原型链中没有 <code>Array.prototype</code> 这一链，所以它没有数组的特性，那么这种貌似数组的“数组”就是“伪数组”；典型的伪数组是函数参数列表 <code>arguments</code> 对象以及 DOM API 返回的元素集合。</p>
 </li>
 <li><p>使用 <code>forEach()</code> 方法可以遍历调用它的数组，它的参数必需接收一个函数（另一个参数是可选的），这个函数接受三个参数，第一个参数是必需的，代表数组的每一项数据，第二个是数据对应的下标，第三个是数据对应的数组。</p>
 </li>
@@ -131,16 +131,16 @@
 <li><p><code>filter()</code> 方法可以按照指定的条件，过滤掉数组中不符合这个条件的数组元素，并将符合条件的元素作为一个新数组返回；它接收一个函数作为参数，这个函数接受三个参数，可以参考 <code>forEach()</code> 方法内的函数参数。</p>
 </li>
 <li><p><code>reduce()</code> 方法的第一个参数是一个函数，此函数称为“累加器”，数组中的每个值从左到右开始缩减，最终计算称为一个值并返回；除了累加器，<code>reduce()</code> 的另一个参数是一个传递给参数的初始值，也就是说，以这个初始值为基数进行计算；累加器的参数有四个，第一个是必需值，表示初始值或者每次计算后的返回值，它会参与到下一次计算；第二个也是必须值，表示数组中的当前元素；剩下的两个一个是当前元素的索引，另一个则是当前元素所属的数组，这两个非必须值。例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> total = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> previousValue + currentValue;</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(total); <span class="comment">// 30</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> total = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> previousValue + currentValue;</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(total); <span class="comment">// 30</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用 <code>reduce()</code> 方法可以模拟 <code>map()</code> 和 <code>filter()</code> 方法，示例代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// map方法</span></span><br><span class="line"><span class="keyword">var</span> mapArr = arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(mapArr.join()); <span class="comment">// 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟map方法</span></span><br><span class="line"><span class="keyword">var</span> mapArrRe = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    previousValue.push(currentValue * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> previousValue;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="built_in">console</span>.log(mapArrRe.join()); <span class="comment">// 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter方法</span></span><br><span class="line"><span class="keyword">var</span> filterArr = arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(filterArr.join()); <span class="comment">// 2, 4, 6, 8, 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟filter方法</span></span><br><span class="line"><span class="keyword">var</span> filterArrRe = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (currentValue % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        previousValue.push(currentValue);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> previousValue;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="built_in">console</span>.log(filterArrRe.join()); <span class="comment">// 2, 4, 6, 8, 10</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// map方法</span></span><br><span class="line"><span class="keyword">var</span> mapArr = arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(mapArr.join()); <span class="comment">// 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟map方法</span></span><br><span class="line"><span class="keyword">var</span> mapArrRe = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    previousValue.push(currentValue * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> previousValue;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="built_in">console</span>.log(mapArrRe.join()); <span class="comment">// 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter方法</span></span><br><span class="line"><span class="keyword">var</span> filterArr = arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(filterArr.join()); <span class="comment">// 2, 4, 6, 8, 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟filter方法</span></span><br><span class="line"><span class="keyword">var</span> filterArrRe = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (currentValue % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        previousValue.push(currentValue);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> previousValue;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="built_in">console</span>.log(filterArrRe.join()); <span class="comment">// 2, 4, 6, 8, 10</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjj3noki0001cpcq2mutdgbiz" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjj5u2wnd001ek8q2bah2xj2s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -150,6 +150,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/07/02/前端系统课程-26-JavaScript-函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 26. JavaScript 函数
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" id="article-nav-older" class="article-nav-link-wrap">
@@ -205,6 +214,14 @@
       <ul>
         
           <li>
+            <a href="/2018/07/02/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/02/前端系统课程-26-JavaScript-函数/">前端系统课程 - 26. JavaScript 函数</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
           </li>
         
@@ -213,15 +230,7 @@
           </li>
         
           <li>
-            <a href="/2018/06/27/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
+            <a href="/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
           </li>
         
       </ul>
