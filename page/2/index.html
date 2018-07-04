@@ -66,6 +66,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-18-Canvas-画板-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/" class="article-date">
+  <time datetime="2018-06-03T06:46:01.000Z" itemprop="datePublished">2018-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="鼠标事件句柄"><a href="#鼠标事件句柄" class="headerlink" title="鼠标事件句柄"></a>鼠标事件句柄</h2><ul>
+<li><p>鼠标按下 <code>onmousedown</code></p>
+</li>
+<li><p>鼠标移动 <code>onmousemove</code></p>
+</li>
+<li><p>鼠标松开 <code>onmouseup</code></p>
+</li>
+</ul>
+<h2 id="鼠标事件信息"><a href="#鼠标事件信息" class="headerlink" title="鼠标事件信息"></a>鼠标事件信息</h2><ul>
+<li><p><code>screenX/Y</code> 属性代表鼠标在整个屏幕的位置；</p>
+</li>
+<li><p><code>clientX/Y</code> 属性代表鼠标相对于视口在窗口或文档的位置；</p>
+</li>
+<li><p>事件对象中的 <code>button</code> 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。</p>
+</li>
+</ul>
+<h2 id="canvas-标签"><a href="#canvas-标签" class="headerlink" title="canvas 标签"></a>canvas 标签</h2><p>由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。</p>
+<ul>
+<li><p><code>&lt;canvas&gt;</code> 标签和 <code>&lt;img&gt;</code> 标签类似，默认是 inline-block 元素，并自带宽和高属性；</p>
+</li>
+<li><p>如果用 CSS 设置 Canvas 元素的宽高可能会导致图像扭曲，所以要用它自带的宽高属性设置；</p>
+</li>
+<li><p>使用 Canvas 之前需要先设置上下文，例如：<code>var ctx = canvasElem.getContext(&#39;2d&#39;)</code> ，将上下文设为平面；</p>
+</li>
+<li><p>通过 <code>fillStyle</code> 属性设置填充颜色，通过 <code>strokeStyle</code> 属性设置描边颜色，设置颜色要在填充或绘制动作之前；</p>
+</li>
+<li><p>使用 <code>fillRect()</code> 方法可填充出一个矩形，4 个参数分别为（矩形左上角距画布左上角）：X 轴距离，Y 轴距离，宽度，高度；</p>
+</li>
+<li><p>通过 <code>strokeStyle</code> 属性设置描边颜色；</p>
+</li>
+<li><p>使用 <code>strokeRect()</code> 方法可绘制出一个矩形，参数同上；</p>
+</li>
+<li><p>使用 <code>clearRect()</code> 方法将一个矩形区域的内容清除，利用这个方法可以做橡皮擦功能，参数同上； </p>
+</li>
+<li><p>利用 <code>globalCompositeOperation</code> 属性可以更方便的作出橡皮擦效果，这个属性的默认值是 <code>source-over</code> 意思是在画布已有像素上绘图时会将新像素叠加，而另一个值 <code>destination-out</code> 的作用是在已有像素基础上绘图时，绘制区域的已有像素会被重置为透明，类似刮刮卡效果；利用这个属性还可以设置画布颜色，更多属性可以探索；</p>
+</li>
+<li><p>使用 <code>arc()</code> 方法可以绘制出一个圆形，6 个参数分别为（圆心距画布左上角）：X 轴距离，Y 轴距离，半径，开始弧度，结束弧度（弧度以 π 为 180°），是否为逆时针；</p>
+</li>
+<li><p>除了矩形，生成其他图形都要以 <code>beginPath()</code> 开始，以 <code>closePath()</code> 结束；</p>
+</li>
+<li><p>使用 <code>lineWidth</code> 属性可以设置线的粗细；</p>
+</li>
+<li><p>设置 <code>lineCap = &#39;round&#39;</code> 可以使线条两端为圆弧；设置 <code>lineJion = &#39;round&#39;</code> 可以使线条转折为圆弧；</p>
+</li>
+<li><p>连续画线的关键在于，起始点位置与结束点位置的交替（beginPoint = newPoint）；</p>
+</li>
+<li><p>要让画布全屏，可以将画布宽高分别设置为视口宽高，一般使用 <code>document.documentElement.clientWidth/clientHeight</code> 属性的值，并在窗口改变大小时触发；</p>
+</li>
+<li><p>使用 <code>save()</code> 方法可以保存当前的画布信息，例如缩放设置，颜色设置等，并不是保存文件；</p>
+</li>
+<li><p>使用 <code>restore()</code> 方法可以还原上一次用 <code>save()</code> 方法保存的画布信息；</p>
+</li>
+<li><p>使用 <code>clip()</code> 方法可以将选中区域设置为剪辑区域，所有绘画动作都只能在这个剪辑区域操作；</p>
+</li>
+<li><p>利用 <code>save()</code>、<code>clip()</code> 以及 <code>restore()</code> 方法结合可以制作不同形状橡皮擦效果或刮刮卡效果，例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果要将 Canvas 画好的图保存为图片，可以使用 <code>canvas.toDataURL()</code> 方法，它会将画布中的图案转变为 base64 编码格式的 PNG 图像并将其 Data URL 返回；方法中可以传入需要保存的文件类型的 MINE 类型参数，一般使用 表示 PNG 格式的 <code>image/png</code> 参数即可。另外，最新的浏览器一般都禁止了在新窗口打开 Data URL，所以需要将 Data URL 保存到一个 <code>&lt;a&gt;</code> 标签的 <code>href</code> 属性中，并给这个标签添加 <code>download</code> 属性设置保存的文件名，最后，触发 <code>&lt;a&gt;</code> 标签的 <code>click()</code> 方法即可打开并保存图片文件。新版火狐中，还需要将这个 <code>&lt;a&gt;</code> 标签添加到页面中才能触发点击事件。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjj72q9h9000y84q20l3kwe7r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-17-JavaScript-小作品" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/" class="article-date">
@@ -102,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjj5u2wmt000uk8q24uxp1b3k" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjj72q9hb001084q2czu60lzd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -143,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjj5u2wmt000qk8q28d3it5hi" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjj72q9h3000q84q2pi37w70n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -240,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjj5u2wmt000sk8q2wblir3q7" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjj72q9h6000u84q272h6vzl0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -282,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjj5u2wmt000ok8q2zgdm4iy6" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjj72q9gw000k84q2e3gfd01u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -368,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjj5u2wmt000wk8q2b9fetrip" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjj72q9h4000s84q2sh1k3m2k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -497,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjj5u2wml000nk8q2lrctxdcz" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjj72q9h1000o84q2chqpps6p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -648,7 +746,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjj5u2wm1000fk8q2ae2sb5n2" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjj72q9gr000g84q2fcepr0tz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -745,7 +843,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjj5u2wm9000hk8q2xvvezzz8" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjj72q9gz000m84q2fl33jhk9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -848,151 +946,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjj5u2wm1000ak8q2p5731z0n" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-06-HTTP-入门" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/07/前端系统课程-06-HTTP-入门/" class="article-date">
-  <time datetime="2018-05-07T11:31:14.000Z" itemprop="datePublished">2018-05-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/前端系统课程-06-HTTP-入门/">前端系统课程 - 06. HTTP 入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="WWW-历史"><a href="#WWW-历史" class="headerlink" title="WWW 历史"></a>WWW 历史</h2><ul>
-<li><p>1989 年，万维网（World Wide Web）诞生。</p>
-</li>
-<li><p>1990 年，蒂姆·伯纳斯-李（Tim Berners-Lee）发明了用网址访问网页的办法，他发明了第一个网页、第一个浏览器和第一个服务器。</p>
-</li>
-<li><p>想了解更多可以去维基百科……</p>
-</li>
-</ul>
-<h2 id="WWW-包含概念"><a href="#WWW-包含概念" class="headerlink" title="WWW 包含概念"></a>WWW 包含概念</h2><p>主要包含 3 个概念：</p>
-<ol>
-<li><p>URI（Uniform Resource Identifier，统一资源标识符）。</p>
-</li>
-<li><p>HTTP（HyperText Transfer Protocol，超级文本传输协议）。</p>
-</li>
-<li><p>HTML（HyperText Markup Language，超文本标记语言）。</p>
-</li>
-</ol>
-<h2 id="认识-URI"><a href="#认识-URI" class="headerlink" title="认识 URI"></a>认识 URI</h2><p>URI 分为：</p>
-<ul>
-<li><p>URL（Uniform Resource Locator，统一资源定位符），我们一般使用 URL 作为网址。</p>
-</li>
-<li><p>URN（Uniform Resource Name，统一资源名称），例如书籍的 ISBN 号码。</p>
-</li>
-</ul>
-<p>通过 URL 可以确定一个“唯一的”地址（网址），例如：</p>
-<p><code>https://www.baidu.com/s?wd=hello&amp;rsv_spt=1#5</code></p>
-<p>这就是一个 URL 地址，其中：<code>https://</code> 表示协议；<code>www.baidu.com</code> 表示域名；<code>/s</code> 表示路径；<code>wd=hello&amp;rsv_spt=1</code> 是查询参数；最后 <code>#5</code> 是锚点。</p>
-<h2 id="DNS-是什么"><a href="#DNS-是什么" class="headerlink" title="DNS 是什么"></a>DNS 是什么</h2><p>DNS（Domain Name System，域名系统），它的作用简单来讲就是：输入域名，输出 IP（Internet Protocol，互联网协议）。</p>
-<p>在命令行中，使用 <code>nslookup</code> 命令可以查看域名对应的 IP 地址；使用 <code>ping</code> 命令可以知道域名对应的 IP 地址以及与该域名服务器的连接情况。</p>
-<h2 id="HTTP-入门"><a href="#HTTP-入门" class="headerlink" title="HTTP 入门"></a>HTTP 入门</h2><p>HTTP 翻译过来是超文本传输协议，可以简单理解为：对客户端和服务端之间数据传输的格式规范。</p>
-<h3 id="请求与响应"><a href="#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h3><p>浏览器与服务器之间数据传输的过程大概是这样的：</p>
-<ul>
-<li><p>浏览器负责发起请求；</p>
-</li>
-<li><p>服务器在 80 端口接收请求；</p>
-</li>
-<li><p>服务器负责返回内容（响应）；</p>
-</li>
-<li><p>浏览器负责下载响应内容。</p>
-</li>
-</ul>
-<p>在这过程中，HTTP 指导浏览器和服务器如何进行沟通。</p>
-<h3 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h3><p>在 Git Bash 中，使用 <code>curl</code> 命令可以访问一个域名。例如：</p>
-<p><code>curl -s -v -H &quot;xxx&quot; -- &quot;https://www.baidu.com&quot;</code></p>
-<p>确认后会打印出响应内容，如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; &lt;div id=lg&gt; &lt;img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129&gt; &lt;/div&gt; &lt;form id=form name=f action=//www.baidu.com/s class=fm&gt; &lt;input type=hidden name=bdorz_come value=1&gt; &lt;input type=hidden name=ie value=utf-8&gt; &lt;input type=hidden name=f value=8&gt; &lt;input type=hidden name=rsv_bp value=1&gt; &lt;input type=hidden name=rsv_idx value=1&gt; &lt;input type=hidden name=tn value=baidu&gt;&lt;span class="bg s_ipt_wr"&gt;&lt;input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus&gt;&lt;/span&gt;&lt;span class="bg s_btn_wr"&gt;&lt;input type=submit id=su value=百度一下 class="bg s_btn"&gt;&lt;/span&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=u1&gt; &lt;a href=http://news.baidu.com name=tj_trnews class=mnav&gt;新闻&lt;/a&gt; &lt;a href=http://www.hao123.com name=tj_trhao123 class=mnav&gt;hao123&lt;/a&gt; &lt;a href=http://map.baidu.com name=tj_trmap class=mnav&gt;地图&lt;/a&gt; &lt;a href=http://v.baidu.com name=tj_trvideo class=mnav&gt;视频&lt;/a&gt; &lt;a href=http://tieba.baidu.com name=tj_trtieba class=mnav&gt;贴吧&lt;/a&gt; &lt;noscript&gt; &lt;a href=http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb&gt;登录&lt;/a&gt; &lt;/noscript&gt; &lt;script&gt;document.write('&lt;a href="http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u='+ encodeURIComponent(window.location.href+ (window.location.search === "" ? "?" : "&amp;")+ "bdorz_come=1")+ '" name="tj_login" class="lb"&gt;登录&lt;/a&gt;');&lt;/script&gt; &lt;a href=//www.baidu.com/more/ name=tj_briicon class=bri style="display: block;"&gt;更多产品&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=ftCon&gt; &lt;div id=ftConw&gt; &lt;p id=lh&gt; &lt;a href=http://home.baidu.com&gt;关于百度&lt;/a&gt; &lt;a href=http://ir.baidu.com&gt;About Baidu&lt;/a&gt; &lt;/p&gt; &lt;p id=cp&gt;&amp;copy;2017&amp;nbsp;Baidu&amp;nbsp;&lt;a href=http://www.baidu.com/duty/&gt;使用百度前必读&lt;/a&gt;&amp;nbsp; &lt;a href=http://jianyi.baidu.com/ class=cp-feedback&gt;意见反馈&lt;/a&gt;&amp;nbsp;京ICP证030173号&amp;nbsp; &lt;img src=//www.baidu.com/img/gs.gif&gt; &lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;</span><br><span class="line">* STATE: INIT =&gt; CONNECT handle 0x48ef160; line 1404 (connection #-5000)</span><br><span class="line">* Rebuilt URL to: http://www.baidu.com/</span><br><span class="line">* Added connection 0. The cache now contains 1 members</span><br><span class="line">* STATE: CONNECT =&gt; WAITRESOLVE handle 0x48ef160; line 1440 (connection #0)</span><br><span class="line">*   Trying 61.135.169.125...</span><br><span class="line">* TCP_NODELAY set</span><br><span class="line">* STATE: WAITRESOLVE =&gt; WAITCONNECT handle 0x48ef160; line 1521 (connection #0)</span><br><span class="line">* Connected to www.baidu.com (61.135.169.125) port 80 (#0)</span><br><span class="line">* STATE: WAITCONNECT =&gt; SENDPROTOCONNECT handle 0x48ef160; line 1573 (connection #0)</span><br><span class="line">* Marked for [keep alive]: HTTP default</span><br><span class="line">* STATE: SENDPROTOCONNECT =&gt; DO handle 0x48ef160; line 1591 (connection #0)</span><br><span class="line"><span class="meta">&gt;</span> GET / HTTP/1.1</span><br><span class="line"><span class="meta">&gt;</span> Host: www.baidu.com</span><br><span class="line"><span class="meta">&gt;</span> User-Agent: curl/7.59.0</span><br><span class="line"><span class="meta">&gt;</span> Accept: */*</span><br><span class="line"><span class="meta">&gt;</span></span><br><span class="line">* STATE: DO =&gt; DO_DONE handle 0x48ef160; line 1670 (connection #0)</span><br><span class="line">* STATE: DO_DONE =&gt; WAITPERFORM handle 0x48ef160; line 1795 (connection #0)</span><br><span class="line">* STATE: WAITPERFORM =&gt; PERFORM handle 0x48ef160; line 1811 (connection #0)</span><br><span class="line">* HTTP 1.1 or later with persistent connection, pipelining supported</span><br><span class="line">&lt; HTTP/1.1 200 OK</span><br><span class="line">* Server bfe/1.0.8.18 is not blacklisted</span><br><span class="line">&lt; Server: bfe/1.0.8.18</span><br><span class="line">&lt; Date: Mon, 07 May 2018 08:02:59 GMT</span><br><span class="line">&lt; Content-Type: text/html</span><br><span class="line">&lt; Content-Length: 2381</span><br><span class="line">&lt; Last-Modified: Mon, 23 Jan 2017 13:27:32 GMT</span><br><span class="line">&lt; Connection: Keep-Alive</span><br><span class="line">&lt; ETag: "588604c4-94d"</span><br><span class="line">&lt; Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform</span><br><span class="line">&lt; Pragma: no-cache</span><br><span class="line">&lt; Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/</span><br><span class="line">&lt; Accept-Ranges: bytes</span><br><span class="line">&lt;</span><br><span class="line">&#123; [2381 bytes data]</span><br><span class="line">* STATE: PERFORM =&gt; DONE handle 0x48ef160; line 1980 (connection #0)</span><br><span class="line">* multi_done</span><br><span class="line">* Connection #0 to host www.baidu.com left intact</span><br><span class="line">* Expire cleared</span><br></pre></td></tr></table></figure>
-<p>可以看到开头为大于号的内容行为发送的请求内容；而开头为小于号的内容行则是返回内容；开头的 HTML 格式内容则是下载的响应内容；其余以星号开头的都是注释。</p>
-<h3 id="GET-与-POST"><a href="#GET-与-POST" class="headerlink" title="GET 与 POST"></a>GET 与 POST</h3><p>改用 POST 请求，<code>curl -X POST -s -v -H &quot;xxx&quot; -- &quot;https://www.baidu.com&quot;</code>，返回“页面不存在”页面……</p>
-<p>两者的区别可以从字面意思理解，“GET”就是获取数据，“POST”就是提交数据。</p>
-<h3 id="请求的格式"><a href="#请求的格式" class="headerlink" title="请求的格式"></a>请求的格式</h3><p>请求内容是有固定格式的：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 动词 路径 协议/版本</span><br><span class="line">2 key1: value1 // 例如：Content-Type: application/x-www-form-urlencoded</span><br><span class="line">  key2: value2 // 例如：Host: www.baidu.com </span><br><span class="line">  key3: value3 // 例如：User-Agent: curl/7.54.0</span><br><span class="line">  ...</span><br><span class="line">3</span><br><span class="line">4 要上传的数据</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>请求最多包含四部分，最少包含三部分（第四部分可以为空）。</p>
-</li>
-<li><p>第三部分永远都是一个回车 <code>\n</code>，主要是用来区分第二部分和第四部分内容的。</p>
-</li>
-<li><p>动词有 GET（获取）、POST（新增或上传）、PUT（整体更新）、PATCH（局部更新）、DELETE（删除）、HEAD、OPTIONS等。</p>
-</li>
-<li><p>请求中的路径包括“查询参数”，但不包括“锚点”；因为“锚点”不是由服务器识别，而是由浏览器识别的。</p>
-</li>
-<li><p>如果没有写路径，那么路径默认为 <code>/</code>，代表根目录。</p>
-</li>
-<li><p>第二部分中的“Content-Type”标注了第四部分的格式。</p>
-</li>
-</ol>
-<h3 id="响应的格式"><a href="#响应的格式" class="headerlink" title="响应的格式"></a>响应的格式</h3><ul>
-<li><p>GET 请求和 POST 请求对应的响应内容可能一样，也可能不一样。</p>
-</li>
-<li><p>响应的第四部分可以很长。</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 协议/版本 状态码 状态解释</span><br><span class="line">2 key1: value1 // 例如：Content-Length: 17931</span><br><span class="line">  key2: value2 // 例如：Content-Type: text/html</span><br><span class="line">  ...</span><br><span class="line">3</span><br><span class="line">4 要下载的内容</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>状态码要背，可以看作是服务器对浏览器说的话：</p>
-<ul>
-<li><p>1xx，不常用；</p>
-</li>
-<li><p>2xx，表示成功；</p>
-</li>
-<li><p>3xx，表示滚吧；</p>
-</li>
-<li><p>4xx，表示你丫错了；</p>
-</li>
-<li><p>5xx，表示好吧，我错了。</p>
-</li>
-</ul>
-</li>
-<li><p>状态解释没什么卵用。</p>
-</li>
-<li><p>第二部分的“Content-Type”标注了第四部分的格式，它遵循 MIME 规范。</p>
-</li>
-</ul>
-<h3 id="使用-Chrome-查看请求数据与响应数据"><a href="#使用-Chrome-查看请求数据与响应数据" class="headerlink" title="使用 Chrome 查看请求数据与响应数据"></a>使用 Chrome 查看请求数据与响应数据</h3><ol>
-<li><p>打开浏览器后，再按 F12 打开 Dev Tools（开发者工具）；</p>
-</li>
-<li><p>打开“Network”选项卡；</p>
-</li>
-<li><p>打开一个网页，网页打开后，“Network”内容下会出现很多请求列表；</p>
-</li>
-<li><p>点击你想查看的请求列表项的“Name”项，右侧便会显示该项的 Header 信息；</p>
-</li>
-<li><p>Header 信息里的“Request Header”，就是请求数据；而“Response Header”则是响应数据；</p>
-</li>
-<li><p>要想看到请求数据与响应数据的源码，<strong>请展开响应数据后，点击“view source”</strong>，不然一辈子也看不到哦！这老师念了 N 遍……</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjj5u2wm1000dk8q2zxo94ucy" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjj72q9go000e84q279v21b2m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1054,7 +1008,11 @@
       <ul>
         
           <li>
-            <a href="/2018/07/02/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
+            <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/03/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
           </li>
         
           <li>
@@ -1067,10 +1025,6 @@
         
           <li>
             <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
           </li>
         
       </ul>
