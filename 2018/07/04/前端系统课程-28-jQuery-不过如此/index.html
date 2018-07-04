@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="封装函数尝试将一个功能，封装为一个函数，利用函数的参数，将数据抽象化后，函数便拥有了更高的适用性。例如来封装一个获取某个节点的所有兄弟节点的函数： 12345678910111213function getSibilings(node) &amp;#123;    var childs = node.parent.children,        sibilings = &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T12:03:39.346Z">
+<meta property="og:updated_time" content="2018-07-04T12:04:51.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 28. jQuery 不过如此">
 <meta name="twitter:description" content="封装函数尝试将一个功能，封装为一个函数，利用函数的参数，将数据抽象化后，函数便拥有了更高的适用性。例如来封装一个获取某个节点的所有兄弟节点的函数： 12345678910111213function getSibilings(node) &amp;#123;    var childs = node.parent.children,        sibilings = &amp;#123;">
@@ -105,7 +105,7 @@
 </li>
 <li><p>如果简化了代码可能会觉得哪里不对，其实是因为忽略了实例化时传入参数的过程，例如下面的简化例子:</p>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.NodeUp = <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> node.nextSibling;</span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: <span class="function"><span class="keyword">function</span> (<span class="params">class</span>) </span>&#123;</span><br><span class="line">            node.classList.add(<span class="class"><span class="keyword">class</span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nodeUp = NodeUp(testObj);</span><br><span class="line">nodeUp.addClass(<span class="string">'test'</span>);</span><br></pre></td></tr></table></figure>
-<p> 首先，上面代码中的 <code>NodeUp</code> 返回的是一个拥有两个方法的对象，那么这个对象是 DOM 对象吗？不是。当 <code>NodeUp</code> 实例化时，不管有没有参数传入，实例化对象都可以使用这两个方法；但是这两个方法又依赖于传进来的参数，所以实例化后，就看起来好像是传入的这个 DOM 对象拥有了这两个方法，其实并不是，只是通过参数来告诉函数，调用这两个方法的时候，要施加给谁；而前面较为复杂的那段代码，才是真正的把方法添加给了包装后的对象。</p>
+<p> 上面代码中的 <code>NodeUp</code> 返回的是一个拥有两个方法的对象，那么这个对象是 DOM 对象吗？不是。当 <code>NodeUp</code> 实例化时，不管有没有参数传入，实例化对象都可以使用这两个方法；但是这两个方法又依赖于传进来的参数，所以实例化后，就看起来好像是传入的这个 DOM 对象拥有了这两个方法，其实并不是，只是通过参数来告诉函数，调用这两个方法的时候，要施加给谁；而前面较为复杂的那段代码，才是真正的把方法添加给了包装后的对象。</p>
 </li>
 <li><p>jQuery 中的 set 和 get 两种类型的方法，大都是根据是否传参来判断执行何种操作的。</p>
 </li>
