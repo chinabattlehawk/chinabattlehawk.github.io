@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端系统课程 - 29. jQuery 做轮播图 | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="代码分离 内容、样式、行为分离，在当下是一种大多数开发者认为理所当然的共识。  代码分离解决的最主要的问题是代码维护。  理所当然的问题，可以用“如果不”的方式去回答，例如设想使用 HTML 文件操作样式会使更新样式工作繁复；使用 CSS 操作内容导致内容无法被选中、获取或搜索；使用 JS 操作样式有可能改变样式布局（举例了 jQuery 中的 show() 和 hide() 方法）等等。   轮">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端系统课程 - 29. jQuery 做轮播图">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="代码分离 内容、样式、行为分离，在当下是一种大多数开发者认为理所当然的共识。  代码分离解决的最主要的问题是代码维护。  理所当然的问题，可以用“如果不”的方式去回答，例如设想使用 HTML 文件操作样式会使更新样式工作繁复；使用 CSS 操作内容导致内容无法被选中、获取或搜索；使用 JS 操作样式有可能改变样式布局（举例了 jQuery 中的 show() 和 hide() 方法）等等。   轮">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-05T13:07:25.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端系统课程 - 29. jQuery 做轮播图">
+<meta name="twitter:description" content="代码分离 内容、样式、行为分离，在当下是一种大多数开发者认为理所当然的共识。  代码分离解决的最主要的问题是代码维护。  理所当然的问题，可以用“如果不”的方式去回答，例如设想使用 HTML 文件操作样式会使更新样式工作繁复；使用 CSS 操作内容导致内容无法被选中、获取或搜索；使用 JS 操作样式有可能改变样式布局（举例了 jQuery 中的 show() 和 hide() 方法）等等。   轮">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端系统课程-29-jQuery-做轮播图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/" class="article-date">
+  <time datetime="2018-07-05T01:49:56.000Z" itemprop="datePublished">2018-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端系统课程 - 29. jQuery 做轮播图
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><ul>
+<li><p>内容、样式、行为分离，在当下是一种大多数开发者认为理所当然的共识。</p>
+</li>
+<li><p>代码分离解决的最主要的问题是代码维护。</p>
+</li>
+<li><p>理所当然的问题，可以用“如果不”的方式去回答，例如设想使用 HTML 文件操作样式会使更新样式工作繁复；使用 CSS 操作内容导致内容无法被选中、获取或搜索；使用 JS 操作样式有可能改变样式布局（举例了 jQuery 中的 <code>show()</code> 和 <code>hide()</code> 方法）等等。</p>
+</li>
+</ul>
+<h2 id="轮播"><a href="#轮播" class="headerlink" title="轮播"></a>轮播</h2><ul>
+<li><p>利用”拉洋片“的原理……</p>
+</li>
+<li><p>朝哪个方向滑动，就把图片朝哪个方向连起来。</p>
+</li>
+<li><p>尽量使用 CSS3 的代码，现在的兼容性已经很好了。</p>
+</li>
+<li><p>在知道图片宽高时，尽量将 <code>&lt;img&gt;</code> 标签的 <code>width</code> 和 <code>height</code> 属性填写上，以便在图片无法显示时，也不会影响布局。</p>
+</li>
+<li><p>取模运算可以用来配合循环定时器，<code>n % length</code> 可以将操作轮次一直控制在固定的长度范围内。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n % <span class="number">3</span>);</span><br><span class="line">    n++;</span><br><span class="line">&#125;, <span class="number">1000</span>); <span class="comment">// 每秒会打印出n对3取的余数，也就是0、1、2如此循环</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本课涉及的 jQuery API：</p>
+<ul>
+<li><p><code>on()</code> 方法，第一个参数是监听的事件，第二个是要执行的函数，这个函数也可以接受事件信息参数；</p>
+</li>
+<li><p><code>css()</code> 方法，传入一个对象，对象中是要修改的 CSS 样式代码；</p>
+</li>
+<li><p><code>index()</code> 方法可以获取元素在兄弟节点中的排序；</p>
+</li>
+<li><p><code>trigger()</code> 方法可以激活参数指定的事件；</p>
+</li>
+<li><p><code>eq()</code> 方法可以获取 jQuery 对象列表中指定下标的某个元素，这个元素任然是 jQuery 对象而不是 DOM 对象，这就是此方法区别于直接使用方括号或 <code>get()</code> 方法的特性；</p>
+</li>
+<li><p><code>addClass()</code> 方法可以给对象添加指定的 <code>class</code> 属性，与之相对应的删除方法是 <code>removeClass()</code>；</p>
+</li>
+<li><p><code>siblings()</code> 方法可以获取对象的所有兄弟元素节点；</p>
+</li>
+<li><p>要创建一个标签，可以直接在 <code>$()</code> 方法中以字符串形式传入标签，例如：<code>$(&#39;&lt;li&gt;&lt;/li&gt;&#39;)</code> 就可以创建一个 <code>&lt;li&gt;</code> 标签；</p>
+</li>
+<li><p><code>appen()</code> 方法可以将新建的 jQuery 对象添加为目标元素的子元素；</p>
+</li>
+<li><p>如果要对多个元素进行相同操作，可以将多个元素一并选中，并用逗号隔开，例如：<code>$(&#39;.test1, .test2&#39;)</code>；</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjj8kijle001ib8q2my5jwp4j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 - 28. jQuery 不过如此</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/03/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/02/前端系统课程-26-JavaScript-函数/">前端系统课程 - 26. JavaScript 函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

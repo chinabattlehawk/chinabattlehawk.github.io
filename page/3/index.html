@@ -66,6 +66,109 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-07-Node-js-Server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/07/前端系统课程-07-Node-js-Server/" class="article-date">
+  <time datetime="2018-05-07T12:16:41.000Z" itemprop="datePublished">2018-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/07/前端系统课程-07-Node-js-Server/">前端系统课程 - 07. Node.js Server</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="TCP-与-UDP"><a href="#TCP-与-UDP" class="headerlink" title="TCP 与 UDP"></a>TCP 与 UDP</h2><ul>
+<li><p>HTTP 协议的底层是由 TCP/IP 协议构建的。</p>
+</li>
+<li><p>TCP（Transmission Control Protocol，传输控制协议）。</p>
+</li>
+<li><p>UDP（User Datagram Protocol，用户数据报协议）。</p>
+</li>
+<li><p>TCP 和 UDP 的区别：</p>
+<ul>
+<li><p>TCP 可靠（成功与否都能感知），面向连接、相对 UDP 较慢；</p>
+</li>
+<li><p>UDP 不可靠，不面向连接、相对 TCP 较快。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>TCP 的三次握手指的是什么：每次建立连接前，客户端和服务端之前都要先进行三次对话才开始正式传输内容，三次对话大概是这样的：</p>
+<ol>
+<li><p>客户端对服务端说：我要连接你了，可以吗？</p>
+</li>
+<li><p>服务端对客户端说：好的，我准备好了，连接我吧。</p>
+</li>
+<li><p>客户端对服务端说：那我连接你咯。</p>
+</li>
+<li><p>开始后面的步骤。</p>
+</li>
+</ol>
+<h2 id="内网与外网"><a href="#内网与外网" class="headerlink" title="内网与外网"></a>内网与外网</h2><ul>
+<li><p>电信提供 DNS 服务。</p>
+</li>
+<li><p>设备通过网线或 WIFI 与路由器连接。</p>
+</li>
+<li><p>路由器通过光纤与电信服务器连接，路由器会有一个外网 IP，这就是你在互联网中的地址，但是这个地址通常是不固定的，重启路由器可能被重新分配一个外网 IP。</p>
+</li>
+<li><p>可以花钱租一个固定外网 IP，但一般只有企业才会使用固定 IP，用来提供稳定的服务。</p>
+</li>
+<li><p>路由器会创建一个内网，内网中的设备使用内网 IP，内网 IP 通常都是 192.168.xxx.xxx 的格式。</p>
+</li>
+<li><p>路由器自身也占用一个内网 IP，它同时拥有一个外网 IP 和内网 IP。</p>
+</li>
+<li><p>内网中的设备可以互相访问，但是不能直接访问外网，只能通过路由器中转才能访问外网。</p>
+</li>
+<li><p>外网中的设备可以互相访问，但是不能直接访问内网，也只能通过路由器中转。</p>
+</li>
+<li><p>路由器就是用来“指路”的，主要功能就是用来分发内容；</p>
+</li>
+<li><p>内网与外网之间无法互通，唯一的连通点就是路由器，所以路由器又称为“网关”；</p>
+</li>
+<li><p>除了内网 IP 和 外网 IP，还有两个特殊的 IP，一个是本地 IP：127.0.0.1，它代表设备自身；另一个是：0.0.0.0，它不表示任何设备，在不同地方有不同的含义。</p>
+</li>
+</ul>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>要使用 HTTP 协议（或 TCP/IP 协议）访问一个设备，只指定 IP 是不够的，还必须指定端口（Port）。</p>
+<p>端口不是一种硬件，而是一个编号。</p>
+<p>一个服务器不一定只提供一种服务，那么一个 IP 是无法告诉服务器要使用的是哪种服务的。所以需要用一个端口，对应一种服务。例如：通常使用 80 端口提供 HTTP 服务，使用 443 端口提供 HTTPS 服务，使用 21 端口提供 FTP 服务等等……</p>
+<p>端口号从 0 到 1023 号端口都有对应的服务，具体可以谷歌查询。</p>
+<p>每个机器有 65535（2 的 16 次方减 1）个端口，这些端口遵循一些规定：</p>
+<ul>
+<li><p>0 到 1023（2 的 10 次方减 1）号端口是留给系统使用的，只有拥有管理员权限后，才能使用这 1024 个端口。</p>
+</li>
+<li><p>其他端口可以给普通用户使用。</p>
+</li>
+<li><p>如果一个端口正在提供服务，也就是被占用了，那么就不能再使用这个端口；除非先停止正在占用这个端口的服务。</p>
+</li>
+</ul>
+<p>使用 HTTP 协议访问另一个 IP 时，必须同时提供 IP 和端口号，缺一不可。但是一般访问一个网址时，由于默认访问的就是 80 端口，所以这个端口号会被浏览器自动添加并且隐去不显示，所以在输入网址时一般不需要写 80 端口号。</p>
+<h2 id="Node-js-服务器"><a href="#Node-js-服务器" class="headerlink" title="Node.js 服务器"></a>Node.js 服务器</h2><h3 id="接收请求"><a href="#接收请求" class="headerlink" title="接收请求"></a>接收请求</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjj8kijkk000gb8q2aknorujn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-06-HTTP-入门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/07/前端系统课程-06-HTTP-入门/" class="article-date">
@@ -198,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjj72q9gt000i84q2333vss1h" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjj8kijka0008b8q2lqgjrvt1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -280,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjj72q9gm000d84q28rtgblsj" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjj8kijkk000eb8q2ir7sqqp4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -424,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjj72q9fz000484q2lj1rw42l" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjj8kijkk000cb8q2hh0ae4ag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -530,7 +633,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjj72q9fo000084q25xyuknlh" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjj8kijka0006b8q22gquf16i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -611,7 +714,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjj72q9g1000584q2eywahdjc" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjj8kijka0004b8q25c35as8h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -713,7 +816,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjj72q9fy000384q218bjbzh2" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjj8kijka0003b8q2qzqs4b7c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -983,7 +1086,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjj72q9fu000184q2xiz94utj" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjj8kijjq0000b8q2akykbq6j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1030,7 +1133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjj72q9hr001i84q2zrf9j3y4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjj8kijle001mb8q20qe2wv1n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1119,7 +1222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客搭建方法/" data-id="cjj72q9hv001l84q2ptteen3c" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客搭建方法/" data-id="cjj8kijle001kb8q2e1so6by4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1179,6 +1282,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
           </li>
         
@@ -1192,10 +1299,6 @@
         
           <li>
             <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
           </li>
         
       </ul>

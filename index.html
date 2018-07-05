@@ -66,6 +66,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-29-jQuery-做轮播图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/" class="article-date">
+  <time datetime="2018-07-05T01:49:56.000Z" itemprop="datePublished">2018-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><ul>
+<li><p>内容、样式、行为分离，在当下是一种大多数开发者认为理所当然的共识。</p>
+</li>
+<li><p>代码分离解决的最主要的问题是代码维护。</p>
+</li>
+<li><p>理所当然的问题，可以用“如果不”的方式去回答，例如设想使用 HTML 文件操作样式会使更新样式工作繁复；使用 CSS 操作内容导致内容无法被选中、获取或搜索；使用 JS 操作样式有可能改变样式布局（举例了 jQuery 中的 <code>show()</code> 和 <code>hide()</code> 方法）等等。</p>
+</li>
+</ul>
+<h2 id="轮播"><a href="#轮播" class="headerlink" title="轮播"></a>轮播</h2><ul>
+<li><p>利用”拉洋片“的原理……</p>
+</li>
+<li><p>朝哪个方向滑动，就把图片朝哪个方向连起来。</p>
+</li>
+<li><p>尽量使用 CSS3 的代码，现在的兼容性已经很好了。</p>
+</li>
+<li><p>在知道图片宽高时，尽量将 <code>&lt;img&gt;</code> 标签的 <code>width</code> 和 <code>height</code> 属性填写上，以便在图片无法显示时，也不会影响布局。</p>
+</li>
+<li><p>取模运算可以用来配合循环定时器，<code>n % length</code> 可以将操作轮次一直控制在固定的长度范围内。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n % <span class="number">3</span>);</span><br><span class="line">    n++;</span><br><span class="line">&#125;, <span class="number">1000</span>); <span class="comment">// 每秒会打印出n对3取的余数，也就是0、1、2如此循环</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本课涉及的 jQuery API：</p>
+<ul>
+<li><p><code>on()</code> 方法，第一个参数是监听的事件，第二个是要执行的函数，这个函数也可以接受事件信息参数；</p>
+</li>
+<li><p><code>css()</code> 方法，传入一个对象，对象中是要修改的 CSS 样式代码；</p>
+</li>
+<li><p><code>index()</code> 方法可以获取元素在兄弟节点中的排序；</p>
+</li>
+<li><p><code>trigger()</code> 方法可以激活参数指定的事件；</p>
+</li>
+<li><p><code>eq()</code> 方法可以获取 jQuery 对象列表中指定下标的某个元素，这个元素任然是 jQuery 对象而不是 DOM 对象，这就是此方法区别于直接使用方括号或 <code>get()</code> 方法的特性；</p>
+</li>
+<li><p><code>addClass()</code> 方法可以给对象添加指定的 <code>class</code> 属性，与之相对应的删除方法是 <code>removeClass()</code>；</p>
+</li>
+<li><p><code>siblings()</code> 方法可以获取对象的所有兄弟元素节点；</p>
+</li>
+<li><p>要创建一个标签，可以直接在 <code>$()</code> 方法中以字符串形式传入标签，例如：<code>$(&#39;&lt;li&gt;&lt;/li&gt;&#39;)</code> 就可以创建一个 <code>&lt;li&gt;</code> 标签；</p>
+</li>
+<li><p><code>appen()</code> 方法可以将新建的 jQuery 对象添加为目标元素的子元素；</p>
+</li>
+<li><p>如果要对多个元素进行相同操作，可以将多个元素一并选中，并用逗号隔开，例如：<code>$(&#39;.test1, .test2&#39;)</code>；</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjj8kijle001ib8q2my5jwp4j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-28-jQuery-不过如此" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/" class="article-date">
@@ -126,12 +209,14 @@
 </li>
 </ul>
 </li>
+<li><p>拥有 <code>id</code> 属性的标签，在 JavaScript 中默认成为 <code>window</code> 对象的属性，相当于一个全局变量；也正因为如此，所以 <code>id</code> 的值不要与 <code>window</code> 对象已有的属性重名；这也是尽量不用全局变量的原因之一。</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjj72q9hk001a84q2jxjqu67q" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjj8kijle001gb8q28o4bxkcf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -231,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjj72q9hq001g84q2dummwe0j" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjj8kijle001eb8q2es3paoqs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -342,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjj72q9ht001k84q2u1n7mjgj" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjj8kijle001cb8q2gmkoojjt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -425,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjj72q9hm001c84q2kz3rf4u7" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjj8kijl4001ab8q2gdksm8wv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -494,7 +579,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjj72q9ho001e84q2ae0posme" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjj8kijl40018b8q2ttgh8oho" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -572,7 +657,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjj72q9hi001884q2kde7kijt" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjj8kijl40014b8q2451mrjzt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -637,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjj72q9hh001684q29m93pyhl" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjj8kijl40012b8q2s3ccbchy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -733,7 +818,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjj72q9hf001484q27p1zhxl9" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjj8kijl40016b8q2qb9oqrsi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -826,59 +911,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjj72q9h8000w84q2lw2l0rlf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/" class="article-date">
-  <time datetime="2018-06-04T14:22:14.000Z" itemprop="datePublished">2018-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="视口设置"><a href="#视口设置" class="headerlink" title="视口设置"></a>视口设置</h2><p>原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下：</p>
-<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
-<p>以上标签的 content 属性值，含义依次为：视口宽度，设置为了设备宽度；用户缩放，设置为禁用；初识缩放比例，设置为 1；最大缩放比例，设置为 1；最小缩放比例，设置为 1。</p>
-<h2 id="触摸事件句柄"><a href="#触摸事件句柄" class="headerlink" title="触摸事件句柄"></a>触摸事件句柄</h2><ul>
-<li><p>触摸开始（手指接触） <code>ontouchstart</code></p>
-</li>
-<li><p>触目移动（手指移动） <code>ontouchmove</code></p>
-</li>
-<li><p>触摸结束（手指抬起） <code>ontouchend</code></p>
-</li>
-</ul>
-<h2 id="触摸特性检测"><a href="#触摸特性检测" class="headerlink" title="触摸特性检测"></a>触摸特性检测</h2><p>可以使用 <code>in</code> 操作符，来检测 <code>window</code> 对象是否包含触摸事件 <code>onmovestart</code> 对应的属性，如果包含则返回 <code>true</code>，不包含则返回 <code>false</code>；而后通过返回值来设置要监听的事件，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasTouch = <span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>, <span class="comment">// 检测是否为触摸设备</span></span><br><span class="line">    tapStart = hasTouch ? <span class="string">'touchstart'</span> : <span class="string">'mousedown'</span>,</span><br><span class="line">    tapMove = hasTouch ? <span class="string">'touchmove'</span> : <span class="string">'mousemove'</span>,</span><br><span class="line">    tapEnd = hasTouch ? <span class="string">'touchend'</span> : <span class="string">'mouseup'</span>; <span class="comment">// 监听不同设备事件</span></span><br></pre></td></tr></table></figure>
-<h2 id="触摸事件信息"><a href="#触摸事件信息" class="headerlink" title="触摸事件信息"></a>触摸事件信息</h2><p>要获取触摸事件信息，需要先获取触摸点；由于触控设备大都支持多点触控，所以事件对象会将触摸点作为一个集合（非数组）返回，但是一般只处理一个触摸点，就是集合的第 0 个对象，即 <code>touchEvent.touches[0]</code>。其他的位置属性基本上和鼠标事件信息类似。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjj72q9hd001284q2yblmiw3v" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjj8kijl4000yb8q2fzo9fe2a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -940,6 +973,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
           </li>
         
@@ -953,10 +990,6 @@
         
           <li>
             <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
           </li>
         
       </ul>

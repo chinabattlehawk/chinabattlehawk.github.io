@@ -66,6 +66,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/" class="article-date">
+  <time datetime="2018-06-04T14:22:14.000Z" itemprop="datePublished">2018-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="视口设置"><a href="#视口设置" class="headerlink" title="视口设置"></a>视口设置</h2><p>原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下：</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+<p>以上标签的 content 属性值，含义依次为：视口宽度，设置为了设备宽度；用户缩放，设置为禁用；初识缩放比例，设置为 1；最大缩放比例，设置为 1；最小缩放比例，设置为 1。</p>
+<h2 id="触摸事件句柄"><a href="#触摸事件句柄" class="headerlink" title="触摸事件句柄"></a>触摸事件句柄</h2><ul>
+<li><p>触摸开始（手指接触） <code>ontouchstart</code></p>
+</li>
+<li><p>触目移动（手指移动） <code>ontouchmove</code></p>
+</li>
+<li><p>触摸结束（手指抬起） <code>ontouchend</code></p>
+</li>
+</ul>
+<h2 id="触摸特性检测"><a href="#触摸特性检测" class="headerlink" title="触摸特性检测"></a>触摸特性检测</h2><p>可以使用 <code>in</code> 操作符，来检测 <code>window</code> 对象是否包含触摸事件 <code>onmovestart</code> 对应的属性，如果包含则返回 <code>true</code>，不包含则返回 <code>false</code>；而后通过返回值来设置要监听的事件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasTouch = <span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>, <span class="comment">// 检测是否为触摸设备</span></span><br><span class="line">    tapStart = hasTouch ? <span class="string">'touchstart'</span> : <span class="string">'mousedown'</span>,</span><br><span class="line">    tapMove = hasTouch ? <span class="string">'touchmove'</span> : <span class="string">'mousemove'</span>,</span><br><span class="line">    tapEnd = hasTouch ? <span class="string">'touchend'</span> : <span class="string">'mouseup'</span>; <span class="comment">// 监听不同设备事件</span></span><br></pre></td></tr></table></figure>
+<h2 id="触摸事件信息"><a href="#触摸事件信息" class="headerlink" title="触摸事件信息"></a>触摸事件信息</h2><p>要获取触摸事件信息，需要先获取触摸点；由于触控设备大都支持多点触控，所以事件对象会将触摸点作为一个集合（非数组）返回，但是一般只处理一个触摸点，就是集合的第 0 个对象，即 <code>touchEvent.touches[0]</code>。其他的位置属性基本上和鼠标事件信息类似。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjj8kijl40010b8q2ldnyhjdd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-18-Canvas-画板-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/" class="article-date">
@@ -152,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjj72q9h9000y84q20l3kwe7r" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjj8kijku000wb8q2o56qjp0e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -200,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjj72q9hb001084q2czu60lzd" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjj8kijku000ub8q27vn5mnyu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -241,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjj72q9h3000q84q2pi37w70n" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjj8kijku000sb8q2s2bayla9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -338,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjj72q9h6000u84q272h6vzl0" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-15-数据结构入门/" data-id="cjj8kijku000ob8q2763ugncx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -380,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjj72q9gw000k84q2e3gfd01u" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-12-CSS-布局与定位-2/" data-id="cjj8kijku000qb8q2yimp81hq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -466,7 +518,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjj72q9h4000s84q2sh1k3m2k" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-11-CSS-布局与定位-1/" data-id="cjj8kijku000mb8q2qigvquxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -595,7 +647,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjj72q9h1000o84q2chqpps6p" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjj8kijkk000kb8q29h6lr4pi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -746,7 +798,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjj72q9gr000g84q2fcepr0tz" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjj8kijkk000ab8q2qhx2rc31" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -843,110 +895,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjj72q9gz000m84q2fl33jhk9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-07-Node-js-Server" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/07/前端系统课程-07-Node-js-Server/" class="article-date">
-  <time datetime="2018-05-07T12:16:41.000Z" itemprop="datePublished">2018-05-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/前端系统课程-07-Node-js-Server/">前端系统课程 - 07. Node.js Server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="TCP-与-UDP"><a href="#TCP-与-UDP" class="headerlink" title="TCP 与 UDP"></a>TCP 与 UDP</h2><ul>
-<li><p>HTTP 协议的底层是由 TCP/IP 协议构建的。</p>
-</li>
-<li><p>TCP（Transmission Control Protocol，传输控制协议）。</p>
-</li>
-<li><p>UDP（User Datagram Protocol，用户数据报协议）。</p>
-</li>
-<li><p>TCP 和 UDP 的区别：</p>
-<ul>
-<li><p>TCP 可靠（成功与否都能感知），面向连接、相对 UDP 较慢；</p>
-</li>
-<li><p>UDP 不可靠，不面向连接、相对 TCP 较快。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>TCP 的三次握手指的是什么：每次建立连接前，客户端和服务端之前都要先进行三次对话才开始正式传输内容，三次对话大概是这样的：</p>
-<ol>
-<li><p>客户端对服务端说：我要连接你了，可以吗？</p>
-</li>
-<li><p>服务端对客户端说：好的，我准备好了，连接我吧。</p>
-</li>
-<li><p>客户端对服务端说：那我连接你咯。</p>
-</li>
-<li><p>开始后面的步骤。</p>
-</li>
-</ol>
-<h2 id="内网与外网"><a href="#内网与外网" class="headerlink" title="内网与外网"></a>内网与外网</h2><ul>
-<li><p>电信提供 DNS 服务。</p>
-</li>
-<li><p>设备通过网线或 WIFI 与路由器连接。</p>
-</li>
-<li><p>路由器通过光纤与电信服务器连接，路由器会有一个外网 IP，这就是你在互联网中的地址，但是这个地址通常是不固定的，重启路由器可能被重新分配一个外网 IP。</p>
-</li>
-<li><p>可以花钱租一个固定外网 IP，但一般只有企业才会使用固定 IP，用来提供稳定的服务。</p>
-</li>
-<li><p>路由器会创建一个内网，内网中的设备使用内网 IP，内网 IP 通常都是 192.168.xxx.xxx 的格式。</p>
-</li>
-<li><p>路由器自身也占用一个内网 IP，它同时拥有一个外网 IP 和内网 IP。</p>
-</li>
-<li><p>内网中的设备可以互相访问，但是不能直接访问外网，只能通过路由器中转才能访问外网。</p>
-</li>
-<li><p>外网中的设备可以互相访问，但是不能直接访问内网，也只能通过路由器中转。</p>
-</li>
-<li><p>路由器就是用来“指路”的，主要功能就是用来分发内容；</p>
-</li>
-<li><p>内网与外网之间无法互通，唯一的连通点就是路由器，所以路由器又称为“网关”；</p>
-</li>
-<li><p>除了内网 IP 和 外网 IP，还有两个特殊的 IP，一个是本地 IP：127.0.0.1，它代表设备自身；另一个是：0.0.0.0，它不表示任何设备，在不同地方有不同的含义。</p>
-</li>
-</ul>
-<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>要使用 HTTP 协议（或 TCP/IP 协议）访问一个设备，只指定 IP 是不够的，还必须指定端口（Port）。</p>
-<p>端口不是一种硬件，而是一个编号。</p>
-<p>一个服务器不一定只提供一种服务，那么一个 IP 是无法告诉服务器要使用的是哪种服务的。所以需要用一个端口，对应一种服务。例如：通常使用 80 端口提供 HTTP 服务，使用 443 端口提供 HTTPS 服务，使用 21 端口提供 FTP 服务等等……</p>
-<p>端口号从 0 到 1023 号端口都有对应的服务，具体可以谷歌查询。</p>
-<p>每个机器有 65535（2 的 16 次方减 1）个端口，这些端口遵循一些规定：</p>
-<ul>
-<li><p>0 到 1023（2 的 10 次方减 1）号端口是留给系统使用的，只有拥有管理员权限后，才能使用这 1024 个端口。</p>
-</li>
-<li><p>其他端口可以给普通用户使用。</p>
-</li>
-<li><p>如果一个端口正在提供服务，也就是被占用了，那么就不能再使用这个端口；除非先停止正在占用这个端口的服务。</p>
-</li>
-</ul>
-<p>使用 HTTP 协议访问另一个 IP 时，必须同时提供 IP 和端口号，缺一不可。但是一般访问一个网址时，由于默认访问的就是 80 端口，所以这个端口号会被浏览器自动添加并且隐去不显示，所以在输入网址时一般不需要写 80 端口号。</p>
-<h2 id="Node-js-服务器"><a href="#Node-js-服务器" class="headerlink" title="Node.js 服务器"></a>Node.js 服务器</h2><h3 id="接收请求"><a href="#接收请求" class="headerlink" title="接收请求"></a>接收请求</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjj72q9go000e84q279v21b2m" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjj8kijkk000ib8q24sphec5x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1008,6 +957,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
           </li>
         
@@ -1021,10 +974,6 @@
         
           <li>
             <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
           </li>
         
       </ul>
