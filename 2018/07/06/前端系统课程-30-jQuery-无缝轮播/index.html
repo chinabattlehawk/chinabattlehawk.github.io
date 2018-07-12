@@ -5,20 +5,20 @@
   
 
   
-  <title>前端系统课程 - 16. JavaScript 初体验 | 南阳诸葛庐</title>
+  <title>前端系统课程 - 30. jQuery 无缝轮播 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="创建元素document.createElement(tagName) 括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 &amp;lt;div&amp;gt; 元素： var div = document.createElement(&amp;#39;div&amp;#39;)">
+  <meta name="description" content="无缝轮播 无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。  本课涉及的 jQuery  API：  transitionend CSS 过渡动画完成事件；  one() 方法可以只监听一次事件，完成一次后便不再监听；      DOM 事件模型 某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端系统课程 - 16. JavaScript 初体验">
-<meta property="og:url" content="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/index.html">
+<meta property="og:title" content="前端系统课程 - 30. jQuery 无缝轮播">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="创建元素document.createElement(tagName) 括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 &amp;lt;div&amp;gt; 元素： var div = document.createElement(&amp;#39;div&amp;#39;)">
+<meta property="og:description" content="无缝轮播 无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。  本课涉及的 jQuery  API：  transitionend CSS 过渡动画完成事件；  one() 方法可以只监听一次事件，完成一次后便不再监听；      DOM 事件模型 某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T03:11:24.222Z">
+<meta property="og:updated_time" content="2018-07-07T12:47:37.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端系统课程 - 16. JavaScript 初体验">
-<meta name="twitter:description" content="创建元素document.createElement(tagName) 括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 &amp;lt;div&amp;gt; 元素： var div = document.createElement(&amp;#39;div&amp;#39;)">
+<meta name="twitter:title" content="前端系统课程 - 30. jQuery 无缝轮播">
+<meta name="twitter:description" content="无缝轮播 无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。  本课涉及的 jQuery  API：  transitionend CSS 过渡动画完成事件；  one() 方法可以只监听一次事件，完成一次后便不再监听；      DOM 事件模型 某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-前端系统课程-16-JavaScript-初体验" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-前端系统课程-30-jQuery-无缝轮播" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/27/前端系统课程-16-JavaScript-初体验/" class="article-date">
-  <time datetime="2018-05-27T14:17:03.000Z" itemprop="datePublished">2018-05-27</time>
+    <a href="/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" class="article-date">
+  <time datetime="2018-07-06T06:53:41.000Z" itemprop="datePublished">2018-07-06</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端系统课程 - 16. JavaScript 初体验
+      前端系统课程 - 30. jQuery 无缝轮播
     </h1>
   
 
@@ -91,14 +91,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h2><p><code>document.createElement(tagName)</code></p>
-<p>括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 <code>&lt;div&gt;</code> 元素：</p>
-<p><code>var div = document.createElement(&#39;div&#39;)</code></p>
+        <h2 id="无缝轮播"><a href="#无缝轮播" class="headerlink" title="无缝轮播"></a>无缝轮播</h2><ul>
+<li><p>无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。</p>
+</li>
+<li><p>本课涉及的 jQuery  API：</p>
+<ul>
+<li><p><code>transitionend</code> CSS 过渡动画完成事件；</p>
+</li>
+<li><p><code>one()</code> 方法可以只监听一次事件，完成一次后便不再监听； </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM-事件模型"><a href="#DOM-事件模型" class="headerlink" title="DOM 事件模型"></a>DOM 事件模型</h2><ul>
+<li>某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定时器内调用的需要参数的函数等；这类型的函数后面是需要加括号的，不然就是普通的字符串了，这种代码一般都会默认调用 <code>eval()</code> 方法解析后运行；而一般情况函数只有在需要运行时，才需要加括号。</li>
+<li>使用事件句柄（事件属性）为元素绑定事件监听的缺点在于，不能重复绑定相同事件监听，多次绑定同一种事件监听，后绑定的会覆盖之前绑定的。</li>
+<li>如果要绑定多个事件监听，可以使用 <code>addEventListener()</code> 方法；绑定成功的多个事件监听会以队列形式执行，也就是先绑定的先执行；</li>
+<li>删除事件监听队列中的项目可以使用 <code>removeEventListener()</code> 方法；要注意，<strong>正常情况下绑定和解除绑定是在代码编译过程中便完成了，而不是触发事件之后</strong>；除非把解除绑定的代码写在绑定的事件回调函数中。</li>
+<li>jQuery 中的 <code>one()</code> 方法就是将解除事件绑定的代码写入了绑定事件的回调函数中，这样在当次代码运行后，事件只会触发一次。</li>
+<li><code>addEventListener()</code> 方法的第一个函数是事件名称，第二个是事件触发成功的回调函数，第三个参数接受一个布尔值，代表绑定相同事件时，触发事件后回调函数执行的顺序：默认为假，则事件从子元素向上传递，如果传入真值，则从父元素向下传递；但是在触发事件的时候，浏览器会先从父元素向下将事件触发捕获，无论这些元素是否绑定了事件监听或有无回调函数，再通过传入的参数决定按什么顺序执行触发后的回调函数；如果捕获和冒泡都在同一级，便按添加顺序执行。</li>
+<li>转到下一节……</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjji1kplj000n54q2oibvzkzd" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" data-id="cjji1kpmd001f54q2tvpe3914" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -109,19 +127,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/07/前端系统课程-31-阶段考试及相关知识/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          前端系统课程 - 17. JavaScript 小作品
+          前端系统课程 - 31. 阶段考试及相关知识
         
       </div>
     </a>
   
   
-    <a href="/2018/05/26/前端系统课程-15-数据结构入门/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端系统课程 - 15. 数据结构入门</div>
+      <div class="article-nav-title">前端系统课程 - 29. jQuery 做轮播图</div>
     </a>
   
 </nav>

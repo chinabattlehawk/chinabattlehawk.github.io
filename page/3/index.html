@@ -66,6 +66,383 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-10-CSS-入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/13/前端系统课程-10-CSS-入门/" class="article-date">
+  <time datetime="2018-05-13T12:50:22.000Z" itemprop="datePublished">2018-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/13/前端系统课程-10-CSS-入门/">前端系统课程 - 10. CSS 入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSS-的历史"><a href="#CSS-的历史" class="headerlink" title="CSS 的历史"></a>CSS 的历史</h2><ol>
+<li><p>1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。</p>
+</li>
+<li><p>1998 年，W3C 发布了应用最广泛的 CSS2。</p>
+</li>
+<li><p>2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。</p>
+</li>
+</ol>
+<h2 id="CSS-编译器"><a href="#CSS-编译器" class="headerlink" title="CSS 编译器"></a>CSS 编译器</h2><ul>
+<li><p>LESS</p>
+</li>
+<li><p>SASS / SCSS</p>
+</li>
+<li><p>PostCSS</p>
+</li>
+</ul>
+<h2 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h2><ul>
+<li><p>MDN</p>
+</li>
+<li><p>CSS Tricks</p>
+</li>
+<li><p>阮一峰 / 张鑫旭博客</p>
+</li>
+<li><p>Codrops</p>
+</li>
+<li><p>《CSS 揭秘》</p>
+</li>
+<li><p>CSS 文档</p>
+</li>
+</ul>
+<h2 id="开始写-CSS"><a href="#开始写-CSS" class="headerlink" title="开始写 CSS"></a>开始写 CSS</h2><ol>
+<li><p>引入方法：</p>
+<ul>
+<li><p>内联样式；</p>
+</li>
+<li><p><code>&lt;style&gt;</code> 标签；</p>
+</li>
+<li><p>外部样式，使用 <code>&lt;link&gt;</code> 标签引入；</p>
+</li>
+<li><p>导入方式，使用 <code>@import url()</code> 方式，这种方式不推荐使用。</p>
+</li>
+</ul>
+</li>
+<li><p>善用开发者工具。</p>
+</li>
+<li><p>常用样式：</p>
+<ul>
+<li><p>清除列表默认样式 <code>list-style: none</code>；</p>
+</li>
+<li><p>浮动 <code>float</code>；</p>
+</li>
+<li><p>清除浮动 <code>clear: both;</code>，常用方式，给<strong>浮动元素的父元素</strong>加此类名：</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">claer</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>子元素选择器 <code>&gt;</code>；</p>
+</li>
+<li><p>背景颜色 <code>background</code>；</p>
+</li>
+<li><p>文字颜色 <code>color</code>；</p>
+</li>
+<li><p>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</p>
+</li>
+<li><p>外边距 <code>margin</code>；</p>
+</li>
+<li><p>内边距 <code>padding</code>；</p>
+</li>
+<li><p>文字加粗 <code>font-weight: bold</code>；</p>
+</li>
+<li><p>伪类选择器，鼠标移入 <code>:hover</code>；</p>
+</li>
+<li><p>展示为块级元素 <code>display: block</code>；</p>
+</li>
+<li><p>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</p>
+</li>
+<li><p>文字大小 <code>font-size</code>；</p>
+</li>
+<li><p>文字字体 <code>font-family</code>；</p>
+</li>
+<li><p>边框 <code>border</code>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>不要记住了缩写，就忘记了全写，例如 <code>margin</code>、<code>border</code>、<code>padding</code> 等属性；</p>
+</li>
+<li><p>当 <code>height</code> 的值和 <code>line-height</code> 的值相同时，或者 <code>line-height</code> 的值与 <code>padding-top</code>、<code>padding-bottom</code> 的值加起来等于 <code>height</code> 的值，并且 <code>padding</code> 是上下相等的情况时，文字会垂直居中。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/13/前端系统课程-10-CSS-入门/" data-id="cjji1kplj000l54q2vvq94i2u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-09-HTML-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/12/前端系统课程-09-HTML-2/" class="article-date">
+  <time datetime="2018-05-12T12:46:43.000Z" itemprop="datePublished">2018-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/12/前端系统课程-09-HTML-2/">前端系统课程 - 09. HTML (2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ul>
+<li><p><code>&lt;a&gt;</code> 标签和 <code>&lt;button&gt;</code> 标签的选择：</p>
+<ul>
+<li><p>如果要跳转到一个链接，用 <code>&lt;a&gt;</code> 标签；</p>
+</li>
+<li><p>如果要弹出提示或进行提交等操作，则可以使用 <code>&lt;button&gt;</code> 标签。</p>
+</li>
+</ul>
+</li>
+<li><p><code>&lt;main&gt;</code> 标签代表整个页面最主要的部分，每个页面中只能有一个 <code>main</code> 标签。</p>
+</li>
+<li><p><code>&lt;section&gt;</code> 标签代表一个章节，一般用于一个完整文章或独立区块。</p>
+</li>
+<li><p><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> 表示 6 个等级的标题，其中 <code>&lt;h1&gt;</code> 在整个页面一般也只有一个。</p>
+</li>
+<li><p><code>&lt;nav&gt;</code> 标签表示导航，有导航性质的列表或菜单，要用此标签包裹。</p>
+</li>
+<li><p><code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签没有语义，只是用来划分区域的，所以在使用这两种标签时，要给它们指定类名来使其语义化。</p>
+</li>
+</ul>
+<h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h2><ul>
+<li><p>使用“src”属性可以指定 iframe 窗口打开的网址。</p>
+</li>
+<li><p>使用“name”属性可以和 <code>&lt;a&gt;</code> 标签配合，使指定的 iframe 窗口打开新网页。</p>
+</li>
+<li><p>将“frameborder”属性设置为“0”可以去除 iframe 窗口自带的边框。</p>
+</li>
+</ul>
+<h2 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h2><ul>
+<li><p>“target”属性有四个值，它们分别是：</p>
+<ul>
+<li><p>_blank：代表在新窗口打开链接；</p>
+</li>
+<li><p>_self：代表在当前窗口或当前 iframe 窗口打开链接；</p>
+</li>
+<li><p>_parent：代表在当前 iframe 窗口外的父级窗口打开链接；</p>
+</li>
+<li><p>_top：代表在当前 iframe 窗口外的最顶层祖先窗口打开链接。</p>
+</li>
+</ul>
+</li>
+<li><p>“download”属性，一般用在链接是一个需要下载的文件时，此属性会强制将目标链接的“Content-type”转换为“application/octet-stream”，使目标链接成为下载链接。</p>
+</li>
+<li><p>“href”属性值：</p>
+<ul>
+<li><p>如果只写了域名，会把这个值当作文件来打开，例如 <code>href=&quot;qq.com&quot;</code>；当这种情况发生在是用 HTTP 协议打开时，会在网站的根目录寻找这个文件。</p>
+</li>
+<li><p>如果不写协议，会把这个值按照当前协议来打开，例如 <code>href=&quot;//qq.com&quot;</code>；当用文件协议打开网页时，便按照文件协议打开链接；当用 HTTP 协议打开时，便按照 HTTP 协议打开，才能正常访问目标网址。</p>
+</li>
+<li><p>只有在把协议写全的时候，才能在协议不同的情况下，正常跳转到链接地址，正常应该写：<code>href=&quot;http://qq.com</code>。</p>
+</li>
+<li><p>如果值是一个查询参数时，会向链接发起 GET 请求，页面会被刷新，例如：<code>href=&quot;?name=user&quot;</code>。</p>
+</li>
+<li><p>如果值是一个锚点时，会跳转到当前页的对应锚点位置；而如果只写一个“#”号，则会跳转到当前页面的顶部，两种情况都不会刷新页面；例如：<code>href=&quot;#&quot;</code>，这种方式可以做“回到顶部”的功能。</p>
+</li>
+<li><p>如果值是一个伪协议，例如：<code>href=&quot;javascript:void(0);&quot;</code>，则会执行伪协议后面的脚本代码，例子中的意思是返回值为“0”，也就是什么都不做，最终达到的效果就是去除了 <code>&lt;a&gt;</code> 标签的默认操作，这样就得到了一个能点击，却不会有反应的 <code>&lt;a&gt;</code> 标签；<code>void(0)</code> 其实可以不写也可以。其他的伪协议还有”mailto“等……老师没说。</p>
+</li>
+<li><p>如果值为空，点击 <code>&lt;a&gt;</code> 标签就会刷新当前页面。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="form-标签"><a href="#form-标签" class="headerlink" title="form 标签"></a>form 标签</h2><ul>
+<li><p>“action”属性用来设置表单提交的地址。</p>
+</li>
+<li><p>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式。</p>
+</li>
+<li><p>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</p>
+</li>
+<li><p>表单中必须有提交按钮；如果 form 表单中有一个没有类型的 <code>&lt;button&gt;</code> 标签，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</p>
+</li>
+<li><p>表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</p>
+</li>
+<li><p>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。  </p>
+</li>
+</ul>
+<h2 id="input-标签"><a href="#input-标签" class="headerlink" title="input 标签"></a>input 标签</h2><ul>
+<li><p>最主要的就是“type”属性，不同的值代表不同的输入方式，例如：“button”代表普通按钮，“submit”代表提交按钮，“checkbox”代表复选框等等，如果不设置，默认是“text”类型。</p>
+</li>
+<li><p>要让 <code>&lt;input&gt;</code> 标签与指定内容关联，使之点击时获得焦点，要使用 <code>&lt;label&gt;</code> 标签包裹指定内容，并将其“for”属性与 <code>&lt;input&gt;</code> 标签的“id”属性设置为同一个值。</p>
+</li>
+<li><p>使用“radio”类型的 <code>&lt;input&gt;</code> 标签可以做出单选按钮，要让多个单选按钮具有排外性，就得把这些按钮的“name”属性设置为同一个。</p>
+</li>
+</ul>
+<h2 id="select-标签"><a href="#select-标签" class="headerlink" title="select 标签"></a>select 标签</h2><ul>
+<li><p>使用这个标签可以做下拉菜单，菜单的每一项，要用 <code>&lt;option&gt;</code> 标签包裹。</p>
+</li>
+<li><p>要让某一项默认为选中状态，可以给此项添加“selected”属性并设置值为“true”，像此类的状态属性的属性值都可以省略，只要属性存在，浏览器就会使它的值自动为“true”。</p>
+</li>
+<li><p>使用“disabled”属性可以使选项成为非可选状态。</p>
+</li>
+<li><p>为 <code>&lt;select&gt;</code> 标签添加“multiple”属性，可以使之成为多选菜单。</p>
+</li>
+</ul>
+<h2 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h2><ul>
+<li><p>这个标签被称为“文本域”，是用来输入和提交大量文字的文本框。</p>
+</li>
+<li><p>默认情况下，文本框可以自由调整大小，如果要禁用这种效果，需要给 <code>&lt;textarea&gt;</code> 添加样式：<code>resize: none</code>。</p>
+</li>
+<li><p>虽然文本域有设定宽和高的属性，但使用 CSS 样式设置最为靠谱。</p>
+</li>
+</ul>
+<h2 id="table-标签"><a href="#table-标签" class="headerlink" title="table 标签"></a>table 标签</h2><ul>
+<li><p>按照规范，<code>&lt;table&gt;</code> 标签的子元素可以是 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 和 <code>&lt;colgroup&gt;</code>。</p>
+</li>
+<li><p><code>&lt;colgroup&gt;</code> 标签的子标签是 <code>&lt;col&gt;</code> 标签，可以通过它来为每一列进行不同的设置，如宽度，背景色等，实际开发很少使用。</p>
+</li>
+<li><p><code>&lt;table&gt;</code> 标签的子标签都可以省略，除了 <code>&lt;colgroup&gt;</code> 标签，其余的会自动生成；另外，如果这些标签的顺序颠倒，浏览器也会自动纠正为 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 的顺序。</p>
+</li>
+<li><p><code>&lt;table&gt;</code> 标签的“border”属性可以设置表格的边框，但是每个表格元素都会有，如果要合并这些边框，可以给 <code>&lt;table&gt;</code> 标签添加样式 <code>border-collapse: collapse</code>。</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><p>今天学的标签只是 HTML5 中很少的一部分，而且也只是初步的介绍，实际还有很多常用标签，这些标签也还有很多属性可以设置。标签的属性不需要全部记住，在实际开发中，多加练习，就会把最有价值的属性设置烂熟于心。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-09-HTML-2/" data-id="cjji1kpl9000f54q234y48q5f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-08-HTML-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/12/前端系统课程-08-HTML-1/" class="article-date">
+  <time datetime="2018-05-11T16:30:44.000Z" itemprop="datePublished">2018-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/12/前端系统课程-08-HTML-1/">前端系统课程 - 08. HTML (1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="说说简历"><a href="#说说简历" class="headerlink" title="说说简历"></a>说说简历</h2><p>简历最好挂在自己买的域名上，这样显得专业一点。</p>
+<h2 id="简历模板"><a href="#简历模板" class="headerlink" title="简历模板"></a>简历模板</h2><p>在追波网（dribbble.com）搜索 cv 或 resume 关键字，或者在五百丁上买。</p>
+<h2 id="简历内容"><a href="#简历内容" class="headerlink" title="简历内容"></a>简历内容</h2><ul>
+<li><p>必要的内容：</p>
+<ul>
+<li><p>个人信息：照片、姓名、性别、年龄、学校、所在城市、职位目标等；</p>
+</li>
+<li><p>教育经历；</p>
+</li>
+<li><p>工作经历；</p>
+</li>
+<li><p>项目经验。</p>
+</li>
+</ul>
+</li>
+<li><p>可选的内容：</p>
+<ul>
+<li><p>开源代码，GitHub 要经常使用；</p>
+</li>
+<li><p>博客链接：多写博客，自己搭建的最好；</p>
+</li>
+<li><p>外文翻译；</p>
+</li>
+<li><p>他人评价；</p>
+</li>
+<li><p>对公司业务的分析；</p>
+</li>
+</ul>
+</li>
+<li><p>没用的内容：</p>
+<ul>
+<li><p>自我评价；</p>
+</li>
+<li><p>对公司或产品的喜爱；</p>
+</li>
+<li><p>段子。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是HTML"><a href="#什么是HTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h2><p>HTML（HyperText Markup Language，超文本标记语言），超级文本标记语言是标准通用标记语言，它通过标记符号来标记要显示的网页中的各个部分。</p>
+<h2 id="HTML版本"><a href="#HTML版本" class="headerlink" title="HTML版本"></a>HTML版本</h2><p>版本从 1.0 到 4.01，再到现在的 HTML5 版本，目前 HTML5.2 也已经发布。</p>
+<p>“H5”和 HTML5 不是一个概念，所谓的“H5”页面其实只是在微信中能展示的页面，甚至可以用 HTML4.01 做出来。</p>
+<h2 id="HTML规范"><a href="#HTML规范" class="headerlink" title="HTML规范"></a>HTML规范</h2><p>规范由 W3C 制定，W3C 会根据浏览器的实际情况总结文档。</p>
+<h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p>文档类型，用来标识 HTML 文档的版本，以判定文档遵循何种规范。目前使用的 HTML5 的文档类型应该写作：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="HTML标签"><a href="#HTML标签" class="headerlink" title="HTML标签"></a>HTML标签</h2><ul>
+<li><p>HTML5 规范中，<code>&lt;head&gt;</code> 标签、<code>&lt;body&gt;</code> 标签为空标签时，是可以省略的；即使不写 <code>html</code> 标签，也是符合规范的；如果不写，浏览器在渲染时会自动补全。</p>
+</li>
+<li><p>常见标签如：<code>&lt;p&gt;</code> 标签，含义是“paragraph”，段落的意思；<code>&lt;ul&gt;</code> 标签，含义是“unordered list”，意思是无序列表；<code>div</code> 标签，含义是“divide”，划分的意思，等等……</p>
+</li>
+<li><p>了解标签的语义化，就是要了解标签的含义，并且在对应的使用场景时，正确的使用标签。</p>
+</li>
+<li><p>各种浏览器都给除了 <code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签以外的 HTML 的标签定制了默认样式。</p>
+</li>
+<li><p>遇到不会的标签，或者需要了解标签的更多规范，移步 MDN。</p>
+</li>
+</ul>
+<h2 id="结构与样式分离"><a href="#结构与样式分离" class="headerlink" title="结构与样式分离"></a>结构与样式分离</h2><p>HTML 只是用来描述文档的结构，而文档以什么方式什么样子展示，那是 CSS 的事；例如内联元素与块级元素的区分，本质上是样式的区分，所以不归 HTML 管，HTML 中的内联与块级元素的概念，实际上是由 CSS 控制的，属于 CSS 中的概念。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-08-HTML-1/" data-id="cjji1kpl9000854q2al2sawqq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-07-Node-js-Server" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/07/前端系统课程-07-Node-js-Server/" class="article-date">
@@ -157,7 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjj8kijkk000gb8q2aknorujn" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-07-Node-js-Server/" data-id="cjji1kpl9000a54q2hc4yof57" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -301,7 +678,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjj8kijka0008b8q2lqgjrvt1" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/07/前端系统课程-06-HTTP-入门/" data-id="cjji1kpl9000d54q2iixjtfar" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -383,7 +760,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjj8kijkk000eb8q2ir7sqqp4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/06/前端系统课程-05-脚本/" data-id="cjji1kpkz000454q2gsyhk5oe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -527,7 +904,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjj8kijkk000cb8q2hh0ae4ag" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-04-命令行基础/" data-id="cjji1kplj000h54q20zt2hbyp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -633,7 +1010,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjj8kijka0006b8q22gquf16i" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/03/前端系统课程-03-软件安装/" data-id="cjji1kpkz000154q2ecbx07xa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -714,7 +1091,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjj8kijka0004b8q25c35as8h" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/02/前端系统课程-02-计算机是如何存储数据的/" data-id="cjji1kpkz000354q2ijrywflz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -816,415 +1193,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjj8kijka0003b8q2qzqs4b7c" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/01/前端系统课程-01-开班/" data-id="cjji1kpkp000054q27g855v21" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端强化课程-第-4-章-页面架构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/24/前端强化课程-第-4-章-页面架构/" class="article-date">
-  <time datetime="2017-09-24T02:56:07.000Z" itemprop="datePublished">2017-09-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/24/前端强化课程-第-4-章-页面架构/">前端强化课程 - 第 4 章: 页面架构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="布局方案"><a href="#布局方案" class="headerlink" title="布局方案"></a>布局方案</h1><p>本节只是介绍了常用的一些页面布局如何实现，并没有进行很系统的划分，例如区分父元素和子元素的定宽定高等情况。</p>
-<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/horizontal.png" alt="水品居中"></p>
-<p>基本使用两层嵌套就可以了，HTML 代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>DEMO<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不同的实现代码如下：</p>
-<ol>
-<li><p><code>inline-block</code> + <code>text-align</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：兼容性好（低版本 IE 可以用 <code>display: inline</code> + <code>zoom: 1</code> 兼容）；</p>
-</li>
-<li><p>缺点：居中的元素中的文字会继承文字居中，不需要文字居中时，需要额外设置文字对齐方式；</p>
-</li>
-</ul>
-</li>
-<li><p><code>table</code> + <code>margin</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：代码简单；</p>
-</li>
-<li><p>缺点：暂时没有？</p>
-</li>
-</ul>
-</li>
-<li><p><code>absolute</code> + <code>transform</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：居中元素不会影响周围元素；</p>
-</li>
-<li><p>缺点：兼容性稍差；</p>
-</li>
-</ul>
-</li>
-<li><p><code>flex</code> + <code>justify-content</code> / <code>margin</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="comment">/*justify-content: center;*/</span></span><br><span class="line">    <span class="comment">/*为父元素设置此属性后，子元素可以不设置margin属性*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：效果最好最靠谱；</p>
-</li>
-<li><p>缺点：兼容性稍差；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/vertical.png" alt="垂直居中"></p>
-<p>HTML 结构仍然是两层：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>DEMO<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不同的实现代码如下：</p>
-<ol>
-<li><p><code>table-cell</code> + <code>vertical-align</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：兼容性好；</p>
-</li>
-<li><p>缺点，父盒子无法设置外边距；</p>
-</li>
-</ul>
-</li>
-<li><p><code>absolute</code> + <code>transform</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：居中元素不会影响周围元素；</p>
-</li>
-<li><p>缺点：兼容性稍差；</p>
-</li>
-</ul>
-</li>
-<li><p><code>flex</code> + <code>align-items</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：效果最好最靠谱；</p>
-</li>
-<li><p>缺点：兼容性稍差；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="中心居中"><a href="#中心居中" class="headerlink" title="中心居中"></a>中心居中</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/center.png" alt="中心居中"></p>
-<p>基本就是将水平居中和垂直居中的方法组合使用，直接上样式代码：</p>
-<ol>
-<li><p>第一种：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第二种：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第三种：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="一列定宽与一列自适应布局"><a href="#一列定宽与一列自适应布局" class="headerlink" title="一列定宽与一列自适应布局"></a>一列定宽与一列自适应布局</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_1.png" alt="布局示例"></p>
-<p>基本 HTML 结构：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Left<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><p><code>float</code> + <code>margin</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：简单易懂，兼容性较好；</p>
-</li>
-<li><p>缺点：在 IE6 中有“3 像素”的 BUG，可以在定宽浮动盒子上加 <code>margin: -浮动盒子宽</code> 解决；</p>
-</li>
-</ul>
-</li>
-<li><p><code>float</code> + <code>margin</code> + （fix）：</p>
-<p>上一种方法的改进版，在左浮动元素外包一层右浮动元素，右浮动元素宽度撑满父元素，同时设置右浮动元素的左外边距为<strong>负</strong>左浮动元素宽即可，但左浮动元素要用定位属性将层级提高。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Left<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right-fix"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Light<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right-fix</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: right;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">170px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：简单易懂，兼容性较好；</p>
-</li>
-<li><p>缺点：代码较多；</p>
-</li>
-</ul>
-</li>
-<li><p><code>float</code> + <code>overflow</code>：</p>
-<p>将自适应元素加上 <code>overflow: hidden</code>，触发自适应元素的 BFC 模式，隔离与浮动盒子的关系。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：样式简单，最好用；</p>
-</li>
-<li><p>缺点：不兼容 IE6；</p>
-</li>
-</ul>
-</li>
-<li><p><code>flex</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：简单优雅；</p>
-</li>
-<li><p>缺点：低版本浏览器不兼容，性能较差，适合小范围布局；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="一列不定宽一列自适应布局："><a href="#一列不定宽一列自适应布局：" class="headerlink" title="一列不定宽一列自适应布局："></a>一列不定宽一列自适应布局：</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_2.png" alt="布局示例"></p>
-<p>HTML 代码与上一种布局相同。</p>
-<ol>
-<li><p><code>float</code> + <code>overflow</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/*内容宽度任意设置*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：可以非常好的支持此类布局；</p>
-</li>
-<li><p>缺点：不兼容 IE6；</p>
-</li>
-</ul>
-</li>
-<li><p><code>flex</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/*内容宽度任意设置*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：很好很强大；</p>
-</li>
-<li><p>缺点：兼容性较差；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_3.png" alt="布局示例"></p>
-<p>等高布局的结构代码与上面两种的双列布局相同，就不重复写了。不同方式如下：</p>
-<ol>
-<li><p><code>float</code> + <code>overflow</code>：</p>
-<p>称为“伪等高”，子元素都设置 <code>padding-bottom</code> 为极大值，同时设置 <code>margin-bottom</code> 为负极大值来抵消，父元素和右侧子元素设置 <code>overflow:hidden</code> 截取最高的子元素高度来模拟出等高。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>,</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：兼容性好；</p>
-</li>
-<li><p>缺点：代码较复杂；</p>
-</li>
-</ul>
-</li>
-<li><p><code>flex</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: stretch;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="comment">/*千万别设置高度*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：非常好用，最舒服的布局方式；</p>
-</li>
-<li><p>缺点：还是兼容性，性能方面的副作用其实可以忽略不计；</p>
-</li>
-</ul>
-</li>
-<li><p><code>table</code>：</p>
-<p>这是一种“多功能”布局，通过设置不同的属性，可以用这种方式实现以上三种布局，先看等高布局：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">table-layout</span>: fixed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>,</span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：天然的等高特性；</p>
-</li>
-<li><p>缺点：不能设置外边距，只能用内边距做间隔，但是如果有背景色或背景图，需要另外设置 <code>background-clip: content-box</code>；左侧定宽需要时，需要父元素设置 <code>table-layout: fixed</code> 用来使布局优先，提升性能；不支持 IE8 及更低版本；</p>
-</li>
-</ul>
-<p>等高布局也包含一列定宽一列自适应布局，如果要设定左侧高度，只能给左边的元素设置 <code>padding-bottom</code>。</p>
-<p>再来看一列不定宽一列自适应布局，需要将 <code>table-layout: fixed</code> 去掉，因为是内容决定宽度，而不是布局优先；另外在不定宽元素中要设置 <code>width: 0.1%</code>，用百分比是要兼容IE8；</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span>,</span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0.1%</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/*内容宽度任意设置*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：适用性广，</p>
-</li>
-<li><p>缺点：繁琐，不支持 IE6、7；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a>等分布局</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_4.png" alt="布局示例"></p>
-<p>等分布局需要将宽度和间距算好，需要特别注意的就是要处理多余一个间距的宽度，一般可以在算好后，指定第一个或末一个的间距为 0，但是等分要求高时要用公式计算：父元素宽度 + 间距 = (子元素宽度 + 间距) × N。</p>
-<ol>
-<li><p><code>float</code>：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.column</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">25%</span>;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="comment">/*要避免内边距影响宽度*/</span></span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：代码简单易懂；</p>
-</li>
-<li><p>缺点：需要给父元素设置 <code>margin</code> 负值来抵消多余的间距；如上面的效果图所示，如果父元素需要边框，则需要另做处理；子元素数量要改变就需要同时更改子元素宽度；子元素内的内容需要有其他元素包裹；</p>
-</li>
-</ul>
-</li>
-<li><p><code>table</code>：</p>
-<p>在上一种方法的结构外多加了一层元素，主要用于抵消多余间距；设置 <code>table-layout: fixed</code> 来加速渲染。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent-fix"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>2<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>3<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"column"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>4<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent-fix</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">table-layout</span>: fixed;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.column</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: table-cell;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：可以设置任意个子元素而不必设置子元素宽度；</p>
-</li>
-<li><p>缺点：除了解决子元素的自由设置，其余与上一种相同；</p>
-</li>
-</ul>
-</li>
-<li><p><code>flex</code>：</p>
-<p>结构代码同第一种相同。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.column</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.column</span> + <span class="selector-class">.column</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>优点：不需要为父元素添加宽度，代码量很少，用子子元素的相邻选择器添加间距即可，设置了 <code>flex</code> 占比后，浏览器会自动算出剩余空间并进行分配；</p>
-</li>
-<li><p>缺点：仍然是兼容性问题；</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="基本全屏布局"><a href="#基本全屏布局" class="headerlink" title="基本全屏布局"></a>基本全屏布局</h2><p><img src="/2017/09/24/前端强化课程-第-4-章-页面架构/layout_5.jpg" alt="布局示例"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2017/09/24/前端强化课程-第-4-章-页面架构/" data-id="cjj8kijjq0000b8q2akykbq6j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-博客使用指南" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/31/博客使用指南/" class="article-date">
-  <time datetime="2016-08-31T10:36:11.000Z" itemprop="datePublished">2016-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/博客使用指南/">博客使用指南 - Hello World! Hello Hexo!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客使用指南/" data-id="cjj8kijle001mb8q20qe2wv1n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-博客搭建方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/31/博客搭建方法/" class="article-date">
-  <time datetime="2016-08-31T07:36:11.000Z" itemprop="datePublished">2016-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/博客搭建方法/">博客搭建方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li>注册 GitHub 账号；</li>
-<li>安装 Node.js；</li>
-<li>安装 Git 客户端；</li>
-</ul>
-<h2 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h2><h3 id="1-创建仓库"><a href="#1-创建仓库" class="headerlink" title="1. 创建仓库"></a>1. 创建仓库</h3><p>在 GitHub 中创建一个名为“用户名.github.io”的仓库，例如你的 GitHub 用户名为 test，那么该仓库名即为 “test.github.io”。创建成功后，默认会在这个仓库里生成一些示例页面，以后博客所有代码都是放在这个仓库里。</p>
-<p>PS：</p>
-<ol>
-<li>注册的邮箱一定要验证，否则不会成功；</li>
-<li>仓库名字必须是：<code>username.github.io</code>，其中 <code>username</code> 是你的用户名；</li>
-<li>仓库创建成功不会立即生效，可能需要过一段时间，大概10-30分钟，或者更久；</li>
-</ol>
-<h3 id="2-绑定域名"><a href="#2-绑定域名" class="headerlink" title="2. 绑定域名"></a>2. 绑定域名</h3><p>不绑定域名可以使用默认的地址，也就是仓库名称来访问搭建的博客。</p>
-<ol>
-<li>注册好域名后，在域名配置中，添加一个 CNAME 类型记录，主机记录可以填写“blog”，而后将仓库名填写到“记录值”项中。</li>
-<li>然后在 GitHub 项目根目录新建一个名为“CNAME”的文件，无后缀名，里面填写你的域名，例如上面的“blog.xxx.cn”。</li>
-</ol>
-<h3 id="3-配置-SSH-key"><a href="#3-配置-SSH-key" class="headerlink" title="3. 配置 SSH key"></a>3. 配置 SSH key</h3><p>用 Git bash 执行命令： <code>$ cd ~/ .ssh</code> ，如果提示“No such file or directory”，说明是第一次使用，没有 SSH key；配置方法如下：</p>
-<ol>
-<li><p>粘贴下面的命令，并将邮件部分替换成你的 GitHub 注册邮箱：</p>
-<p><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></p>
-<p>回车确认后会提示：</p>
-<p><code>Generating public/private rsa key pair.</code></p>
-</li>
-<li><p>当提示输入要保存密钥的文件时，直接回车确认，表示接受默认的文件位置：</p>
-<p><code>Enter a file in which to save the key (/c/Users/you/.ssh/id_rsa):[Press enter]</code></p>
-</li>
-<li><p>提示输入密码和再次确认密码都直接回车使用空密码即可：</p>
-<p><code>Enter passphrase (empty for no passphrase): [Type a passphrase]</code></p>
-<p><code>Enter same passphrase again: [Type passphrase again]</code></p>
-</li>
-<li><p>最终会出现一个像很多泡泡的图案，说明以及生成完毕；</p>
-</li>
-<li><p>打开用户目录，找到 .ssh 文件夹，用编辑器打开其中的 id_rsa.pub 文件，复制里面的所有内容；</p>
-</li>
-<li><p>打开你的 GitHub 主页，进入个人设置，找到 “SSH and GPG keys” 选项，选择“New SSH key”，“Title”项中可以填写这个 key 所在的设备，在“Key”项中，把刚才复制的内容粘贴进去，然后确认添加并保存；</p>
-</li>
-<li><p>在 Git bash 中输入命令：</p>
-<p><code>$ ssh -t git@github.com</code> </p>
-<p>提示：</p>
-<p><code>Are you sure you want to continue connecting (yes/no)?</code> </p>
-<p>输入 yes ，然后提示：</p>
-<p><code>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.</code></p>
-<p>username 是你的 GitHub 用户名，后面的意思就是成功通过身份验证；</p>
-</li>
-<li><p>初始化 Git 的个人信息，分别输入并回车确认：</p>
-<p><code>$ git config --global user.name &quot;username&quot;</code>  username 是你的 GitHub 用户名，非昵称；</p>
-<p><code>$ git config --global user.email &quot;email&quot;</code> email 是你的 GitHub 注册邮箱。</p>
-</li>
-</ol>
-<h3 id="4-安装"><a href="#4-安装" class="headerlink" title="4. 安装"></a>4. 安装</h3><p>在 Git bash 中使用 npm 工具来全局安装 HEXO，命令如下：</p>
-<p><code>$ npm install hexo -g</code></p>
-<p>安装完成后，可以使用 <code>-version</code> 命令查看 HEXO 版本。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2016/08/31/博客搭建方法/" data-id="cjj8kijle001kb8q2e1so6by4" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -1236,7 +1209,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1282,23 +1255,23 @@
       <ul>
         
           <li>
+            <a href="/2018/07/07/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/前端系统课程-31-阶段考试及相关知识/">前端系统课程 - 31. 阶段考试及相关知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/06/前端系统课程-30-jQuery-无缝轮播/">前端系统课程 - 30. jQuery 无缝轮播</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
           </li>
         
           <li>
             <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/03/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/02/前端系统课程-26-JavaScript-函数/">前端系统课程 - 26. JavaScript 函数</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
           </li>
         
       </ul>

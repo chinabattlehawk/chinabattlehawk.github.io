@@ -66,6 +66,398 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-32-DOM-事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/前端系统课程-32-DOM-事件/" class="article-date">
+  <time datetime="2018-07-07T12:44:08.000Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DOM-事件模型"><a href="#DOM-事件模型" class="headerlink" title="DOM 事件模型"></a>DOM 事件模型</h2><ul>
+<li><code>e.stopPropagation()</code> 方法可以阻止事件冒泡。</li>
+<li><code>e.preventDefault()</code> 方法可以阻止元素的默认事件。</li>
+<li>为元素绑定事件监听是需要占用内存的，所以</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-32-DOM-事件/" data-id="cjji1kpmx001r54q2psdmziwf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-31-阶段考试及相关知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/前端系统课程-31-阶段考试及相关知识/" class="article-date">
+  <time datetime="2018-07-07T05:57:02.000Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/前端系统课程-31-阶段考试及相关知识/">前端系统课程 - 31. 阶段考试及相关知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目-01"><a href="#题目-01" class="headerlink" title="题目 01"></a>题目 01</h2><p>请写出一个符合 W3C 规范的 HTML 文件，要求：</p>
+<ol>
+<li><p>页面标题为“我的页面”；</p>
+</li>
+<li><p>页面中引入一个外部 CSS 文件，文件路径为 <code>/style.css</code>；</p>
+</li>
+<li><p>页面中引入一个外部 CSS 文件，路径为 <code>/print.css</code>，该文件仅在打印时生效；</p>
+</li>
+<li><p>页面中引入一个外部 CSS 文件，路径为 <code>/mobile.css</code>，该文件仅在设备宽度小于 500 像素时生效；</p>
+</li>
+<li><p>页面中引入一个外部 JS 文件，路径为 <code>/main.js</code>；</p>
+</li>
+<li><p>页面中引入一个外部 JS 文件，路径为 <code>/gbk.js</code>，文件编码为 GBK；</p>
+</li>
+<li><p>页面中添加一个 <code>&lt;svg&gt;</code> 标签，里面有一个直径为 100 像素的圆圈，颜色随意；</p>
+</li>
+<li><p>注意题目中的路径。</p>
+</li>
+</ol>
+<hr>
+<p>回答：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh_Hans"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>我的页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./print.css"</span> <span class="attr">media</span>=<span class="string">"print"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./mobile.css"</span> <span class="attr">media</span>=<span class="string">"(max-width: 500px)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">baseProfile</span>=<span class="string">"full"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"200"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"100"</span> <span class="attr">cy</span>=<span class="string">"100"</span> <span class="attr">r</span>=<span class="string">"50"</span> <span class="attr">stroke</span>=<span class="string">"red"</span> <span class="attr">fill</span>=<span class="string">"transparent"</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./gbk.js"</span> <span class="attr">charset</span>=<span class="string">"GBK"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<p>大部分是扩展知识，例如媒体查询的设置，<code>&lt;svg&gt;</code> 标签的基本用法，都能很轻松的查阅到；另外给出的文件路径不能直接使用，不然就代表根目录了，一般不会这样存放资源；要么去除斜杆，要么直接在斜杠前加个点，为了保险起见，还是加了个点，表示同一层级的目录下。 </p>
+<h2 id="题目-02"><a href="#题目-02" class="headerlink" title="题目 02"></a>题目 02</h2><p><a href="https://github.com/Bless-L/MyBlog/blob/master/post/2016%E8%85%BE%E8%AE%AF%E5%AE%9E%E4%B9%A0%E7%94%9F%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86%E5%8F%8A%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8C%EF%BC%89.md" target="_blank" rel="noopener">2016年腾讯前端面试题</a>：移动端是怎么做适配的？</p>
+<p>回答要点：</p>
+<ol>
+<li><p><code>&lt;meta name=&quot;viewport&quot;&gt;</code>；</p>
+</li>
+<li><p>媒体查询；</p>
+</li>
+<li><p>动态 rem 方案。</p>
+</li>
+</ol>
+<hr>
+<p>回答：</p>
+<ul>
+<li><p>一般要将页面宽度适配为设备宽度，除了使用 flex 布局和新的宽度单位 vw / vh 以外，在 HTML 文件的 <code>&lt;head&gt;</code> 标签中进行视口设置也是必要的，内容如下：</p>
+<p> <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+<p> <code>content</code> 属性中的内容含义依次是：页面宽度等于设备宽度，用户缩放禁用，初识缩放比例 1.0 倍，最大缩放比例 1.0 倍，最小缩放比例 1.0 倍。</p>
+</li>
+<li><p>如果还想做 PC 端页面的响应式适配，也就是让页面在不同的分辨率拥有不同的样式，除了类似 Bootstrap 中的“十二栅格”，还有就是媒体查询了，可以使用 CSS 中的媒体查询功能，来匹配不同宽度页面下的样式，例如：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@media all and(max-width: 768px) &#123; // 以下样式在所有设备中最大支持到宽度为768px，超过便失效； </span><br><span class="line">	<span class="selector-tag">body</span> &#123;</span><br><span class="line">		<span class="attribute">font</span>: bold <span class="number">12px</span>/<span class="number">1.6</span> <span class="string">'微软雅黑'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 媒体查询是非常好用的，但是缺点是如果支持的分辨率太多，那就需要写很多的样式才行，比较麻烦。</p>
+</li>
+<li><p>如果是以小屏设备（主要是手机）为主，但是手机分辨率太多，这时可以使用 em 单位或 rem 单位。这两个长度单位会根据设置好的与像素的比例，在不同的页面宽度中，保持相同比例的像素大小。em 单位比较繁琐，因为它的大小是基于父元素文字大小的，如果层级过多，将会涉及大量的计算，一般不推荐使用；而 rem 的大小，是基于根元素的文字大小，这就比较统一且好算，一般将首要的支持设备页面中（或设计图的大小），根元素文字大小设置为 100px 是最好用的了，不设置为 10px 可以避免很多麻烦哟！</p>
+<p> 那么如何保证不同宽度设备下页面根元素的像素比例呢？最好还是用 JS 方法实现，在页面加载完和窗口宽度改变时更新根元素上的文字大小即可，以安卓手机的设计图宽度，示例如下：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> e = n.document,</span><br><span class="line">        t = e.documentElement,</span><br><span class="line">        o = <span class="string">"orientationchange"</span> <span class="keyword">in</span> n ? <span class="string">"orientationchange"</span> : <span class="string">"resize"</span>,</span><br><span class="line">        a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> n = t.clientWidth || <span class="number">360</span>;</span><br><span class="line">            t.style.fontSize = n / <span class="number">360</span> * <span class="number">100</span> + <span class="string">"px"</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (e.addEventListener) &#123;</span><br><span class="line">        n.addEventListener(o, a, !<span class="number">1</span>);</span><br><span class="line">        e.addEventListener(<span class="string">"DOMContentLoaded"</span>, a, !<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>补充：</p>
+<p>虽然没有看过上面的系列课程，但是好歹做过一些移动端适配的小页面，基本上个人所知道的移动端适配的方法，上面都提到了。</p>
+<h2 id="题目-03"><a href="#题目-03" class="headerlink" title="题目 03"></a>题目 03</h2><p><a href="https://earthsplitter.github.io/2017/03/31/2017%E8%85%BE%E8%AE%AF%E5%AE%9E%E4%B9%A0%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">2017年腾讯前端实习面试题（二面）</a>：用过 CSS3 吗？实现圆角矩形和阴影怎么做？</p>
+<hr>
+<p>回答：</p>
+<p>当然用过了……</p>
+<ul>
+<li><p>圆角矩形比较简单，可以用 <code>border-radius</code> 这个属性，它可以同时设置四个圆角边框，半径单位可以是像素，也可以是百分比；每个角也可以设置两个不同的半径；设置顺序是：左上、右上、右下、左下，如果只写一个，那么表示设置统一值；也可以分别设置，但比较麻烦。例如：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span> <span class="number">6px</span> <span class="number">5px</span> <span class="number">3%</span> / <span class="number">2%</span>;</span><br><span class="line">    <span class="comment">/*相当于*/</span></span><br><span class="line">    <span class="attribute">border-top-left-radius</span>: <span class="number">4px</span> <span class="number">2%</span>;</span><br><span class="line">    <span class="attribute">border-top-right-radius</span>: <span class="number">6px</span> <span class="number">2%</span>;</span><br><span class="line">    <span class="attribute">border-bottom-right-radius</span>: <span class="number">5px</span> <span class="number">2%</span>;</span><br><span class="line">    <span class="attribute">border-bottom-left-radius</span>: <span class="number">3%</span> <span class="number">2%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>阴影问的应该是盒子阴影吧……</p>
+<p> 如果是文字阴影，就一个属性 <code>text-shadow</code>，属性值依次为阴影的：水平位置、垂直位置、模糊距离（程度）、颜色；两个位置是必需的，其他不写范围就是 0 ，颜色默认是文字颜色；可以给同一文字设置多个阴影，多个设置用逗号隔开。</p>
+<p> 如果是盒子阴影就又复杂一些，使用 <code>box-shadow</code> 属性，属性值依次为阴影的：水品位置、垂直位置、模糊距离（程度）、大小、颜色、内侧或外侧；位置都是必须的，但是可以为 0 或负值，其他的都好理解，最后一个内侧和外侧意思是将阴影添加到盒子边内部还是外部；多个阴影设置可以用逗号分隔，另外，阴影可以在某些时候模拟边框哟！示例代码：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">    box-shadow: 3px 3px 5px 5px #ccc, 5px 5px 10px 10px #666; // 立体效果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>补充：</p>
+<p>基本上用过的话就没什么，主要是把属性顺序搞清楚，不清楚也很容易查到文档；另外分开写的属性，实际很少用。</p>
+<h2 id="题目-04"><a href="#题目-04" class="headerlink" title="题目 04"></a>题目 04</h2><p>出处同上：什么是闭包，闭包的用途是什么？</p>
+<hr>
+<p>回答：</p>
+<ul>
+<li><p>如果一个函数使用了它范围外的变量，那么（这个函数加这个变量）就叫做闭包；也就是说，闭包就是能够读取其他函数内部变量的函数，以及它读取的这个变量的合称！？</p>
+</li>
+<li><p>用途太广泛了，其实我们经常不可避免的使用着闭包，主要就是用来读取函数范围外的变量，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum()); <span class="comment">// 120</span></span><br></pre></td></tr></table></figure>
+<p>另外就是作为钩子，使一些局部变量的值始终保持在内存中，以供外部使用并且不暴露，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line">    sum = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        num += <span class="number">10</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result = foo();</span><br><span class="line">result(); <span class="comment">// 100</span></span><br><span class="line">sum();</span><br><span class="line">result(); <span class="comment">// 110</span></span><br></pre></td></tr></table></figure>
+<p>循环中也可以使用闭包来解决很多问题，例如常见的循环添加点击事件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; btns.length; j++) &#123;</span><br><span class="line">    !<span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">        btns[j].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'按钮'</span> + (num + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>补充：</p>
+<p>虽然经常在不经意间使用最常见的“闭包”，也能理解闭包的原理，但是实际开发的时候自己用到的复杂一些的闭包不是很多，希望老师讲一些实战中哪些地方常用闭包来解决问题。</p>
+<h2 id="题目-05"><a href="#题目-05" class="headerlink" title="题目 05"></a>题目 05</h2><p>出处同上：<code>call()</code>、<code>apply()</code>、<code>bind()</code> 的用法分别是什么？</p>
+<hr>
+<p>回答：</p>
+<p>这三个方法都能改变调用函数中 <code>this</code> 的指向（作用域），并且可以向调用函数传递参数；三者的用法分别是：</p>
+<ul>
+<li><p><code>call()</code> 方法的第一个参数就是用来设置 <code>this</code> 指向的，第二个及以后的参数是指定的参数列表，适合参数较少时使用；</p>
+</li>
+<li><p><code>apply()</code> 方法的作用与 <code>call()</code> 方法基本相同，只不过它只接受两个参数，第一个也是 <code>this</code> 的值，而第二个是一个数组，这个数组中可以保存指定的参数列表，即使只传一个参数，也要以数组的形式，故适合参数较多时使用；</p>
+</li>
+<li><p><code>bind()</code> 方法的参数形式与 <code>call()</code> 方法相同，但使用方式与前两种不同，前两种方法是没有返回值的，而此方法返回一个绑定了固定 <code>this</code> 值的新函数；个人理解就是，前两种是临时工，<code>bind()</code> 方法是合同工……下面是三种方法的示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cat = &#123;</span><br><span class="line">    name: <span class="string">'大猫'</span>,</span><br><span class="line">    eatFish(...args) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(args);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'吃鱼'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> dog = &#123;</span><br><span class="line">    name: <span class="string">'二哈'</span>,</span><br><span class="line">    eatBone(...args) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(args);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'吃骨头'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">cat.eatFish.call(dog, <span class="string">'汪汪'</span>, <span class="string">'call'</span>); <span class="comment">// 二哈临时可以吃鱼；</span></span><br><span class="line">dog.eatBone.call(cat, <span class="string">'喵喵'</span>, <span class="string">'call'</span>); <span class="comment">// 大猫临时可以吃骨头；</span></span><br><span class="line"></span><br><span class="line">cat.eatFish.apply(dog, [<span class="string">'汪汪'</span>, <span class="string">'apply'</span>]); <span class="comment">// 二哈临时可以吃鱼；</span></span><br><span class="line">dog.eatBone.apply(cat, [<span class="string">'喵喵'</span>, <span class="string">'apply'</span>]); <span class="comment">// 大猫临时可以吃骨头；</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> test1 = cat.eatFish.bind(dog, <span class="string">'汪汪'</span>, <span class="string">'bind'</span>);</span><br><span class="line"><span class="keyword">let</span> test2 = dog.eatBone.bind(cat, <span class="string">'喵喵'</span>, <span class="string">'bind'</span>);</span><br><span class="line"></span><br><span class="line">test1(); <span class="comment">// 二哈学会了吃鱼；</span></span><br><span class="line">test2(); <span class="comment">// 大猫学会了吃骨头；</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>补充：</p>
+<p><code>call()</code> 和 <code>apply()</code> 常常在继承属性的时候使用，但是 <code>bind()</code> 方法是新出的，个人没怎么接触过，但是都是相关联的方法，用法还是比较好理解的。</p>
+<h2 id="题目-06"><a href="#题目-06" class="headerlink" title="题目 06"></a>题目 06</h2><p>出处同上：请说出至少 8 个 HTTP 状态码，并描述各状态码的意义。 例如：状态码 200 表示响应成功。</p>
+<hr>
+<p>回答：</p>
+<p>状态码有 5 类 60 余种，常用的一般 14 种：</p>
+<ul>
+<li><p>1XX：称为“信息性状态码”，表示接收的请求正在处理；不常用。</p>
+</li>
+<li><p>2XX：称为“成功状态码”，表示请求正常处理完毕。</p>
+<ul>
+<li><p>200 OK，表示从客户端发来的请求在服务器端被正常处理了。</p>
+</li>
+<li><p>204 No Content，表示服务器接收的请求已成功处理，但在返回的响应报文中不含实体的主体部分。</p>
+</li>
+<li><p>206 Partial Content，表示客户端进行了范围请求，而服务器成功执行了这部分的 GET 请求。</p>
+</li>
+</ul>
+</li>
+<li><p>3XX：称为“重定向状态码”，表示需要进行附加操作以完成请求。</p>
+<ul>
+<li><p>301 Moved Permanently，永久性重定向；表示请求的资源已被分配了新的 URI，以后应使用资源现在所指的 URI。</p>
+</li>
+<li><p>302 Found，临时性重定向；表示请求的资源已被分配了新的 URI，希望用户（本次）能使用新的 URI 访问。</p>
+</li>
+<li><p>303 See Other，表示由于请求对应的资源存在着另一个 URI，应使用 GET 方法定向获取请求的资源。</p>
+</li>
+<li><p>304 Not Modified，表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但因为发生了请求不能满足条件的情况后，便会直接返回此状态码。</p>
+</li>
+<li><p>307 Temporary Redirect，临时重定向；该状态码与 302 Found 含义相同，但此状态码遵循浏览器标准，不会从 POST 变成 GET。</p>
+</li>
+</ul>
+</li>
+<li><p>4XX：称为“客户端错误状态码”，表示服务器无法处理请求。</p>
+<ul>
+<li><p>400 Bad Request，表示请求报文中存在语法错误；但是浏览器会像 200 OK 一样对待该状态码。</p>
+</li>
+<li><p>401 Unauthorized，表示发送的请求需要有通过 HTTP 认证的认证信息。</p>
+</li>
+<li><p>403 Forbidden，表示对请求资源的访问被服务器拒绝了，服务器没有必要给出拒绝理由，但一般是应为访问权限问题。</p>
+</li>
+<li><p>404 Not Found，表示服务器上无法找到请求的资源，除此之外，也可以在服务端拒绝请求且不想说明理由时使用。</p>
+</li>
+</ul>
+</li>
+<li><p>5XX：称为“服务器错误状态码”，表示服务器处理请求出错。</p>
+<ul>
+<li><p>500 Internal Server Error，表示服务器端在执行请求时发生了错误，也有可能是 Web 应用存在 bug 或某些临时的故障。</p>
+</li>
+<li><p>503 Service Unavailable，表示服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>其实状态码经常和状况不一致，但是可能用户察觉不到，这种是正常情况。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status" target="_blank" rel="noopener">状态码查询</a></p>
+<p>补充：</p>
+<p>对于状态码，死记硬背也可以，但是会很容易忘记；如果结合实际状况记忆，就会比较深刻了。明明很方便就能查到，而且经验多了自然就记住一些常用的状态码了，不是很理解为什么要考这些。</p>
+<h2 id="题目-07"><a href="#题目-07" class="headerlink" title="题目 07"></a>题目 07</h2><p>出处同上：请写出一个 HTTP POST 请求的内容，包括四部分。 其中第四部分的内容是username=ff&amp;password=123，第二部分必须含有 Content-Type 字段，请求的路径为 /path。</p>
+<hr>
+<p>回答：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /path HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 24</span><br><span class="line"></span><br><span class="line">username=ff&amp;password=123</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<ul>
+<li><p>请求最多包含四部分，最少包含三部分（第四部分可以为空）。</p>
+</li>
+<li><p>第三部分永远都是一个回车 <code>\n</code>，主要是用来区分第二部分和第四部分内容的。</p>
+</li>
+<li><p>动词有 GET（获取）、POST（新增或上传）、PUT（整体更新）、PATCH（局部更新）、DELETE（删除）、HEAD、OPTIONS等。</p>
+</li>
+<li><p>请求中的路径包括“查询参数”，但不包括“锚点”；因为“锚点”不是由服务器识别，而是由浏览器识别的。</p>
+</li>
+<li><p>如果没有写路径，那么路径默认为 <code>/</code>，代表根目录。</p>
+</li>
+<li><p>第二部分中的“Content-Type”标注了第四部分的格式。</p>
+</li>
+</ul>
+<h2 id="题目-08"><a href="#题目-08" class="headerlink" title="题目 08"></a>题目 08</h2><p>请说出至少三种排序的思路，这三种排序的时间复杂度分别为：</p>
+<ol>
+<li><p>O(n * n)</p>
+</li>
+<li><p>O(n log2 n)</p>
+</li>
+<li><p>O(n + max)</p>
+</li>
+</ol>
+<hr>
+<p>回答：</p>
+<ol>
+<li><p>冒泡排序：从第一个数字开始，每次比较相邻的两个数字，将符合条件的数字（较大或较小）与另一个数字交换位置，如此执行一轮，第一个数字便是符合条件的数字；第二轮则从第二个数字开始，轮次与数字位置关联；最后一轮结束，数字便按顺序排列好了。</p>
+</li>
+<li><p>快速排序：在数组中随机选一个数字（或默认第一个数字），数组中小于等于此数字的放在此数字前面，大于此数字的放在此数字后面，完成后，再对这个数字两边的数组进行相同动作，重复此过程直到剩下一个数字便结束。</p>
+</li>
+<li><p>基数排序：只能排正整数，基于桶排序；0 ~ 9 共 10 个桶，先根据所有数字的个位数进行入桶，即个位为 0 的按顺序放入 0 组，为 1 的放入 1 组，以此类推；完成个位入桶，在按照 10 个桶的从大到小顺序出桶，出桶完毕后再按所有数字的十位数进行入桶，重复此操作，直到所有数字的最大位数入桶出桶完毕，数字便按顺序排好了。</p>
+</li>
+</ol>
+<p>补充：</p>
+<p>常见的第一种还有选择排序，第二种还有堆排序，第三种貌似就有基数排序。</p>
+<h2 id="题目-09"><a href="#题目-09" class="headerlink" title="题目 09"></a>题目 09</h2><p>著名面试题：一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</p>
+<p>这一题是在挖掘你的知识边界，所以你知道多少就要答多少。</p>
+<hr>
+<p>回答：</p>
+<ol>
+<li><p>浏览器需要知道这个 URL 中包含的域名对应的服务器 IP，那么首先要对域名进行 DNS 解析：浏览器对自己的 DNS 缓存、操作系统的 DNS 缓存以及操作系统的 hosts 文件逐个进行搜索，看看有没有这域名对应的 IP 地址，有便停止搜索，没有便通知操作系统发送一个 DNS 请求到本地的 DNS 服务器，DNS 服务器将解析的 IP 地址返回给操作系统，操作系统缓存一份，然后给浏览器，浏览器也缓存一份，现在浏览器得到了域名对应的 IP 地址。</p>
+</li>
+<li><p>得到 IP 后，浏览器便通知主机（你的电脑）开始与服务器通过 TCP 协议建立连接，这个过程分三步，又称为“三次握手”：</p>
+<ul>
+<li><p>主机向服务器发送一个请求，表示建立连接的意愿；</p>
+</li>
+<li><p>服务器收到请求后，向主机发一个响应信息，表示同意连接；</p>
+</li>
+<li><p>主机收到了响应信息后，给服务器也发送一个响应信息，然后它们之间的连接建立完成。</p>
+</li>
+</ul>
+</li>
+<li><p>主机与服务器连接成功后，浏览器便开始请求网页数据：</p>
+<ul>
+<li><p>浏览器根据 URL 的内容生成 HTTP 请求，请求中包含文件位置、文件类型等信息，并将请求通过主机发送给服务器；</p>
+</li>
+<li><p>服务器收到请求，根据 HTTP 请求内容中的要求准备相应的 HTML 文件；</p>
+</li>
+<li><p>服务器将准备好的 HTML 文件通过主机发送给浏览器；</p>
+</li>
+<li><p>浏览器边接收边根据 DOM 树解析页面，如果页面上有其他需要的外部文件（如 CSS、JS文件），浏览器会继续向服务器发送请求并接收文件；</p>
+</li>
+</ul>
+</li>
+<li><p>浏览器自上而下加载并展示页面，遇到外部文件请求得到后，加载并解析这些必要的文件，然后才会继续向下加载、渲染页面，这是一个同步（一条道走到黑）的过程，直到页面上所有文件加载、解析、渲染完毕。</p>
+</li>
+<li><p>页面展示完成后，主机与服务器断开连接，需要四步，称为“四次挥手”：</p>
+<ul>
+<li><p>主机得知浏览器页面加载完成后，向服务器发送断开连接的请求；</p>
+</li>
+<li><p>服务器收到断开连接请求后，向主机发送“收到断开请求”的信息，但不会现在断开，因为可能还有数据未发送完毕；</p>
+</li>
+<li><p>服务器向主机发送“连接可以断开”的信息；</p>
+</li>
+<li><p>主机收到“连接可以断开”的信息后，向服务器发送“确认连接断开”信息，服务器收到确认信息后便断开连接；</p>
+</li>
+</ul>
+</li>
+<li><p>至此，主机与服务器通信完成，页面也展示完毕了。</p>
+</li>
+</ol>
+<p>补充：</p>
+<p>这是在个人理解范围内的粗糙回答，一些技术上的细节因为没有深度了解过，所以也不好照抄，例如 DNS 解析过程中涉及的 LDNS、 TCP 协议连接的过程、页面渲染中涉及的浏览器背后的工作原理等。</p>
+<h2 id="题目-10"><a href="#题目-10" class="headerlink" title="题目 10"></a>题目 10</h2><p>著名面试题：如何实现数组去重？假设有数组 <code>array = [1, 5, 2, 3, 4, 2, 3, 1, 3, 4]</code>，你要写一个函数 unique，使得 <code>unique(array)</code> 的值为 <code>[1, 5, 2, 3, 4]</code>，也就是把重复的值都去掉，只保留不重复的值。</p>
+<p>要求：不要做多重循环，只能遍历一次请给出两种方案，一种能在 ES 5 环境中运行，一种能在 ES 6 环境中运行（提示 ES6 环境多了一个 Set 对象）。</p>
+<hr>
+<p>回答：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">33</span>, <span class="number">6</span>, <span class="number">774</span>, <span class="number">1235</span>, <span class="number">23</span>, <span class="number">3</span>, <span class="number">33</span>, <span class="number">321</span>, <span class="number">6745</span>, <span class="number">3</span>, <span class="number">774</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> json = &#123;&#125;;</span><br><span class="line">	<span class="keyword">var</span> temp = [];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!json[arr[i]]) &#123;</span><br><span class="line">			temp.push(arr[i]);</span><br><span class="line">			json[arr[i]] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueRe</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">pre, cur, idx</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr.indexOf(cur) === idx)&#123;</span><br><span class="line">            pre.push(cur)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;,[]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unique(arr)); <span class="comment">// [3, 33, 6, 774, 1235, 23, 321, 6745]</span></span><br><span class="line"><span class="built_in">console</span>.log(uniqueRe(arr)); <span class="comment">// [3, 33, 6, 774, 1235, 23, 321, 6745]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(arr)]); <span class="comment">// [3, 33, 6, 774, 1235, 23, 321, 6745]</span></span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<p>第一种方法利用对象属性名不能重复的规则，循环数组，以数组项内的数据为属性名，向对象内添加属性，同时将此数据填入新数组；遇到重复数据时，由于有对象属性筛选，所以不会添加到新数组；这种方式只适合简单数组数据，复杂数据还是多重循环靠谱。</p>
+<p>第二种是利用 <code>indexOf()</code> 方法只找第一个符合条件的数据下标的特性来完成筛选的。 </p>
+<p>第三种 ES6 新方法，传入 <code>Set()</code> 对象中的元素只会出现一次，也就是说元素是唯一的。三个点是数组展开语法，也可以将拥有 <code>length</code> 属性的类数组展开为数组；也可以用 <code>Array.form()</code> 方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-31-阶段考试及相关知识/" data-id="cjji1kpmd001j54q2bq4oq9k4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-30-jQuery-无缝轮播" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" class="article-date">
+  <time datetime="2018-07-06T06:53:41.000Z" itemprop="datePublished">2018-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/06/前端系统课程-30-jQuery-无缝轮播/">前端系统课程 - 30. jQuery 无缝轮播</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="无缝轮播"><a href="#无缝轮播" class="headerlink" title="无缝轮播"></a>无缝轮播</h2><ul>
+<li><p>无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。</p>
+</li>
+<li><p>本课涉及的 jQuery  API：</p>
+<ul>
+<li><p><code>transitionend</code> CSS 过渡动画完成事件；</p>
+</li>
+<li><p><code>one()</code> 方法可以只监听一次事件，完成一次后便不再监听； </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM-事件模型"><a href="#DOM-事件模型" class="headerlink" title="DOM 事件模型"></a>DOM 事件模型</h2><ul>
+<li>某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定时器内调用的需要参数的函数等；这类型的函数后面是需要加括号的，不然就是普通的字符串了，这种代码一般都会默认调用 <code>eval()</code> 方法解析后运行；而一般情况函数只有在需要运行时，才需要加括号。</li>
+<li>使用事件句柄（事件属性）为元素绑定事件监听的缺点在于，不能重复绑定相同事件监听，多次绑定同一种事件监听，后绑定的会覆盖之前绑定的。</li>
+<li>如果要绑定多个事件监听，可以使用 <code>addEventListener()</code> 方法；绑定成功的多个事件监听会以队列形式执行，也就是先绑定的先执行；</li>
+<li>删除事件监听队列中的项目可以使用 <code>removeEventListener()</code> 方法；要注意，<strong>正常情况下绑定和解除绑定是在代码编译过程中便完成了，而不是触发事件之后</strong>；除非把解除绑定的代码写在绑定的事件回调函数中。</li>
+<li>jQuery 中的 <code>one()</code> 方法就是将解除事件绑定的代码写入了绑定事件的回调函数中，这样在当次代码运行后，事件只会触发一次。</li>
+<li><code>addEventListener()</code> 方法的第一个函数是事件名称，第二个是事件触发成功的回调函数，第三个参数接受一个布尔值，代表绑定相同事件时，触发事件后回调函数执行的顺序：默认为假，则事件从子元素向上传递，如果传入真值，则从父元素向下传递；但是在触发事件的时候，浏览器会先从父元素向下将事件触发捕获，无论这些元素是否绑定了事件监听或有无回调函数，再通过传入的参数决定按什么顺序执行触发后的回调函数；如果捕获和冒泡都在同一级，便按添加顺序执行。</li>
+<li>转到下一节……</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" data-id="cjji1kpmd001f54q2tvpe3914" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-29-jQuery-做轮播图" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/" class="article-date">
@@ -137,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjj8kijle001ib8q2my5jwp4j" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjji1kpm3001954q2702meoqd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -216,7 +608,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjj8kijle001gb8q28o4bxkcf" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjji1kpm3001b54q2v1mmxwaw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -316,7 +708,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjj8kijle001eb8q2es3paoqs" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjji1kpmd001l54q2jmof39sf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -427,7 +819,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjj8kijle001cb8q2gmkoojjt" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjji1kpm3001754q21oow784u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -510,7 +902,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjj8kijl4001ab8q2gdksm8wv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjji1kpm3001554q2hjotw83t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -579,7 +971,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjj8kijl40018b8q2ttgh8oho" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjji1kpm3001d54q2tq4it8gx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -657,261 +1049,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjj8kijl40014b8q2451mrjzt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-22-JavaScript-里的对象" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/" class="article-date">
-  <time datetime="2018-06-26T23:44:11.000Z" itemprop="datePublished">2018-06-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
-<li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象。</p>
-</li>
-<li><p>全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等。</p>
-</li>
-</ul>
-<h2 id="基本数据类型与对象的区别"><a href="#基本数据类型与对象的区别" class="headerlink" title="基本数据类型与对象的区别"></a>基本数据类型与对象的区别</h2><ul>
-<li><p>基本数据类型没有且不能具备属性和方法，而复杂数据类型（对象）可以具备属性和方法。</p>
-</li>
-<li><p>使用 <code>new</code> 运算符可以创建一个指定对象的实例，例如 <code>var num = new Number(1)</code>。</p>
-</li>
-<li><p>当我们平时在对存有基本数据类型的变量使用 <code>toSring()</code> 等方法时，由于数据没有这些方法，所以编译器会隐性地临时将基本数据类型转换为对象，然后再调用其指定的方法，得出结果并返回，之后临时对象会被销毁。</p>
-</li>
-<li><p>当给一个基本数据类型添加属性时，编译器不会报错，它会像前面一样将基本数据类型转换为对象，再给这个临时对象添加属性，之后这个临时对象被销毁，也就访问不到添加给基本数据类型的属性了。</p>
-</li>
-</ul>
-<h2 id="公共属性"><a href="#公共属性" class="headerlink" title="公共属性"></a>公共属性</h2><ul>
-<li><p>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链。</p>
-</li>
-<li><p>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例。</p>
-</li>
-<li><p>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>。</p>
-</li>
-<li><p><code>__proto__</code> 是用来引用父函数的 <code>prototype</code> 属性的，类似于上线下线的关系，而 <code>__proto__</code> 就是下线。</p>
-</li>
-</ul>
-<h2 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h2><p><code>Function</code> 对象的 <code>__proto__</code> 属性引用的是 <code>Function</code> 自身的 <code>prototype</code>，这是内置对象中的特殊情况；而 <code>Object</code> 对象的 <code>__proto__</code> 属性引用的也是 <code>Function</code> 对象的 <code>prototype</code>，这是因为 <code>Object</code> 对象也是由函数构造的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjj8kijl40012b8q2s3ccbchy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-21-JavaScript-里的类型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/" class="article-date">
-  <time datetime="2018-06-26T02:56:32.000Z" itemprop="datePublished">2018-06-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="常见数据类型的转换"><a href="#常见数据类型的转换" class="headerlink" title="常见数据类型的转换"></a>常见数据类型的转换</h2><ul>
-<li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型。</p>
-</li>
-<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据类型转换为布尔值；简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> 。</p>
-</li>
-<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14，这种比较常用。</p>
-</li>
-</ul>
-<h2 id="内存中数据存储方式"><a href="#内存中数据存储方式" class="headerlink" title="内存中数据存储方式"></a>内存中数据存储方式</h2><ul>
-<li><p>编译器会将分配到的内存分为代码区和数据区。</p>
-</li>
-<li><p>数据区分为 Stack（栈内存） 和 Heap（堆内存）。</p>
-</li>
-<li><p>堆比栈大，栈比堆快。</p>
-</li>
-<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面。</p>
-</li>
-<li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存。</p>
-</li>
-<li><p>当把一个基本数据类型赋值给一个变量时，变量中存储的就是这个数据本身；当把这个变量赋值给另外一个变量时，相当于将它保存的数据本身，复制一个拷贝，再赋值给新变量，之后，两个变量各拥有一份相互独立的数据。</p>
-</li>
-<li><p>当把一个复杂数据类型赋值给一个变量时，变量中存储的是这个数据在堆内存中的地址，这种关系称为“引用”；当把这个变量赋值给另外一个变量时，相当于把保存的引用地址，复制一个拷贝，再赋值给新变量，之后，两个变量引用的是同一个数据，相当于两个人各拥有一张代表同一个数据的“名片”。</p>
-</li>
-</ul>
-<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环引用可能会造成内存泄露</strong>。</p>
-<h2 id="试题解析"><a href="#试题解析" class="headerlink" title="试题解析"></a>试题解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">//b = &#123;n: 1&#125;;</span></span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;; <span class="comment">//&#123;n: 1, x: &#123;n: 2&#125;&#125;，a = &#123;n: 2&#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//[object, Object]</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>上面的题中，第三行的关键点在于确定当时的 <code>a</code> 变量是哪一个；</p>
-</li>
-<li><p>编译器是从上到下依次执行，但是各种操作符除了有优先级之分，还有从右往左和从左往右两种关联性，而属性访问操作符优先级比赋值操作符的优先级要高，所以先确定了 <code>a.x</code> 的 <code>a</code> 引用的依然是 <code>{n: 1}</code> 这个数据，并在这个数据中添加了一个属性 <code>x</code>，此时 <code>x</code> 只是声明后未定义等待赋值的状态，就是说源数据成为了 <code>{n: 1, x: undefined}</code>；</p>
-</li>
-<li><p>然后赋值运算符从右往左执行，先将 <code>a</code> 变量中的数据，赋值为了 <code>{n: 2}</code> 的地址，再将这个地址，赋值给了 <code>{n: 1, x: undefined}</code> 这个对象中的 <code>x</code> 属性，此时数据成为了 <code>{n: 1, x: {n: 2}}</code> ；</p>
-</li>
-<li><p>第四行访问 <code>a.x</code>，此时的 <code>a</code> 引用的数据已经是 <code>{n: 2}</code> ，里面并没有 <code>x</code> 这个属性，故打印出的结果为 <code>undefined</code>；</p>
-</li>
-<li><p>第五行访问 <code>b.x</code>，此时的 <code>b</code> 引用的数据依然是原来包含 <code>n: 1</code> 键值的那个数据，而此时这个数据已经有了 <code>x</code> 这个属性，并且值为另一个对象引用地址，这个地址对应的数据是 <code>{n: 2}</code>，将其隐性地使用 <code>toString()</code> 方法转换为字符串后，打印出的结果便是 <code>[object Object]</code>。</p>
-</li>
-</ul>
-<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><ul>
-<li><p>如果一个对象<strong>没有被引用</strong>，它就是垃圾数据，将被垃圾回收器清理掉。</p>
-</li>
-<li><p>垃圾回收器会在页面运行时，按照浏览器设定好的机制循环作业。</p>
-</li>
-</ul>
-<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><ul>
-<li><p>拷贝即复制，复制后的数据与原数据，完全独立且互不影响，就称为“深拷贝”；基本数据类型之间的复制，都是深拷贝。</p>
-</li>
-<li><p>其实基本数据类型之间的复制谈不上什么”深浅“，深拷贝与浅拷贝主要是对于对象数据之间的复制而言的。</p>
-</li>
-<li><p>如果将一个对象赋值给一个变量，实际是将这个对象的引用地址保存在里变量当中，那么当复制这个变量到另一个变量时，只是把这个引用地址，存到了新的变量中；当通过新的变量改变对象的属性后，访问原先的变量也能发现对象的属性变化；这种程度的复制，就是“浅拷贝”。</p>
-</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串。</p>
-</li>
-<li><p>数组的某个元素为空元素（即两个逗号之间没有任何值）时，便称为这个数组存在空位；空位不影响数组的长度；如果读取空位，会返回 <code>undefined</code>，但是把一个元素赋值为 <code>undefined</code> 后，这个元素不属于空位；如果使用 <code>delete</code> 操作符删除某个元素，那么这个元素对应的位置便成为了空位；使用 <code>for...in</code> 语句、数组的 <code>forEach()</code> 方法以及对象的 <code>keys()</code> 方法遍历数组时， 空位都会被跳过。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjj8kijl40016b8q2qb9oqrsi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-20-JavaScript-里的数据" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/" class="article-date">
-  <time datetime="2018-06-25T14:09:39.000Z" itemprop="datePublished">2018-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JavaScript-历史"><a href="#JavaScript-历史" class="headerlink" title="JavaScript 历史"></a>JavaScript 历史</h2><ul>
-<li><p>1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。</p>
-</li>
-<li><p>1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。 </p>
-</li>
-<li><p>2015 年，ECMA 组织正式批准了 ECMAScript 6 语言标准，定名为《ECMAScript 2015 标准》。 </p>
-</li>
-<li><p>了解更多历史，可以参考红宝书或阮一峰的书……</p>
-</li>
-</ul>
-<h2 id="JavaScript-的数据类型"><a href="#JavaScript-的数据类型" class="headerlink" title="JavaScript 的数据类型"></a>JavaScript 的数据类型</h2><p>JavaScript 中有七种数据类型，分别是：</p>
-<ul>
-<li><p>Number（数字）</p>
-</li>
-<li><p>String（字符串）</p>
-</li>
-<li><p>Boolean（布尔值）</p>
-</li>
-<li><p>Undefined（未定义）</p>
-</li>
-<li><p>Null（空）</p>
-</li>
-<li><p>Symbol（符号，ES6 版本新增）</p>
-</li>
-<li><p>Object（对象）</p>
-</li>
-</ul>
-<h2 id="数据类型的扩展知识"><a href="#数据类型的扩展知识" class="headerlink" title="数据类型的扩展知识"></a>数据类型的扩展知识</h2><ul>
-<li><p>Number 类型表示数字，数字一般以二进制、八进制、十进制及十六进制表示；由于进制转换的原因，数字如果有前导 0，转换后可能出现意外的 Bug（例如八进制转换），所以实际开发一般都使用十进制；如果不是参与运算的数字（例如手机号码），那么一般使用字符串存储。</p>
-</li>
-<li><p>String 类型表示字符串，空字符串只是一对单引号或双引号，其中只有一个空格也不是空字符串。</p>
-</li>
-<li><p>包裹字符串的引号，一般推荐使用单引号，这样和 HTML 代码配合比较方便；另外，表示字符串的引号，是一种形式，并不是内容，可以理解为类似数组的方括号。</p>
-</li>
-<li><p>区分正斜杠和反斜杠，可以参照汉字“八”，撇就是正斜杠，捺就是反斜杠；转义符是反斜杠，单行注释是双正斜杠。</p>
-</li>
-<li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法。</p>
-</li>
-<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假，称为“falsy”值）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串 <code>&#39;&#39;</code> 或 <code>&quot;&quot;</code>；值为 true（真，称为“truthy”值）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）。</p>
-</li>
-<li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>。</p>
-</li>
-<li><p>对象中的属性名可以是任意字符串，包括空字符串；如果属性名是数字，在访问时会自动转换为字符串，但是如果不是数字也不是字符串，则需要符合标识符的命名规则；然而如果属性名是字符串或数字，那么访问时就需要使用方括号运算符而不能使用点运算符的方式，除非字符串属性名符合标识符的命名规则。</p>
-</li>
-<li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除。</p>
-</li>
-<li><p>使用 <code>typeof</code> 操作符对函数进行检测，返回值为反直觉的 <code>&#39;function&#39;</code>，而不是 <code>&#39;object&#39;</code>；但是检测值为 <code>null</code> 的数据，则会返回 <code>&#39;object&#39;</code>……</p>
-</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>访问对象的属性时，如果在方括号内的属性名是一个数字间运算，那么会先运算得出的结果数字，然后再将数字转换为字符串；</p>
-</li>
-<li><p>要知道一个对象有哪些键名，可以使用对象的 <code>keys()</code> 方法。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjj8kijl4000yb8q2fzo9fe2a" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjji1kplt001154q212u8c7zh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -927,7 +1065,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -973,23 +1111,23 @@
       <ul>
         
           <li>
+            <a href="/2018/07/07/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/前端系统课程-31-阶段考试及相关知识/">前端系统课程 - 31. 阶段考试及相关知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/06/前端系统课程-30-jQuery-无缝轮播/">前端系统课程 - 30. jQuery 无缝轮播</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
           </li>
         
           <li>
             <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/03/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/02/前端系统课程-26-JavaScript-函数/">前端系统课程 - 26. JavaScript 函数</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
           </li>
         
       </ul>
