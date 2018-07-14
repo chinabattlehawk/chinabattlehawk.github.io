@@ -7,18 +7,18 @@
   
   <title>前端系统课程 - 32. DOM 事件 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DOM 事件模型 e.stopPropagation() 方法可以阻止事件冒泡。 e.preventDefault() 方法可以阻止元素的默认事件。 为元素绑定事件监听是需要占用内存的，所以">
+  <meta name="description" content="DOM 事件模型 e.stopPropagation() 方法可以阻止事件冒泡。  e.preventDefault() 方法可以阻止元素的默认事件。  阻止默认事件可能会带来一些意外的 bug，例如复选框不能选中等等。  如果想让 jQuery 中的 on() 方法同时阻止默认事件和阻止冒泡，可以直接在回调函数参数后，再传一个 false 参数。  为元素绑定事件监听是需要占用内存的，所以一个监">
 <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 - 32. DOM 事件">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/07/07/前端系统课程-32-DOM-事件/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="DOM 事件模型 e.stopPropagation() 方法可以阻止事件冒泡。 e.preventDefault() 方法可以阻止元素的默认事件。 为元素绑定事件监听是需要占用内存的，所以">
+<meta property="og:description" content="DOM 事件模型 e.stopPropagation() 方法可以阻止事件冒泡。  e.preventDefault() 方法可以阻止元素的默认事件。  阻止默认事件可能会带来一些意外的 bug，例如复选框不能选中等等。  如果想让 jQuery 中的 on() 方法同时阻止默认事件和阻止冒泡，可以直接在回调函数参数后，再传一个 false 参数。  为元素绑定事件监听是需要占用内存的，所以一个监">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-07T15:01:29.454Z">
+<meta property="og:updated_time" content="2018-07-14T09:58:40.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 32. DOM 事件">
-<meta name="twitter:description" content="DOM 事件模型 e.stopPropagation() 方法可以阻止事件冒泡。 e.preventDefault() 方法可以阻止元素的默认事件。 为元素绑定事件监听是需要占用内存的，所以">
+<meta name="twitter:description" content="DOM 事件模型 e.stopPropagation() 方法可以阻止事件冒泡。  e.preventDefault() 方法可以阻止元素的默认事件。  阻止默认事件可能会带来一些意外的 bug，例如复选框不能选中等等。  如果想让 jQuery 中的 on() 方法同时阻止默认事件和阻止冒泡，可以直接在回调函数参数后，再传一个 false 参数。  为元素绑定事件监听是需要占用内存的，所以一个监">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -92,9 +92,55 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="DOM-事件模型"><a href="#DOM-事件模型" class="headerlink" title="DOM 事件模型"></a>DOM 事件模型</h2><ul>
-<li><code>e.stopPropagation()</code> 方法可以阻止事件冒泡。</li>
-<li><code>e.preventDefault()</code> 方法可以阻止元素的默认事件。</li>
-<li>为元素绑定事件监听是需要占用内存的，所以</li>
+<li><p><code>e.stopPropagation()</code> 方法可以阻止事件冒泡。</p>
+</li>
+<li><p><code>e.preventDefault()</code> 方法可以阻止元素的默认事件。</p>
+</li>
+<li><p>阻止默认事件可能会带来一些意外的 bug，例如复选框不能选中等等。</p>
+</li>
+<li><p>如果想让 jQuery 中的 <code>on()</code> 方法同时阻止默认事件和阻止冒泡，可以直接在回调函数参数后，再传一个 <code>false</code> 参数。</p>
+</li>
+<li><p>为元素绑定事件监听是需要占用内存的，所以一个监听事件完成后，在非必须的情况下，尽量把这个事件监听再解除掉；在 jQuery 中，善用一次性事件监听 <code>one()</code> 方法。</p>
+</li>
+<li><p>如果在一个事件监听的回调函数中，又对其上级元素绑定了事件监听，那么这个后绑定的事件监听，在前一个事件触发后会立即完成绑定，并在本次的事件触发过程中生效。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#son'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'子元素被点击了'</span>)；</span><br><span class="line">    $(<span class="string">'#father'</span>).one(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'父元素被点击了'</span>)； <span class="comment">// 本来觉得这里不会执行，但确实会执行；</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果不想让父元素事件监听的回调函数执行，最好的办法就是在子元素添加阻止冒泡；也可以使用延时定时器延迟对父元素事件监听的绑定，即使定时器设置为 0 秒，也会让绑定动作在事件触发完成以后执行，但只能延迟一轮，再次点击子元素，父元素由于绑定已经在上一次点击完成了，所以还会触发。</p>
+</li>
+</ul>
+<h2 id="优化无缝轮播"><a href="#优化无缝轮播" class="headerlink" title="优化无缝轮播"></a>优化无缝轮播</h2><ul>
+<li><p>先前做的无缝轮播有个 bug，如果切换到别的页面一段时间后再切回来，轮播动画会出错（表现为多个动画同时执行），这是因为浏览器为了节省资源，会降低非展示状态的页面中的定时器运行频率。</p>
+</li>
+<li><p><code>visibilitychange</code> 事件，称为“标签可见性改变事件”；这个事件可以知道用户有没有在看自己，如果用户切换了标签或页面，那么 <code>document.hidden</code> 属性便为 <code>true</code>，反之则反。</p>
+</li>
+<li><p>通过判断页面的 <code>document.hidden</code> 属性值，来随时控制定时器的关闭和开启，就可以解决前面的轮播动画问题了。</p>
+</li>
+<li><p>通过切换 <code>class</code> 属性的方式做可切换的无缝轮播非常困难，所以要换一种方式；当实现一个功能发现走到死胡同时，要勇于试错；</p>
+</li>
+<li><p>用到的 jQuery API：</p>
+<ul>
+<li><p><code>clone()</code> 方法，复制一个元素，传入 <code>true</code> 表示同时复制其子元素，这与DOM API 的 <code>cloneNode()</code> 方法类似。</p>
+</li>
+<li><p><code>append()</code> 方法，将一个元素插入到目标元素的末尾。</p>
+</li>
+<li><p><code>prepend()</code> 方法，将一个元素插入到目标元素的首位。</p>
+</li>
+<li><p><code>offset()</code> 方法，获取或设置元素当前的偏移位置；由于获取时要计算样式，所以会暂时阻断 CSS 解析，可以利用这点来防止与后面准备设置的 CSS 内容合并。</p>
+</li>
+<li><p><code>on()</code> 方法还可以通过父元素为所有子元素绑定事件，通过选择器来指定子元素，称为“事件委托”，例如：</p>
+<p><code>$(&#39;father&#39;).on(&#39;click&#39;, &#39;.son&#39;, function(){ ...somecode });</code> </p>
+</li>
+<li><p><code>innerWidth()</code> 方法可以获取元素边框以内的宽度，<code>innerHeight()</code> 同理。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>在 jQuery 中，为元素添加自定义属性，要么通过下标 0，要么使用 <code>attr()</code> 方法，必须将属性添加到 DOM 元素上，特别是动画中的定时器对象。</p>
+</li>
+<li><p>再次理解动画原理，元素的位置（或其他可用属性）在指定时间间隔，逐渐改变，直到达到设定的目标位置；体现到属性值上，属性值不停的<strong>累加</strong>，每次<strong>累加</strong>计算好的数量，直到此属性值到达设定的目标值。</p>
+</li>
+<li><p>如果需要一个开关来表示是否到达目标值，直接判断当时值和目标值是否相等，把结果赋值给开关变量，无需多次判断；例如：<code>let ok = current === target</code>。</p>
+</li>
 </ul>
 
       
