@@ -66,6 +66,92 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-32-JSONP-是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/前端系统课程-32-JSONP-是什么鬼/" class="article-date">
+  <time datetime="2018-07-14T11:54:40.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/前端系统课程-32-JSONP-是什么鬼/">前端系统课程 32. JSONP 是什么鬼</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><p>能长久存储数据的仓库，就是数据库，文件系统也可以看作一种”数据库“。</p>
+</li>
+<li><p>网页上有些数据不能写死，需要从数据库读取后再显示到页面上；而这些数据前端修改后，还要通知后端作出相同修改，这时便涉及到了前后端数据通信问题。</p>
+</li>
+</ul>
+<h2 id="前后端通信"><a href="#前后端通信" class="headerlink" title="前后端通信"></a>前后端通信</h2><ul>
+<li><p>使用 <code>&lt;form&gt;</code> 标签组成的 form 表单可以向后台提交数据，而且可以设置提交方式、提交地址以及提交成功页面的打开位置等等。</p>
+</li>
+<li><p>使用 form 表单提交数据请求，后端接收到请求后对数据库进行相应的操作，这是最初前后端通信的方式；这种方式每次完成操作后，前端需要的到后端反馈信息后，再刷新页面才能看到最新的数据。</p>
+</li>
+<li><p>后来的开发者将后端的反馈信息引导至一个内嵌的 iframe 窗口，这样可以让反馈信息在当前页面显示了，一定程度上提升了用户体验，但是最新的数据，还是得刷新整个页面后才能获取到。</p>
+</li>
+<li><p>在 HTML 中，有些标签具备不需要用户操作就可以发送请求的功能（<code>&lt;a&gt;</code> 标签是需要用户操作的），例如 <code>&lt;link&gt;</code>、<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code> 等标签，但它们只能发送 GET 请求，无法发送 POST 请求。</p>
+</li>
+<li><p><code>&lt;img&gt;</code> 和 <code>&lt;script&gt;</code> 等标签都可以监听其 <code>onload</code> 和 <code>onerror</code> 事件，来判断加载成功和失败，图片验证虽然需要返回图片文件（光返回 <code>Content-Type: image/xxx</code> 是不行的），判断繁琐，但是总算可以向服务器提交数据了；当请求成功后，前端可以自动为用户刷新页面，减少用户的操作，也可以在收到成功反馈后，直接修改页面数据，这样在不刷新的情况下也能看到数据变化。</p>
+</li>
+<li><p>用 <code>&lt;script&gt;</code> 标签也可以发送请求，也不必返回图片，但是必须将它放到页面当中才可以，因为 <code>&lt;script&gt;</code> 中的内容需要解析并且使用的是 <code>src</code> 属性引用的外部文件，才会发送请求去获取这个文件。由于每次发送请求都会动态地创建一个 <code>&lt;script&gt;</code> 标签，所以每次请求成功后，文档中都会出现一个 <code>&lt;script&gt;</code> 标签；这个插入到页面中的 <code>&lt;script&gt;</code> 标签如果含有脚本代码，就会被执行；利用这些特点，可以不必监听 <code>onload</code> 事件，直接在后端返回的文件中，写一段代码，后端操作数据成功并将这个文件返回到前端，页面就会执行这段代码的内容了，这段代码可以做很多事，比如可以直接将页面的相应数据修改；页面中增加的 <code>&lt;script&gt;</code> 标签在添加并加载完成后，便删除它，这样在请求操作完成后，文档中也不会有冗余的”副产品”了。前面描述的这种方案是 AJAX 出现之前，局部更新页面内容的常见方案，称为“SRJ（Server Rendered JavaScript）”方案。</p>
+</li>
+</ul>
+<h2 id="什么是-JSONP"><a href="#什么是-JSONP" class="headerlink" title="什么是 JSONP"></a>什么是 JSONP</h2><ul>
+<li><p>由于 <code>&lt;script&gt;</code> 标签发送的请求是不受域名限制的，也就是说，它可以跨域访问。利用这个特性，不同的网站（域名）之间也可以进行通信。</p>
+</li>
+<li><p>如果不同的域名之间通信时，后端的返回的代码中写的是对具体页面数据的操作（数据耦合度高），那么就需要后端对页面中的细节非常了解，这显然是非常困难的；要对这些数据进行解耦，可以让后端在操作成功后，返回的数据中调用指定的方法，传入指定的参数；再进一步，前后端约定指定的查询参数，前端将要运行的方法名通过查询参数的形式放在 <code>src</code> 属性的地址中，传送给后端，后端截取约定的名称，传入参数后返回给前端，这样就顺利解耦了。</p>
+</li>
+<li><p>前面的方法中，后端可以通过给指定的方法传参来向前端传送数据，那么这个数据换成是 JSON 数据也没有问题，这就是 JSONP。</p>
+</li>
+<li><p>在使用 JSONP 时，有一些约定俗成的命名：查询参数的名称为 callback，而回调函数的名称内要包含随机数，并且每次请求后都会删除，这样不会污染全局变量，也不会发生命名冲突；</p>
+</li>
+<li><p>在 jQuery 中的 AJAX 对象也集成了 JSONP 请求方式（虽然 JSONP 和 AJAX 没有关系），例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'http://www.test.com:8811/example'</span>,</span><br><span class="line">    dataType: <span class="string">'jsonp'</span>,</span><br><span class="line">    success: <span class="function"><span class="params">response</span> =&gt;</span> <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSONP 的原理总结：</p>
+<ul>
+<li><p>浏览器要发送请求时，动态地创建一个 <code>&lt;script&gt;</code> 标签，并将其 <code>src</code> 属性中的地址指向目标服务器，同时在地址中传入一个包含已在本地声明的回调函数名称的查询参数（一般为 callback），将这个 <code>&lt;script&gt;</code> 插入到文档中，触发一个 GET 请求；</p>
+</li>
+<li><p>服务器收到请求后，根据查询参数中的回调函数名称，构造一个调用回调函数的响应，并将数据通过回调函数的参数传入后发送给浏览器；</p>
+</li>
+<li><p>浏览器接收到服务器的响应，执行响应中带有参数的回调函数，之后便通过参数获取到了服务器返回的数据；示例代码：</p>
+</li>
+</ul>
+</li>
+<li><p>示例代码：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">'#btn'</span>),</span><br><span class="line">    fnName = <span class="string">`res<span class="subst">$&#123;<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">100000</span>, <span class="number">10</span>)&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>[fnName] = <span class="function"><span class="params">response</span> =&gt;</span> <span class="built_in">console</span>.log(response);</span><br><span class="line"></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">    script.src = <span class="string">`http://frank.com:8001?callback=<span class="subst">$&#123;fnName&#125;</span>`</span>;</span><br><span class="line">    script.addEventListener(<span class="string">'load'</span>, e =&gt; e.currentTarget.remove());</span><br><span class="line">    script.addEventListener(<span class="string">'error'</span>, (e) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'fail!'</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于 <code>&lt;script&gt;</code> 标签不具备发送 POST 请求的能力，所以 JSONP 方法不能发送 POST 请求；另外，JSONP 与 JSON 数据没多大关系，只是具备接收 JSON 数据的能力；而 JSONP 与 AJAX 也没有什么关系，只是被 jQuery 集成到了其 AJAX 对象中。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/14/前端系统课程-32-JSONP-是什么鬼/" data-id="cjjoa5s8q001js8q2saaia8bi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-32-DOM-事件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/07/前端系统课程-32-DOM-事件/" class="article-date">
@@ -148,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-32-DOM-事件/" data-id="cjji1kpmx001r54q2psdmziwf" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-32-DOM-事件/" data-id="cjjoa5s8u001ps8q2w9nculfv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -440,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-31-阶段考试及相关知识/" data-id="cjji1kpmd001j54q2bq4oq9k4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-31-阶段考试及相关知识/" data-id="cjjoa5s8w001rs8q2qh4evfi9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -499,7 +585,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" data-id="cjji1kpmd001f54q2tvpe3914" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" data-id="cjjoa5s8r001ls8q2x2i60zw8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -582,7 +668,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjji1kpm3001954q2702meoqd" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjjoa5s8o001hs8q2e7wj03ql" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -661,7 +747,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjji1kpm3001b54q2v1mmxwaw" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjjoa5s8n001fs8q2iepbweqk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -761,7 +847,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjji1kpmd001l54q2jmof39sf" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjjoa5s8l001ds8q24wxg3vo5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -872,7 +958,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjji1kpm3001754q21oow784u" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjjoa5s8h0019s8q2fc4rhmej" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -955,7 +1041,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjji1kpm3001554q2hjotw83t" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjjoa5s8f0017s8q2x9gtgi6z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1024,85 +1110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjji1kpm3001d54q2tq4it8gx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-23-给简历添加-JavaScript-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" class="article-date">
-  <time datetime="2018-06-28T00:05:53.000Z" itemprop="datePublished">2018-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="置顶导航栏"><a href="#置顶导航栏" class="headerlink" title="置顶导航栏"></a>置顶导航栏</h2><p>英文 sticky navbar，通过监听页面滚动事件将导航栏设置为固定定位并置顶；涉及知识：</p>
-<ul>
-<li><p><code>onscroll</code> 页面滚动事件句柄，<code>onmousewhell</code> 鼠标滚轮滚动事件句柄。</p>
-</li>
-<li><p>获取窗口滚动距离 <code>window.scrollX/Y</code>，建议使用 <code>window.pageXOffset/YOffset</code> 来代替。</p>
-</li>
-</ul>
-<h2 id="加载动画"><a href="#加载动画" class="headerlink" title="加载动画"></a>加载动画</h2><p>英文 loading animation，两个圆形从小变大，从深变浅，其中一个延迟动画即可；涉及知识：</p>
-<ul>
-<li><p><code>window.setTimeout(function, time)</code>，延迟定时器。</p>
-</li>
-<li><p>动画连写参数（参数之间无逗号）：<code>animation(动画名 完成时间 速度曲线 延迟开始 次数 是否轮流)</code>。</p>
-</li>
-<li><p>使用 Compass 导入 keyframe 函数时，参数内是动画名，括号后加花括号，里面写动画顺序和内容。</p>
-</li>
-</ul>
-<h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><p>英文 slide menu，通过监听一级菜单的鼠标移入移除事件来将二级菜单显示或隐藏；涉及知识：</p>
-<ul>
-<li><p>鼠标移入移出事件句柄有两组，分别是：<code>onmouseover</code> / <code>onmouseout</code> 和 <code>onmouseenter</code> / <code>onmouseleave</code>；区别是：前者的子元素也会触发事件，后者的子元素不会触发事件；要分不同的情况来监听不同的事件。</p>
-</li>
-<li><p>如何找到二级菜单，要看具体的元素结构；课程开始使用了 <code>nextSiblling</code> 方法，来获取一级菜单内链接的下一个兄弟节点（获取上一个兄弟节点的方法是 <code>previousSibling</code>），再通过 <code>nodeType</code> 属性不同的返回值判断节点类型（例如元素节点返回值为 1），还要判断元素的 <code>tagName</code> 属性（返回的标签名为大写字母）是否为预期的，如果需要向下获取并判断多次，可以使用 <code>while</code> 语句来循环寻找元素。</p>
-</li>
-<li><p>自己实现的方法更接近原型，使用了 <code>onmouseover</code> 和 <code>onmouseout</code> 事件，这样二级菜单也可以同时触发显示动作，无需额外处理；CSS 方面，使用了定位属性和过渡动画做位移，代码更简洁，并且有回退动画效果；但是带来的问题是无法使用 <code>display: none</code> 来隐藏菜单，最后使用了 <code>visibility: hidden/visible</code> 来做隐藏和显示，虽然元素并未从页面完全消失，但不会影响体验。</p>
-</li>
-<li><p>解决问题的关键在于，马上开始着手解决问题。</p>
-</li>
-</ul>
-<h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，就是让滚动条在指定时间内滚动到指定位置，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
-<ul>
-<li><p>在获取元素对象的属性时，一般推荐使用 <code>setAttribute()</code> 和 <code>getAttribute()</code> 方法，直接使用点运算符，可能会返回经过浏览器处理的结果，例如 <code>&lt;a&gt;</code> 标签中 <code>href</code> 的属性值。</p>
-</li>
-<li><p>使用 <code>document.querySelector()</code> 方法可以返回文档中匹配括号中指定 CSS 选择器的第一个元素，如果要想返回匹配的所有元素，可以使用 <code>document.querySelectorAll()</code> 方法。</p>
-</li>
-<li><p>点击 <code>&lt;a&gt;</code> 标签时，要阻止它的默认事件，可以使用 <code>href=&quot;javascript:&quot;</code> 的方法，但是如果 <code>href</code> 属性另有他用怎么办？那就使用时间对象的阻止默认事件方法 <code>ev.preventDefault()</code>。</p>
-</li>
-<li><p>使用 <code>offsetTop</code> 属性可以获取元素相对于它的 <code>offsetParent</code> 元素的顶部的距离（不包含边框），这是一个只读属性，返回值是数字类型的像素数；由于无法直接获取到元素相对页面最顶端的距离，所以只能用这个属性结合 <code>offsetParent</code> 属性，一直获取到 <code>&lt;body&gt;</code> 标签以下的所有元素的 <code>offsetTop</code> 之和；与之相配套的属性是 <code>offsetLeft</code> 属性，代表相对左上角的距离。</p>
-</li>
-<li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjji1kplt001154q212u8c7zh" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjjoa5s8j001bs8q292edynhi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1164,6 +1172,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/14/前端系统课程-32-JSONP-是什么鬼/">前端系统课程 32. JSONP 是什么鬼</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/07/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
           </li>
         
@@ -1177,10 +1189,6 @@
         
           <li>
             <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/04/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
           </li>
         
       </ul>
