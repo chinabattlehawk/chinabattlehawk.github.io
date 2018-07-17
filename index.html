@@ -66,6 +66,145 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-33-AJAX-是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/16/前端系统课程-33-AJAX-是什么鬼/" class="article-date">
+  <time datetime="2018-07-16T13:11:40.000Z" itemprop="datePublished">2018-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/16/前端系统课程-33-AJAX-是什么鬼/">前端系统课程 33. AJAX 是什么鬼</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="如何发请求"><a href="#如何发请求" class="headerlink" title="如何发请求"></a>如何发请求</h2><p>我们知道有一些标签可以发送请求：</p>
+<ul>
+<li><p><code>&lt;form&gt;</code> 表单可以发请求，但是会刷新页面或新开页面。</p>
+</li>
+<li><p><code>&lt;a&gt;</code> 标签可以发 GET 请求，但是也会刷新页面或新开页面。</p>
+</li>
+<li><p><code>&lt;img&gt;</code> 标签可以发 GET 请求，但是只能以图片的形式展示。</p>
+</li>
+<li><p><code>&lt;link&gt;</code> 标签可以发 GET 请求，但是只能以 CSS、favicon 的形式展示。</p>
+</li>
+<li><p><code>&lt;script&gt;</code> 可以发 GET 请求，但是只能以脚本的形式运行。</p>
+</li>
+</ul>
+<p>但我们想要一种方式可以实现以下功能：</p>
+<ul>
+<li><p>可以发送 GET、POST、PUT、DELETE 等不同类型的请求。</p>
+</li>
+<li><p>想以什么形式展示就以什么形式展示。</p>
+</li>
+</ul>
+<h2 id="微软的突破"><a href="#微软的突破" class="headerlink" title="微软的突破"></a>微软的突破</h2><p>微软在 IE5 率先在 JavaScript 中引入 ActiveX 对象（API），使得 JavaScript 可以直接发起 HTTP 请求。随后，其他浏览器也跟进创造了一个类似的对象，取名为 XMLHttpRequest，并被纳入了 W3C 规范。</p>
+<h2 id="什么是-AJAX"><a href="#什么是-AJAX" class="headerlink" title="什么是 AJAX"></a>什么是 AJAX</h2><p>Jesse James Garrett 将如下技术取名为 AJAX（Asynchronous  JavaScript and XML）:</p>
+<ul>
+<li><p>使用 XMLHttpRequest 对象发送请求；</p>
+</li>
+<li><p>服务器返回 XML 格式的字符串；</p>
+</li>
+<li><p>JavaScript 解析 XML，并更新局部页面。</p>
+</li>
+</ul>
+<h2 id="用原生-JavaScript-发送-AJAX-请求"><a href="#用原生-JavaScript-发送-AJAX-请求" class="headerlink" title="用原生 JavaScript 发送 AJAX 请求"></a>用原生 JavaScript 发送 AJAX 请求</h2><ul>
+<li><p>首先通过 <code>new</code> 操作符和 <code>XMLHttpRequest()</code> 构造器创建一个实例对象；</p>
+</li>
+<li><p>创建好实例对象后，就可以通过此对象的 <code>open()</code> 方法发送 HTTP 请求；这个方法接受 5 个参数，一般要了解的是前三个：</p>
+<ul>
+<li><p>第一个参数是字符串，代表请求类型，例如 GET 或 POST 等；</p>
+</li>
+<li><p>第二个参数也是字符串，表示请求的 URL 地址或路径；</p>
+</li>
+<li><p>第三个不常用但是比较重要，参数类型是布尔值，<code>true</code> 表示异步传输，<code>false</code> 表示同步传输。</p>
+</li>
+</ul>
+</li>
+<li><p>然后给这个对象绑定监听 <code>onreadystatechange</code> 事件，这个事件称为“通信状态改变事件”，它监听的其实是 <code>readyState</code> 属性的变化，这个属性用五个数字代表五种状态：</p>
+<ul>
+<li><p>0：UNSENT，代理被创建，但尚未调用 <code>open()</code> 方法。</p>
+</li>
+<li><p>1：OPENED，<code>open()</code> 方法已经被调用。</p>
+</li>
+<li><p>2：HEADERS_RECEIVED，<code>send()</code> 方法已经被调用，并且头部和状态已经可获得。</p>
+</li>
+<li><p>3：LOADING，下载中，<code>responseText</code> 属性已经包含部分数据。</p>
+</li>
+<li><p>4：DONE，下载操作已完成。</p>
+<p>从前面的列表中可以看出，只要判断 <code>readyState</code> 属性值为 4 时，就说明请求通信成功。</p>
+</li>
+</ul>
+</li>
+<li><p>请求成功后，还要判断返回的状态码，也就是 <code>status</code> 的属性值，如果状态码是 200 证明响应成功了。</p>
+</li>
+<li><p>响应成功后，便可以得到响应返回的数据，这些数据就是 <code>responseText</code> 的属性值，拿到这个值就可以做相应的数据处理。</p>
+</li>
+<li><p>用 AJAX 发送请求就像打手机，先解锁手机（创建对象），然后输入号码（初始化），再拨通这个号码（发送请求），最后等待接通后通话（等待响应及数据处理）。</p>
+</li>
+<li><p>一个基础的 AJAX 方法示例代码：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, async, fnSuccess, fnFail</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ajax;</span><br><span class="line">    <span class="comment">// 创建对象</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    ajax.open(method, url, <span class="keyword">async</span>);</span><br><span class="line">    <span class="comment">// 发送请求</span></span><br><span class="line">    ajax.send();</span><br><span class="line">    <span class="comment">// 接收请求</span></span><br><span class="line">    ajax.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'成功！'</span>);</span><br><span class="line">                fnSuccess(ajax.responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'失败！'</span>);</span><br><span class="line">                fnFail &amp;&amp; fnFail();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="JSON-与-JavaScript"><a href="#JSON-与-JavaScript" class="headerlink" title="JSON 与 JavaScript"></a>JSON 与 JavaScript</h2><ul>
+<li><p>JSON 是“抄袭” JavaScript 部分语法后发明的另一种语言。</p>
+</li>
+<li><p>JSON 中的数据类型和 JavaScript 中的数据类型非常相似，但区别是 JSON 中没有 Undefined 和 Function，并且在 JSON 中，字符串必须使用双引号包裹。</p>
+</li>
+<li><p>JSON 只是一种数据交换格式，它没有原型链，所以无法传输复杂的数据，例如引用数据类型。</p>
+</li>
+<li><p>HTTP 请求返回的数据都是以字符串的形式返回，只不过这些字符串可以符合不同的格式，比如 XML 或 JSON。</p>
+</li>
+<li><p>服务器返回的 JSON 格式字符串，可以使用浏览器提供的 <code>window.JSON.parse()</code> 方法将其转换为对应的 JavaScript 数据，例如对象，或数组等等。</p>
+</li>
+</ul>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
+<li><p>为什么 form 表单提交没有跨域问题，而 AJAX 提交却有跨域问题呢？</p>
+<p> 这是因为原页面用 form 表单提交到另一个域名后，会跳转到新页面，原页面的脚本无法获取新页面中的内容，这在浏览器认为是安全的。</p>
+<p> 而 AJAX 是可以读取响应内容的，并且不会跳转新页面，所以浏览器不允许 AJAX 被响应；用 AJAX 是可以成功地将请求发送出去的，只是接收不到服务器的响应。</p>
+</li>
+<li><p>前面的问题其实体现的是浏览器的同源策略；同源策略的含义是：A 网页设置的 Cookie，B 网页不能打开，除非两个网页“同源”，同源指的是“三个相同”，即<strong>协议相同</strong>，<strong>域名相同</strong>和<strong>端口相同</strong>。</p>
+</li>
+<li><p>如果两个网页非同源，那么三种行为会受到限制：</p>
+<ul>
+<li><p>Cookie、LocalStorage 和 IndexDB 无法读取。</p>
+</li>
+<li><p>DOM 无法获得。</p>
+</li>
+<li><p>AJAX 请求发送后无法得到响应。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CORS-跨域"><a href="#CORS-跨域" class="headerlink" title="CORS 跨域"></a>CORS 跨域</h2><p>如果要突破同源策略，可以使用 CORS 机制来进行跨域。</p>
+<p>CORS（Cross-Origin Resource Sharing，跨源资源共享），是一种允许当前域的资源（比如 HTML、JS 等）被其他域的脚本请求访问的机制。</p>
+<p>一般要实现 CORS，需要后端为指定共享的 URL 添加一个响应头，例如：<code>response.setHeader(&#39;Access-Control-Allow-Origin&#39;, url)</code>；如果允许所有的 URL，可以将参数传入一个通配符字符串 <code>&#39;*&#39;</code>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/07/16/前端系统课程-33-AJAX-是什么鬼/" data-id="cjjpvw3y9001wkkq2bhfhz7nv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-32-JSONP-是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/前端系统课程-32-JSONP-是什么鬼/" class="article-date">
@@ -140,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/14/前端系统课程-32-JSONP-是什么鬼/" data-id="cjjoa5s8q001js8q2saaia8bi" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/14/前端系统课程-32-JSONP-是什么鬼/" data-id="cjjpvw3y5001skkq2pcmih87e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -234,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-32-DOM-事件/" data-id="cjjoa5s8u001ps8q2w9nculfv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-32-DOM-事件/" data-id="cjjpvw3xz001kkkq29pdpw3ug" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -526,7 +665,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-31-阶段考试及相关知识/" data-id="cjjoa5s8w001rs8q2qh4evfi9" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/07/前端系统课程-31-阶段考试及相关知识/" data-id="cjjpvw3y2001okkq2jaq71d5p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -585,7 +724,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" data-id="cjjoa5s8r001ls8q2x2i60zw8" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/06/前端系统课程-30-jQuery-无缝轮播/" data-id="cjjpvw3y4001qkkq24j3rp60k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -668,7 +807,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjjoa5s8o001hs8q2e7wj03ql" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/05/前端系统课程-29-jQuery-做轮播图/" data-id="cjjpvw3y0001mkkq2gcwcssu2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -747,7 +886,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjjoa5s8n001fs8q2iepbweqk" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/04/前端系统课程-28-jQuery-不过如此/" data-id="cjjpvw3xx001ikkq2hwdsbpch" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -847,7 +986,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjjoa5s8l001ds8q24wxg3vo5" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/03/前端系统课程-27-DOM-API/" data-id="cjjpvw3xp001ckkq292zphdb6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -958,7 +1097,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjjoa5s8h0019s8q2fc4rhmej" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/02/前端系统课程-26-JavaScript-函数/" data-id="cjjpvw3xv001gkkq2czvbmrhp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1041,76 +1180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjjoa5s8f0017s8q2x9gtgi6z" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-24-给简历添加-JavaScript-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" class="article-date">
-  <time datetime="2018-06-29T12:32:49.000Z" itemprop="datePublished">2018-06-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ul>
-<li><p>用 JavaScript 实现动画的关键是 <code>window.setInterval()</code> 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 <code>setTimeout()</code> 使用方法类似；</p>
-</li>
-<li><p>页面滚动动画思路：</p>
-<ul>
-<li><p>使用 <code>window.pageXOffset</code> 属性获取当前页面滚动位置 currentTop，以及通过元素的 <code>offsetTop</code> 属性值来设定滚动目标位置 targetTop；</p>
-</li>
-<li><p>设定到目标位置的滚动总次数 n，当前滚动次数 x；</p>
-</li>
-<li><p>设定每次滚动的时间 t 为预设动画完成时间 / 滚动总次数，例如：</p>
-<p> <code>t = 200 / n</code>；</p>
-</li>
-<li><p>设定每次滚动的距离 step 为 (目标滚动位置 - 当前滚动位置) / 滚动总次数，即：</p>
-<p> <code>step = (targetTop - currentTop) / n</code>；</p>
-</li>
-<li><p>最后设置循环定时器，通过 <code>window.scrollTo()</code> 方法，在指定时间使页面滚动到指定位置，每次滚动之前，当前滚动次数加 1；在当前滚动次数达到设定的总次数后，说明已到达目标位置，此时便使用 <code>clearInterval()</code> 方法清除定时器，动画结束。下面是示例代码：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTop = <span class="built_in">window</span>.pageYOffset, <span class="comment">// 当前滚动位置</span></span><br><span class="line">    targetTop = getOffsetTop(id) &lt; <span class="number">200</span> ? <span class="number">80</span> : getOffsetTop(id), <span class="comment">// 目标滚动位置</span></span><br><span class="line">    n = <span class="number">25</span>, <span class="comment">// 滚动总次数</span></span><br><span class="line">    x = <span class="number">0</span>, <span class="comment">// 当前滚动次数</span></span><br><span class="line">    t = <span class="number">200</span> / n, <span class="comment">// 每次滚动时间</span></span><br><span class="line">    step = (targetTop - currentTop) / n, <span class="comment">// 每次滚动距离</span></span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === n) &#123; <span class="comment">// 当前滚动次数达到总次数</span></span><br><span class="line">            clearInterval(timer); <span class="comment">// 清除定时器</span></span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 跳出函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        x++; <span class="comment">// 当前次数自增</span></span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, currentTop + step * x) <span class="comment">// 滚动到当前次数该到的位置</span></span><br><span class="line">     &#125;, t);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="缓动"><a href="#缓动" class="headerlink" title="缓动"></a>缓动</h2><p>顾名思义，就是缓缓移动，让动画不那么生硬，就像 CSS 动画那样，可以设置不同的速度曲线，看起来有不同的线性效果。</p>
-<ul>
-<li><p>如果自己计算缓动函数（<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>）难度比较高，所以借助现有的成熟库更方便，例如 tween.js，示例代码如下：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">time</span>) </span>&#123; <span class="comment">// 设置动画循环时间</span></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    TWEEN.update(time);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coords = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;; <span class="comment">// 起始坐标数据</span></span><br><span class="line"><span class="keyword">var</span> tween = <span class="keyword">new</span> TWEEN.Tween(coords) <span class="comment">// 创建新实例并将坐标数据传入</span></span><br><span class="line">    .to(&#123; <span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;, <span class="number">1000</span>) <span class="comment">// 在1秒钟内移动到指定坐标</span></span><br><span class="line">    .easing(TWEEN.Easing.Quadratic.Out) <span class="comment">// 设置指定的缓动方式</span></span><br><span class="line">    .onUpdate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 此函数会在Tween每次将坐标数据更新后调用</span></span><br><span class="line">        <span class="comment">// 在函数内部就可以使用坐标数据来完成动画</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .start(); <span class="comment">// 立即启动实例</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>要学会在不懂的情况下搞定遇到的问题。</p>
-</li>
-</ul>
-<h2 id="菜单高亮"><a href="#菜单高亮" class="headerlink" title="菜单高亮"></a>菜单高亮</h2><p>通过在页面滚动时，计算不同区块相对顶部高度与当前页面滚动高度的差值，找到最小差值相对应的区块，让锚链接这个区块的菜单改变样式即可；由于差值可能是负数，比较时要先将差值全部取绝对值，可以使用内置数学对象的 <code>Math.abs()</code> 方法。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>还有一些其他动画效果，都很简单，就不一一赘述了；使用 JavaScript 操作 DOM 节点其实很简单，就是触发事件，然后找到相应节点，然后对其添加或删除类名，或者改变节点的其他属性，最终完成一个效果。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjjoa5s8j001bs8q292edynhi" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjjpvw3xs001ekkq22nzju86t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1172,6 +1242,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/16/前端系统课程-33-AJAX-是什么鬼/">前端系统课程 33. AJAX 是什么鬼</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/14/前端系统课程-32-JSONP-是什么鬼/">前端系统课程 32. JSONP 是什么鬼</a>
           </li>
         
@@ -1185,10 +1259,6 @@
         
           <li>
             <a href="/2018/07/06/前端系统课程-30-jQuery-无缝轮播/">前端系统课程 - 30. jQuery 无缝轮播</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/05/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
           </li>
         
       </ul>
