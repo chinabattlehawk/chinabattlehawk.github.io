@@ -66,10 +66,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-前端系统课程-25-JavaScript-数组" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-前端系统课程-26-JavaScript-函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/01/前端系统课程-25-JavaScript-数组/" class="article-date">
-  <time datetime="2018-07-01T10:33:16.000Z" itemprop="datePublished">2018-07-01</time>
+    <a href="/2018/05/26/前端系统课程-26-JavaScript-函数/" class="article-date">
+  <time datetime="2018-05-26T03:13:08.000Z" itemprop="datePublished">2018-05-26</time>
 </a>
     
   </div>
@@ -80,7 +80,118 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/01/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
+      <a class="article-title" href="/2018/05/26/前端系统课程-26-JavaScript-函数/">前端系统课程 - 26. JavaScript 函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="声明函数"><a href="#声明函数" class="headerlink" title="声明函数"></a>声明函数</h2><ul>
+<li><p>函数声明的方式有：</p>
+<ul>
+<li><p>使用 <code>function</code> 操作符声明函数，这种方式又分为具名函数、匿名函数和函数表达式。</p>
+</li>
+<li><p>使用全局方法 <code>Function()</code>。</p>
+</li>
+<li><p>使用 λ（拉姆达）表达式，又称为“箭头函数”（ES6 新增），这种函数都是匿名函数；当函数内只有一个 <code>return</code> 语句时，花括号和 <code>return</code> 关键字都可以（要一并）省略；函数参数只有一个时，包裹参数的括号可以省略；例如：</p>
+<p> <code>(x, y) =&gt; {return x + y}</code> 可简写为 <code>(x, y) =&gt; x + y</code></p>
+<p> <code>(x) =&gt; {return x * 2}</code> 可简写为 <code>x =&gt; x * 2</code></p>
+</li>
+</ul>
+</li>
+<li><p>匿名函数无法直接使用，需要赋值为一个变量，或者将其转换为表达式。</p>
+</li>
+<li><p>如果将一个具名函数赋值给一个变量，那么它的函数名会变更为变量名。</p>
+</li>
+<li><p>函数有一个 <code>name</code> 属性，如果是匿名函数，这个值是空字符串；如果是具名函数，这个值是函数声明时的名称，即使将这个函数赋值给一个变量，也不会改变，<strong>但是如果此时使用这个名字访问函数，是无法访问的</strong>；而匿名函数赋值给一个变量后，这个值会变成变量名，实际上此时，匿名函数已成为具名函数，<code>name</code> 值也就遵循具名函数的特性。</p>
+</li>
+<li><p>关于函数的 <code>name</code> 属性，还有一个特殊情况：使用 <code>new Function()</code> 方式声明的函数，它的 <code>name</code> 属性值是字符串 <code>&#39;anonymous&#39;</code>，意思是“匿名的”，也无法通过赋值操作改变，但又无法使用这个名字调用这个函数……</p>
+</li>
+</ul>
+<h2 id="函数的本质"><a href="#函数的本质" class="headerlink" title="函数的本质"></a>函数的本质</h2><ul>
+<li><p>函数是一段可以反复调用的代码块；函数还能接收输入的参数，不同的参数会返回不同的值。</p>
+</li>
+<li><p>要了解函数的本质，要先了解 <code>eval()</code> 这个全局方法，它可以将传入的字符串，计算后当作脚本代码来执行。</p>
+</li>
+<li><p>函数的调用，实际上是在调用函数的 <code>call()</code> 方法，其内部有一个类似 <code>eval()</code> 的方法将函数体解析为脚本代码后运行；直接使用函数名后加括号的调用方法，实际上是 JavaScript 的一种语法糖，真正的“硬核（hard cored）” 方法是函数调用自己的 <code>call()</code> 方法。</p>
+</li>
+<li><p>从前面的内容可以看出，函数是一个可以执行代码的对象。</p>
+</li>
+<li><p>函数原型包含的三个重要方法：<code>call()</code>、<code>apply()</code> 和 <code>bind()</code>。</p>
+</li>
+</ul>
+<h2 id="谈谈-this-和-arguments"><a href="#谈谈-this-和-arguments" class="headerlink" title="谈谈 this 和 arguments"></a>谈谈 this 和 arguments</h2><ul>
+<li><p>函数的 <code>call()</code> 方法中的第一个参数，可以用 <code>this</code> 得到，其他的参数，可以用 <code>arguments</code> 得到，前面说过，<code>arguments</code> 是一个伪数组。</p>
+</li>
+<li><p>在普通模式（相对于严格模式）下，<code>this</code> 的值如果是 <code>undefined</code>，JavaScript 会将其自动引用为 <code>window</code> 对象（全局对象），这是一个“潜规则”。</p>
+</li>
+<li><p>JavaScript 中的 <code>new</code> 和 <code>this</code> 都是要模拟 Java 语言，但是画虎不成反类其犬……</p>
+</li>
+</ul>
+<h2 id="调用栈-Call-Stack"><a href="#调用栈-Call-Stack" class="headerlink" title="调用栈 Call Stack"></a>调用栈 Call Stack</h2><ul>
+<li><p>函数调用分为：普通调用、嵌套调用和递归调用（自己嵌套调用自己）。</p>
+</li>
+<li><p>函数被调用时，都会在调用栈里记录一个位置；嵌套调用也一样，当调用并完成相应的运算后，会跳回之前记录的位置，并将记录抹去，再继续往下运行，直至函数结束调用。</p>
+</li>
+<li><p>当函数未运行完成时，它会暂时保存在调用栈里，这个叫做“压栈”；递归调用和嵌套调用都会压栈。</p>
+</li>
+<li><p>当压栈超过系统提供的栈的最大值时，运行就会报错，称为“栈溢出（Stack Overflow）”。</p>
+</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ul>
+<li><p>当遇到一些关于作用域的问题，一定不要忘记<strong>变量声明提前</strong>这回事。</p>
+</li>
+<li><p>作用域按照语法树，遵循就近原则。</p>
+</li>
+<li><p>作用域与变量的关系，主要理解的是变量在哪个作用域，变量是哪一个变量，而不是变量是哪一个变量的值，因为变量的值是可变的。</p>
+</li>
+<li><p>理解了作用域和变量的关系，以及变量与值的关系，就能理解为什么在循环为一个菜单列表添加事件后，触发事件时打印出的下标，都是列表的长度而不是每个列表项对应的下标；因为当你触发事件的时候，循环已经完成并停止，此时的循环下标，已经是列表的长度了，虽然下标还是那个下标，但是值已经发生了改变。</p>
+</li>
+</ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
+<li>如果一个函数使用了它范围外的变量，那么（这个函数加这个变量）就叫做闭包。</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>在严格模式下（<code>&#39;use strict&#39;</code>），<code>this</code> 值如果是基本类型，那么打印时便是这个值，而普通模式下，打印时是这个值包装的对象。</p>
+</li>
+<li><p>语句都会返回 <code>undefined</code>。</p>
+</li>
+<li><p>多用硬核方式调用函数，<code>fn.call(undefined, arg1, arg2...)</code>，就会理解每个函数都有自己的 <code>this</code>。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-26-JavaScript-函数/" data-id="cjjsaecdg001gk0q2v3r5qsug" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-25-JavaScript-数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/25/前端系统课程-25-JavaScript-数组/" class="article-date">
+  <time datetime="2018-05-25T10:33:16.000Z" itemprop="datePublished">2018-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/25/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
     </h1>
   
 
@@ -137,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/07/01/前端系统课程-25-JavaScript-数组/" data-id="cjjqhbx1b00181oq2iytkgqx2" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/25/前端系统课程-25-JavaScript-数组/" data-id="cjjsaecdc001ck0q2pttamkgl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -151,8 +262,8 @@
   
     <article id="post-前端系统课程-24-给简历添加-JavaScript-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" class="article-date">
-  <time datetime="2018-06-29T12:32:49.000Z" itemprop="datePublished">2018-06-29</time>
+    <a href="/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/" class="article-date">
+  <time datetime="2018-05-24T12:32:49.000Z" itemprop="datePublished">2018-05-24</time>
 </a>
     
   </div>
@@ -163,7 +274,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
+      <a class="article-title" href="/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/">前端系统课程 - 24. 给简历添加 JavaScript (2)</a>
     </h1>
   
 
@@ -206,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/29/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjjqhbx1d001c1oq28txnzbxn" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjjsaecdb001ak0q2kdgcb5i8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -220,8 +331,8 @@
   
     <article id="post-前端系统课程-23-给简历添加-JavaScript-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" class="article-date">
-  <time datetime="2018-06-28T00:05:53.000Z" itemprop="datePublished">2018-06-28</time>
+    <a href="/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" class="article-date">
+  <time datetime="2018-05-23T00:05:53.000Z" itemprop="datePublished">2018-05-23</time>
 </a>
     
   </div>
@@ -232,7 +343,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
+      <a class="article-title" href="/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
     </h1>
   
 
@@ -284,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/28/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjjqhbx1900161oq2wmt7dv67" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjjsaecd90018k0q2mckixor4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -298,8 +409,8 @@
   
     <article id="post-前端系统课程-22-JavaScript-里的对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/" class="article-date">
-  <time datetime="2018-06-26T23:44:11.000Z" itemprop="datePublished">2018-06-27</time>
+    <a href="/2018/05/22/前端系统课程-22-JavaScript-里的对象/" class="article-date">
+  <time datetime="2018-05-21T23:44:11.000Z" itemprop="datePublished">2018-05-22</time>
 </a>
     
   </div>
@@ -310,7 +421,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/27/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
+      <a class="article-title" href="/2018/05/22/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
     </h1>
   
 
@@ -349,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/27/前端系统课程-22-JavaScript-里的对象/" data-id="cjjqhbx1600121oq2qnqdtdmf" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/22/前端系统课程-22-JavaScript-里的对象/" data-id="cjjsaecd80016k0q2fe1ferk5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -363,8 +474,8 @@
   
     <article id="post-前端系统课程-21-JavaScript-里的类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/" class="article-date">
-  <time datetime="2018-06-26T02:56:32.000Z" itemprop="datePublished">2018-06-26</time>
+    <a href="/2018/05/21/前端系统课程-21-JavaScript-里的类型/" class="article-date">
+  <time datetime="2018-05-21T02:56:32.000Z" itemprop="datePublished">2018-05-21</time>
 </a>
     
   </div>
@@ -375,7 +486,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/26/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
+      <a class="article-title" href="/2018/05/21/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
     </h1>
   
 
@@ -445,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/26/前端系统课程-21-JavaScript-里的类型/" data-id="cjjqhbx1c001a1oq2v74u9kbi" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/21/前端系统课程-21-JavaScript-里的类型/" data-id="cjjsaecd50012k0q2j8uert2t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -459,8 +570,8 @@
   
     <article id="post-前端系统课程-20-JavaScript-里的数据" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/" class="article-date">
-  <time datetime="2018-06-25T14:09:39.000Z" itemprop="datePublished">2018-06-25</time>
+    <a href="/2018/05/20/前端系统课程-20-JavaScript-里的数据/" class="article-date">
+  <time datetime="2018-05-20T14:09:39.000Z" itemprop="datePublished">2018-05-20</time>
 </a>
     
   </div>
@@ -471,7 +582,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
+      <a class="article-title" href="/2018/05/20/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
     </h1>
   
 
@@ -538,7 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/25/前端系统课程-20-JavaScript-里的数据/" data-id="cjjqhbx1500101oq20id6bfix" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/20/前端系统课程-20-JavaScript-里的数据/" data-id="cjjsaecd60014k0q2i200tuec" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -552,8 +663,8 @@
   
     <article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/04/前端系统课程-19-Canvas-画板-2/" class="article-date">
-  <time datetime="2018-06-04T14:22:14.000Z" itemprop="datePublished">2018-06-04</time>
+    <a href="/2018/05/19/前端系统课程-19-Canvas-画板-2/" class="article-date">
+  <time datetime="2018-05-19T14:22:14.000Z" itemprop="datePublished">2018-05-19</time>
 </a>
     
   </div>
@@ -564,7 +675,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/04/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
+      <a class="article-title" href="/2018/05/19/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
     </h1>
   
 
@@ -590,7 +701,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-19-Canvas-画板-2/" data-id="cjjqhbx1800141oq2t85kyxrd" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/19/前端系统课程-19-Canvas-画板-2/" data-id="cjjsaecd30010k0q2g25bj9li" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -604,8 +715,8 @@
   
     <article id="post-前端系统课程-18-Canvas-画板-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/03/前端系统课程-18-Canvas-画板-1/" class="article-date">
-  <time datetime="2018-06-03T06:46:01.000Z" itemprop="datePublished">2018-06-03</time>
+    <a href="/2018/05/18/前端系统课程-18-Canvas-画板-1/" class="article-date">
+  <time datetime="2018-05-18T06:46:01.000Z" itemprop="datePublished">2018-05-18</time>
 </a>
     
   </div>
@@ -616,7 +727,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/03/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
+      <a class="article-title" href="/2018/05/18/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
     </h1>
   
 
@@ -688,7 +799,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-18-Canvas-画板-1/" data-id="cjjqhbx12000w1oq2g5ysftx4" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-18-Canvas-画板-1/" data-id="cjjsaecd0000wk0q2l11ttgzt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -702,8 +813,8 @@
   
     <article id="post-前端系统课程-17-JavaScript-小作品" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/28/前端系统课程-17-JavaScript-小作品/" class="article-date">
-  <time datetime="2018-05-28T13:41:34.000Z" itemprop="datePublished">2018-05-28</time>
+    <a href="/2018/05/17/前端系统课程-17-JavaScript-小作品/" class="article-date">
+  <time datetime="2018-05-17T13:41:34.000Z" itemprop="datePublished">2018-05-17</time>
 </a>
     
   </div>
@@ -714,7 +825,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/前端系统课程-17-JavaScript-小作品/">前端系统课程 - 17. JavaScript 小作品</a>
+      <a class="article-title" href="/2018/05/17/前端系统课程-17-JavaScript-小作品/">前端系统课程 - 17. JavaScript 小作品</a>
     </h1>
   
 
@@ -736,48 +847,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-17-JavaScript-小作品/" data-id="cjjqhbx0y000s1oq2rogjqlmn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-16-JavaScript-初体验" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/27/前端系统课程-16-JavaScript-初体验/" class="article-date">
-  <time datetime="2018-05-27T14:17:03.000Z" itemprop="datePublished">2018-05-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/27/前端系统课程-16-JavaScript-初体验/">前端系统课程 - 16. JavaScript 初体验</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h2><p><code>document.createElement(tagName)</code></p>
-<p>括号内的 tagName 就是标签名，必须是一个字符串，例如创建一个 <code>&lt;div&gt;</code> 元素：</p>
-<p><code>var div = document.createElement(&#39;div&#39;)</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-16-JavaScript-初体验/" data-id="cjjqhbx13000y1oq2x1kpufn3" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-17-JavaScript-小作品/" data-id="cjjsaeccz000uk0q2gqtlf9ht" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -807,7 +877,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
     </div>
   </div>
 
@@ -817,7 +887,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
     </div>
   </div>
 
@@ -826,7 +896,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -839,23 +909,23 @@
       <ul>
         
           <li>
-            <a href="/2018/07/18/前端系统课程-34-自己实现-AJAX/">前端系统课程 - 34. 自己实现 AJAX</a>
+            <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
           </li>
         
           <li>
-            <a href="/2018/07/16/前端系统课程-33-AJAX-是什么鬼/">前端系统课程 - 33. AJAX 是什么鬼</a>
+            <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
           </li>
         
           <li>
-            <a href="/2018/07/14/前端系统课程-32-JSONP-是什么鬼/">前端系统课程 - 32. JSONP 是什么鬼</a>
+            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
           </li>
         
           <li>
-            <a href="/2018/07/07/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
           </li>
         
           <li>
-            <a href="/2018/07/07/前端系统课程-31-阶段考试及相关知识/">前端系统课程 - 31. 阶段考试及相关知识</a>
+            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
           </li>
         
       </ul>

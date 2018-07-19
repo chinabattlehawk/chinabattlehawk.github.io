@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端系统课程 - 34. AJAX 是什么鬼 | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何发请求我们知道有一些标签可以发送请求：  &amp;lt;form&amp;gt; 表单可以发请求，但是会刷新页面或新开页面。  &amp;lt;a&amp;gt; 标签可以发 GET 请求，但是也会刷新页面或新开页面。  &amp;lt;img&amp;gt; 标签可以发 GET 请求，但是只能以图片的形式展示。  &amp;lt;link&amp;gt; 标签可以发 GET 请求，但是只能以 CSS、favicon 的形式展示。  &amp;lt;script">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端系统课程 - 34. AJAX 是什么鬼">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="如何发请求我们知道有一些标签可以发送请求：  &amp;lt;form&amp;gt; 表单可以发请求，但是会刷新页面或新开页面。  &amp;lt;a&amp;gt; 标签可以发 GET 请求，但是也会刷新页面或新开页面。  &amp;lt;img&amp;gt; 标签可以发 GET 请求，但是只能以图片的形式展示。  &amp;lt;link&amp;gt; 标签可以发 GET 请求，但是只能以 CSS、favicon 的形式展示。  &amp;lt;script">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T08:20:06.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端系统课程 - 34. AJAX 是什么鬼">
+<meta name="twitter:description" content="如何发请求我们知道有一些标签可以发送请求：  &amp;lt;form&amp;gt; 表单可以发请求，但是会刷新页面或新开页面。  &amp;lt;a&amp;gt; 标签可以发 GET 请求，但是也会刷新页面或新开页面。  &amp;lt;img&amp;gt; 标签可以发 GET 请求，但是只能以图片的形式展示。  &amp;lt;link&amp;gt; 标签可以发 GET 请求，但是只能以 CSS、favicon 的形式展示。  &amp;lt;script">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端系统课程-34-AJAX-是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" class="article-date">
+  <time datetime="2018-06-03T13:11:40.000Z" itemprop="datePublished">2018-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端系统课程 - 34. AJAX 是什么鬼
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="如何发请求"><a href="#如何发请求" class="headerlink" title="如何发请求"></a>如何发请求</h2><p>我们知道有一些标签可以发送请求：</p>
+<ul>
+<li><p><code>&lt;form&gt;</code> 表单可以发请求，但是会刷新页面或新开页面。</p>
+</li>
+<li><p><code>&lt;a&gt;</code> 标签可以发 GET 请求，但是也会刷新页面或新开页面。</p>
+</li>
+<li><p><code>&lt;img&gt;</code> 标签可以发 GET 请求，但是只能以图片的形式展示。</p>
+</li>
+<li><p><code>&lt;link&gt;</code> 标签可以发 GET 请求，但是只能以 CSS、favicon 的形式展示。</p>
+</li>
+<li><p><code>&lt;script&gt;</code> 可以发 GET 请求，但是只能以脚本的形式运行。</p>
+</li>
+</ul>
+<p>但我们想要一种方式可以实现以下功能：</p>
+<ul>
+<li><p>可以发送 GET、POST、PUT、DELETE 等不同类型的请求。</p>
+</li>
+<li><p>想以什么形式展示就以什么形式展示。</p>
+</li>
+</ul>
+<h2 id="微软的突破"><a href="#微软的突破" class="headerlink" title="微软的突破"></a>微软的突破</h2><p>微软在 IE5 率先在 JavaScript 中引入 ActiveX 对象（API），使得 JavaScript 可以直接发起 HTTP 请求。随后，其他浏览器也跟进创造了一个类似的对象，取名为 XMLHttpRequest，并被纳入了 W3C 规范。</p>
+<h2 id="什么是-AJAX"><a href="#什么是-AJAX" class="headerlink" title="什么是 AJAX"></a>什么是 AJAX</h2><p>Jesse James Garrett 将如下技术取名为 AJAX（Asynchronous  JavaScript and XML，异步 JavaScript 和 XML）:</p>
+<ul>
+<li><p>使用 XMLHttpRequest 对象发送请求；</p>
+</li>
+<li><p>服务器返回 XML 格式的字符串；</p>
+</li>
+<li><p>JavaScript 解析 XML，并更新局部页面。</p>
+</li>
+</ul>
+<h2 id="用原生-JavaScript-发送-AJAX-请求"><a href="#用原生-JavaScript-发送-AJAX-请求" class="headerlink" title="用原生 JavaScript 发送 AJAX 请求"></a>用原生 JavaScript 发送 AJAX 请求</h2><ul>
+<li><p>首先通过 <code>new</code> 操作符和 <code>XMLHttpRequest()</code> 构造器创建一个实例对象；</p>
+</li>
+<li><p>创建好实例对象后，就可以通过此对象的 <code>open()</code> 方法发送 HTTP 请求；这个方法接收五个参数，一般要了解的是前三个：</p>
+<ul>
+<li><p>第一个参数是字符串，代表请求类型，例如 GET 或 POST 等；</p>
+</li>
+<li><p>第二个参数也是字符串，表示请求的 URL 地址或路径；</p>
+</li>
+<li><p>第三个不常用但是比较重要，参数类型是布尔值，<code>true</code> 表示异步传输，<code>false</code> 表示同步传输。</p>
+</li>
+</ul>
+</li>
+<li><p>然后给这个对象绑定监听 <code>onreadystatechange</code> 事件，这个事件称为“通信状态改变事件”，它监听的其实是 <code>readyState</code> 属性的变化，这个属性用五个数字代表五种状态：</p>
+<ul>
+<li><p>0：UNSENT，代理被创建，但尚未调用 <code>open()</code> 方法。</p>
+</li>
+<li><p>1：OPENED，<code>open()</code> 方法已经被调用。</p>
+</li>
+<li><p>2：HEADERS_RECEIVED，<code>send()</code> 方法已经被调用，并且头部和状态已经可获得。</p>
+</li>
+<li><p>3：LOADING，下载中，<code>responseText</code> 属性已经包含部分数据。</p>
+</li>
+<li><p>4：DONE，下载操作已完成。</p>
+<p>从前面的列表中可以看出，只要判断 <code>readyState</code> 属性值为 4 时，就说明请求通信成功。</p>
+</li>
+</ul>
+</li>
+<li><p>请求成功后，还要判断返回的状态码，也就是 <code>status</code> 的属性值，如果状态码是 200 证明响应成功了。</p>
+</li>
+<li><p>响应成功后，便可以得到响应返回的数据，这些数据就是 <code>responseText</code> 的属性值，拿到这个值就可以做相应的数据处理。</p>
+</li>
+<li><p>用 AJAX 发送请求就像打手机，先解锁手机（创建对象），然后输入号码（初始化），再拨通这个号码（发送请求），最后等待接通后通话（等待响应及数据处理）。</p>
+</li>
+<li><p>一个基础的 AJAX 方法示例代码：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, async, fnSuccess, fnFail</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ajax;</span><br><span class="line">    <span class="comment">// 创建对象</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    ajax.open(method, url, <span class="keyword">async</span>);</span><br><span class="line">    <span class="comment">// 发送请求</span></span><br><span class="line">    ajax.send();</span><br><span class="line">    <span class="comment">// 接收请求</span></span><br><span class="line">    ajax.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'成功！'</span>);</span><br><span class="line">                fnSuccess(ajax.responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'失败！'</span>);</span><br><span class="line">                fnFail &amp;&amp; fnFail();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="JSON-与-JavaScript"><a href="#JSON-与-JavaScript" class="headerlink" title="JSON 与 JavaScript"></a>JSON 与 JavaScript</h2><ul>
+<li><p>JSON 是“抄袭” JavaScript 部分语法后发明的另一种语言。</p>
+</li>
+<li><p>JSON 中的数据类型和 JavaScript 中的数据类型非常相似，但区别是 JSON 中没有 Undefined 和 Function，并且在 JSON 中，字符串必须使用双引号包裹。</p>
+</li>
+<li><p>JSON 只是一种数据交换格式，它没有原型链，所以无法传输复杂的数据，例如引用数据类型。</p>
+</li>
+<li><p>HTTP 请求返回的数据都是以字符串的形式返回，只不过这些字符串可以符合不同的格式，比如 XML 或 JSON。</p>
+</li>
+<li><p>服务器返回的 JSON 格式字符串，可以使用浏览器提供的 <code>window.JSON.parse()</code> 方法将其转换为对应的 JavaScript 数据，例如对象，或数组等等。</p>
+</li>
+</ul>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
+<li><p>为什么 form 表单提交没有跨域问题，而 AJAX 提交却有跨域问题呢？</p>
+<p> 这是因为原页面用 form 表单提交到另一个域名后，会跳转到新页面，原页面的脚本无法获取新页面中的内容，这在浏览器认为是安全的。</p>
+<p> 而 AJAX 是可以读取响应内容的，并且不会跳转新页面，所以浏览器不允许 AJAX 被响应；用 AJAX 是可以成功地将请求发送出去的，只是接收不到服务器的响应。</p>
+</li>
+<li><p>前面的问题其实体现的是浏览器的同源策略；同源策略的含义是：A 网页设置的 Cookie，B 网页不能打开，除非两个网页“同源”，同源指的是“三个相同”，即<strong>协议相同</strong>，<strong>域名相同</strong>和<strong>端口相同</strong>。</p>
+</li>
+<li><p>如果两个网页非同源，那么三种行为会受到限制：</p>
+<ul>
+<li><p>Cookie、LocalStorage 和 IndexDB 无法读取。</p>
+</li>
+<li><p>DOM 无法获得。</p>
+</li>
+<li><p>AJAX 请求发送后无法得到响应。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CORS-跨域"><a href="#CORS-跨域" class="headerlink" title="CORS 跨域"></a>CORS 跨域</h2><p>如果要突破同源策略，可以使用 CORS 机制来进行跨域。</p>
+<p>CORS（Cross-Origin Resource Sharing，跨源资源共享），是一种允许当前域的资源（比如 HTML、JS 等）被其他域的脚本请求访问的机制。</p>
+<p>一般要实现 CORS，需要后端为指定共享的 URL 添加一个响应头，例如：<code>response.setHeader(&#39;Access-Control-Allow-Origin&#39;, url)</code>；如果允许所有的 URL，可以将参数传入一个通配符字符串 <code>&#39;*&#39;</code>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" data-id="cjjsaecdx0021k0q2ymfop6iz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 35. 自己实现 AJAX
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 - 33. JSONP 是什么鬼</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

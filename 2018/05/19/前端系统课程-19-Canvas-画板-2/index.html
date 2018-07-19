@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端系统课程 - 19. Canvas 画板 (2) | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="视口设置原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下： &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mi">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端系统课程 - 19. Canvas 画板 (2)">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/05/19/前端系统课程-19-Canvas-画板-2/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="视口设置原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下： &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T08:14:59.128Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端系统课程 - 19. Canvas 画板 (2)">
+<meta name="twitter:description" content="视口设置原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下： &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, mi">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/前端系统课程-19-Canvas-画板-2/" class="article-date">
+  <time datetime="2018-05-19T14:22:14.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端系统课程 - 19. Canvas 画板 (2)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="视口设置"><a href="#视口设置" class="headerlink" title="视口设置"></a>视口设置</h2><p>原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下：</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+<p>以上标签的 content 属性值，含义依次为：视口宽度，设置为了设备宽度；用户缩放，设置为禁用；初识缩放比例，设置为 1；最大缩放比例，设置为 1；最小缩放比例，设置为 1。</p>
+<h2 id="触摸事件句柄"><a href="#触摸事件句柄" class="headerlink" title="触摸事件句柄"></a>触摸事件句柄</h2><ul>
+<li><p>触摸开始（手指接触） <code>ontouchstart</code></p>
+</li>
+<li><p>触目移动（手指移动） <code>ontouchmove</code></p>
+</li>
+<li><p>触摸结束（手指抬起） <code>ontouchend</code></p>
+</li>
+</ul>
+<h2 id="触摸特性检测"><a href="#触摸特性检测" class="headerlink" title="触摸特性检测"></a>触摸特性检测</h2><p>可以使用 <code>in</code> 操作符，来检测 <code>window</code> 对象是否包含触摸事件 <code>onmovestart</code> 对应的属性，如果包含则返回 <code>true</code>，不包含则返回 <code>false</code>；而后通过返回值来设置要监听的事件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasTouch = <span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>, <span class="comment">// 检测是否为触摸设备</span></span><br><span class="line">    tapStart = hasTouch ? <span class="string">'touchstart'</span> : <span class="string">'mousedown'</span>,</span><br><span class="line">    tapMove = hasTouch ? <span class="string">'touchmove'</span> : <span class="string">'mousemove'</span>,</span><br><span class="line">    tapEnd = hasTouch ? <span class="string">'touchend'</span> : <span class="string">'mouseup'</span>; <span class="comment">// 监听不同设备事件</span></span><br></pre></td></tr></table></figure>
+<h2 id="触摸事件信息"><a href="#触摸事件信息" class="headerlink" title="触摸事件信息"></a>触摸事件信息</h2><p>要获取触摸事件信息，需要先获取触摸点；由于触控设备大都支持多点触控，所以事件对象会将触摸点作为一个集合（非数组）返回，但是一般只处理一个触摸点，就是集合的第 0 个对象，即 <code>touchEvent.touches[0]</code>。其他的位置属性基本上和鼠标事件信息类似。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/19/前端系统课程-19-Canvas-画板-2/" data-id="cjjsaecd30010k0q2g25bj9li" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/20/前端系统课程-20-JavaScript-里的数据/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 20. JavaScript 里的数据
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/18/前端系统课程-18-Canvas-画板-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 - 18. Canvas 画板 (1)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

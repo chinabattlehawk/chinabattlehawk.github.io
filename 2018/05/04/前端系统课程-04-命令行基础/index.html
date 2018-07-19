@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端系统课程 - 04. 命令行基础 | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="初识命令行课程里讲的命令行主要是 Linux 或 Unix 系统里的命令行，在 Windows 中 cmd 中不一定适用。  ~ 表示当前用户目录，第一个 / 表示整个硬盘（没有盘符的系统），. 表示当前目录，.. 表示副目录，$ 表示可以输入命令的状态（可更改）。  基本命令：  创建目录（make directory）：mkdir；  删除（remove）：rm；  移动/重命名（move）：">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端系统课程 - 04. 命令行基础">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/05/04/前端系统课程-04-命令行基础/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="初识命令行课程里讲的命令行主要是 Linux 或 Unix 系统里的命令行，在 Windows 中 cmd 中不一定适用。  ~ 表示当前用户目录，第一个 / 表示整个硬盘（没有盘符的系统），. 表示当前目录，.. 表示副目录，$ 表示可以输入命令的状态（可更改）。  基本命令：  创建目录（make directory）：mkdir；  删除（remove）：rm；  移动/重命名（move）：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T08:13:48.211Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端系统课程 - 04. 命令行基础">
+<meta name="twitter:description" content="初识命令行课程里讲的命令行主要是 Linux 或 Unix 系统里的命令行，在 Windows 中 cmd 中不一定适用。  ~ 表示当前用户目录，第一个 / 表示整个硬盘（没有盘符的系统），. 表示当前目录，.. 表示副目录，$ 表示可以输入命令的状态（可更改）。  基本命令：  创建目录（make directory）：mkdir；  删除（remove）：rm；  移动/重命名（move）：">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端系统课程-04-命令行基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/04/前端系统课程-04-命令行基础/" class="article-date">
+  <time datetime="2018-05-04T11:59:35.000Z" itemprop="datePublished">2018-05-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端系统课程 - 04. 命令行基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初识命令行"><a href="#初识命令行" class="headerlink" title="初识命令行"></a>初识命令行</h2><p>课程里讲的命令行主要是 Linux 或 Unix 系统里的命令行，在 Windows 中 cmd 中不一定适用。</p>
+<ul>
+<li><p><code>~</code> 表示当前用户目录，第一个 <code>/</code> 表示整个硬盘（没有盘符的系统），<code>.</code> 表示当前目录，<code>..</code> 表示副目录，<code>$</code> 表示可以输入命令的状态（可更改）。</p>
+</li>
+<li><p>基本命令：</p>
+<ul>
+<li><p>创建目录（make directory）：<code>mkdir</code>；</p>
+</li>
+<li><p>删除（remove）：<code>rm</code>；</p>
+</li>
+<li><p>移动/重命名（move）：<code>move</code>；</p>
+</li>
+<li><p>复制（copy）：<code>cp</code>；</p>
+</li>
+<li><p>罗列（list）：<code>ls</code>；</p>
+</li>
+<li><p>改变目录（change directory）：<code>cd</code>；</p>
+</li>
+<li><p>…</p>
+</li>
+</ul>
+</li>
+<li><p>命令缩写规则：一般是删除元音字母（a、e、i、o、u），保留前 2 到 3 个辅音字母。</p>
+</li>
+</ul>
+<h2 id="绝对路径与相对路径"><a href="#绝对路径与相对路径" class="headerlink" title="绝对路径与相对路径"></a>绝对路径与相对路径</h2><p>以 <code>/</code> 开头的是绝对路径，反之就是相对路径。</p>
+<h2 id="体验命令行"><a href="#体验命令行" class="headerlink" title="体验命令行"></a>体验命令行</h2><ul>
+<li><p>如果在创建文件夹时，文件夹名称中有特殊字符（如空格），那么名称要用引号包裹。</p>
+</li>
+<li><p>命令后面还可以加“选项”命令来完成更多的操作。</p>
+</li>
+<li><p>更多的命令可以自行谷歌，命令释义可以参照<a href="https://explainshell.com" target="_blank" rel="noopener">这里</a>。</p>
+</li>
+</ul>
+<h2 id="Git-操作"><a href="#Git-操作" class="headerlink" title="Git 操作"></a>Git 操作</h2><p>先要生成 SSH key，前面的课程学过了，有一些注意事项：</p>
+<ul>
+<li><p>一台设备只需要一个 key。</p>
+</li>
+<li><p>一个 key 可以访问你的所有仓库。</p>
+</li>
+<li><p>如果有新设备连接 GitHub，要在新设备上重新生成一个 key，再把这个 key 也上传到 GitHub，新的 key 可以和以前的 key 共存。</p>
+</li>
+<li><p>如果把 key 从电脑中删除，可以重新生成一个替换被删除的 key。</p>
+</li>
+</ul>
+<h2 id="配置-Git"><a href="#配置-Git" class="headerlink" title="配置 Git"></a>配置 Git</h2><p>五行命令：</p>
+<p><code>git config --global user.name yourname</code></p>
+<p><code>git config --global user.email yourmail</code></p>
+<p><code>git config --global push.default matching</code></p>
+<p><code>git config --global core.quotepath false</code></p>
+<p><code>git config --global core.editor &quot;vim&quot;</code></p>
+<p>依次运行。</p>
+<h2 id="使用-Git"><a href="#使用-Git" class="headerlink" title="使用 Git"></a>使用 Git</h2><p>使用 Git 的方式有很多种，主要的三种：</p>
+<ul>
+<li><p>只在本地使用：</p>
+<ol>
+<li><p>创建并进入一个目录；</p>
+</li>
+<li><p>使用 <code>git init</code> 命令将这个目录设定为 Git 仓库，称为初始化仓库；</p>
+</li>
+<li><p>在这个仓库里可以创建文件或目录后，可以通过 <code>git status -sb</code>（-s，summary，意思是显示总结；-b，branch，意思是显示总结和分支；这两个设置让显示结果更易读）命令查看它们的状态（目录为空时会忽略），文件状态会在文件名前面显示，例如没有关联的文件前面显示 <code>??</code>；</p>
+</li>
+<li><p>使用 <code>git add</code> 命令将文件添加到中转区，之后被添加的文件状态会显示 <code>A</code>，表示文件已被标记为准备提交到仓库的状态；</p>
+</li>
+<li><p>使用 <code>git commit -m&quot;提交信息&quot;</code> 命令来将中转区的文件提交到仓库；</p>
+</li>
+<li><p>如果文件内容有改动，文件状态会变为右边的红 <code>M</code>，再将文件 add 后，状态会变为绿色的左 <code>M</code>，再用 commit 命令将文件提交到仓库。</p>
+</li>
+<li><p>如果要删除文件，删除文件后，再 add 删除文件的文件名，这是状态变为了 <code>D</code>，再 commit 后，仓库文件也就被删除了；</p>
+</li>
+<li><p>可以使用 <code>git log</code> 命令就可以看到文件改动历史；</p>
+</li>
+<li><p>记住顺序就是先 add 再 commit 就可以了。</p>
+</li>
+</ol>
+</li>
+<li><p>将本地仓库上传到 GitHub：</p>
+<ol>
+<li><p>在 GitHub 上新建一个仓库，名称最好与本地仓库的统一；</p>
+</li>
+<li><p>然后使用 SSH 类型的仓库地址，进行同步操作：</p>
+<ul>
+<li><p>运行 <code>git remote add origin git@github:xxx/name.git</code>，最后一段就是仓库地址；</p>
+</li>
+<li><p>运行 <code>git push -u origin master</code>，这就将本地的仓库推送到了 GitHub 上。 </p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>下载 GitHub 上的仓库：</p>
+<p>直接使用 <code>git clone</code> 命令，加上仓库的 SSH 类型的仓库地址，就可以将仓库下载到指定位置了。</p>
+</li>
+</ul>
+<h2 id="如何上传更新"><a href="#如何上传更新" class="headerlink" title="如何上传更新"></a>如何上传更新</h2><p>如果本地目录有任何变动，按照以下顺序就能上传：</p>
+<ol>
+<li><p>先 <code>git add</code> 目录；</p>
+</li>
+<li><p>再 <code>git commit -m &quot;massage&quot;</code> 目录；</p>
+</li>
+<li><p>然后使用 <code>git pull</code> 命令拉取，与远程目录合并；这一步是为了防止有别的更改本地仓库没有同步过；</p>
+</li>
+<li><p>最后再 <code>git push</code> 就可以将变动的目录上传到远程仓库。</p>
+</li>
+</ol>
+<p>还有很多其他的命令，需要长期学习。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/04/前端系统课程-04-命令行基础/" data-id="cjjsaecbx0008k0q24iak1aa8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/05/前端系统课程-05-脚本/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 05. 脚本
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/03/前端系统课程-03-软件安装/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 - 03. 软件安装</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

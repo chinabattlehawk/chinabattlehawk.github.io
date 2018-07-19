@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端系统课程 - 24. 给简历添加 JavaScript (2) | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="动画 用 JavaScript 实现动画的关键是 window.setInterval() 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 setTimeout() 使用方法类似；  页面滚动动画思路：  使用 window.pageXOffset 属性获取当前页面滚动位置 currentTop，以及通过元素的 offsetTop 属性值来设定滚动目标位置 targetTop；  设">
+<meta name="keywords" content="课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端系统课程 - 24. 给简历添加 JavaScript (2)">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="动画 用 JavaScript 实现动画的关键是 window.setInterval() 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 setTimeout() 使用方法类似；  页面滚动动画思路：  使用 window.pageXOffset 属性获取当前页面滚动位置 currentTop，以及通过元素的 offsetTop 属性值来设定滚动目标位置 targetTop；  设">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T08:15:28.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端系统课程 - 24. 给简历添加 JavaScript (2)">
+<meta name="twitter:description" content="动画 用 JavaScript 实现动画的关键是 window.setInterval() 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 setTimeout() 使用方法类似；  页面滚动动画思路：  使用 window.pageXOffset 属性获取当前页面滚动位置 currentTop，以及通过元素的 offsetTop 属性值来设定滚动目标位置 targetTop；  设">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端系统课程-24-给简历添加-JavaScript-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/" class="article-date">
+  <time datetime="2018-05-24T12:32:49.000Z" itemprop="datePublished">2018-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端系统课程 - 24. 给简历添加 JavaScript (2)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ul>
+<li><p>用 JavaScript 实现动画的关键是 <code>window.setInterval()</code> 这个全局方法，这个方法称为循环定时器，与前面学到的延迟定时器 <code>setTimeout()</code> 使用方法类似；</p>
+</li>
+<li><p>页面滚动动画思路：</p>
+<ul>
+<li><p>使用 <code>window.pageXOffset</code> 属性获取当前页面滚动位置 currentTop，以及通过元素的 <code>offsetTop</code> 属性值来设定滚动目标位置 targetTop；</p>
+</li>
+<li><p>设定到目标位置的滚动总次数 n，当前滚动次数 x；</p>
+</li>
+<li><p>设定每次滚动的时间 t 为预设动画完成时间 / 滚动总次数，例如：</p>
+<p> <code>t = 200 / n</code>；</p>
+</li>
+<li><p>设定每次滚动的距离 step 为 (目标滚动位置 - 当前滚动位置) / 滚动总次数，即：</p>
+<p> <code>step = (targetTop - currentTop) / n</code>；</p>
+</li>
+<li><p>最后设置循环定时器，通过 <code>window.scrollTo()</code> 方法，在指定时间使页面滚动到指定位置，每次滚动之前，当前滚动次数加 1；在当前滚动次数达到设定的总次数后，说明已到达目标位置，此时便使用 <code>clearInterval()</code> 方法清除定时器，动画结束。下面是示例代码：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTop = <span class="built_in">window</span>.pageYOffset, <span class="comment">// 当前滚动位置</span></span><br><span class="line">    targetTop = getOffsetTop(id) &lt; <span class="number">200</span> ? <span class="number">80</span> : getOffsetTop(id), <span class="comment">// 目标滚动位置</span></span><br><span class="line">    n = <span class="number">25</span>, <span class="comment">// 滚动总次数</span></span><br><span class="line">    x = <span class="number">0</span>, <span class="comment">// 当前滚动次数</span></span><br><span class="line">    t = <span class="number">200</span> / n, <span class="comment">// 每次滚动时间</span></span><br><span class="line">    step = (targetTop - currentTop) / n, <span class="comment">// 每次滚动距离</span></span><br><span class="line">    timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x === n) &#123; <span class="comment">// 当前滚动次数达到总次数</span></span><br><span class="line">            clearInterval(timer); <span class="comment">// 清除定时器</span></span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 跳出函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        x++; <span class="comment">// 当前次数自增</span></span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, currentTop + step * x) <span class="comment">// 滚动到当前次数该到的位置</span></span><br><span class="line">     &#125;, t);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="缓动"><a href="#缓动" class="headerlink" title="缓动"></a>缓动</h2><p>顾名思义，就是缓缓移动，让动画不那么生硬，就像 CSS 动画那样，可以设置不同的速度曲线，看起来有不同的线性效果。</p>
+<ul>
+<li><p>如果自己计算缓动函数（<a href="https://easings.net/zh-cn" target="_blank" rel="noopener">缓动函数速查表</a>）难度比较高，所以借助现有的成熟库更方便，例如 tween.js，示例代码如下：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">time</span>) </span>&#123; <span class="comment">// 设置动画循环时间</span></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    TWEEN.update(time);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coords = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;; <span class="comment">// 起始坐标数据</span></span><br><span class="line"><span class="keyword">var</span> tween = <span class="keyword">new</span> TWEEN.Tween(coords) <span class="comment">// 创建新实例并将坐标数据传入</span></span><br><span class="line">    .to(&#123; <span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;, <span class="number">1000</span>) <span class="comment">// 在1秒钟内移动到指定坐标</span></span><br><span class="line">    .easing(TWEEN.Easing.Quadratic.Out) <span class="comment">// 设置指定的缓动方式</span></span><br><span class="line">    .onUpdate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 此函数会在Tween每次将坐标数据更新后调用</span></span><br><span class="line">        <span class="comment">// 在函数内部就可以使用坐标数据来完成动画</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .start(); <span class="comment">// 立即启动实例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要学会在不懂的情况下搞定遇到的问题。</p>
+</li>
+</ul>
+<h2 id="菜单高亮"><a href="#菜单高亮" class="headerlink" title="菜单高亮"></a>菜单高亮</h2><p>通过在页面滚动时，计算不同区块相对顶部高度与当前页面滚动高度的差值，找到最小差值相对应的区块，让锚链接这个区块的菜单改变样式即可；由于差值可能是负数，比较时要先将差值全部取绝对值，可以使用内置数学对象的 <code>Math.abs()</code> 方法。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>还有一些其他动画效果，都很简单，就不一一赘述了；使用 JavaScript 操作 DOM 节点其实很简单，就是触发事件，然后找到相应节点，然后对其添加或删除类名，或者改变节点的其他属性，最终完成一个效果。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjjsaecdb001ak0q2kdgcb5i8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/25/前端系统课程-25-JavaScript-数组/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 25. JavaScript 数组
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 - 23. 给简历添加 JavaScript (1)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
