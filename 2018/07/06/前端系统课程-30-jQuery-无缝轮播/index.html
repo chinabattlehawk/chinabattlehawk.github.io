@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="无缝轮播 无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。  本课涉及的 jQuery  API：  transitionend CSS 过渡动画完成事件；  one() 方法可以只监听一次事件，完成一次后便不再监听；      DOM 事件模型 某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-07T12:47:37.414Z">
+<meta property="og:updated_time" content="2018-07-18T09:00:30.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 30. jQuery 无缝轮播">
 <meta name="twitter:description" content="无缝轮播 无缝的原理是：图片 1 向左滑动时，图片 2 也同时向左滑动，当图片 1 滑动完成后，立即定位至窗口右侧，准备下一次滑动。  本课涉及的 jQuery  API：  transitionend CSS 过渡动画完成事件；  one() 方法可以只监听一次事件，完成一次后便不再监听；      DOM 事件模型 某些时候需要把函数用字符串表示，例如 HTML 标签内的事件触发调用的函数，定">
@@ -109,7 +109,7 @@
 <li>如果要绑定多个事件监听，可以使用 <code>addEventListener()</code> 方法；绑定成功的多个事件监听会以队列形式执行，也就是先绑定的先执行；</li>
 <li>删除事件监听队列中的项目可以使用 <code>removeEventListener()</code> 方法；要注意，<strong>正常情况下绑定和解除绑定是在代码编译过程中便完成了，而不是触发事件之后</strong>；除非把解除绑定的代码写在绑定的事件回调函数中。</li>
 <li>jQuery 中的 <code>one()</code> 方法就是将解除事件绑定的代码写入了绑定事件的回调函数中，这样在当次代码运行后，事件只会触发一次。</li>
-<li><code>addEventListener()</code> 方法的第一个函数是事件名称，第二个是事件触发成功的回调函数，第三个参数接受一个布尔值，代表绑定相同事件时，触发事件后回调函数执行的顺序：默认为假，则事件从子元素向上传递，如果传入真值，则从父元素向下传递；但是在触发事件的时候，浏览器会先从父元素向下将事件触发捕获，无论这些元素是否绑定了事件监听或有无回调函数，再通过传入的参数决定按什么顺序执行触发后的回调函数；如果捕获和冒泡都在同一级，便按添加顺序执行。</li>
+<li><code>addEventListener()</code> 方法的第一个函数是事件名称，第二个是事件触发成功的回调函数，第三个参数接收一个布尔值，代表绑定相同事件时，触发事件后回调函数执行的顺序：默认为假，则事件从子元素向上传递，如果传入真值，则从父元素向下传递；但是在触发事件的时候，浏览器会先从父元素向下将事件触发捕获，无论这些元素是否绑定了事件监听或有无回调函数，再通过传入的参数决定按什么顺序执行触发后的回调函数；如果捕获和冒泡都在同一级，便按添加顺序执行。</li>
 <li>转到下一节……</li>
 </ul>
 
