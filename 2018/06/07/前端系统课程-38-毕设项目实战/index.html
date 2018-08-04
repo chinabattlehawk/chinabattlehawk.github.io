@@ -5,20 +5,17 @@
   
 
   
-  <title>前端系统课程 - 05. 脚本 | 南阳诸葛庐</title>
+  <title>前端系统课程 - 38. 毕设项目实战 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初识脚本 可以用戏剧舞台上的脚本（剧本）来理解脚本。脚本上有着舞台提示及各个人物之间的台词。  编程领域的脚本就是告诉计算机，按照脚本上的编写好的命令来运行。   写个脚本 非 Windows 系统中写好的脚本需要添加可执行权限，使用 chmod +x 命令来为文件添加好权限后，文件在用 ls 命令查看时，文字颜色为红色。  使用 sh 命令（shell）可以执行写好的脚本。  如果想在命令行工具">
-<meta name="keywords" content="课程笔记">
+  <meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端系统课程 - 05. 脚本">
-<meta property="og:url" content="https://blog.battlehawk.cn/2018/05/05/前端系统课程-05-脚本/index.html">
+<meta property="og:title" content="前端系统课程 - 38. 毕设项目实战">
+<meta property="og:url" content="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="初识脚本 可以用戏剧舞台上的脚本（剧本）来理解脚本。脚本上有着舞台提示及各个人物之间的台词。  编程领域的脚本就是告诉计算机，按照脚本上的编写好的命令来运行。   写个脚本 非 Windows 系统中写好的脚本需要添加可执行权限，使用 chmod +x 命令来为文件添加好权限后，文件在用 ls 命令查看时，文字颜色为红色。  使用 sh 命令（shell）可以执行写好的脚本。  如果想在命令行工具">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T08:13:51.864Z">
+<meta property="og:updated_time" content="2018-07-23T11:17:37.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端系统课程 - 05. 脚本">
-<meta name="twitter:description" content="初识脚本 可以用戏剧舞台上的脚本（剧本）来理解脚本。脚本上有着舞台提示及各个人物之间的台词。  编程领域的脚本就是告诉计算机，按照脚本上的编写好的命令来运行。   写个脚本 非 Windows 系统中写好的脚本需要添加可执行权限，使用 chmod +x 命令来为文件添加好权限后，文件在用 ls 命令查看时，文字颜色为红色。  使用 sh 命令（shell）可以执行写好的脚本。  如果想在命令行工具">
+<meta name="twitter:title" content="前端系统课程 - 38. 毕设项目实战">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -69,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-前端系统课程-05-脚本" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-前端系统课程-38-毕设项目实战" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/05/前端系统课程-05-脚本/" class="article-date">
-  <time datetime="2018-05-05T13:43:01.000Z" itemprop="datePublished">2018-05-05</time>
+    <a href="/2018/06/07/前端系统课程-38-毕设项目实战/" class="article-date">
+  <time datetime="2018-06-07T11:16:15.000Z" itemprop="datePublished">2018-06-07</time>
 </a>
     
   </div>
@@ -83,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端系统课程 - 05. 脚本
+      前端系统课程 - 38. 毕设项目实战
     </h1>
   
 
@@ -91,55 +88,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="初识脚本"><a href="#初识脚本" class="headerlink" title="初识脚本"></a>初识脚本</h2><ul>
-<li><p>可以用戏剧舞台上的脚本（剧本）来理解脚本。脚本上有着舞台提示及各个人物之间的台词。</p>
-</li>
-<li><p>编程领域的脚本就是告诉计算机，按照脚本上的编写好的命令来运行。</p>
-</li>
-</ul>
-<h2 id="写个脚本"><a href="#写个脚本" class="headerlink" title="写个脚本"></a>写个脚本</h2><ul>
-<li><p>非 Windows 系统中写好的脚本需要添加可执行权限，使用 <code>chmod +x</code> 命令来为文件添加好权限后，文件在用 <code>ls</code> 命令查看时，文字颜色为红色。</p>
-</li>
-<li><p>使用 <code>sh</code> 命令（shell）可以执行写好的脚本。</p>
-</li>
-<li><p>如果想在命令行工具中直接运行脚本，可以将脚本目录添加至 PATH 中，修改“.bashrc”文件，将 <code>export PATH=&quot;脚本目录的绝对路径:$PATH&quot;</code> 这行命令添加到文件末尾，保存；然后运行 <code>source ~/.bashrc</code> 就生效了。</p>
-</li>
-<li><p>使用 <code>type</code> 命令可以显示命令寻找过程；<code>which</code> 命令可以显示命令寻找结果。</p>
-</li>
-<li><p>文件后缀名在命令行中的用处不大。</p>
-</li>
-</ul>
-<h2 id="脚本参数"><a href="#脚本参数" class="headerlink" title="脚本参数"></a>脚本参数</h2><ul>
-<li><p>用 <code>$1</code> 代表第一个参数，依次类推。</p>
-</li>
-<li><p>判断目录是否存在，在脚本中用 <code>-d</code>。</p>
-</li>
-<li><p>脚本中的 <code>if...else</code> 语句。 </p>
-</li>
-<li><p>在 <code>exit</code> 后面设置返回值。</p>
-</li>
-<li><p>善于使用翻译软件和谷歌搜索。</p>
-</li>
-</ul>
-<h2 id="Node-js-脚本"><a href="#Node-js-脚本" class="headerlink" title="Node.js 脚本"></a>Node.js 脚本</h2><ul>
-<li><p>Node.js 的脚本和 Bash 脚本都是脚本，Bash 能做的，Node.js 脚本也能做，只是语法不同。</p>
-</li>
-<li><p>Bash 中需要指定 Node.js 脚本的运行方式为 <code>node</code>，不然会使用默认的 <code>sh</code> 来运行。</p>
-</li>
-<li><p>使用 <code>shebang</code> 命令可以指定当前脚本的运行环境。</p>
-</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>脚本是给机器一行行执行的文本；</p>
-</li>
-<li><p>抄脚本一定要抄对，不要缺空格少点的。</p>
-</li>
-</ul>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/05/前端系统课程-05-脚本/" data-id="cjkf52yu5000434q2lc6fw0me" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="cjkf52yvw002534q2sz2dao65" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -150,19 +103,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/05/06/前端系统课程-06-HTTP-入门/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/08/前端系统课程-39-面向对象编程/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          前端系统课程 - 06. HTTP 入门
+          前端系统课程 - 39. 面向对象编程
         
       </div>
     </a>
   
   
-    <a href="/2018/05/04/前端系统课程-04-命令行基础/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端系统课程 - 04. 命令行基础</div>
+      <div class="article-nav-title">前端系统课程 - 37. 给简历加数据库</div>
     </a>
   
 </nav>

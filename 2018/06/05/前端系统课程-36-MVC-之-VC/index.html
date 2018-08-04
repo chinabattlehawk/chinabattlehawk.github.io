@@ -7,15 +7,18 @@
   
   <title>前端系统课程 - 36. MVC 之 VC | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="笔记">
+  <meta name="description" content="关于立即执行函数 由于全局变量容易出错，所以要减少全局变量的使用，尽量使用局部变量；而 ES5 中只有函数才有局部变量。  具名函数一般也都是全局变量，所以要使用匿名函数，但是要调用匿名函数就要使其成为表达式，例如前面加 ! 取反操作符操作符等方法。   使用闭包通过闭包可以使变量不暴露，却可以在函数外部使用，也是一种减少全局变量的常用方式，例如： 12345678910function pers">
+<meta name="keywords" content="课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端系统课程 - 36. MVC 之 VC">
 <meta property="og:url" content="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="关于立即执行函数 由于全局变量容易出错，所以要减少全局变量的使用，尽量使用局部变量；而 ES5 中只有函数才有局部变量。  具名函数一般也都是全局变量，所以要使用匿名函数，但是要调用匿名函数就要使其成为表达式，例如前面加 ! 取反操作符操作符等方法。   使用闭包通过闭包可以使变量不暴露，却可以在函数外部使用，也是一种减少全局变量的常用方式，例如： 12345678910function pers">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T08:21:29.961Z">
+<meta property="og:updated_time" content="2018-07-22T07:25:14.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端系统课程 - 36. MVC 之 VC">
+<meta name="twitter:description" content="关于立即执行函数 由于全局变量容易出错，所以要减少全局变量的使用，尽量使用局部变量；而 ES5 中只有函数才有局部变量。  具名函数一般也都是全局变量，所以要使用匿名函数，但是要调用匿名函数就要使其成为表达式，例如前面加 ! 取反操作符操作符等方法。   使用闭包通过闭包可以使变量不暴露，却可以在函数外部使用，也是一种减少全局变量的常用方式，例如： 12345678910function pers">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -88,20 +91,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="关于立即执行函数"><a href="#关于立即执行函数" class="headerlink" title="关于立即执行函数"></a>关于立即执行函数</h2><ul>
+<li><p>由于全局变量容易出错，所以要减少全局变量的使用，尽量使用局部变量；而 ES5 中只有函数才有局部变量。</p>
+</li>
+<li><p>具名函数一般也都是全局变量，所以要使用匿名函数，但是要调用匿名函数就要使其成为表达式，例如前面加 <code>!</code> 取反操作符操作符等方法。</p>
+</li>
+</ul>
+<h2 id="使用闭包"><a href="#使用闭包" class="headerlink" title="使用闭包"></a>使用闭包</h2><p>通过闭包可以使变量不暴露，却可以在函数外部使用，也是一种减少全局变量的常用方式，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++age;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> setAge = person();</span><br><span class="line"><span class="built_in">console</span>.log(setAge()); <span class="comment">// 19</span></span><br><span class="line"><span class="built_in">console</span>.log(setAge()); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+<h2 id="视图和控制"><a href="#视图和控制" class="headerlink" title="视图和控制"></a>视图和控制</h2><ul>
+<li><p>将不同功能的代码分成不同的独立文件，就是模块化的一种方式。</p>
+</li>
+<li><p>在模块化的基础上，将要操作的 DOM 元素独立为一个对象（View），将这个对象以参数形式传入到控制视图变化的函数中，再将这些控制函数独立为一个对象（Controller）的属性；这样就把操作视图的代码和视图对象分隔开了。</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="cjjsapcjj001wr4q2y7zlvho8" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="cjkf52yvk001r34q2gkavq0nu" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
 
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端系统课程 - 37. 给简历加数据库
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/" id="article-nav-older" class="article-nav-link-wrap">
@@ -125,7 +151,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
     </div>
   </div>
 
@@ -135,7 +161,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+      <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -157,23 +183,23 @@
       <ul>
         
           <li>
+            <a href="/2018/06/08/前端系统课程-39-面向对象编程/">前端系统课程 - 39. 面向对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/07/前端系统课程-38-毕设项目实战/">前端系统课程 - 38. 毕设项目实战</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/">前端系统课程 - 37. 给简历加数据库</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
           </li>
         
           <li>
             <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
           </li>
         
       </ul>

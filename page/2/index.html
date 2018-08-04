@@ -66,6 +66,268 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-29-jQuery-做轮播图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/前端系统课程-29-jQuery-做轮播图/" class="article-date">
+  <time datetime="2018-05-29T01:49:56.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/前端系统课程-29-jQuery-做轮播图/">前端系统课程 - 29. jQuery 做轮播图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><ul>
+<li><p>内容、样式、行为分离，在当下是一种大多数开发者认为理所当然的共识。</p>
+</li>
+<li><p>代码分离解决的最主要的问题是代码维护。</p>
+</li>
+<li><p>理所当然的问题，可以用“如果不”的方式去回答，例如设想使用 HTML 文件操作样式会使更新样式工作繁复；使用 CSS 操作内容导致内容无法被选中、获取或搜索；使用 JS 操作样式有可能改变样式布局（举例了 jQuery 中的 <code>show()</code> 和 <code>hide()</code> 方法）等等。</p>
+</li>
+</ul>
+<h2 id="轮播"><a href="#轮播" class="headerlink" title="轮播"></a>轮播</h2><ul>
+<li><p>利用”拉洋片“的原理……</p>
+</li>
+<li><p>朝哪个方向滑动，就把图片朝哪个方向连起来。</p>
+</li>
+<li><p>尽量使用 CSS3 的代码，现在的兼容性已经很好了。</p>
+</li>
+<li><p>在知道图片宽高时，尽量将 <code>&lt;img&gt;</code> 标签的 <code>width</code> 和 <code>height</code> 属性填写上，以便在图片无法显示时，也不会影响布局。</p>
+</li>
+<li><p>取模运算可以用来配合循环定时器，<code>n % length</code> 可以将操作轮次一直控制在固定的长度范围内。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n % <span class="number">3</span>);</span><br><span class="line">    n++;</span><br><span class="line">&#125;, <span class="number">1000</span>); <span class="comment">// 每秒会打印出n对3取的余数，也就是0、1、2如此循环</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本课涉及的 jQuery API：</p>
+<ul>
+<li><p><code>on()</code> 方法，第一个参数是监听的事件，第二个是要执行的函数，这个函数也可以接收事件信息参数；</p>
+</li>
+<li><p><code>css()</code> 方法，传入一个对象，对象中是要修改的 CSS 样式代码；</p>
+</li>
+<li><p><code>index()</code> 方法可以获取元素在兄弟节点中的排序；</p>
+</li>
+<li><p><code>trigger()</code> 方法可以激活参数指定的事件；</p>
+</li>
+<li><p><code>eq()</code> 方法可以获取 jQuery 对象列表中指定下标的某个元素，这个元素任然是 jQuery 对象而不是 DOM 对象，这就是此方法区别于直接使用方括号或 <code>get()</code> 方法的特性；</p>
+</li>
+<li><p><code>addClass()</code> 方法可以给对象添加指定的 <code>class</code> 属性，与之相对应的删除方法是 <code>removeClass()</code>；</p>
+</li>
+<li><p><code>siblings()</code> 方法可以获取对象的所有兄弟元素节点；</p>
+</li>
+<li><p>要创建一个标签，可以直接在 <code>$()</code> 方法中以字符串形式传入标签，例如：<code>$(&#39;&lt;li&gt;&lt;/li&gt;&#39;)</code> 就可以创建一个 <code>&lt;li&gt;</code> 标签；</p>
+</li>
+<li><p><code>appen()</code> 方法可以将新建的 jQuery 对象添加为目标元素的子元素；</p>
+</li>
+<li><p>如果要对多个元素进行相同操作，可以将多个元素一并选中，并用逗号隔开，例如：<code>$(&#39;.test1, .test2&#39;)</code>；</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/29/前端系统课程-29-jQuery-做轮播图/" data-id="cjkf52yvb001f34q2opzl9x5o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-28-jQuery-不过如此" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/前端系统课程-28-jQuery-不过如此/" class="article-date">
+  <time datetime="2018-05-27T23:47:00.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/前端系统课程-28-jQuery-不过如此/">前端系统课程 - 28. jQuery 不过如此</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h2><p>尝试将一个功能，封装为一个函数，利用函数的参数，将数据抽象化后，函数便拥有了更高的适用性。例如来封装一个获取某个节点的所有兄弟节点的函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSibilings</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> childs = node.parent.children,</span><br><span class="line">        sibilings = &#123;</span><br><span class="line">            length: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; childs.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(childs[i] !== node)&#123;</span><br><span class="line">            sibilings[length] = childs[i];</span><br><span class="line">            sibilings.lengeh++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sibilings;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的示例中，把要找兄弟节点的那个节点，当作参数传入函数内，然后获取到它的父节点，再获取父节点的所有子元素集合，循环这个集合，排除目标节点后，将其余的保存为一个对象并返回。</p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>为了防止全局变量污染造成的麻烦，就要尽量少用全局变量，那么用什么办法能让要全局使用的属性不是全局变量呢？可以使用一个全局变量，把需要统一的全局属性，挂载到这个全局变量中即可，这就是命名空间。</p>
+<h2 id="简易-jQuery"><a href="#简易-jQuery" class="headerlink" title="简易 jQuery"></a>简易 jQuery</h2><ul>
+<li><p>在某个对象的原型上增加一个方法，那么这个对象的实例都会拥有这个方法。</p>
+</li>
+<li><p>修改原型一般是不推荐的，因为你不知道是否有别人是否会修改同名属性；这时可以新添加一个全局属性来补充原型。例如为 <code>Node</code> 对象的某个实例增加方法：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.NodeUp = <span class="function"><span class="keyword">function</span> (<span class="params">nodeOrSelector</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nodes = &#123;<span class="attr">length</span>: <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> nodeOrSelector === <span class="string">'string'</span>) &#123;</span><br><span class="line">        nodeOrSelector = <span class="built_in">document</span>.querySelectorAll(nodeOrSelector);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodeOrSelector.length; i++) &#123;</span><br><span class="line">            nodes[i] = nodeOrSelector[i];</span><br><span class="line">            nodes.length++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(nodeOrSelector <span class="keyword">instanceof</span> Node) &#123;</span><br><span class="line">        nodes[<span class="number">0</span>] = nodeOrSelector;</span><br><span class="line">        nodes.length++;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    nodes.addClass = <span class="function"><span class="keyword">function</span> (<span class="params">classes</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> isArr = <span class="built_in">Array</span>.isArray(classes);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isArr) &#123;</span><br><span class="line">                nodes[i].classList.add(classes);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; classes.length; j++) &#123;</span><br><span class="line">                    nodes[i].classList.add(classes[j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    nodes.setText = <span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (text) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!(<span class="keyword">typeof</span> text === <span class="string">'string'</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">                nodes[i].textContent = text;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> str;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; nodes.length; j++) &#123;</span><br><span class="line">                str += nodes[j].textContent;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> nodes;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.$ = NodeUp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面的简单例子中，如果把 <code>NodeUp</code> 改成 <code>jQuery</code>，可以吗？当然……参数接收一个字符串选择器或者 DOM 对象，就会返回一个新的对象，这个新对象函数中已经被添加了新的属性和方法；当传入某个参数使其实例化后，这个实例对象，就可以使用这些新属性和方法了。</p>
+</li>
+<li><p>如果简化了代码可能会觉得哪里不对，其实是因为忽略了实例化时传入参数的过程，例如下面的简化例子:</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.NodeUp = <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> node.nextSibling;</span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: <span class="function"><span class="keyword">function</span> (<span class="params">class</span>) </span>&#123;</span><br><span class="line">            node.classList.add(<span class="class"><span class="keyword">class</span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nodeUp = NodeUp(testObj);</span><br><span class="line">nodeUp.addClass(<span class="string">'test'</span>);</span><br></pre></td></tr></table></figure>
+<p> 上面代码中的 <code>NodeUp</code> 返回的是一个拥有两个方法的对象，那么这个对象是包装后的 DOM 对象吗？不是。当 <code>NodeUp</code> 实例化时，不管有没有参数传入，实例化对象都可以使用这两个方法；只不过这两个方法又依赖于传进来的参数，也就是需要一个 DOM 对象，所以实例化后，就看起来好像是传入的这个 DOM 对象拥有了这两个方法，其实并不是，只是通过参数来告诉函数，调用这两个方法的时候，要施加给谁；而前面较为复杂的那段代码，才是真正的把方法添加给了包装后的 DOM 对象。要想证明这点很简单，上个例子中的对象可以剥离出 DOM 对象，而这个例子中的对象是不行的。</p>
+</li>
+<li><p>jQuery 中的 set 和 get 两种类型的方法，大都是根据是否传参来判断执行何种操作的。</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>jQuery 文件有三种，分别是：</p>
+<ul>
+<li><p>以 .js 结尾：这种是未压缩的文件，又称为“开发版”；这种版本与源码没什么区别，注释、各种参数介绍都很齐全，是在开发的时候方便开发者“追根溯源”的，一旦有需要查看源代码，便可以找到相应的位置和注释。</p>
+</li>
+<li><p>以 .min.js 结尾：这种是压缩过的文件，又称为“线上版”或“生产版”；这种版本将代码中能缩短的标识符尽量缩短以精简代码，并删除了注释等信息，从而将文件体积压缩到最小，使下载时消耗更少的流量，下载速度更快。 </p>
+</li>
+<li><p>以 .min.map 结尾：这种是索引文件（source map），一般与第一种配合使用，文件中记录了代码转换和压缩前的状态和位置信息，如果压缩后的文件运行时发生了错误，可以依靠这个文件进行排错；这个功能需要浏览器支持。 </p>
+</li>
+</ul>
+</li>
+<li><p>jQuery 对象和 DOM 对象的联系和区别：</p>
+<ul>
+<li><p>联系：说是联系，其实是转换方法。将 DOM 对象传入 jQuery，可以把 DOM 对象变成 jQuery 对象，例如：<code>$(div)</code>，此时 jQuery 会把 DOM 对象“包装”（封装）成一个 jQuery 对象；而使用 jQuery 提供的 <code>get()</code> 方法，或直接使用下标，就可以把 jQuery 对象变成 DOM 对象，例如：<code>$div.get(0)</code> 或 <code>$div[0]</code>，由于 jQuery 对象是一个伪数组，所以要通过下标 0 来获取第一个元素，即便其中只有一个元素；虽然只有一个元素时 <code>get()</code> 方法不传参也能获取到，但这样获取到的和原对象是不一样的。 </p>
+</li>
+<li><p>区别：其实很简单，就是原型链的不同，所以它们拥有不同的 API，也因此不能混用。</p>
+</li>
+</ul>
+</li>
+<li><p>拥有 <code>id</code> 属性的标签，在 JavaScript 中默认成为 <code>window</code> 对象的属性，相当于一个全局变量；也正因为如此，所以 <code>id</code> 的值不要与 <code>window</code> 对象已有的属性重名；这也是尽量不用全局变量的原因之一。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-28-jQuery-不过如此/" data-id="cjkf52yvg001l34q2p6xczue9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-27-DOM-API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/前端系统课程-27-DOM-API/" class="article-date">
+  <time datetime="2018-05-27T11:45:38.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DOM-树"><a href="#DOM-树" class="headerlink" title="DOM 树"></a>DOM 树</h2><ul>
+<li><p>文档内所有的元素（Element），在 JavaScript 中都有相应的对象，而这些元素或对象，都可以用树形结构表示出来，这个像模型似的属性结构，就是 DOM 树。</p>
+</li>
+<li><p>DOM 中的每个元素，都是节点（Node），因为它们都是 <code>Node</code> 对象的实例。</p>
+</li>
+<li><p><code>&lt;html&gt;</code> 元素是 <code>document</code> 对象的唯一实例。</p>
+</li>
+<li><p><code>Node</code> 对象根据不同的构造函数，构造出不同的节点；主要的有 <code>document</code>、<code>Element</code>、<code>Text</code> 等等。</p>
+</li>
+</ul>
+<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><ul>
+<li><p>用 <code>elem.childNodes</code> 可以获取元素的所有类型的子节点，其中当然包括文本节点、注释节点等，而不是单单获取元素节点。</p>
+</li>
+<li><p>用 <code>elem.children</code> 可以获取元素的子元素，也就是子标签，只有在 IE 中可能错误地一并获取到注释节点，但是这点不足以掩盖这个方法很好用。</p>
+</li>
+<li><p>在 DOM 中，<code>document.documentElement</code> 这个属性代表 <code>&lt;html&gt;</code>，虽然 <code>&lt;html&gt;</code> 是根节点，但是在 DOM 里，它还是有爹的，他爹就是 <code>document</code> 对象。</p>
+</li>
+<li><p><code>&lt;svg&gt;</code> 标签（元素）的 <code>nodeName</code> 属性是小写字母的“svg”，其他标签使用 <code>nodeName</code> 获取标签名，返回的都是大写字母。</p>
+</li>
+<li><p><code>textContent</code> 与 <code>innerText</code> 主要的不同点在于：</p>
+<ul>
+<li><p><code>textContent</code> 会获取元素内的所有文本内容，包括 <code>&lt;script&gt;</code> 和 <code>style</code> 元素内的，而 <code>innerText</code> 不会；</p>
+</li>
+<li><p><code>textContent</code> 会获取隐藏元素的文本，而 <code>innerText</code> 不会；</p>
+</li>
+<li><p><code>innerText</code> 会触发重排，而 <code>textContent</code> 则不会；</p>
+</li>
+<li><p><code>innerText</code> 会替换元素里的内容，而 <code>textContent</code> 则不会；</p>
+</li>
+<li><p>综上所述，修改文本内容 <code>textContent</code> 适用面更广。</p>
+</li>
+</ul>
+</li>
+<li><p><code>cloneNode()</code> 方法可以复制一个节点，它可以接收一个参数；如果传入 <code>ture</code>，便是深拷贝，会将目标节点的所有子节点都复制下来；如果不传，便是浅拷贝，只会复制目标节点本身。</p>
+</li>
+<li><p><code>isEqualNode()</code> 方法可以判断两个节点是否相同，也就是判断它们是否为同一种节点。</p>
+</li>
+<li><p><code>isSameNode()</code> 方法可以判断两个节点是否相等，也就是判断它们是否为同一个节点。</p>
+</li>
+<li><p>使用 <code>normalize()</code> 方法可以使元素常规化，用来去除一些不必要的混乱。</p>
+</li>
+<li><p>使用 <code>document.visibilityState</code> 可以获取当前页面的焦点状态（阅读状态）。</p>
+</li>
+<li><p>搞清楚单词意思，一般就能理解这些接口的用法；难懂的就去查文档。</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p><code>elem.childNodes</code> 返回的是动态集合；所谓动态集合就是一个活的集合，DOM 树删除或新增一个相关节点，都会立刻反映在 <code>NodeList</code> 接口之中，所以它的长度会随着集合内元素的改变而变化。</p>
+</li>
+<li><p><code>querySelectorAll()</code> 方法返回的是一个静态集合；DOM 树内部的变化，并不会实时反映在该方法的返回结果之中，所以该方法返回的集合长度，是不会随着集合内元素的改变而变化。</p>
+</li>
+<li><p><code>HTMLCollection</code> （元素集合）对象与 <code>NodeList</code> （节点集合）对象的区别：</p>
+<ul>
+<li><p><code>HTMLCollection</code> 实例对象的成员只能是 <code>Element</code> 类型的节点，<code>NodeList</code> 实例对象的成员可以包含其他节点。</p>
+</li>
+<li><p><code>HTMLCollection</code> 实例对象都是动态集合，节点的变化会实时反映在集合中；<code>NodeList</code> 实例对象可能是静态集合，也可能是动态集合。 </p>
+</li>
+<li><p><code>HTMLCollection</code> 实例对象可以用 <code>id</code> 属性或 <code>name</code> 属性引用节点元素，<code>NodeList</code> 只能使用数字索引引用。 </p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-27-DOM-API/" data-id="cjkf52yv8001b34q21sdxoh23" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-26-JavaScript-函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/26/前端系统课程-26-JavaScript-函数/" class="article-date">
@@ -165,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-26-JavaScript-函数/" data-id="cjjsapcj3001cr4q2rgya62sc" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-26-JavaScript-函数/" data-id="cjkf52yv6001934q2b9hfhv8x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -248,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/25/前端系统课程-25-JavaScript-数组/" data-id="cjjsapcj5001er4q2gp36klm9" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/25/前端系统课程-25-JavaScript-数组/" data-id="cjkf52yva001d34q27v39m9ua" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -317,7 +579,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjjsapcj00018r4q2ncbdq2kk" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/24/前端系统课程-24-给简历添加-JavaScript-2/" data-id="cjkf52yv5001734q259cl6ri2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -395,7 +657,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjjsapciy0016r4q2krawuj4z" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjkf52yv3001534q212m1pjix" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -460,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/22/前端系统课程-22-JavaScript-里的对象/" data-id="cjjsapciv0012r4q2vantzct0" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/22/前端系统课程-22-JavaScript-里的对象/" data-id="cjkf52yv2001334q2gtrfd3pi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -556,7 +818,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/21/前端系统课程-21-JavaScript-里的类型/" data-id="cjjsapcj2001ar4q2v7awpalc" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/21/前端系统课程-21-JavaScript-里的类型/" data-id="cjkf52yv0001134q2h7m9zsag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -649,205 +911,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/20/前端系统课程-20-JavaScript-里的数据/" data-id="cjjsapcit0010r4q2pg2l8im2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/19/前端系统课程-19-Canvas-画板-2/" class="article-date">
-  <time datetime="2018-05-19T14:22:14.000Z" itemprop="datePublished">2018-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/19/前端系统课程-19-Canvas-画板-2/">前端系统课程 - 19. Canvas 画板 (2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="视口设置"><a href="#视口设置" class="headerlink" title="视口设置"></a>视口设置</h2><p>原先的电脑页面在手机上显示，由于屏幕缩小，手机只能将页面缩小后再显示，而想要让页面适配到手机屏幕，就要给页面设置视口适配。设置内容如下：</p>
-<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
-<p>以上标签的 content 属性值，含义依次为：视口宽度，设置为了设备宽度；用户缩放，设置为禁用；初识缩放比例，设置为 1；最大缩放比例，设置为 1；最小缩放比例，设置为 1。</p>
-<h2 id="触摸事件句柄"><a href="#触摸事件句柄" class="headerlink" title="触摸事件句柄"></a>触摸事件句柄</h2><ul>
-<li><p>触摸开始（手指接触） <code>ontouchstart</code></p>
-</li>
-<li><p>触目移动（手指移动） <code>ontouchmove</code></p>
-</li>
-<li><p>触摸结束（手指抬起） <code>ontouchend</code></p>
-</li>
-</ul>
-<h2 id="触摸特性检测"><a href="#触摸特性检测" class="headerlink" title="触摸特性检测"></a>触摸特性检测</h2><p>可以使用 <code>in</code> 操作符，来检测 <code>window</code> 对象是否包含触摸事件 <code>onmovestart</code> 对应的属性，如果包含则返回 <code>true</code>，不包含则返回 <code>false</code>；而后通过返回值来设置要监听的事件，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasTouch = <span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>, <span class="comment">// 检测是否为触摸设备</span></span><br><span class="line">    tapStart = hasTouch ? <span class="string">'touchstart'</span> : <span class="string">'mousedown'</span>,</span><br><span class="line">    tapMove = hasTouch ? <span class="string">'touchmove'</span> : <span class="string">'mousemove'</span>,</span><br><span class="line">    tapEnd = hasTouch ? <span class="string">'touchend'</span> : <span class="string">'mouseup'</span>; <span class="comment">// 监听不同设备事件</span></span><br></pre></td></tr></table></figure>
-<h2 id="触摸事件信息"><a href="#触摸事件信息" class="headerlink" title="触摸事件信息"></a>触摸事件信息</h2><p>要获取触摸事件信息，需要先获取触摸点；由于触控设备大都支持多点触控，所以事件对象会将触摸点作为一个集合（非数组）返回，但是一般只处理一个触摸点，就是集合的第 0 个对象，即 <code>touchEvent.touches[0]</code>。其他的位置属性基本上和鼠标事件信息类似。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/19/前端系统课程-19-Canvas-画板-2/" data-id="cjjsapcix0014r4q2nd478ggn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-18-Canvas-画板-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/18/前端系统课程-18-Canvas-画板-1/" class="article-date">
-  <time datetime="2018-05-18T06:46:01.000Z" itemprop="datePublished">2018-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/18/前端系统课程-18-Canvas-画板-1/">前端系统课程 - 18. Canvas 画板 (1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="鼠标事件句柄"><a href="#鼠标事件句柄" class="headerlink" title="鼠标事件句柄"></a>鼠标事件句柄</h2><ul>
-<li><p>鼠标按下 <code>onmousedown</code></p>
-</li>
-<li><p>鼠标移动 <code>onmousemove</code></p>
-</li>
-<li><p>鼠标松开 <code>onmouseup</code></p>
-</li>
-</ul>
-<h2 id="鼠标事件信息"><a href="#鼠标事件信息" class="headerlink" title="鼠标事件信息"></a>鼠标事件信息</h2><ul>
-<li><p><code>screenX/Y</code> 属性代表鼠标在整个屏幕的位置；</p>
-</li>
-<li><p><code>clientX/Y</code> 属性代表鼠标相对于视口在窗口或文档的位置；</p>
-</li>
-<li><p>事件对象中的 <code>button</code> 属性代表鼠标上的键位，一般值为 0 表示左键，1 表示中键，2 表示右键。</p>
-</li>
-</ul>
-<h2 id="canvas-标签"><a href="#canvas-标签" class="headerlink" title="canvas 标签"></a>canvas 标签</h2><p>由于使用普通元素无法在短的时间内连贯的监听鼠标位置，导致“点”的连接不连贯，所以用普通元素做画板很不理想。</p>
-<ul>
-<li><p><code>&lt;canvas&gt;</code> 标签和 <code>&lt;img&gt;</code> 标签类似，默认是 inline-block 元素，并自带宽和高属性；</p>
-</li>
-<li><p>如果用 CSS 设置 Canvas 元素的宽高可能会导致图像扭曲，所以要用它自带的宽高属性设置；</p>
-</li>
-<li><p>使用 Canvas 之前需要先设置上下文，例如：<code>var ctx = canvasElem.getContext(&#39;2d&#39;)</code> ，将上下文设为平面；</p>
-</li>
-<li><p>通过 <code>fillStyle</code> 属性设置填充颜色，通过 <code>strokeStyle</code> 属性设置描边颜色，设置颜色要在填充或绘制动作之前；</p>
-</li>
-<li><p>使用 <code>fillRect()</code> 方法可填充出一个矩形，4 个参数分别为（矩形左上角距画布左上角）：X 轴距离，Y 轴距离，宽度，高度；</p>
-</li>
-<li><p>通过 <code>strokeStyle</code> 属性设置描边颜色；</p>
-</li>
-<li><p>使用 <code>strokeRect()</code> 方法可绘制出一个矩形，参数同上；</p>
-</li>
-<li><p>使用 <code>clearRect()</code> 方法将一个矩形区域的内容清除，利用这个方法可以做橡皮擦功能，参数同上； </p>
-</li>
-<li><p>利用 <code>globalCompositeOperation</code> 属性可以更方便的作出橡皮擦效果，这个属性的默认值是 <code>source-over</code> 意思是在画布已有像素上绘图时会将新像素叠加，而另一个值 <code>destination-out</code> 的作用是在已有像素基础上绘图时，绘制区域的已有像素会被重置为透明，类似刮刮卡效果；利用这个属性还可以设置画布颜色，更多属性可以探索；</p>
-</li>
-<li><p>使用 <code>arc()</code> 方法可以绘制出一个圆形，6 个参数分别为（圆心距画布左上角）：X 轴距离，Y 轴距离，半径，开始弧度，结束弧度（弧度以 π 为 180°），是否为逆时针；</p>
-</li>
-<li><p>除了矩形，生成其他图形都要以 <code>beginPath()</code> 开始，以 <code>closePath()</code> 结束；</p>
-</li>
-<li><p>使用 <code>lineWidth</code> 属性可以设置线的粗细；</p>
-</li>
-<li><p>设置 <code>lineCap = &#39;round&#39;</code> 可以使线条两端为圆弧；设置 <code>lineJion = &#39;round&#39;</code> 可以使线条转折为圆弧；</p>
-</li>
-<li><p>连续画线的关键在于，起始点位置与结束点位置的交替（beginPoint = newPoint）；</p>
-</li>
-<li><p>要让画布全屏，可以将画布宽高分别设置为视口宽高，一般使用 <code>document.documentElement.clientWidth/clientHeight</code> 属性的值，并在窗口改变大小时触发；</p>
-</li>
-<li><p>使用 <code>save()</code> 方法可以保存当前的画布信息，例如缩放设置，颜色设置等，并不是保存文件；</p>
-</li>
-<li><p>使用 <code>restore()</code> 方法可以还原上一次用 <code>save()</code> 方法保存的画布信息；</p>
-</li>
-<li><p>使用 <code>clip()</code> 方法可以将选中区域设置为剪辑区域，所有绘画动作都只能在这个剪辑区域操作；</p>
-</li>
-<li><p>利用 <code>save()</code>、<code>clip()</code> 以及 <code>restore()</code> 方法结合可以制作不同形状橡皮擦效果或刮刮卡效果，例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.save();</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(x, y, radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">ctx.restore(); <span class="comment">// 这组代码实现了圆形橡皮擦的功能</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果要将 Canvas 画好的图保存为图片，可以使用 <code>canvas.toDataURL()</code> 方法，它会将画布中的图案转变为 base64 编码格式的 PNG 图像并将其 Data URL 返回；方法中可以传入需要保存的文件类型的 MINE 类型参数，一般使用 表示 PNG 格式的 <code>image/png</code> 参数即可。另外，最新的浏览器一般都禁止了在新窗口打开 Data URL，所以需要将 Data URL 保存到一个 <code>&lt;a&gt;</code> 标签的 <code>href</code> 属性中，并给这个标签添加 <code>download</code> 属性设置保存的文件名，最后，触发 <code>&lt;a&gt;</code> 标签的 <code>click()</code> 方法即可打开并保存图片文件。新版火狐中，还需要将这个 <code>&lt;a&gt;</code> 标签添加到页面中才能触发点击事件。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-18-Canvas-画板-1/" data-id="cjjsapcir000yr4q252tsmw3d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-17-JavaScript-小作品" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/17/前端系统课程-17-JavaScript-小作品/" class="article-date">
-  <time datetime="2018-05-17T13:41:34.000Z" itemprop="datePublished">2018-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/17/前端系统课程-17-JavaScript-小作品/">前端系统课程 - 17. JavaScript 小作品</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JS-相关知识点"><a href="#JS-相关知识点" class="headerlink" title="JS 相关知识点"></a>JS 相关知识点</h2><ul>
-<li><p>图片加载错误事件：</p>
-<p> <code>error</code> ，事件句柄为 <code>onerror</code>；可以用它来指定图片加载失败时的替代图片。</p>
-</li>
-<li><p>元素的上一个兄弟元素：</p>
-<p><code>node.previousSibling</code>，用来获取指定元素的上一个兄弟元素。</p>
-</li>
-<li><p>元素的 <code>class</code> 属性在 JS 中需要用 <code>node.className</code> 或 <code>node[&#39;class&#39;]</code> 的方式访问，因为在 JS 中 class 是关键字。</p>
-</li>
-</ul>
-<h2 id="CSS-相关知识点"><a href="#CSS-相关知识点" class="headerlink" title="CSS 相关知识点"></a>CSS 相关知识点</h2><h2 id="HTML-相关知识点"><a href="#HTML-相关知识点" class="headerlink" title="HTML 相关知识点"></a>HTML 相关知识点</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-17-JavaScript-小作品/" data-id="cjjsapcip000xr4q2ztrx1g91" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/20/前端系统课程-20-JavaScript-里的数据/" data-id="cjkf52yuz000z34q2rnbr018b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -877,7 +941,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
     </div>
   </div>
 
@@ -887,7 +951,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+      <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -909,23 +973,23 @@
       <ul>
         
           <li>
+            <a href="/2018/06/08/前端系统课程-39-面向对象编程/">前端系统课程 - 39. 面向对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/07/前端系统课程-38-毕设项目实战/">前端系统课程 - 38. 毕设项目实战</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/">前端系统课程 - 37. 给简历加数据库</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
           </li>
         
           <li>
             <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/02/前端系统课程-33-JSONP-是什么鬼/">前端系统课程 - 33. JSONP 是什么鬼</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/01/前端系统课程-32-DOM-事件/">前端系统课程 - 32. DOM 事件</a>
           </li>
         
       </ul>
