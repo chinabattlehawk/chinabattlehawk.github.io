@@ -90,20 +90,54 @@
       
         <h2 id="如何理解面向对象编程"><a href="#如何理解面向对象编程" class="headerlink" title="如何理解面向对象编程"></a>如何理解面向对象编程</h2><p>老师如是说：就是以对象为主编程，它不是一个概念，而是一种经验，主要就是为了最大程度的代码复用；装逼的说法叫“OO编程，Object-Oriented Programing”。</p>
 <h2 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h2><ul>
-<li>命名空间 Namespace；允许开发者在一个独特的、名字与应用相关的名称下捆绑所有功能的容器。</li>
-<li>类 Class；定义对象的特征，它是对象的属性和方法的模板定义。</li>
-<li>对象 Object；类的一个实例。</li>
-<li>属性 Property；对象的特征，比如颜色。</li>
-<li>方法 Method；对象的能力，比如行走。</li>
-<li>构造函数 Constructor；对象初始化的瞬间被调用的方法，通常它的名字与包含它的类一致。</li>
-<li>继承 Inheritance；一个类可以继承另一个类的特征。</li>
-<li>封装 Encapsulation；一种把数据和相关的方法绑定在一起使用的方法。</li>
-<li>抽象 Abstraction；结合复杂的继承、方法、属性的对象能够模拟现实的模型。</li>
-<li>多态 Polymorphism；顾名思义为“许多形态”，指不同的类也可以定义相同的方法或属性。</li>
+<li><p>命名空间 Namespace；允许开发者在一个独特的、名字与应用相关的名称下捆绑所有功能的容器。</p>
+</li>
+<li><p>类 Class；定义对象的特征，它是对象的属性和方法的模板定义。</p>
+</li>
+<li><p>对象 Object；类的一个实例。</p>
+</li>
+<li><p>属性 Property；对象的特征，比如颜色。</p>
+</li>
+<li><p>方法 Method；对象的能力，比如行走。</p>
+</li>
+<li><p>构造函数 Constructor；对象初始化的瞬间被调用的方法，通常它的名字与包含它的类一致。</p>
+</li>
+<li><p>继承 Inheritance；一个类可以继承另一个类的特征。</p>
+</li>
+<li><p>封装 Encapsulation；一种把数据和相关的方法绑定在一起使用的方法。</p>
+</li>
+<li><p>抽象 Abstraction；结合复杂的继承、方法、属性的对象能够模拟现实的模型。</p>
+</li>
+<li><p>多态 Polymorphism；顾名思义为“许多形态”，指不同的类也可以定义相同的方法或属性。</p>
+</li>
 </ul>
 <h2 id="全局命名空间"><a href="#全局命名空间" class="headerlink" title="全局命名空间"></a>全局命名空间</h2><ul>
-<li>通过或运算符 <code>||</code> 来避免你初始化的全局命名空间与可能存在的同名属性相冲突；这种方式又叫“兜底操作”，如果原先有这个变量，那就把已有的数据重新赋值一次（虽然这是一个多余操作）；如果原先没有这个变量，那就赋值为新的数据。例如：<code>let nameSpace = nameSpace || {}</code>，这种方式也经常用在函数的参数判断中。</li>
-<li>或运算返回第一个 truthy 值，与运算则返回第一个 falsy 值。</li>
+<li><p>通过或运算符 <code>||</code> 来避免你初始化的全局命名空间与可能存在的同名属性相冲突；这种方式又叫“兜底操作”，如果原先有这个变量，那就把已有的数据重新赋值一次（虽然这是一个多余操作）；如果原先没有这个变量，那就赋值为新的数据。例如：<code>let nameSpace = nameSpace || {}</code>，这种方式也经常用在函数的参数判断中。</p>
+</li>
+<li><p>或运算返回第一个 truthy 值，与运算则返回第一个 falsy 值。</p>
+</li>
+</ul>
+<h2 id="解决重复代码"><a href="#解决重复代码" class="headerlink" title="解决重复代码"></a>解决重复代码</h2><p>在代码分层的过程中会发现，MVC 这三层代码在实现功能时，都会有一些必要而又重复的代码，例如初始化 <code>init()</code> 等属性或方法，那么要想使代码最大化的复用，就需要对这些分层代码进行分类。</p>
+<h2 id="再谈-this"><a href="#再谈-this" class="headerlink" title="再谈 this"></a>再谈 this</h2><ul>
+<li><p>事件触发的回调函数中的 <code>this</code> 通常是指向触发事件并调用函数的元素，事件委托同理。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">obj.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// obj对象；</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// btn对象；</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">'ul'</span>).on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// li对象</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要记住 <code>this</code> 是 <code>call()</code> 的第一个参数；而有时候判断就要靠查询和记忆了，另外就是要捋清楚，谁调用了函数，谁就是 <code>this</code>。</p>
+</li>
+</ul>
+<h2 id="new-操作符干了什么"><a href="#new-操作符干了什么" class="headerlink" title="new 操作符干了什么"></a>new 操作符干了什么</h2><ul>
+<li><p>如果我们要创建多个具有相同引用类型属性（如方法）的对象，直接多次重复创建相同对象后再赋予这些对象某些不同的属性是可以解决问题，但是很多相同属性无法复用，特别是引用类型属性，这将造成很大的资源浪费。</p>
+</li>
+<li><p>通过原型可以解决前面的问题，将共有属性都放在一个原型对象里，然后想办法将新建对象的原型指向这个原型对象，新建对象们就共享了原型对象中的属性，节省了资源。</p>
+</li>
+<li><p>那么又如何优雅的实现上一条中的功能呢？当然要用构造函数（工厂函数）了。</p>
+</li>
+<li><p>当在构造函数前使用 <code>new</code> 操作符时，函数内部会隐性的创建一个临时对象，然后将这个对象设置为 <code>this</code> ，这样临时对象便获得了函数里的作用域；然后构造函数将自己的原型对象中的 <code>constructor</code> 属性设置为构造函数本身，这样新的对象就知道自己是由谁创建的。再然后构造函数将临时对象的原型指向了构造函数的原型对象（共有属性，这一步实际就是进行 <code>newObj.__proto__ === Obj.prototype</code>），并进行一系列的属性（自有属性）构造后，最后将这个对象 <code>return</code> 出去。除了构造函数内部的显性的属性构造，其余操作都是隐性的。</p>
+</li>
+<li><p>对象创建后，如果给原型对象添加或更改属性，新创建的对象也会拥有这些新添加或更改的属性。</p>
+</li>
+<li><p>以此看来，<code>new</code> 操作符可以帮你省下很多操作，所以，它是一个语法糖。</p>
+</li>
 </ul>
 
       
@@ -182,10 +216,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="使用-LeanCloud-服务"><a href="#使用-LeanCloud-服务" class="headerlink" title="使用 LeanCloud 服务"></a>使用 LeanCloud 服务</h2><ul>
-<li>创建一个应用，选择需要的服务；</li>
-<li>引入 JS 文件，得到 <code>window.AV</code> 对象；</li>
-<li>初始化 <code>AV 对象</code>（代码直接拷）；</li>
-<li>新建一条数据（代码直接拷）。</li>
+<li><p>创建一个应用，选择需要的服务；</p>
+</li>
+<li><p>引入 JS 文件，得到 <code>window.AV</code> 对象；</p>
+</li>
+<li><p>初始化 <code>AV 对象</code>（代码直接拷）；</p>
+</li>
+<li><p>新建一条数据（代码直接拷）。</p>
+</li>
 </ul>
 <h2 id="如何看文档"><a href="#如何看文档" class="headerlink" title="如何看文档"></a>如何看文档</h2><ul>
 <li><p>CRM 方法，先抄（Copy），然后运行（Run），一步步修改（Modify）为自己想要的代码。</p>
