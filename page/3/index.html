@@ -66,6 +66,338 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-23-给简历添加-JavaScript-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" class="article-date">
+  <time datetime="2018-05-23T00:05:53.000Z" itemprop="datePublished">2018-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/">前端系统课程 - 23. 给简历添加 JavaScript (1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="置顶导航栏"><a href="#置顶导航栏" class="headerlink" title="置顶导航栏"></a>置顶导航栏</h2><p>英文 sticky navbar，通过监听页面滚动事件将导航栏设置为固定定位并置顶；涉及知识：</p>
+<ul>
+<li><p><code>onscroll</code> 页面滚动事件句柄，<code>onmousewhell</code> 鼠标滚轮滚动事件句柄。</p>
+</li>
+<li><p>获取窗口滚动距离 <code>window.scrollX/Y</code>，建议使用 <code>window.pageXOffset/YOffset</code> 来代替。</p>
+</li>
+</ul>
+<h2 id="加载动画"><a href="#加载动画" class="headerlink" title="加载动画"></a>加载动画</h2><p>英文 loading animation，两个圆形从小变大，从深变浅，其中一个延迟动画即可；涉及知识：</p>
+<ul>
+<li><p><code>window.setTimeout(function, time)</code>，延迟定时器。</p>
+</li>
+<li><p>动画连写参数（参数之间无逗号）：<code>animation(动画名 完成时间 速度曲线 延迟开始 次数 是否轮流)</code>。</p>
+</li>
+<li><p>使用 Compass 导入 keyframe 函数时，参数内是动画名，括号后加花括号，里面写动画顺序和内容。</p>
+</li>
+</ul>
+<h2 id="滑动菜单"><a href="#滑动菜单" class="headerlink" title="滑动菜单"></a>滑动菜单</h2><p>英文 slide menu，通过监听一级菜单的鼠标移入移除事件来将二级菜单显示或隐藏；涉及知识：</p>
+<ul>
+<li><p>鼠标移入移出事件句柄有两组，分别是：<code>onmouseover</code> / <code>onmouseout</code> 和 <code>onmouseenter</code> / <code>onmouseleave</code>；区别是：前者的子元素也会触发事件，后者的子元素不会触发事件；要分不同的情况来监听不同的事件。</p>
+</li>
+<li><p>如何找到二级菜单，要看具体的元素结构；课程开始使用了 <code>nextSiblling</code> 方法，来获取一级菜单内链接的下一个兄弟节点（获取上一个兄弟节点的方法是 <code>previousSibling</code>），再通过 <code>nodeType</code> 属性不同的返回值判断节点类型（例如元素节点返回值为 1），还要判断元素的 <code>tagName</code> 属性（返回的标签名为大写字母）是否为预期的，如果需要向下获取并判断多次，可以使用 <code>while</code> 语句来循环寻找元素。</p>
+</li>
+<li><p>自己实现的方法更接近原型，使用了 <code>onmouseover</code> 和 <code>onmouseout</code> 事件，这样二级菜单也可以同时触发显示动作，无需额外处理；CSS 方面，使用了定位属性和过渡动画做位移，代码更简洁，并且有回退动画效果；但是带来的问题是无法使用 <code>display: none</code> 来隐藏菜单，最后使用了 <code>visibility: hidden/visible</code> 来做隐藏和显示，虽然元素并未从页面完全消失，但不会影响体验。</p>
+</li>
+<li><p>解决问题的关键在于，马上开始着手解决问题。</p>
+</li>
+</ul>
+<h2 id="滑动定位"><a href="#滑动定位" class="headerlink" title="滑动定位"></a>滑动定位</h2><p>类似锚点，但带有滑动效果，就是让滚动条在指定时间内滚动到指定位置，可以使用相应元素距离页面顶部高度来设置位置；涉及知识：</p>
+<ul>
+<li><p>在获取元素对象的属性时，一般推荐使用 <code>setAttribute()</code> 和 <code>getAttribute()</code> 方法，直接使用点运算符，可能会返回经过浏览器处理的结果，例如 <code>&lt;a&gt;</code> 标签中 <code>href</code> 的属性值。</p>
+</li>
+<li><p>使用 <code>document.querySelector()</code> 方法可以返回文档中匹配括号中指定 CSS 选择器的第一个元素，如果要想返回匹配的所有元素，可以使用 <code>document.querySelectorAll()</code> 方法。</p>
+</li>
+<li><p>点击 <code>&lt;a&gt;</code> 标签时，要阻止它的默认事件，可以使用 <code>href=&quot;javascript:&quot;</code> 的方法，但是如果 <code>href</code> 属性另有他用怎么办？那就使用时间对象的阻止默认事件方法 <code>ev.preventDefault()</code>。</p>
+</li>
+<li><p>使用 <code>offsetTop</code> 属性可以获取元素相对于它的 <code>offsetParent</code> 元素的顶部的距离（不包含边框），这是一个只读属性，返回值是数字类型的像素数；由于无法直接获取到元素相对页面最顶端的距离，所以只能用这个属性结合 <code>offsetParent</code> 属性，一直获取到 <code>&lt;body&gt;</code> 标签以下的所有元素的 <code>offsetTop</code> 之和；与之相配套的属性是 <code>offsetLeft</code> 属性，代表相对左上角的距离。</p>
+</li>
+<li><p>使用 <code>window.scrollTo()</code> 方法可以使页面滚动到指定位置，有两个必需参数，第一个是 x 坐标，第二个是 y 坐标。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/23/前端系统课程-23-给简历添加-JavaScript-1/" data-id="cjl6nl46r0013i4q2pagpmt3a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-22-JavaScript-里的对象" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/22/前端系统课程-22-JavaScript-里的对象/" class="article-date">
+  <time datetime="2018-05-21T23:44:11.000Z" itemprop="datePublished">2018-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/22/前端系统课程-22-JavaScript-里的对象/">前端系统课程 - 22. JavaScript 里的对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
+<li><p>浏览器是 JavaScript 的宿主环境之一；浏览器特有的全局对象（global）是 <code>window</code> 对象。</p>
+</li>
+<li><p>全局对象的属性（或方法）分为公共属性和私有属性；公共属性是指 ECMAScript 规定的属性，而私有属性是不同的宿主环境特有的属性，例如浏览器中的全局对象是 <code>window</code> 对象，它的私有属性常见的例如：<code>document</code> 对象、<code>history</code>对象、<code>alert()</code>、<code>prompt()</code>、<code>confirm()</code> 等等。</p>
+</li>
+</ul>
+<h2 id="基本数据类型与对象的区别"><a href="#基本数据类型与对象的区别" class="headerlink" title="基本数据类型与对象的区别"></a>基本数据类型与对象的区别</h2><ul>
+<li><p>基本数据类型没有且不能具备属性和方法，而复杂数据类型（对象）可以具备属性和方法。</p>
+</li>
+<li><p>使用 <code>new</code> 运算符可以创建一个指定对象的实例，例如 <code>var num = new Number(1)</code>。</p>
+</li>
+<li><p>当我们平时在对存有基本数据类型的变量使用 <code>toSring()</code> 等方法时，由于数据没有这些方法，所以编译器会隐性地临时将基本数据类型转换为对象，然后再调用其指定的方法，得出结果并返回，之后临时对象会被销毁。</p>
+</li>
+<li><p>当给一个基本数据类型添加属性时，编译器不会报错，它会像前面一样将基本数据类型转换为对象，再给这个临时对象添加属性，之后这个临时对象被销毁，也就访问不到添加给基本数据类型的属性了。</p>
+</li>
+</ul>
+<h2 id="公共属性"><a href="#公共属性" class="headerlink" title="公共属性"></a>公共属性</h2><ul>
+<li><p>每个对象都有 <code>__proto__</code> 这个隐藏属性，它内部保存着对象的公共属性，其实就是从父对象继承来的属性；它引用的是父对象的 <code>prototype</code> 属性，所有对象不管继承了多少层，最终都会有一条“链”引到 Object 对象的 <code>prototype</code>，这就是原型链。</p>
+</li>
+<li><p>从上一条可以知道，在 JavaScript 中，所有的对象，包括内置对象，都是 Object 对象的实例。</p>
+</li>
+<li><p>继承：<code>实例.__proto__ === 父函数.protorype</code>；<code>函数.prototype.__proto__ === Object.prototype</code>。</p>
+</li>
+<li><p><code>__proto__</code> 是用来引用父函数的 <code>prototype</code> 属性的，类似于上线下线的关系，而 <code>__proto__</code> 就是下线。</p>
+</li>
+</ul>
+<h2 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h2><p><code>Function</code> 对象的 <code>__proto__</code> 属性引用的是 <code>Function</code> 自身的 <code>prototype</code>，这是内置对象中的特殊情况；而 <code>Object</code> 对象的 <code>__proto__</code> 属性引用的也是 <code>Function</code> 对象的 <code>prototype</code>，这是因为 <code>Object</code> 对象也是由函数构造的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/22/前端系统课程-22-JavaScript-里的对象/" data-id="cjl6nl46o000zi4q2sscgx99v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-21-JavaScript-里的类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/前端系统课程-21-JavaScript-里的类型/" class="article-date">
+  <time datetime="2018-05-21T02:56:32.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/前端系统课程-21-JavaScript-里的类型/">前端系统课程 - 21. JavaScript 里的类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常见数据类型的转换"><a href="#常见数据类型的转换" class="headerlink" title="常见数据类型的转换"></a>常见数据类型的转换</h2><ul>
+<li><p>除了 Null 和 Undefined 类型，其他数据类型都可以使用 <code>toString()</code> 方法转换为字符串类型，Object 类型虽然有这个方法，但是不一定得到预期的结果（可以使用 <code>JSON.stringify()</code> 方法）；比 <code>toString()</code> 方法更简单的就是将要转换的数据拼接一个空字符串，这个方法更简略也更强大，它实际是使用了隐式类型转换，通过全局方法 <code>String()</code> 将数据转换类型。</p>
+</li>
+<li><p>使用全局方法 <code>Boolean()</code> 可以将所有数据类型转换为布尔值；简便方法可以在要转换的数据前，使用两个取反操作符 <code>!!</code> 。</p>
+</li>
+<li><p>转换数字类型的方法有 <code>Number()</code>、<code>parseInt()</code> 和 <code>parseFloat()</code> 方法；简便方法可以直接在要转换的数据前加正数符号 <code>+</code>；或者使用数据减 0 的操作，例如 <code>&#39;3.14&#39; - 0</code>，字符串 3.14 就会被转为数字 3.14，这种比较常用。</p>
+</li>
+</ul>
+<h2 id="内存中数据存储方式"><a href="#内存中数据存储方式" class="headerlink" title="内存中数据存储方式"></a>内存中数据存储方式</h2><ul>
+<li><p>编译器会将分配到的内存分为代码区和数据区。</p>
+</li>
+<li><p>数据区分为 Stack（栈内存） 和 Heap（堆内存）。</p>
+</li>
+<li><p>堆比栈大，栈比堆快。</p>
+</li>
+<li><p>JavaScript 代码在编译起始，会先将声明的变量提到最前面。</p>
+</li>
+<li><p>基本数据类型都保存在栈内存，复杂数据类型都保存在堆内存。</p>
+</li>
+<li><p>当把一个基本数据类型赋值给一个变量时，变量中存储的就是这个数据本身；当把这个变量赋值给另外一个变量时，相当于将它保存的数据本身，复制一个拷贝，再赋值给新变量，之后，两个变量各拥有一份相互独立的数据。</p>
+</li>
+<li><p>当把一个复杂数据类型赋值给一个变量时，变量中存储的是这个数据在堆内存中的地址，这种关系称为“引用”；当把这个变量赋值给另外一个变量时，相当于把保存的引用地址，复制一个拷贝，再赋值给新变量，之后，两个变量引用的是同一个数据，相当于两个人各拥有一张代表同一个数据的“名片”。</p>
+</li>
+</ul>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>对象自身循环引用可以实现，但是不能在声明对象的同时将其自身保存在内，因为编译的顺序是先根据赋值操作符也就是 <code>=</code> 号的右边的数据大小来开辟内存空间，然后再将存好的数据的地址，存入变量；如果要完成自身的循环引用，需要在对象声明并赋值完成后，再将其自身引用通过添加属性的方式保存到自身当中；<strong>循环引用可能会造成内存泄露</strong>。</p>
+<h2 id="试题解析"><a href="#试题解析" class="headerlink" title="试题解析"></a>试题解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">//b = &#123;n: 1&#125;;</span></span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>: <span class="number">2</span>&#125;; <span class="comment">//&#123;n: 1, x: &#123;n: 2&#125;&#125;，a = &#123;n: 2&#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(a.x); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x); <span class="comment">//[object, Object]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>上面的题中，第三行的关键点在于确定当时的 <code>a</code> 变量是哪一个；</p>
+</li>
+<li><p>编译器是从上到下依次执行，但是各种操作符除了有优先级之分，还有从右往左和从左往右两种关联性，而属性访问操作符优先级比赋值操作符的优先级要高，所以先确定了 <code>a.x</code> 的 <code>a</code> 引用的依然是 <code>{n: 1}</code> 这个数据，并在这个数据中添加了一个属性 <code>x</code>，此时 <code>x</code> 只是声明后未定义等待赋值的状态，就是说源数据成为了 <code>{n: 1, x: undefined}</code>；</p>
+</li>
+<li><p>然后赋值运算符从右往左执行，先将 <code>a</code> 变量中的数据，赋值为了 <code>{n: 2}</code> 的地址，再将这个地址，赋值给了 <code>{n: 1, x: undefined}</code> 这个对象中的 <code>x</code> 属性，此时数据成为了 <code>{n: 1, x: {n: 2}}</code> ；</p>
+</li>
+<li><p>第四行访问 <code>a.x</code>，此时的 <code>a</code> 引用的数据已经是 <code>{n: 2}</code> ，里面并没有 <code>x</code> 这个属性，故打印出的结果为 <code>undefined</code>；</p>
+</li>
+<li><p>第五行访问 <code>b.x</code>，此时的 <code>b</code> 引用的数据依然是原来包含 <code>n: 1</code> 键值的那个数据，而此时这个数据已经有了 <code>x</code> 这个属性，并且值为另一个对象引用地址，这个地址对应的数据是 <code>{n: 2}</code>，将其隐性地使用 <code>toString()</code> 方法转换为字符串后，打印出的结果便是 <code>[object Object]</code>。</p>
+</li>
+</ul>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><ul>
+<li><p>如果一个对象<strong>没有被引用</strong>，它就是垃圾数据，将被垃圾回收器清理掉。</p>
+</li>
+<li><p>垃圾回收器会在页面运行时，按照浏览器设定好的机制循环作业。</p>
+</li>
+</ul>
+<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><ul>
+<li><p>拷贝即复制，复制后的数据与原数据，完全独立且互不影响，就称为“深拷贝”；基本数据类型之间的复制，都是深拷贝。</p>
+</li>
+<li><p>其实基本数据类型之间的复制谈不上什么”深浅“，深拷贝与浅拷贝主要是对于对象数据之间的复制而言的。</p>
+</li>
+<li><p>如果将一个对象赋值给一个变量，实际是将这个对象的引用地址保存在里变量当中，那么当复制这个变量到另一个变量时，只是把这个引用地址，存到了新的变量中；当通过新的变量改变对象的属性后，访问原先的变量也能发现对象的属性变化；这种程度的复制，就是“浅拷贝”。</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串。</p>
+</li>
+<li><p>数组的某个元素为空元素（即两个逗号之间没有任何值）时，便称为这个数组存在空位；空位不影响数组的长度；如果读取空位，会返回 <code>undefined</code>，但是把一个元素赋值为 <code>undefined</code> 后，这个元素不属于空位；如果使用 <code>delete</code> 操作符删除某个元素，那么这个元素对应的位置便成为了空位；使用 <code>for...in</code> 语句、数组的 <code>forEach()</code> 方法以及对象的 <code>keys()</code> 方法遍历数组时， 空位都会被跳过。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/21/前端系统课程-21-JavaScript-里的类型/" data-id="cjl6nl46t0015i4q2qfwv0bzw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-20-JavaScript-里的数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/前端系统课程-20-JavaScript-里的数据/" class="article-date">
+  <time datetime="2018-05-20T14:09:39.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/前端系统课程-20-JavaScript-里的数据/">前端系统课程 - 20. JavaScript 里的数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript-历史"><a href="#JavaScript-历史" class="headerlink" title="JavaScript 历史"></a>JavaScript 历史</h2><ul>
+<li><p>1995 年，网景（Netscape）公司雇员 Brendan Eich 开发出了网页脚本语言 JavaScript 的 1.0 版。</p>
+</li>
+<li><p>1997 年，ECMA 组织发布 262 号标准文件（ECMA-262）的第一版 ，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。 </p>
+</li>
+<li><p>2015 年，ECMA 组织正式批准了 ECMAScript 6 语言标准，定名为《ECMAScript 2015 标准》。 </p>
+</li>
+<li><p>了解更多历史，可以参考红宝书或阮一峰的书……</p>
+</li>
+</ul>
+<h2 id="JavaScript-的数据类型"><a href="#JavaScript-的数据类型" class="headerlink" title="JavaScript 的数据类型"></a>JavaScript 的数据类型</h2><p>JavaScript 中有七种数据类型，分别是：</p>
+<ul>
+<li><p>Number（数字）</p>
+</li>
+<li><p>String（字符串）</p>
+</li>
+<li><p>Boolean（布尔值）</p>
+</li>
+<li><p>Undefined（未定义）</p>
+</li>
+<li><p>Null（空）</p>
+</li>
+<li><p>Symbol（符号，ES6 版本新增）</p>
+</li>
+<li><p>Object（对象）</p>
+</li>
+</ul>
+<h2 id="数据类型的扩展知识"><a href="#数据类型的扩展知识" class="headerlink" title="数据类型的扩展知识"></a>数据类型的扩展知识</h2><ul>
+<li><p>Number 类型表示数字，数字一般以二进制、八进制、十进制及十六进制表示；由于进制转换的原因，数字如果有前导 0，转换后可能出现意外的 Bug（例如八进制转换），所以实际开发一般都使用十进制；如果不是参与运算的数字（例如手机号码），那么一般使用字符串存储。</p>
+</li>
+<li><p>String 类型表示字符串，空字符串只是一对单引号或双引号，其中只有一个空格也不是空字符串。</p>
+</li>
+<li><p>包裹字符串的引号，一般推荐使用单引号，这样和 HTML 代码配合比较方便；另外，表示字符串的引号，是一种形式，并不是内容，可以理解为类似数组的方括号。</p>
+</li>
+<li><p>区分正斜杠和反斜杠，可以参照汉字“八”，撇就是正斜杠，捺就是反斜杠；转义符是反斜杠，单行注释是双正斜杠。</p>
+</li>
+<li><p>多行字符串可以在末尾换行处加一个转义符，但是这个转义符后面除了换行符不能有任何字符，一般很少使用这种方法，更推荐多行拼接的方法。</p>
+</li>
+<li><p>将数据类型转换为 Boolean，也就是布尔值类型后，值为 false（假，称为“falsy”值）的有：<code>false</code>、<code>null</code>、<code>undefined</code>、<code>0</code>、<code>NaN</code>、空字符串 <code>&#39;&#39;</code> 或 <code>&quot;&quot;</code>；值为 true（真，称为“truthy”值）的有：任何非空字符串、任何对象（包括空对象）、任何非 0 的数值（包括无穷大和无穷小）。</p>
+</li>
+<li><p>按照惯例，声明一个变量要存储一个对象，但一开始不准备具体赋值时，便将其赋值为 <code>null</code>，表示这个空变量将要存储一个对象而不是基本数据类型；而如果是要存储基本类型，只声明不赋值即可，值本来就是 <code>undefined</code>。</p>
+</li>
+<li><p>对象中的属性名可以是任意字符串，包括空字符串；如果属性名是数字，在访问时会自动转换为字符串，但是如果不是数字也不是字符串，则需要符合标识符的命名规则；然而如果属性名是字符串或数字，那么访问时就需要使用方括号运算符而不能使用点运算符的方式，除非字符串属性名符合标识符的命名规则。</p>
+</li>
+<li><p>删除一个对象属性可以使用 <code>delete</code> 操作符，注意使用此操作符删除属性后，属性的键和值都会被删除。</p>
+</li>
+<li><p>使用 <code>typeof</code> 操作符对函数进行检测，返回值为反直觉的 <code>&#39;function&#39;</code>，而不是 <code>&#39;object&#39;</code>；但是检测值为 <code>null</code> 的数据，则会返回 <code>&#39;object&#39;</code>……</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><p>访问对象的属性时，如果在方括号内的属性名是一个数字间运算，那么会先运算得出的结果数字，然后再将数字转换为字符串；</p>
+</li>
+<li><p>要知道一个对象有哪些键名，可以使用对象的 <code>keys()</code> 方法。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/05/20/前端系统课程-20-JavaScript-里的数据/" data-id="cjl6nl46p0011i4q2tkig0pnj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-19-Canvas-画板-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/19/前端系统课程-19-Canvas-画板-2/" class="article-date">
@@ -106,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/19/前端系统课程-19-Canvas-画板-2/" data-id="cjkf52yux000x34q2o4xhnhjx" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/19/前端系统课程-19-Canvas-画板-2/" data-id="cjl6nl46m000xi4q21hc1uvxp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -204,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-18-Canvas-画板-1/" data-id="cjkf52yuv000t34q28iq34h4p" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/18/前端系统课程-18-Canvas-画板-1/" data-id="cjl6nl46j000ti4q2p4w3uys2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -252,7 +584,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-17-JavaScript-小作品/" data-id="cjkf52yuw000v34q2abzx5un7" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/17/前端系统课程-17-JavaScript-小作品/" data-id="cjl6nl46h000ri4q2xwy2mx65" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -293,7 +625,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/16/前端系统课程-16-JavaScript-初体验/" data-id="cjkf52yut000r34q2xptu4v5h" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/16/前端系统课程-16-JavaScript-初体验/" data-id="cjl6nl46c000li4q2yd9sq4xe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -390,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/15/前端系统课程-15-数据结构入门/" data-id="cjkf52yuq000n34q2bpf5glid" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/15/前端系统课程-15-数据结构入门/" data-id="cjl6nl46l000vi4q2xshmc5uf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -432,470 +764,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-12-CSS-布局与定位-2/" data-id="cjkf52yur000p34q2h5zs87qo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-11-CSS-布局与定位-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/11/前端系统课程-11-CSS-布局与定位-1/" class="article-date">
-  <time datetime="2018-05-11T14:28:42.000Z" itemprop="datePublished">2018-05-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/11/前端系统课程-11-CSS-布局与定位-1/">前端系统课程 - 11. CSS 布局与定位 (1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="文档流与高度"><a href="#文档流与高度" class="headerlink" title="文档流与高度"></a>文档流与高度</h2><ul>
-<li><p>元素的自动高度，是由其内部所有文档流元素的高度总和决定的（注意“决定”不代表“相等”）。</p>
-</li>
-<li><p>文档流就是文档内元素流动的方向。</p>
-<ul>
-<li><p>行内元素（内联元素）的流动方向是从左往右，当一行不够时换行；</p>
-</li>
-<li><p>块级元素（外联元素）的流动方向是从上往下，每个块级元素独占一行，宽度不影响这个特性；</p>
-</li>
-</ul>
-</li>
-<li><p>行内元素中的文字换行时，默认是不会将一个完整的英文单词或连续的字母和数字截断的，而会将汉字截断；如果想让换行时截断任意字符，可以给行内元素添加属性 <code>word-break: break-all</code>。</p>
-</li>
-<li><p>字体的居中不是以中线对齐，而是以基线对齐。</p>
-</li>
-<li><p>字体的默认行高是由每种字体内置的推荐行高决定的，不同的字体有不同的推荐行高。</p>
-</li>
-<li><p>行内元素的自动高度等于默认行高、上下内边距以及上下边框的总和。</p>
-</li>
-<li><p>实际开发中，尽量不使用 <code>height</code> 属性设置元素的高度。</p>
-</li>
-</ul>
-<h2 id="脱离文档流与定位"><a href="#脱离文档流与定位" class="headerlink" title="脱离文档流与定位"></a>脱离文档流与定位</h2><ul>
-<li><p>除了浮动属性外，使用元素的定位属性也可以使元素脱离文档流，例如相对定位和固定定位。</p>
-</li>
-<li><p>当子元素脱离文档流后，父元素的高度会塌陷。</p>
-</li>
-<li><p>元素脱离文档流后，元素拥有行内块级元素特性，元素的自动宽度由内部的内容决定。</p>
-</li>
-<li><p>固定定位 <code>fixed</code> 会使元素相对于 <code>&lt;body&gt;</code> 元素定位。</p>
-</li>
-<li><p>使用绝对定位 <code>absolute</code> 定位元素时，一般要将元素的父元素设置为相对定位 <code>relative</code>，简称“子绝父相”。</p>
-</li>
-</ul>
-<h2 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h2><ul>
-<li><p>使用 <code>background-position</code> 属相来设置背景图的定位方式。</p>
-</li>
-<li><p>使用 <code>background-size</code> 属性来设置背景图的填充方式。</p>
-</li>
-</ul>
-<h2 id="边框的妙用"><a href="#边框的妙用" class="headerlink" title="边框的妙用"></a>边框的妙用</h2><p>利用加粗加大的边框，配合不同的样式属性，可以做出很多不同的效果，例如做个三角形：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-left-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="图标资源"><a href="#图标资源" class="headerlink" title="图标资源"></a>图标资源</h2><ul>
-<li><p><a href="iconfont.cn">阿里图标库</a> 了解一下；</p>
-</li>
-<li><p><code>&lt;svg&gt;</code> 元素的宽高需要同时设置；颜色设置使用 <code>fill</code> 属性。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/11/前端系统课程-11-CSS-布局与定位-1/" data-id="cjkf52yum000j34q29nyzfbsx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-10-CSS-入门" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/10/前端系统课程-10-CSS-入门/" class="article-date">
-  <time datetime="2018-05-10T12:50:22.000Z" itemprop="datePublished">2018-05-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/10/前端系统课程-10-CSS-入门/">前端系统课程 - 10. CSS 入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="CSS-的历史"><a href="#CSS-的历史" class="headerlink" title="CSS 的历史"></a>CSS 的历史</h2><ol>
-<li><p>1994 年，哈肯·维姆·莱（ Håkon Wium Lie）与伯特·波斯（Bert Bos）一起合作设计了 CSS。</p>
-</li>
-<li><p>1998 年，W3C 发布了应用最广泛的 CSS2。</p>
-</li>
-<li><p>2011 年，CSS 被分为多个模块单独升级，统称为 CSS3。</p>
-</li>
-</ol>
-<h2 id="CSS-编译器"><a href="#CSS-编译器" class="headerlink" title="CSS 编译器"></a>CSS 编译器</h2><ul>
-<li><p>LESS</p>
-</li>
-<li><p>SASS / SCSS</p>
-</li>
-<li><p>PostCSS</p>
-</li>
-</ul>
-<h2 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h2><ul>
-<li><p>MDN</p>
-</li>
-<li><p>CSS Tricks</p>
-</li>
-<li><p>阮一峰 / 张鑫旭博客</p>
-</li>
-<li><p>Codrops</p>
-</li>
-<li><p>《CSS 揭秘》</p>
-</li>
-<li><p>CSS 文档</p>
-</li>
-</ul>
-<h2 id="开始写-CSS"><a href="#开始写-CSS" class="headerlink" title="开始写 CSS"></a>开始写 CSS</h2><ol>
-<li><p>引入方法：</p>
-<ul>
-<li><p>内联样式；</p>
-</li>
-<li><p><code>&lt;style&gt;</code> 标签；</p>
-</li>
-<li><p>外部样式，使用 <code>&lt;link&gt;</code> 标签引入；</p>
-</li>
-<li><p>导入方式，使用 <code>@import url()</code> 方式，这种方式不推荐使用。</p>
-</li>
-</ul>
-</li>
-<li><p>善用开发者工具。</p>
-</li>
-<li><p>常用样式：</p>
-<ul>
-<li><p>清除列表默认样式 <code>list-style: none</code>；</p>
-</li>
-<li><p>浮动 <code>float</code>；</p>
-</li>
-<li><p>清除浮动 <code>clear: both;</code>，常用方式，给<strong>浮动元素的父元素</strong>加此类名：</p>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">claer</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>子元素选择器 <code>&gt;</code>；</p>
-</li>
-<li><p>背景颜色 <code>background</code>；</p>
-</li>
-<li><p>文字颜色 <code>color</code>；</p>
-</li>
-<li><p>去除 <code>&lt;a&gt;</code> 标签下划线 <code>text-decoration: none</code>；</p>
-</li>
-<li><p>外边距 <code>margin</code>；</p>
-</li>
-<li><p>内边距 <code>padding</code>；</p>
-</li>
-<li><p>文字加粗 <code>font-weight: bold</code>；</p>
-</li>
-<li><p>伪类选择器，鼠标移入 <code>:hover</code>；</p>
-</li>
-<li><p>展示为块级元素 <code>display: block</code>；</p>
-</li>
-<li><p>继承属性值 <code>inherit</code>，可用于字体和颜色等属性；</p>
-</li>
-<li><p>文字大小 <code>font-size</code>；</p>
-</li>
-<li><p>文字字体 <code>font-family</code>；</p>
-</li>
-<li><p>边框 <code>border</code>。</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>不要记住了缩写，就忘记了全写，例如 <code>margin</code>、<code>border</code>、<code>padding</code> 等属性；</p>
-</li>
-<li><p>当 <code>height</code> 的值和 <code>line-height</code> 的值相同时，或者 <code>line-height</code> 的值与 <code>padding-top</code>、<code>padding-bottom</code> 的值加起来等于 <code>height</code> 的值，并且 <code>padding</code> 是上下相等的情况时，文字会垂直居中。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/10/前端系统课程-10-CSS-入门/" data-id="cjkf52yuo000l34q2njljgotf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-09-HTML-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/09/前端系统课程-09-HTML-2/" class="article-date">
-  <time datetime="2018-05-09T12:46:43.000Z" itemprop="datePublished">2018-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/前端系统课程-09-HTML-2/">前端系统课程 - 09. HTML (2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ul>
-<li><p><code>&lt;a&gt;</code> 标签和 <code>&lt;button&gt;</code> 标签的选择：</p>
-<ul>
-<li><p>如果要跳转到一个链接，用 <code>&lt;a&gt;</code> 标签；</p>
-</li>
-<li><p>如果要弹出提示或进行提交等操作，则可以使用 <code>&lt;button&gt;</code> 标签。</p>
-</li>
-</ul>
-</li>
-<li><p><code>&lt;main&gt;</code> 标签代表整个页面最主要的部分，每个页面中只能有一个 <code>main</code> 标签。</p>
-</li>
-<li><p><code>&lt;section&gt;</code> 标签代表一个章节，一般用于一个完整文章或独立区块。</p>
-</li>
-<li><p><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> 表示 6 个等级的标题，其中 <code>&lt;h1&gt;</code> 在整个页面一般也只有一个。</p>
-</li>
-<li><p><code>&lt;nav&gt;</code> 标签表示导航，有导航性质的列表或菜单，要用此标签包裹。</p>
-</li>
-<li><p><code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签没有语义，只是用来划分区域的，所以在使用这两种标签时，要给它们指定类名来使其语义化。</p>
-</li>
-</ul>
-<h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h2><ul>
-<li><p>使用“src”属性可以指定 iframe 窗口打开的网址。</p>
-</li>
-<li><p>使用“name”属性可以和 <code>&lt;a&gt;</code> 标签配合，使指定的 iframe 窗口打开新网页。</p>
-</li>
-<li><p>将“frameborder”属性设置为“0”可以去除 iframe 窗口自带的边框。</p>
-</li>
-</ul>
-<h2 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h2><ul>
-<li><p>“target”属性有四个值，它们分别是：</p>
-<ul>
-<li><p>_blank：代表在新窗口打开链接；</p>
-</li>
-<li><p>_self：代表在当前窗口或当前 iframe 窗口打开链接；</p>
-</li>
-<li><p>_parent：代表在当前 iframe 窗口外的父级窗口打开链接；</p>
-</li>
-<li><p>_top：代表在当前 iframe 窗口外的最顶层祖先窗口打开链接。</p>
-</li>
-</ul>
-</li>
-<li><p>“download”属性，一般用在链接是一个需要下载的文件时，此属性会强制将目标链接的“Content-type”转换为“application/octet-stream”，使目标链接成为下载链接。</p>
-</li>
-<li><p>“href”属性值：</p>
-<ul>
-<li><p>如果只写了域名，会把这个值当作文件来打开，例如 <code>href=&quot;qq.com&quot;</code>；当这种情况发生在是用 HTTP 协议打开时，会在网站的根目录寻找这个文件。</p>
-</li>
-<li><p>如果不写协议，会把这个值按照当前协议来打开，例如 <code>href=&quot;//qq.com&quot;</code>；当用文件协议打开网页时，便按照文件协议打开链接；当用 HTTP 协议打开时，便按照 HTTP 协议打开，才能正常访问目标网址。</p>
-</li>
-<li><p>只有在把协议写全的时候，才能在协议不同的情况下，正常跳转到链接地址，正常应该写：<code>href=&quot;http://qq.com</code>。</p>
-</li>
-<li><p>如果值是一个查询参数时，会向链接发起 GET 请求，页面会被刷新，例如：<code>href=&quot;?name=user&quot;</code>。</p>
-</li>
-<li><p>如果值是一个锚点时，会跳转到当前页的对应锚点位置；而如果只写一个“#”号，则会跳转到当前页面的顶部，两种情况都不会刷新页面；例如：<code>href=&quot;#&quot;</code>，这种方式可以做“回到顶部”的功能。</p>
-</li>
-<li><p>如果值是一个伪协议，例如：<code>href=&quot;javascript:void(0);&quot;</code>，则会执行伪协议后面的脚本代码，例子中的意思是返回值为“0”，也就是什么都不做，最终达到的效果就是去除了 <code>&lt;a&gt;</code> 标签的默认操作，这样就得到了一个能点击，却不会有反应的 <code>&lt;a&gt;</code> 标签；<code>void(0)</code> 其实可以不写也可以。其他的伪协议还有”mailto“等……老师没说。</p>
-</li>
-<li><p>如果值为空，点击 <code>&lt;a&gt;</code> 标签就会刷新当前页面。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="form-标签"><a href="#form-标签" class="headerlink" title="form 标签"></a>form 标签</h2><ul>
-<li><p>“action”属性用来设置表单提交的地址。</p>
-</li>
-<li><p>“method”属性用来指定提交表单的方式，只有两种方式，默认是 GET 方式，但提交表单都是用 POST 方式。</p>
-</li>
-<li><p>使用 POST 方式提交表单时，请求中的“Content-Type”是“x-www-form-urlencoded”，这是表单数据所对应的类型，它会将汉字转换为 UTF-8 编码后，再提交到目标地址。</p>
-</li>
-<li><p>表单中必须有提交按钮；如果 form 表单中有一个没有类型的 <code>&lt;button&gt;</code> 标签，那么这个按钮会自动成为该表单的提交按钮，从而具备点击后发起提交该表单的请求功能。</p>
-</li>
-<li><p>表单中需要输入并提交数据的标签，都要有“name”属性，否则该标签中的数据将无法提交。</p>
-</li>
-<li><p>“target”属性可以指定表单提交成功后，在哪个窗口打开表单提交地址。  </p>
-</li>
-</ul>
-<h2 id="input-标签"><a href="#input-标签" class="headerlink" title="input 标签"></a>input 标签</h2><ul>
-<li><p>最主要的就是“type”属性，不同的值代表不同的输入方式，例如：“button”代表普通按钮，“submit”代表提交按钮，“checkbox”代表复选框等等，如果不设置，默认是“text”类型。</p>
-</li>
-<li><p>要让 <code>&lt;input&gt;</code> 标签与指定内容关联，使之点击时获得焦点，要使用 <code>&lt;label&gt;</code> 标签包裹指定内容，并将其“for”属性与 <code>&lt;input&gt;</code> 标签的“id”属性设置为同一个值。</p>
-</li>
-<li><p>使用“radio”类型的 <code>&lt;input&gt;</code> 标签可以做出单选按钮，要让多个单选按钮具有排外性，就得把这些按钮的“name”属性设置为同一个。</p>
-</li>
-</ul>
-<h2 id="select-标签"><a href="#select-标签" class="headerlink" title="select 标签"></a>select 标签</h2><ul>
-<li><p>使用这个标签可以做下拉菜单，菜单的每一项，要用 <code>&lt;option&gt;</code> 标签包裹。</p>
-</li>
-<li><p>要让某一项默认为选中状态，可以给此项添加“selected”属性并设置值为“true”，像此类的状态属性的属性值都可以省略，只要属性存在，浏览器就会使它的值自动为“true”。</p>
-</li>
-<li><p>使用“disabled”属性可以使选项成为非可选状态。</p>
-</li>
-<li><p>为 <code>&lt;select&gt;</code> 标签添加“multiple”属性，可以使之成为多选菜单。</p>
-</li>
-</ul>
-<h2 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h2><ul>
-<li><p>这个标签被称为“文本域”，是用来输入和提交大量文字的文本框。</p>
-</li>
-<li><p>默认情况下，文本框可以自由调整大小，如果要禁用这种效果，需要给 <code>&lt;textarea&gt;</code> 添加样式：<code>resize: none</code>。</p>
-</li>
-<li><p>虽然文本域有设定宽和高的属性，但使用 CSS 样式设置最为靠谱。</p>
-</li>
-</ul>
-<h2 id="table-标签"><a href="#table-标签" class="headerlink" title="table 标签"></a>table 标签</h2><ul>
-<li><p>按照规范，<code>&lt;table&gt;</code> 标签的子元素可以是 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 和 <code>&lt;colgroup&gt;</code>。</p>
-</li>
-<li><p><code>&lt;colgroup&gt;</code> 标签的子标签是 <code>&lt;col&gt;</code> 标签，可以通过它来为每一列进行不同的设置，如宽度，背景色等，实际开发很少使用。</p>
-</li>
-<li><p><code>&lt;table&gt;</code> 标签的子标签都可以省略，除了 <code>&lt;colgroup&gt;</code> 标签，其余的会自动生成；另外，如果这些标签的顺序颠倒，浏览器也会自动纠正为 <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code> 的顺序。</p>
-</li>
-<li><p><code>&lt;table&gt;</code> 标签的“border”属性可以设置表格的边框，但是每个表格元素都会有，如果要合并这些边框，可以给 <code>&lt;table&gt;</code> 标签添加样式 <code>border-collapse: collapse</code>。</p>
-</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><p>今天学的标签只是 HTML5 中很少的一部分，而且也只是初步的介绍，实际还有很多常用标签，这些标签也还有很多属性可以设置。标签的属性不需要全部记住，在实际开发中，多加练习，就会把最有价值的属性设置烂熟于心。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/09/前端系统课程-09-HTML-2/" data-id="cjkf52yug000f34q23pzl2jzw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-08-HTML-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/08/前端系统课程-08-HTML-1/" class="article-date">
-  <time datetime="2018-05-07T16:30:44.000Z" itemprop="datePublished">2018-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/前端系统课程-08-HTML-1/">前端系统课程 - 08. HTML (1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="说说简历"><a href="#说说简历" class="headerlink" title="说说简历"></a>说说简历</h2><p>简历最好挂在自己买的域名上，这样显得专业一点。</p>
-<h2 id="简历模板"><a href="#简历模板" class="headerlink" title="简历模板"></a>简历模板</h2><p>在追波网（dribbble.com）搜索 cv 或 resume 关键字，或者在五百丁上买。</p>
-<h2 id="简历内容"><a href="#简历内容" class="headerlink" title="简历内容"></a>简历内容</h2><ul>
-<li><p>必要的内容：</p>
-<ul>
-<li><p>个人信息：照片、姓名、性别、年龄、学校、所在城市、职位目标等；</p>
-</li>
-<li><p>教育经历；</p>
-</li>
-<li><p>工作经历；</p>
-</li>
-<li><p>项目经验。</p>
-</li>
-</ul>
-</li>
-<li><p>可选的内容：</p>
-<ul>
-<li><p>开源代码，GitHub 要经常使用；</p>
-</li>
-<li><p>博客链接：多写博客，自己搭建的最好；</p>
-</li>
-<li><p>外文翻译；</p>
-</li>
-<li><p>他人评价；</p>
-</li>
-<li><p>对公司业务的分析；</p>
-</li>
-</ul>
-</li>
-<li><p>没用的内容：</p>
-<ul>
-<li><p>自我评价；</p>
-</li>
-<li><p>对公司或产品的喜爱；</p>
-</li>
-<li><p>段子。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="什么是HTML"><a href="#什么是HTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h2><p>HTML（HyperText Markup Language，超文本标记语言），超级文本标记语言是标准通用标记语言，它通过标记符号来标记要显示的网页中的各个部分。</p>
-<h2 id="HTML版本"><a href="#HTML版本" class="headerlink" title="HTML版本"></a>HTML版本</h2><p>版本从 1.0 到 4.01，再到现在的 HTML5 版本，目前 HTML5.2 也已经发布。</p>
-<p>“H5”和 HTML5 不是一个概念，所谓的“H5”页面其实只是在微信中能展示的页面，甚至可以用 HTML4.01 做出来。</p>
-<h2 id="HTML规范"><a href="#HTML规范" class="headerlink" title="HTML规范"></a>HTML规范</h2><p>规范由 W3C 制定，W3C 会根据浏览器的实际情况总结文档。</p>
-<h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p>文档类型，用来标识 HTML 文档的版本，以判定文档遵循何种规范。目前使用的 HTML5 的文档类型应该写作：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="HTML标签"><a href="#HTML标签" class="headerlink" title="HTML标签"></a>HTML标签</h2><ul>
-<li><p>HTML5 规范中，<code>&lt;head&gt;</code> 标签、<code>&lt;body&gt;</code> 标签为空标签时，是可以省略的；即使不写 <code>html</code> 标签，也是符合规范的；如果不写，浏览器在渲染时会自动补全。</p>
-</li>
-<li><p>常见标签如：<code>&lt;p&gt;</code> 标签，含义是“paragraph”，段落的意思；<code>&lt;ul&gt;</code> 标签，含义是“unordered list”，意思是无序列表；<code>div</code> 标签，含义是“divide”，划分的意思，等等……</p>
-</li>
-<li><p>了解标签的语义化，就是要了解标签的含义，并且在对应的使用场景时，正确的使用标签。</p>
-</li>
-<li><p>各种浏览器都给除了 <code>&lt;div&gt;</code> 和 <code>&lt;span&gt;</code> 标签以外的 HTML 的标签定制了默认样式。</p>
-</li>
-<li><p>遇到不会的标签，或者需要了解标签的更多规范，移步 MDN。</p>
-</li>
-</ul>
-<h2 id="结构与样式分离"><a href="#结构与样式分离" class="headerlink" title="结构与样式分离"></a>结构与样式分离</h2><p>HTML 只是用来描述文档的结构，而文档以什么方式什么样子展示，那是 CSS 的事；例如内联元素与块级元素的区分，本质上是样式的区分，所以不归 HTML 管，HTML 中的内联与块级元素的概念，实际上是由 CSS 控制的，属于 CSS 中的概念。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/08/前端系统课程-08-HTML-1/" data-id="cjkf52yuj000h34q22kysbzwb" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/12/前端系统课程-12-CSS-布局与定位-2/" data-id="cjl6nl468000hi4q2tqiow4bt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -911,7 +780,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -944,7 +813,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -957,23 +826,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/">前端系统课程 - 43. Cookie 与登录注册</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/19/前端系统课程-42-画一只皮卡丘/">前端系统课程 - 42. 画一只皮卡丘</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/前端系统课程-41-会动的简历/">前端系统课程 - 41. 会动的简历</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/前端系统课程-40-进阶考试及相关知识/">前端系统课程 - 40. 进阶考试及相关知识</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/08/前端系统课程-39-面向对象编程/">前端系统课程 - 39. 面向对象编程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/07/前端系统课程-38-毕设项目实战/">前端系统课程 - 38. 毕设项目实战</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/">前端系统课程 - 37. 给简历加数据库</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
           </li>
         
       </ul>
