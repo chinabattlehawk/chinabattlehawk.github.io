@@ -5,20 +5,19 @@
   
 
   
-  <title>前端系统课程 - 42. 画一只皮卡丘 | 南阳诸葛庐</title>
+  <title>报错 (SASS) - Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8 | 南阳诸葛庐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##">
-<meta name="keywords" content="课程笔记">
+  <meta name="description" content="在 Webstorm 中，使用 SASS/SCSS 转换插件时，需要使用 File Watchers 功能监听 SASS/SCSS 类型文件；当命令行执行自动转换时，发出报错信息为： Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8 。 错误原因是由于文件路径中有中文字符或者代码里有中文注释，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端系统课程 - 42. 画一只皮卡丘">
-<meta property="og:url" content="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/index.html">
+<meta property="og:title" content="报错 (SASS) - Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8">
+<meta property="og:url" content="https://blog.battlehawk.cn/2017/04/01/报错-SASS-Encoding-CompatibilityError-incompatible-character-encodings-GBK-and-UTF-8/index.html">
 <meta property="og:site_name" content="南阳诸葛庐">
-<meta property="og:description" content="##">
+<meta property="og:description" content="在 Webstorm 中，使用 SASS/SCSS 转换插件时，需要使用 File Watchers 功能监听 SASS/SCSS 类型文件；当命令行执行自动转换时，发出报错信息为： Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8 。 错误原因是由于文件路径中有中文字符或者代码里有中文注释，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-04T14:55:46.683Z">
+<meta property="og:updated_time" content="2019-04-18T02:04:18.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端系统课程 - 42. 画一只皮卡丘">
-<meta name="twitter:description" content="##">
+<meta name="twitter:title" content="报错 (SASS) - Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8">
+<meta name="twitter:description" content="在 Webstorm 中，使用 SASS/SCSS 转换插件时，需要使用 File Watchers 功能监听 SASS/SCSS 类型文件；当命令行执行自动转换时，发出报错信息为： Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8 。 错误原因是由于文件路径中有中文字符或者代码里有中文注释，">
   
     <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
   
@@ -69,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-前端系统课程-42-画一只皮卡丘" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-报错-SASS-Encoding-CompatibilityError-incompatible-character-encodings-GBK-and-UTF-8" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/19/前端系统课程-42-画一只皮卡丘/" class="article-date">
-  <time datetime="2018-08-19T13:25:07.000Z" itemprop="datePublished">2018-08-19</time>
+    <a href="/2017/04/01/报错-SASS-Encoding-CompatibilityError-incompatible-character-encodings-GBK-and-UTF-8/" class="article-date">
+  <time datetime="2017-04-01T01:31:56.000Z" itemprop="datePublished">2017-04-01</time>
 </a>
     
   </div>
@@ -83,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端系统课程 - 42. 画一只皮卡丘
+      报错 (SASS) - Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8
     </h1>
   
 
@@ -91,35 +90,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>## </p>
+        <p>在 Webstorm 中，使用 SASS/SCSS 转换插件时，需要使用 File Watchers 功能监听 SASS/SCSS 类型文件；当命令行执行自动转换时，发出报错信息为： <code>Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8</code> 。</p>
+<p>错误原因是由于文件路径中有中文字符或者代码里有中文注释，又或者又中文字体栈；只要把中文都改成英文可以解决问题，但岂不是因噎废食？</p>
+<p>解决的方法：</p>
+<ol>
+<li><p>找到 Ruby 安装目录，定位到 <code>lib\ruby\gems\2.3.0\gems\sass-3.4.22\lib\sass\engine.rb</code> 文件，在所有的  <code>require</code> 语句的下一行添加 <code>Encoding.default_external = Encoding.find(&#39;UTF-8&#39;)</code> 即可。</p>
+</li>
+<li><p>上个方法无效时，同样在 Ruby 目录下，定位到 <code>lib/ruby/gems/2.4.0/gems/sass-3.x.x/lib/sass/importers/filesystem.rb</code> 文件，用编辑器打开后，定位到 87 行，将此行修改为 <code>if name.encode(&quot;utf-8&quot;, &quot;gbk&quot;).index(@root + &quot;/&quot;) == 0</code> 即可。</p>
+<p>PS：如果有两个 sass-3.x 文件夹，就两个都修改，基本就没问题了。</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="cjum08m330027dsmxevd5jlnm" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2017/04/01/报错-SASS-Encoding-CompatibilityError-incompatible-character-encodings-GBK-and-UTF-8/" data-id="cjum08m3a002fdsmxou30zjkr" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/24/前端强化课程-第-4-章-页面架构/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          前端系统课程 - 43. Cookie 与登录注册
+          前端强化课程 - 第 4 章: 页面架构
         
       </div>
     </a>
   
   
-    <a href="/2018/08/08/前端系统课程-41-会动的简历/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/31/博客使用指南/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端系统课程 - 41. 会动的简历</div>
+      <div class="article-nav-title">博客使用指南 - Hello World! Hello Hexo!</div>
     </a>
   
 </nav>

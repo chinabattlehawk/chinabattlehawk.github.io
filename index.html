@@ -93,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-43-Cookie-与登录注册/" data-id="cjl6nl47q0029i4q2bnzhjhym" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-43-Cookie-与登录注册/" data-id="cjum08m37002bdsmxqurhddb7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -127,13 +127,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>## </p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="cjl6nl47l0023i4q2l1ryc4wb" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="cjum08m330027dsmxevd5jlnm" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
     </footer>
   </div>
   
@@ -164,16 +167,40 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="特效原理"><a href="#特效原理" class="headerlink" title="特效原理"></a>特效原理</h2><ul>
-<li><a href="http://strml.net/" target="_blank" rel="noopener">效果页面</a></li>
-<li>使用循环定时器 <code>setInterval()</code> 方法，结合字符串截取方法如 <code>substring()</code> 或 <code>split()</code>，在相同的间隔时间，改变页面显示的文字，就有逐个打字的效果。</li>
-<li>使用 <code>&lt;pre&gt;</code> 标签（preview），可以保留文字原始的格式。</li>
-<li>页面中写入代码的同时，将代码也写入到相应的标签中，这些代码就会生效。</li>
+<li><p><a href="http://strml.net/" target="_blank" rel="noopener">效果页面</a></p>
+</li>
+<li><p>使用循环定时器 <code>setInterval()</code> 方法，结合字符串截取方法如 <code>substring()</code> 或 <code>split()</code>，在相同的间隔时间，改变页面显示的文字，就有逐个打字的效果。</p>
+</li>
+<li><p>使用 <code>&lt;pre&gt;</code> 标签（preview），可以保留文字原始的格式。</p>
+</li>
+<li><p>页面中写入代码的同时，将代码也写入到相应的标签中，这些代码就会生效。</p>
+</li>
+</ul>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><ul>
+<li><p>将代码写入页面上后，用替换的方式，将关键字换成用带有特殊类名或行内样式的标签包裹的字符串。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">htmlBox.innerHTML = str.slice(<span class="number">0</span>, round);</span><br><span class="line">htmlBox.innerHTML = htmlBox.innerHTML.replace(<span class="string">'html'</span>, <span class="string">'&lt;span style="color: #f00;"&gt;html&lt;/span&gt;'</span>);</span><br><span class="line"><span class="comment">// 下面这行代码成功执行的条件是页面中需要有目标字符；当页面中完整出现目标字符，证明这段字符在CSS中已经写完了，所以不会影响样式</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用专门的库来实现更加完整的代码高亮功能，例如：Prism.js。</p>
+</li>
+</ul>
+<h2 id="支持-Markdown"><a href="#支持-Markdown" class="headerlink" title="支持 Markdown"></a>支持 Markdown</h2><ul>
+<li>可以使用 marked.js 等相关的库。</li>
+<li>将替换完成的 <code>&lt;div&gt;</code> 标签使用 <code>replaceWith()</code> 方法将原来的 <code>&lt;pre&gt;</code> 标签替换掉；但这是一个比较新的替换 DOM 元素的方法，可能有兼容性问题</li>
+</ul>
+<h2 id="灵活使用回调函数"><a href="#灵活使用回调函数" class="headerlink" title="灵活使用回调函数"></a>灵活使用回调函数</h2><ul>
+<li><p>右侧的 markdown 写完之后，左侧提示转换为 HTML，再进行转换，然后左侧再进行提示；这些流程都需要通过回调函数来衔接，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">left(<span class="string">''</span>, str1, () =&gt; &#123;</span><br><span class="line">	right(str0, () =&gt; &#123;</span><br><span class="line">		left(str1, str2, () =&gt; &#123;</span><br><span class="line">			mark(str0, () =&gt; &#123;</span><br><span class="line">				left(str1 + str2, str3);</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要理清代码执行的思路，主要是要想清楚代码的执行顺序（操作符的优先级），例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cssBox.innerHTML = str1 + str2.slice(<span class="number">0</span>, round);</span><br></pre></td></tr></table></figure>
+<p>上面的代码中是从右往左赋值，要先得到最右面的 <code>str2.slice(0, round)</code> 的值，再用这个值和 <code>str1</code> 拼接，最后赋值给 <code>cssBox.innerHTML</code>。</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-41-会动的简历/" data-id="cjl6nl47k0021i4q2crcjbv9a" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-41-会动的简历/" data-id="cjum08m320025dsmxz2pbijk9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -211,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-40-进阶考试及相关知识/" data-id="cjl6nl47j001zi4q224b9okfv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-40-进阶考试及相关知识/" data-id="cjum08m300023dsmxlqs1zhvk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -300,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/08/前端系统课程-39-面向对象编程/" data-id="cjl6nl47p0027i4q27cxfy73z" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/08/前端系统课程-39-面向对象编程/" data-id="cjum08m2x001zdsmxteuplzxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -338,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="cjl6nl47d001ti4q2hjt7hvgj" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="cjum08m2z0021dsmx5j69chq6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -410,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/06/前端系统课程-37-给简历添加数据库/" data-id="cjl6nl47n0025i4q2sn5yrcts" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/06/前端系统课程-37-给简历添加数据库/" data-id="cjum08m2v001xdsmx8ajxwwun" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -462,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="cjl6nl47f001vi4q26oytpkkp" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="cjum08m2t001vdsmxcel8kfhw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -539,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-35-自己实现-AJAX/" data-id="cjl6nl47h001xi4q2mwih0t96" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-35-自己实现-AJAX/" data-id="cjum08m2r001tdsmxc7dw4o77" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -678,7 +705,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" data-id="cjl6nl47b001pi4q27jd96hct" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" data-id="cjum08m2p001rdsmxmc1uoqra" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -727,7 +754,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -771,7 +798,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 诸葛战鹰<br>
+      &copy; 2019 诸葛战鹰<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
