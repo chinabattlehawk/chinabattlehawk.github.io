@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器 | 南阳诸葛庐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？ 步骤假设在 ~/.ssh 目录下已经生成过密钥：id_rsa 及 id_rsa.pub；  生成第二个 SSH key 和生成第一个命令相同： ssh-keyge">
+<meta name="keywords" content="开发记录, Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器">
+<meta property="og:url" content="https://blog.battlehawk.cn/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/index.html">
+<meta property="og:site_name" content="南阳诸葛庐">
+<meta property="og:description" content="现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？ 步骤假设在 ~/.ssh 目录下已经生成过密钥：id_rsa 及 id_rsa.pub；  生成第二个 SSH key 和生成第一个命令相同： ssh-keyge">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-23T11:20:06.391Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器">
+<meta name="twitter:description" content="现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？ 步骤假设在 ~/.ssh 目录下已经生成过密钥：id_rsa 及 id_rsa.pub；  生成第二个 SSH key 和生成第一个命令相同： ssh-keyge">
+  
+    <link rel="alternate" href="/atom.xml" title="南阳诸葛庐" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南阳诸葛庐</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">穷则独善其身 达则兼济天下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.battlehawk.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" class="article-date">
+  <time datetime="2019-09-23T06:36:19.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>假设在 <code>~/.ssh</code> 目录下已经生成过密钥：<code>id_rsa</code> 及 <code>id_rsa.pub</code>；</p>
+<ol>
+<li><p>生成第二个 SSH key</p>
+<p>和生成第一个命令相同：</p>
+<p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></p>
+<p>这里不要一路回车，到输入路径提示时，填写保存路径（可以新建目录分别存放）：</p>
+<p><code>Generating public/private rsa key pair.</code></p>
+<p><code>Enter file in which to save the key (/c/Users/xxx/.ssh/id_rsa): /c/Users/xxx/.ssh/id_rsa_gitlab</code></p>
+<p>后面的两步则为设置密码，可以直接回车跳过。</p>
+<p>这里的 id_rsa_gitlab 是可以自定义的，只要区别于原有的密钥名即可。</p>
+<p>完成之后就可以看到目录下多了两个文件：<code>id_rsa_github</code> 及 <code>id_rsa_gitlab.pub</code>。</p>
+</li>
+<li><p>打开 ssh-agent</p>
+<p>如果使用 GitHub 官方的 bash ，输入：</p>
+<p><code>ssh-agent -s</code></p>
+<p>如果是其他的，例如常用的 Git Bash，输入：</p>
+<p><code>eval $(ssh-agent -s)</code></p>
+<p>略过此步骤，下一步会有错误提示：<code>Could not open a connection to your authentication agent.</code></p>
+</li>
+<li><p>添加私钥</p>
+<p>分别输入命令：</p>
+<p><code>ssh-add ~/.ssh/id_rsa</code></p>
+<p><code>ssh-add ~/.ssh/id_rsa_gitlab</code></p>
+<p>如果提示文件或目录不存在，就使用绝对地址。</p>
+</li>
+<li><p>在 <code>~/.ssh</code> 目录下创建名为 config 的文件，后缀名为空；</p>
+<p>用文本编辑器打开后，添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># github &amp; gitlab</span></span><br><span class="line"><span class="comment"># 注意：多个Host公用一个公钥时，对应的HostName和Port必须跟在Host后面</span></span><br><span class="line"><span class="comment"># github</span></span><br><span class="line">    Host coding1</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment"># gitlab</span></span><br><span class="line">    Host coding2</span><br><span class="line">    HostName gitlab.ceair.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_ceair</span><br><span class="line">    User Git</span><br></pre></td></tr></table></figure>
+<p>其中：<code>Host</code> 为主机名，可以自定义，但不能重复；<code>HostName</code> 主机的真实域名地址；<code>PreferredAuthentications</code> 是配置登录时使用的登录权限；<code>IdentityFile</code> 是私钥路径；<code>User</code> 是服务器账号名，不是自己的用户名，一般都是 Git；必要时，还需要添加 <code>Port</code> 属性，其默认值为 22。</p>
+<p>如果在 Linux 系统中有错误提示：<code>Bad owner or permissions on /home/xxx/.ssh/config</code></p>
+<p>说明 config 权限过大，使用 chmod 命令调整：<code>$ chmod 644 ~/.ssh/config</code></p>
+</li>
+<li><p>添加公钥</p>
+<p>在相应的 Git 服务页面中添加公钥，不赘述。</p>
+</li>
+<li><p>测试</p>
+<p>之前是直接输入 <code>ssh -T git@github.com</code>，现在则可以通过简称映射对应的域名和私钥，例如：</p>
+<p><code>ssh -T git@coding1</code></p>
+<p>而名为 coding2 的配置，设置了 <code>User</code> 属性，则可以简单输入 <code>ssh -T coding2</code> 完成测试。</p>
+<p>如果测试中收到错误提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'xxx (x.x.x.x)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></span><br></pre></td></tr></table></figure>
+<p>则是因为新增的主机未添加至 know_hosts 文件中，输入 yes 回车即可。</p>
+<p>如果错误提示是：<code>PTY allocation request failed on channel 0</code>，则是因为将 <code>-T</code> 写成了小写。</p>
+</li>
+</ol>
+<p>##调试</p>
+<p>如果测试不成功，可以使用调试命令 <code>--debug</code>，例如测试 coding1：<code>ssh -vT git@github.com`</code></p>
+<p>命令 <code>-v</code> 是输出编译信息，然后根据信息可以排查编译中发生的错误。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>配置好多个 SSH key后，拉取代码时，需要将 SSH 地址做细微修改，才能用正确的用户去登陆验证。就是将对应域名（IP）换成 config 文件里配置的 <code>Host</code> 属性值即可。</p>
+<p>例如原本的 SSH 地址为 <a href="mailto:`git@git.coding.net" target="_blank" rel="noopener">`git@git.coding.net</a>:master/DemoForSSH.git<code>，需要修改为</code>git@coding1:master/DemoForSSH.git<code>再拉取即可。如果配置了</code>User<code>属性，SSH 地址可以简写为</code>coding2:master/DemoForSSH.git`</p>
+<h2 id="拾遗"><a href="#拾遗" class="headerlink" title="拾遗"></a>拾遗</h2><ol>
+<li><p>关于用户名</p>
+<p>如果之前设置了全局用户名和邮箱的话，需要取消一下：</p>
+<p><code>git config --global --unset user.name</code></p>
+<p><code>git config --global --unset user.email</code></p>
+<p>然后在不同的仓库下设置局部的用户名和邮箱，比如在公司的 repository 下：</p>
+<p><code>git config user.name &quot;yourname&quot;</code></p>
+<p><code>git config user.email &quot;youremail&quot;</code></p>
+<p>最后在自己的仓库重新执行刚刚的命令即可，这样就可以在不同的仓库，以不同的账号登录。</p>
+</li>
+<li><p>关于提交记录</p>
+<p>通过 SSH 拉取的代码，如果之前在 <code>~/.gitconfig</code> 文件里配置过 <code>user</code> 信息，而又不想用全局的 <code>user</code> 信息，可以在当前工程里的 <code>.git/config</code> 文件里配置 <code>user</code> 信息，以便查看commit记录等，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = <span class="literal">true</span></span><br><span class="line">	bare = <span class="literal">false</span></span><br><span class="line">	logallrefupdates = <span class="literal">true</span></span><br><span class="line">	ignorecase = <span class="literal">true</span></span><br><span class="line">	precomposeunicode = <span class="literal">true</span></span><br><span class="line">[user]</span><br><span class="line">	name = yourname</span><br><span class="line">	email = youremail@example.com</span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = xxx</span><br><span class="line">	fetch = xxx</span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>关于 TortoiseGit 中输错密码的处理：</p>
+<p>在控制面板中的“用户账户”设置中，找到“windows凭证管理”，在普通凭证中，删掉输错的那项即可。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zyoung.me/多账号SSH配置/" target="_blank" rel="noopener">参考1：https://zyoung.me/多账号SSH配置/</a></p>
+<p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">参考2：https://www.jianshu.com/p/f7f4142a1556</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" data-id="ck0wbkdjo00294wmx8idquwbn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发记录-Git/">开发记录, Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端系统课程 - 43. Cookie 与登录注册</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录-Git/">开发记录, Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录-SASS/">开发记录, SASS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/开发记录-Git/" style="font-size: 10px;">开发记录, Git</a> <a href="/tags/开发记录-SASS/" style="font-size: 10px;">开发记录, SASS</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/">前端系统课程 - 43. Cookie 与登录注册</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/19/前端系统课程-42-画一只皮卡丘/">前端系统课程 - 42. 画一只皮卡丘</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/前端系统课程-41-会动的简历/">前端系统课程 - 41. 会动的简历</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/前端系统课程-40-进阶考试及相关知识/">前端系统课程 - 40. 进阶考试及相关知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 诸葛战鹰<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

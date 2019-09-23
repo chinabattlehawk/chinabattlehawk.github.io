@@ -66,6 +66,117 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" class="article-date">
+  <time datetime="2019-09-23T06:36:19.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>假设在 <code>~/.ssh</code> 目录下已经生成过密钥：<code>id_rsa</code> 及 <code>id_rsa.pub</code>；</p>
+<ol>
+<li><p>生成第二个 SSH key</p>
+<p>和生成第一个命令相同：</p>
+<p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></p>
+<p>这里不要一路回车，到输入路径提示时，填写保存路径（可以新建目录分别存放）：</p>
+<p><code>Generating public/private rsa key pair.</code></p>
+<p><code>Enter file in which to save the key (/c/Users/xxx/.ssh/id_rsa): /c/Users/xxx/.ssh/id_rsa_gitlab</code></p>
+<p>后面的两步则为设置密码，可以直接回车跳过。</p>
+<p>这里的 id_rsa_gitlab 是可以自定义的，只要区别于原有的密钥名即可。</p>
+<p>完成之后就可以看到目录下多了两个文件：<code>id_rsa_github</code> 及 <code>id_rsa_gitlab.pub</code>。</p>
+</li>
+<li><p>打开 ssh-agent</p>
+<p>如果使用 GitHub 官方的 bash ，输入：</p>
+<p><code>ssh-agent -s</code></p>
+<p>如果是其他的，例如常用的 Git Bash，输入：</p>
+<p><code>eval $(ssh-agent -s)</code></p>
+<p>略过此步骤，下一步会有错误提示：<code>Could not open a connection to your authentication agent.</code></p>
+</li>
+<li><p>添加私钥</p>
+<p>分别输入命令：</p>
+<p><code>ssh-add ~/.ssh/id_rsa</code></p>
+<p><code>ssh-add ~/.ssh/id_rsa_gitlab</code></p>
+<p>如果提示文件或目录不存在，就使用绝对地址。</p>
+</li>
+<li><p>在 <code>~/.ssh</code> 目录下创建名为 config 的文件，后缀名为空；</p>
+<p>用文本编辑器打开后，添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># github &amp; gitlab</span></span><br><span class="line"><span class="comment"># 注意：多个Host公用一个公钥时，对应的HostName和Port必须跟在Host后面</span></span><br><span class="line"><span class="comment"># github</span></span><br><span class="line">    Host coding1</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment"># gitlab</span></span><br><span class="line">    Host coding2</span><br><span class="line">    HostName gitlab.ceair.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_ceair</span><br><span class="line">    User Git</span><br></pre></td></tr></table></figure>
+<p>其中：<code>Host</code> 为主机名，可以自定义，但不能重复；<code>HostName</code> 主机的真实域名地址；<code>PreferredAuthentications</code> 是配置登录时使用的登录权限；<code>IdentityFile</code> 是私钥路径；<code>User</code> 是服务器账号名，不是自己的用户名，一般都是 Git；必要时，还需要添加 <code>Port</code> 属性，其默认值为 22。</p>
+<p>如果在 Linux 系统中有错误提示：<code>Bad owner or permissions on /home/xxx/.ssh/config</code></p>
+<p>说明 config 权限过大，使用 chmod 命令调整：<code>$ chmod 644 ~/.ssh/config</code></p>
+</li>
+<li><p>添加公钥</p>
+<p>在相应的 Git 服务页面中添加公钥，不赘述。</p>
+</li>
+<li><p>测试</p>
+<p>之前是直接输入 <code>ssh -T git@github.com</code>，现在则可以通过简称映射对应的域名和私钥，例如：</p>
+<p><code>ssh -T git@coding1</code></p>
+<p>而名为 coding2 的配置，设置了 <code>User</code> 属性，则可以简单输入 <code>ssh -T coding2</code> 完成测试。</p>
+<p>如果测试中收到错误提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'xxx (x.x.x.x)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></span><br></pre></td></tr></table></figure>
+<p>则是因为新增的主机未添加至 know_hosts 文件中，输入 yes 回车即可。</p>
+<p>如果错误提示是：<code>PTY allocation request failed on channel 0</code>，则是因为将 <code>-T</code> 写成了小写。</p>
+</li>
+</ol>
+<p>##调试</p>
+<p>如果测试不成功，可以使用调试命令 <code>--debug</code>，例如测试 coding1：<code>ssh -vT git@github.com`</code></p>
+<p>命令 <code>-v</code> 是输出编译信息，然后根据信息可以排查编译中发生的错误。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>配置好多个 SSH key后，拉取代码时，需要将 SSH 地址做细微修改，才能用正确的用户去登陆验证。就是将对应域名（IP）换成 config 文件里配置的 <code>Host</code> 属性值即可。</p>
+<p>例如原本的 SSH 地址为 <a href="mailto:`git@git.coding.net" target="_blank" rel="noopener">`git@git.coding.net</a>:master/DemoForSSH.git<code>，需要修改为</code>git@coding1:master/DemoForSSH.git<code>再拉取即可。如果配置了</code>User<code>属性，SSH 地址可以简写为</code>coding2:master/DemoForSSH.git`</p>
+<h2 id="拾遗"><a href="#拾遗" class="headerlink" title="拾遗"></a>拾遗</h2><ol>
+<li><p>关于用户名</p>
+<p>如果之前设置了全局用户名和邮箱的话，需要取消一下：</p>
+<p><code>git config --global --unset user.name</code></p>
+<p><code>git config --global --unset user.email</code></p>
+<p>然后在不同的仓库下设置局部的用户名和邮箱，比如在公司的 repository 下：</p>
+<p><code>git config user.name &quot;yourname&quot;</code></p>
+<p><code>git config user.email &quot;youremail&quot;</code></p>
+<p>最后在自己的仓库重新执行刚刚的命令即可，这样就可以在不同的仓库，以不同的账号登录。</p>
+</li>
+<li><p>关于提交记录</p>
+<p>通过 SSH 拉取的代码，如果之前在 <code>~/.gitconfig</code> 文件里配置过 <code>user</code> 信息，而又不想用全局的 <code>user</code> 信息，可以在当前工程里的 <code>.git/config</code> 文件里配置 <code>user</code> 信息，以便查看commit记录等，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = <span class="literal">true</span></span><br><span class="line">	bare = <span class="literal">false</span></span><br><span class="line">	logallrefupdates = <span class="literal">true</span></span><br><span class="line">	ignorecase = <span class="literal">true</span></span><br><span class="line">	precomposeunicode = <span class="literal">true</span></span><br><span class="line">[user]</span><br><span class="line">	name = yourname</span><br><span class="line">	email = youremail@example.com</span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = xxx</span><br><span class="line">	fetch = xxx</span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>关于 TortoiseGit 中输错密码的处理：</p>
+<p>在控制面板中的“用户账户”设置中，找到“windows凭证管理”，在普通凭证中，删掉输错的那项即可。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zyoung.me/多账号SSH配置/" target="_blank" rel="noopener">参考1：https://zyoung.me/多账号SSH配置/</a></p>
+<p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">参考2：https://www.jianshu.com/p/f7f4142a1556</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" data-id="ck0wbkdjo00294wmx8idquwbn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发记录-Git/">开发记录, Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-43-Cookie-与登录注册" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/" class="article-date">
@@ -92,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-43-Cookie-与登录注册/" data-id="ck0w0m3yw0023bkmxp5gieoc8" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-43-Cookie-与登录注册/" data-id="ck0wbkdjj00234wmx9cju7h7r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -131,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="ck0w0m3yu0021bkmx88h37j30" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="ck0wbkdjh00214wmxbdq12kni" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -199,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-41-会动的简历/" data-id="ck0w0m3yr001zbkmxmtrm5y3n" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-41-会动的简历/" data-id="ck0wbkdjf001z4wmx89klnmrj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -237,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-40-进阶考试及相关知识/" data-id="ck0w0m3yp001xbkmx2fzj2oeu" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-40-进阶考试及相关知识/" data-id="ck0wbkdjd001x4wmxjk44gla6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -326,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/08/前端系统课程-39-面向对象编程/" data-id="ck0w0m3ym001vbkmx661r7ais" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/08/前端系统课程-39-面向对象编程/" data-id="ck0wbkdjb001v4wmxh21e08k6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -364,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="ck0w0m3yk001tbkmxj8ur7a0f" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="ck0wbkdj9001t4wmxxtc1wqni" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -436,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/06/前端系统课程-37-给简历添加数据库/" data-id="ck0w0m3yj001rbkmxxny2wdd3" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/06/前端系统课程-37-给简历添加数据库/" data-id="ck0wbkdj8001r4wmxurkwk776" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -488,7 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="ck0w0m3yh001pbkmx8vxrqu3t" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="ck0wbkdj6001p4wmxct18ciqj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -565,146 +676,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-35-自己实现-AJAX/" data-id="ck0w0m3yf001nbkmxl1h02b3u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-34-AJAX-是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" class="article-date">
-  <time datetime="2018-06-03T13:11:40.000Z" itemprop="datePublished">2018-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/">前端系统课程 - 34. AJAX 是什么鬼</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="如何发请求"><a href="#如何发请求" class="headerlink" title="如何发请求"></a>如何发请求</h2><p>我们知道有一些标签可以发送请求：</p>
-<ul>
-<li><p><code>&lt;form&gt;</code> 表单可以发请求，但是会刷新页面或新开页面。</p>
-</li>
-<li><p><code>&lt;a&gt;</code> 标签可以发 GET 请求，但是也会刷新页面或新开页面。</p>
-</li>
-<li><p><code>&lt;img&gt;</code> 标签可以发 GET 请求，但是只能以图片的形式展示。</p>
-</li>
-<li><p><code>&lt;link&gt;</code> 标签可以发 GET 请求，但是只能以 CSS、favicon 的形式展示。</p>
-</li>
-<li><p><code>&lt;script&gt;</code> 可以发 GET 请求，但是只能以脚本的形式运行。</p>
-</li>
-</ul>
-<p>但我们想要一种方式可以实现以下功能：</p>
-<ul>
-<li><p>可以发送 GET、POST、PUT、DELETE 等不同类型的请求。</p>
-</li>
-<li><p>想以什么形式展示就以什么形式展示。</p>
-</li>
-</ul>
-<h2 id="微软的突破"><a href="#微软的突破" class="headerlink" title="微软的突破"></a>微软的突破</h2><p>微软在 IE5 率先在 JavaScript 中引入 ActiveX 对象（API），使得 JavaScript 可以直接发起 HTTP 请求。随后，其他浏览器也跟进创造了一个类似的对象，取名为 XMLHttpRequest，并被纳入了 W3C 规范。</p>
-<h2 id="什么是-AJAX"><a href="#什么是-AJAX" class="headerlink" title="什么是 AJAX"></a>什么是 AJAX</h2><p>Jesse James Garrett 将如下技术取名为 AJAX（Asynchronous  JavaScript and XML，异步 JavaScript 和 XML）:</p>
-<ul>
-<li><p>使用 XMLHttpRequest 对象发送请求；</p>
-</li>
-<li><p>服务器返回 XML 格式的字符串；</p>
-</li>
-<li><p>JavaScript 解析 XML，并更新局部页面。</p>
-</li>
-</ul>
-<h2 id="用原生-JavaScript-发送-AJAX-请求"><a href="#用原生-JavaScript-发送-AJAX-请求" class="headerlink" title="用原生 JavaScript 发送 AJAX 请求"></a>用原生 JavaScript 发送 AJAX 请求</h2><ul>
-<li><p>首先通过 <code>new</code> 操作符和 <code>XMLHttpRequest()</code> 构造器创建一个实例对象；</p>
-</li>
-<li><p>创建好实例对象后，就可以通过此对象的 <code>open()</code> 方法发送 HTTP 请求；这个方法接收五个参数，一般要了解的是前三个：</p>
-<ul>
-<li><p>第一个参数是字符串，代表请求类型，例如 GET 或 POST 等；</p>
-</li>
-<li><p>第二个参数也是字符串，表示请求的 URL 地址或路径；</p>
-</li>
-<li><p>第三个不常用但是比较重要，参数类型是布尔值，<code>true</code> 表示异步传输，<code>false</code> 表示同步传输。</p>
-</li>
-</ul>
-</li>
-<li><p>然后给这个对象绑定监听 <code>onreadystatechange</code> 事件，这个事件称为“通信状态改变事件”，它监听的其实是 <code>readyState</code> 属性的变化，这个属性用五个数字代表五种状态：</p>
-<ul>
-<li><p>0：UNSENT，代理被创建，但尚未调用 <code>open()</code> 方法。</p>
-</li>
-<li><p>1：OPENED，<code>open()</code> 方法已经被调用。</p>
-</li>
-<li><p>2：HEADERS_RECEIVED，<code>send()</code> 方法已经被调用，并且头部和状态已经可获得。</p>
-</li>
-<li><p>3：LOADING，下载中，<code>responseText</code> 属性已经包含部分数据。</p>
-</li>
-<li><p>4：DONE，下载操作已完成。</p>
-<p>从前面的列表中可以看出，只要判断 <code>readyState</code> 属性值为 4 时，就说明请求通信成功。</p>
-</li>
-</ul>
-</li>
-<li><p>请求成功后，还要判断返回的状态码，也就是 <code>status</code> 的属性值，如果状态码是 200 证明响应成功了。</p>
-</li>
-<li><p>响应成功后，便可以得到响应返回的数据，这些数据就是 <code>responseText</code> 的属性值，拿到这个值就可以做相应的数据处理。</p>
-</li>
-<li><p>用 AJAX 发送请求就像打手机，先解锁手机（创建对象），然后输入号码（初始化），再拨通这个号码（发送请求），最后等待接通后通话（等待响应及数据处理）。</p>
-</li>
-<li><p>一个基础的 AJAX 方法示例代码：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method, url, async, fnSuccess, fnFail</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ajax;</span><br><span class="line">    <span class="comment">// 创建对象</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    ajax.open(method, url, <span class="keyword">async</span>);</span><br><span class="line">    <span class="comment">// 发送请求</span></span><br><span class="line">    ajax.send();</span><br><span class="line">    <span class="comment">// 接收请求</span></span><br><span class="line">    ajax.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'成功！'</span>);</span><br><span class="line">                fnSuccess(ajax.responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'失败！'</span>);</span><br><span class="line">                fnFail &amp;&amp; fnFail();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="JSON-与-JavaScript"><a href="#JSON-与-JavaScript" class="headerlink" title="JSON 与 JavaScript"></a>JSON 与 JavaScript</h2><ul>
-<li><p>JSON 是“抄袭” JavaScript 部分语法后发明的另一种语言。</p>
-</li>
-<li><p>JSON 中的数据类型和 JavaScript 中的数据类型非常相似，但区别是 JSON 中没有 Undefined 和 Function，并且在 JSON 中，字符串必须使用双引号包裹。</p>
-</li>
-<li><p>JSON 只是一种数据交换格式，它没有原型链，所以无法传输复杂的数据，例如引用数据类型。</p>
-</li>
-<li><p>HTTP 请求返回的数据都是以字符串的形式返回，只不过这些字符串可以符合不同的格式，比如 XML 或 JSON。</p>
-</li>
-<li><p>服务器返回的 JSON 格式字符串，可以使用浏览器提供的 <code>window.JSON.parse()</code> 方法将其转换为对应的 JavaScript 数据，例如对象，或数组等等。</p>
-</li>
-</ul>
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><ul>
-<li><p>为什么 form 表单提交没有跨域问题，而 AJAX 提交却有跨域问题呢？</p>
-<p> 这是因为原页面用 form 表单提交到另一个域名后，会跳转到新页面，原页面的脚本无法获取新页面中的内容，这在浏览器认为是安全的。</p>
-<p> 而 AJAX 是可以读取响应内容的，并且不会跳转新页面，所以浏览器不允许 AJAX 被响应；用 AJAX 是可以成功地将请求发送出去的，只是接收不到服务器的响应。</p>
-</li>
-<li><p>前面的问题其实体现的是浏览器的同源策略；同源策略的含义是：A 网页设置的 Cookie，B 网页不能打开，除非两个网页“同源”，同源指的是“三个相同”，即<strong>协议相同</strong>，<strong>域名相同</strong>和<strong>端口相同</strong>。</p>
-</li>
-<li><p>如果两个网页非同源，那么三种行为会受到限制：</p>
-<ul>
-<li><p>Cookie、LocalStorage 和 IndexDB 无法读取。</p>
-</li>
-<li><p>DOM 无法获得。</p>
-</li>
-<li><p>AJAX 请求发送后无法得到响应。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CORS-跨域"><a href="#CORS-跨域" class="headerlink" title="CORS 跨域"></a>CORS 跨域</h2><p>如果要突破同源策略，可以使用 CORS 机制来进行跨域。</p>
-<p>CORS（Cross-Origin Resource Sharing，跨源资源共享），是一种允许当前域的资源（比如 HTML、JS 等）被其他域的脚本请求访问的机制。</p>
-<p>一般要实现 CORS，需要后端为指定共享的 URL 添加一个响应头，例如：<code>response.setHeader(&#39;Access-Control-Allow-Origin&#39;, url)</code>；如果允许所有的 URL，可以将参数传入一个通配符字符串 <code>&#39;*&#39;</code>。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" data-id="ck0w0m3ye001lbkmx4bsxhkpk" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-35-自己实现-AJAX/" data-id="ck0wbkdj4001n4wmx5n8m97za" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -734,7 +706,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录/">开发记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录-Git/">开发记录, Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录-SASS/">开发记录, SASS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
     </div>
   </div>
 
@@ -744,7 +716,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/开发记录/" style="font-size: 10px;">开发记录</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+      <a href="/tags/开发记录-Git/" style="font-size: 10px;">开发记录, Git</a> <a href="/tags/开发记录-SASS/" style="font-size: 10px;">开发记录, SASS</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
     </div>
   </div>
 
@@ -753,7 +725,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -764,6 +736,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器</a>
+          </li>
         
           <li>
             <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/">前端系统课程 - 43. Cookie 与登录注册</a>
@@ -779,10 +755,6 @@
         
           <li>
             <a href="/2018/08/08/前端系统课程-40-进阶考试及相关知识/">前端系统课程 - 40. 进阶考试及相关知识</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/08/前端系统课程-39-面向对象编程/">前端系统课程 - 39. 面向对象编程</a>
           </li>
         
       </ul>
