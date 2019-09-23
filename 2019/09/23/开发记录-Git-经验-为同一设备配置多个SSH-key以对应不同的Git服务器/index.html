@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="南阳诸葛庐">
 <meta property="og:description" content="现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？ 步骤假设在 ~/.ssh 目录下已经生成过密钥：id_rsa 及 id_rsa.pub；  生成第二个 SSH key 和生成第一个命令相同： ssh-keyge">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-23T11:24:47.811Z">
+<meta property="og:updated_time" content="2019-09-23T11:36:22.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器">
 <meta name="twitter:description" content="现在一个人同时有好几个 Git 账号或服务的情况越来越多，例如自己的私有仓库和公司的项目仓库分别在不同的 Git 服务器上。但是要用自己的同一台设备，重新生成 SSH key 会将之前的覆盖掉， 如何生成和管理多个 SSH key 呢？ 步骤假设在 ~/.ssh 目录下已经生成过密钥：id_rsa 及 id_rsa.pub；  生成第二个 SSH key 和生成第一个命令相同： ssh-keyge">
@@ -156,9 +156,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = <span class="literal">true</span></span><br><span class="line">	bare = <span class="literal">false</span></span><br><span class="line">	logallrefupdates = <span class="literal">true</span></span><br><span class="line">	ignorecase = <span class="literal">true</span></span><br><span class="line">	precomposeunicode = <span class="literal">true</span></span><br><span class="line">[user]</span><br><span class="line">	name = yourname</span><br><span class="line">	email = youremail@example.com</span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = xxx</span><br><span class="line">	fetch = xxx</span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="2">
+<ol start="3">
 <li><p>关于 TortoiseGit 中输错密码的处理：</p>
-<p>在控制面板中的“用户账户”设置中，找到“windows凭证管理”，在普通凭证中，删掉输错的那项即可。</p>
+<p>在控制面板中的“用户账户”设置中，找到“windows凭证管理”，在普通凭证中，删掉输错的对应项即可。</p>
 </li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zyoung.me/多账号SSH配置/" target="_blank" rel="noopener">参考1：https://zyoung.me/多账号SSH配置/</a></p>
