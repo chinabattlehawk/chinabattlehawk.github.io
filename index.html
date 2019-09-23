@@ -129,13 +129,12 @@
 <p><code>ssh -T git@coding1</code></p>
 <p>而名为 coding2 的配置，设置了 <code>User</code> 属性，则可以简单输入 <code>ssh -T coding2</code> 完成测试。</p>
 <p>如果测试中收到错误提示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'xxx (x.x.x.x)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'xxx (x.x.x.x)'</span> can’t be established.</span><br><span class="line">RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</span><br><span class="line">Are you sure you want to <span class="built_in">continue</span> connecting (yes/no/[fingerprint])?</span><br></pre></td></tr></table></figure>
 <p>则是因为新增的主机未添加至 know_hosts 文件中，输入 yes 回车即可。</p>
 <p>如果错误提示是：<code>PTY allocation request failed on channel 0</code>，则是因为将 <code>-T</code> 写成了小写。</p>
 </li>
 </ol>
-<p>##调试</p>
-<p>如果测试不成功，可以使用调试命令 <code>--debug</code>，例如测试 coding1：<code>ssh -vT git@github.com`</code></p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>如果测试不成功，可以使用调试命令 <code>--debug</code>，例如测试 coding1：<code>ssh -vT git@github.com`</code></p>
 <p>命令 <code>-v</code> 是输出编译信息，然后根据信息可以排查编译中发生的错误。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>配置好多个 SSH key后，拉取代码时，需要将 SSH 地址做细微修改，才能用正确的用户去登陆验证。就是将对应域名（IP）换成 config 文件里配置的 <code>Host</code> 属性值即可。</p>
 <p>例如原本的 SSH 地址为 <a href="mailto:`git@git.coding.net" target="_blank" rel="noopener">`git@git.coding.net</a>:master/DemoForSSH.git<code>，需要修改为</code>git@coding1:master/DemoForSSH.git<code>再拉取即可。如果配置了</code>User<code>属性，SSH 地址可以简写为</code>coding2:master/DemoForSSH.git`</p>
