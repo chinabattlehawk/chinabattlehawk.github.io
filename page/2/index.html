@@ -66,6 +66,207 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端系统课程-37-给简历添加数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/" class="article-date">
+  <time datetime="2018-06-06T07:26:07.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/06/前端系统课程-37-给简历添加数据库/">前端系统课程 - 37. 给简历加数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用-LeanCloud-服务"><a href="#使用-LeanCloud-服务" class="headerlink" title="使用 LeanCloud 服务"></a>使用 LeanCloud 服务</h2><ul>
+<li><p>创建一个应用，选择需要的服务；</p>
+</li>
+<li><p>引入 JS 文件，得到 <code>window.AV</code> 对象；</p>
+</li>
+<li><p>初始化 <code>AV 对象</code>（代码直接拷）；</p>
+</li>
+<li><p>新建一条数据（代码直接拷）。</p>
+</li>
+</ul>
+<h2 id="如何看文档"><a href="#如何看文档" class="headerlink" title="如何看文档"></a>如何看文档</h2><ul>
+<li><p>CRM 方法，先抄（Copy），然后运行（Run），一步步修改（Modify）为自己想要的代码。</p>
+</li>
+<li><p>善于使用页面内的搜索功能，要学会提炼关键字。</p>
+</li>
+</ul>
+<h2 id="MVC-之-M"><a href="#MVC-之-M" class="headerlink" title="MVC 之 M"></a>MVC 之 M</h2><p>数据模型，也就是 Model 层；简单来说，就是将需要获取和保存等操作数据的相关代码，也封装为一个对象，就像 View 层和 Controller 层那样。</p>
+<h2 id="MVC-到底是什么"><a href="#MVC-到底是什么" class="headerlink" title="MVC 到底是什么"></a>MVC 到底是什么</h2><ul>
+<li><p>它是一种代码组织的思想和形式；将实现一个或一组功能的代码，通过不同的功能分为数据层（Model）、视图层（View）和控制层（Controller）。</p>
+</li>
+<li><p>数据层用来处理要操作的各种数据。</p>
+</li>
+<li><p>视图层用来监听并设置页面上与功能相关的 DOM 元素。</p>
+</li>
+<li><p>控制层通过数据层的数据来更新视图层，通过视图层来告诉数据层如何操作数据。</p>
+</li>
+<li><p>它们之间的运作流程是：视图层发生改变后，控制层会监听到这些变化，并将改变后的操作传递到数据层，数据层通过控制层的命令来进行数据发送或获取新数据，再将这些操作完成的数据传递给控制层，控制层通过这些数据，来更新视图层。</p>
+</li>
+<li><p>以上过程可以看出，控制层是连接视图层和数据层的桥梁，而视图层和数据层都是比较纯净并且毫无交集的。</p>
+</li>
+</ul>
+<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
+<li><code>Promise</code> 对象的第一次 <code>then()</code> 方法中的的两个函数，分别是<strong>请求</strong>成功和<strong>请求</strong>失败后的回调函数；而如果有第二次 <code>then()</code> 方法调用，那么第二次的两个函数，分别是<strong>上一层成功</strong>回调和<strong>上一层两个都失败</strong>后的回调函数。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/06/前端系统课程-37-给简历添加数据库/" data-id="ckbndwr14001x5cmx6s92fmux" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-36-MVC-之-VC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/" class="article-date">
+  <time datetime="2018-06-05T08:13:13.000Z" itemprop="datePublished">2018-06-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于立即执行函数"><a href="#关于立即执行函数" class="headerlink" title="关于立即执行函数"></a>关于立即执行函数</h2><ul>
+<li><p>由于全局变量容易出错，所以要减少全局变量的使用，尽量使用局部变量；而 ES5 中只有函数才有局部变量。</p>
+</li>
+<li><p>具名函数一般也都是全局变量，所以要使用匿名函数，但是要调用匿名函数就要使其成为表达式，例如前面加 <code>!</code> 取反操作符操作符等方法。</p>
+</li>
+</ul>
+<h2 id="使用闭包"><a href="#使用闭包" class="headerlink" title="使用闭包"></a>使用闭包</h2><p>通过闭包可以使变量不暴露，却可以在函数外部使用，也是一种减少全局变量的常用方式，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++age;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> setAge = person();</span><br><span class="line"><span class="built_in">console</span>.log(setAge()); <span class="comment">// 19</span></span><br><span class="line"><span class="built_in">console</span>.log(setAge()); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+<h2 id="视图和控制"><a href="#视图和控制" class="headerlink" title="视图和控制"></a>视图和控制</h2><ul>
+<li><p>将不同功能的代码分成不同的独立文件，就是模块化的一种方式。</p>
+</li>
+<li><p>在模块化的基础上，将要操作的 DOM 元素独立为一个对象（View），将这个对象以参数形式传入到控制视图变化的函数中，再将这些控制函数独立为一个对象（Controller）的属性；这样就把操作视图的代码和视图对象分隔开了。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="ckbndwr0y001v5cmx1rmy1k3o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端系统课程-35-自己实现-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/" class="article-date">
+  <time datetime="2018-06-04T01:59:09.000Z" itemprop="datePublished">2018-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AJAX-设置请求报文"><a href="#AJAX-设置请求报文" class="headerlink" title="AJAX 设置请求报文"></a>AJAX 设置请求报文</h2><ul>
+<li><p>AJAX 对象 <code>open()</code> 方法的第一个参数对应请求报文第一部分中的请求方式，第二个参数则包含了第一部分中的路径和协议，同时包含第二部分中的 <code>Host</code> 内容。</p>
+</li>
+<li><p>使用 <code>setRequestHeader()</code> 方法可以设置请求报文中的第二部分中的内容，这个方法需要在 <code>open()</code> 和 <code>send()</code> 之间使用；接收两个字符串类型的参数，分别是第二部分内容的 key 和 value；例如：<code>setRequestHeader(&#39;Content-Type&#39;, &#39;x-www-form-urlencoded&#39;)</code>。第二部分的有些内容是禁止修改的，例如浏览器（用户）信息。</p>
+</li>
+<li><p>请求报文的第四部分也就是请求体，则需要使用 <code>send()</code> 方法设置，它接收一个字符串类型的参数，对应的就是请求报文体的内容；要注意请求报文体使用 GET 方法发送时，是不会展示的。</p>
+</li>
+</ul>
+<h2 id="AJAX-获取响应报文"><a href="#AJAX-获取响应报文" class="headerlink" title="AJAX 获取响应报文"></a>AJAX 获取响应报文</h2><ul>
+<li><p>响应报文由服务端设置并发送，而用 AJAX 可以获取响应报文；获取第一部分中的状态码就是响应成功后 <code>status</code> 属性的值，状态信息则可以通过 <code>statusText</code> 属性来获取。</p>
+</li>
+<li><p>使用 AJAX 对象的 <code>getAllResponseHeaders()</code> 方法可以获取响应报文第二部分整个内容，返回值是字符串；如果要获取某一个内容的值，可以使用 <code>getResponseHeader()</code> 方法，将要获取内容的 key 传入即可。</p>
+</li>
+<li><p>响应报文的第四报文就是我们最需要的数据，通过 <code>responseText</code> 属性获取即可。</p>
+</li>
+</ul>
+<h2 id="封装-AJAX"><a href="#封装-AJAX" class="headerlink" title="封装 AJAX"></a>封装 AJAX</h2><ul>
+<li><p>如果参数较多，为了使参数更加直观，函数接收参数可以用对象的形式，每个参数就是这个对象的一个属性，属性名可以很好的将参数的功能标示并区分开，这种方式叫做“参数命名”。</p>
+</li>
+<li><p>通过判断函数参数列表的长度或者每个参数的类型，可以让函数接收不同个数或者不同类型的参数，进而做出不同的处理，这就是 JavaScript 中的函数重载。</p>
+</li>
+<li><p>简易封装代码示例：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ajax,</span><br><span class="line">        method = options.method || <span class="string">'GET'</span>,</span><br><span class="line">        url = options.url,</span><br><span class="line">        <span class="keyword">async</span> = options.async || <span class="literal">true</span>,</span><br><span class="line">        headers = options.headers,</span><br><span class="line">        body = options.body,</span><br><span class="line">        success = options.success,</span><br><span class="line">        fail = options.fail;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ajax.open(method, url, <span class="keyword">async</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> headers) &#123;</span><br><span class="line">        <span class="keyword">if</span> (headers.hasOwnProperty(key)) &#123;</span><br><span class="line">            ajax.setRequestHeader(key, headers[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ajax.addEventListener(<span class="string">'readystatechange'</span>, () =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Success!'</span>);</span><br><span class="line">                success.call(<span class="literal">undefined</span>, responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Fail……'</span>);</span><br><span class="line">                fail &amp;&amp; fail.call(<span class="literal">undefined</span>, ajax);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    ajax.send(body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ES6-中的解构赋值"><a href="#ES6-中的解构赋值" class="headerlink" title="ES6 中的解构赋值"></a>ES6 中的解构赋值</h2><p>前面的封装函数中的参数，除了 AJAX 对象，剩下的都是来自 <code>options</code> 这个对象参数；在 ES6 中，如果参数和对象中属性顺序相同，可以直接写作 <code>{method, url, async, headers, body, success, fail} = options</code>，或者直接将代码块放入参数即可，这是解构赋值的一种应用；还有一个比较常见的应用，例如两个变量交换：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">[a, b] = [b, a];</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>这种语法在一些语言中很早就实现了。</p>
+<h2 id="ES6-中的-Promise"><a href="#ES6-中的-Promise" class="headerlink" title="ES6 中的 Promise"></a>ES6 中的 Promise</h2><ul>
+<li><p><code>Promise()</code> 是一个全局方法，它可以看做是一种确定函数形式的规范。</p>
+</li>
+<li><p>在 jQuery 的 AJAX 方法调用后，再使用 <code>then()</code> 方法就可以运行成功或失败的回调函数，成功是第一个参数，失败是第二个参数。</p>
+</li>
+<li><p>使用 <code>then()</code> 方法运行的回调函数还可以将操作结果返回，以供下一个 <code>then()</code> 方法使用，这样就可以多结果进行多次处理了，例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(</span><br><span class="line">    ...somcode</span><br><span class="line">).then(</span><br><span class="line">    (responseText) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'第一次处理的'</span> + responseText);</span><br><span class="line">        <span class="keyword">return</span> responseText;</span><br><span class="line">    &#125;,</span><br><span class="line">    (error) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);</span><br><span class="line">        <span class="keyword">return</span> error;</span><br><span class="line">    &#125;</span><br><span class="line">).then(</span><br><span class="line">    responseText =&gt; <span class="built_in">console</span>.log(<span class="string">'上次处理后的'</span> + responseText),</span><br><span class="line">    error =&gt; <span class="built_in">console</span>.log(error)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>then()</code> 方法是 <code>Promise</code> 实例的方法，创建 <code>Promise</code> 实例可以在 AJAX 函数内，直接返回一个实例：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> ajax</span><br><span class="line">        ...</span><br><span class="line">            <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                    resolve.call(<span class="literal">undefined</span>, responseText); <span class="comment">// 成功则调用resolve</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    reject.call(<span class="literal">undefined</span>, ajax); <span class="comment">// 失败则调用reject</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         ...</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-35-自己实现-AJAX/" data-id="ckbndwr0s001t5cmxe3saq6n1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端系统课程-34-AJAX-是什么鬼" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" class="article-date">
@@ -193,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" data-id="ck0wbkdj3001l4wmx80wu3o2s" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/03/前端系统课程-34-AJAX-是什么鬼/" data-id="ckbndwr0o001r5cmx260h3s1l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -279,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/02/前端系统课程-33-JSONP-是什么鬼/" data-id="ck0wbkdj0001j4wmxf2rlwqr1" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/02/前端系统课程-33-JSONP-是什么鬼/" data-id="ckbndwr0j001p5cmxz4d7wg97" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -373,7 +574,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/01/前端系统课程-32-DOM-事件/" data-id="ck0wbkdiz001h4wmx25yizna8" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/01/前端系统课程-32-DOM-事件/" data-id="ckbndwr07001j5cmxgzbv9oxc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -665,7 +866,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/31/前端系统课程-31-阶段考试及相关知识/" data-id="ck0wbkdkh002l4wmxd2ie8rs5" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/31/前端系统课程-31-阶段考试及相关知识/" data-id="ckbndwr0g001n5cmx9aw1sr9j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -724,7 +925,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/30/前端系统课程-30-jQuery-无缝轮播/" data-id="ck0wbkdiv001d4wmxhyj590xv" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/30/前端系统课程-30-jQuery-无缝轮播/" data-id="ckbndwr0d001l5cmxsl187gq4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -807,7 +1008,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/29/前端系统课程-29-jQuery-做轮播图/" data-id="ck0wbkdis001b4wmxqu4mru7n" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/29/前端系统课程-29-jQuery-做轮播图/" data-id="ckbndwr03001h5cmxu0zqalvr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -886,301 +1087,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-28-jQuery-不过如此/" data-id="ck0wbkdix001f4wmxxnx3oqry" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-27-DOM-API" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/27/前端系统课程-27-DOM-API/" class="article-date">
-  <time datetime="2018-05-27T11:45:38.000Z" itemprop="datePublished">2018-05-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/27/前端系统课程-27-DOM-API/">前端系统课程 - 27. DOM API</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DOM-树"><a href="#DOM-树" class="headerlink" title="DOM 树"></a>DOM 树</h2><ul>
-<li><p>文档内所有的元素（Element），在 JavaScript 中都有相应的对象，而这些元素或对象，都可以用树形结构表示出来，这个像模型似的属性结构，就是 DOM 树。</p>
-</li>
-<li><p>DOM 中的每个元素，都是节点（Node），因为它们都是 <code>Node</code> 对象的实例。</p>
-</li>
-<li><p><code>&lt;html&gt;</code> 元素是 <code>document</code> 对象的唯一实例。</p>
-</li>
-<li><p><code>Node</code> 对象根据不同的构造函数，构造出不同的节点；主要的有 <code>document</code>、<code>Element</code>、<code>Text</code> 等等。</p>
-</li>
-</ul>
-<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><ul>
-<li><p>用 <code>elem.childNodes</code> 可以获取元素的所有类型的子节点，其中当然包括文本节点、注释节点等，而不是单单获取元素节点。</p>
-</li>
-<li><p>用 <code>elem.children</code> 可以获取元素的子元素，也就是子标签，只有在 IE 中可能错误地一并获取到注释节点，但是这点不足以掩盖这个方法很好用。</p>
-</li>
-<li><p>在 DOM 中，<code>document.documentElement</code> 这个属性代表 <code>&lt;html&gt;</code>，虽然 <code>&lt;html&gt;</code> 是根节点，但是在 DOM 里，它还是有爹的，他爹就是 <code>document</code> 对象。</p>
-</li>
-<li><p><code>&lt;svg&gt;</code> 标签（元素）的 <code>nodeName</code> 属性是小写字母的“svg”，其他标签使用 <code>nodeName</code> 获取标签名，返回的都是大写字母。</p>
-</li>
-<li><p><code>textContent</code> 与 <code>innerText</code> 主要的不同点在于：</p>
-<ul>
-<li><p><code>textContent</code> 会获取元素内的所有文本内容，包括 <code>&lt;script&gt;</code> 和 <code>style</code> 元素内的，而 <code>innerText</code> 不会；</p>
-</li>
-<li><p><code>textContent</code> 会获取隐藏元素的文本，而 <code>innerText</code> 不会；</p>
-</li>
-<li><p><code>innerText</code> 会触发重排，而 <code>textContent</code> 则不会；</p>
-</li>
-<li><p><code>innerText</code> 会替换元素里的内容，而 <code>textContent</code> 则不会；</p>
-</li>
-<li><p>综上所述，修改文本内容 <code>textContent</code> 适用面更广。</p>
-</li>
-</ul>
-</li>
-<li><p><code>cloneNode()</code> 方法可以复制一个节点，它可以接收一个参数；如果传入 <code>ture</code>，便是深拷贝，会将目标节点的所有子节点都复制下来；如果不传，便是浅拷贝，只会复制目标节点本身。</p>
-</li>
-<li><p><code>isEqualNode()</code> 方法可以判断两个节点是否相同，也就是判断它们是否为同一种节点。</p>
-</li>
-<li><p><code>isSameNode()</code> 方法可以判断两个节点是否相等，也就是判断它们是否为同一个节点。</p>
-</li>
-<li><p>使用 <code>normalize()</code> 方法可以使元素常规化，用来去除一些不必要的混乱。</p>
-</li>
-<li><p>使用 <code>document.visibilityState</code> 可以获取当前页面的焦点状态（阅读状态）。</p>
-</li>
-<li><p>搞清楚单词意思，一般就能理解这些接口的用法；难懂的就去查文档。</p>
-</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p><code>elem.childNodes</code> 返回的是动态集合；所谓动态集合就是一个活的集合，DOM 树删除或新增一个相关节点，都会立刻反映在 <code>NodeList</code> 接口之中，所以它的长度会随着集合内元素的改变而变化。</p>
-</li>
-<li><p><code>querySelectorAll()</code> 方法返回的是一个静态集合；DOM 树内部的变化，并不会实时反映在该方法的返回结果之中，所以该方法返回的集合长度，是不会随着集合内元素的改变而变化。</p>
-</li>
-<li><p><code>HTMLCollection</code> （元素集合）对象与 <code>NodeList</code> （节点集合）对象的区别：</p>
-<ul>
-<li><p><code>HTMLCollection</code> 实例对象的成员只能是 <code>Element</code> 类型的节点，<code>NodeList</code> 实例对象的成员可以包含其他节点。</p>
-</li>
-<li><p><code>HTMLCollection</code> 实例对象都是动态集合，节点的变化会实时反映在集合中；<code>NodeList</code> 实例对象可能是静态集合，也可能是动态集合。 </p>
-</li>
-<li><p><code>HTMLCollection</code> 实例对象可以用 <code>id</code> 属性或 <code>name</code> 属性引用节点元素，<code>NodeList</code> 只能使用数字索引引用。 </p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/27/前端系统课程-27-DOM-API/" data-id="ck0wbkdir00194wmxrnnpfeur" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-26-JavaScript-函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/26/前端系统课程-26-JavaScript-函数/" class="article-date">
-  <time datetime="2018-05-26T03:13:08.000Z" itemprop="datePublished">2018-05-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/26/前端系统课程-26-JavaScript-函数/">前端系统课程 - 26. JavaScript 函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="声明函数"><a href="#声明函数" class="headerlink" title="声明函数"></a>声明函数</h2><ul>
-<li><p>函数声明的方式有：</p>
-<ul>
-<li><p>使用 <code>function</code> 操作符声明函数，这种方式又分为具名函数、匿名函数和函数表达式。</p>
-</li>
-<li><p>使用全局方法 <code>Function()</code>。</p>
-</li>
-<li><p>使用 λ（拉姆达）表达式，又称为“箭头函数”（ES6 新增），这种函数都是匿名函数；当函数内只有一个 <code>return</code> 语句时，花括号和 <code>return</code> 关键字都可以（要一并）省略；函数参数只有一个时，包裹参数的括号可以省略；例如：</p>
-<p> <code>(x, y) =&gt; {return x + y}</code> 可简写为 <code>(x, y) =&gt; x + y</code></p>
-<p> <code>(x) =&gt; {return x * 2}</code> 可简写为 <code>x =&gt; x * 2</code></p>
-</li>
-</ul>
-</li>
-<li><p>匿名函数无法直接使用，需要赋值为一个变量，或者将其转换为表达式。</p>
-</li>
-<li><p>如果将一个具名函数赋值给一个变量，那么它的函数名会变更为变量名。</p>
-</li>
-<li><p>函数有一个 <code>name</code> 属性，如果是匿名函数，这个值是空字符串；如果是具名函数，这个值是函数声明时的名称，即使将这个函数赋值给一个变量，也不会改变，<strong>但是如果此时使用这个名字访问函数，是无法访问的</strong>；而匿名函数赋值给一个变量后，这个值会变成变量名，实际上此时，匿名函数已成为具名函数，<code>name</code> 值也就遵循具名函数的特性。</p>
-</li>
-<li><p>关于函数的 <code>name</code> 属性，还有一个特殊情况：使用 <code>new Function()</code> 方式声明的函数，它的 <code>name</code> 属性值是字符串 <code>&#39;anonymous&#39;</code>，意思是“匿名的”，也无法通过赋值操作改变，但又无法使用这个名字调用这个函数……</p>
-</li>
-</ul>
-<h2 id="函数的本质"><a href="#函数的本质" class="headerlink" title="函数的本质"></a>函数的本质</h2><ul>
-<li><p>函数是一段可以反复调用的代码块；函数还能接收输入的参数，不同的参数会返回不同的值。</p>
-</li>
-<li><p>要了解函数的本质，要先了解 <code>eval()</code> 这个全局方法，它可以将传入的字符串，计算后当作脚本代码来执行。</p>
-</li>
-<li><p>函数的调用，实际上是在调用函数的 <code>call()</code> 方法，其内部有一个类似 <code>eval()</code> 的方法将函数体解析为脚本代码后运行；直接使用函数名后加括号的调用方法，实际上是 JavaScript 的一种语法糖，真正的“硬核（hard cored）” 方法是函数调用自己的 <code>call()</code> 方法。</p>
-</li>
-<li><p>从前面的内容可以看出，函数是一个可以执行代码的对象。</p>
-</li>
-<li><p>函数原型包含的三个重要方法：<code>call()</code>、<code>apply()</code> 和 <code>bind()</code>。</p>
-</li>
-</ul>
-<h2 id="谈谈-this-和-arguments"><a href="#谈谈-this-和-arguments" class="headerlink" title="谈谈 this 和 arguments"></a>谈谈 this 和 arguments</h2><ul>
-<li><p>函数的 <code>call()</code> 方法中的第一个参数，可以用 <code>this</code> 得到，其他的参数，可以用 <code>arguments</code> 得到，前面说过，<code>arguments</code> 是一个伪数组。</p>
-</li>
-<li><p>在普通模式（相对于严格模式）下，<code>this</code> 的值如果是 <code>undefined</code>，JavaScript 会将其自动引用为 <code>window</code> 对象（全局对象），这是一个“潜规则”。</p>
-</li>
-<li><p>JavaScript 中的 <code>new</code> 和 <code>this</code> 都是要模拟 Java 语言，但是画虎不成反类其犬……</p>
-</li>
-</ul>
-<h2 id="调用栈-Call-Stack"><a href="#调用栈-Call-Stack" class="headerlink" title="调用栈 Call Stack"></a>调用栈 Call Stack</h2><ul>
-<li><p>函数调用分为：普通调用、嵌套调用和递归调用（自己嵌套调用自己）。</p>
-</li>
-<li><p>函数被调用时，都会在调用栈里记录一个位置；嵌套调用也一样，当调用并完成相应的运算后，会跳回之前记录的位置，并将记录抹去，再继续往下运行，直至函数结束调用。</p>
-</li>
-<li><p>当函数未运行完成时，它会暂时保存在调用栈里，这个叫做“压栈”；递归调用和嵌套调用都会压栈。</p>
-</li>
-<li><p>当压栈超过系统提供的栈的最大值时，运行就会报错，称为“栈溢出（Stack Overflow）”。</p>
-</li>
-</ul>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ul>
-<li><p>当遇到一些关于作用域的问题，一定不要忘记<strong>变量声明提前</strong>这回事。</p>
-</li>
-<li><p>作用域按照语法树，遵循就近原则。</p>
-</li>
-<li><p>作用域与变量的关系，主要理解的是变量在哪个作用域，变量是哪一个变量，而不是变量是哪一个变量的值，因为变量的值是可变的。</p>
-</li>
-<li><p>理解了作用域和变量的关系，以及变量与值的关系，就能理解为什么在循环为一个菜单列表添加事件后，触发事件时打印出的下标，都是列表的长度而不是每个列表项对应的下标；因为当你触发事件的时候，循环已经完成并停止，此时的循环下标，已经是列表的长度了，虽然下标还是那个下标，但是值已经发生了改变。</p>
-</li>
-</ul>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
-<li>如果一个函数使用了它范围外的变量，那么（这个函数加这个变量）就叫做闭包。</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><p>在严格模式下（<code>&#39;use strict&#39;</code>），<code>this</code> 值如果是基本类型，那么打印时便是这个值，而普通模式下，打印时是这个值包装的对象。</p>
-</li>
-<li><p>语句都会返回 <code>undefined</code>。</p>
-</li>
-<li><p>多用硬核方式调用函数，<code>fn.call(undefined, arg1, arg2...)</code>，就会理解每个函数都有自己的 <code>this</code>。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/26/前端系统课程-26-JavaScript-函数/" data-id="ck0wbkdim00154wmxbb3j6lo0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-25-JavaScript-数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/前端系统课程-25-JavaScript-数组/" class="article-date">
-  <time datetime="2018-05-25T10:33:16.000Z" itemprop="datePublished">2018-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/前端系统课程-25-JavaScript-数组/">前端系统课程 - 25. JavaScript 数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><ul>
-<li><p>在 JavaScript 内部预先内置的属性和方法，也就是内置 API，称为标准库。</p>
-</li>
-<li><p>在 3 个基本数据类型对应的全局方法前加 <code>new</code> 操作符和不加的区别是：加了会把参数里的数据转换成对象，不加的话只进行相应的转换；至于函数和数组，加不加无所谓。</p>
-</li>
-</ul>
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li><p>数组和对象的区别，根本在于它们的公共属性不同，也就是 <code>__proto__</code> 的原型链不同。</p>
-</li>
-<li><p>用对象可以模拟数组存储数据的方式，但由于原型链中没有 <code>Array.prototype</code> 这一链，所以它没有数组的特性，那么这种貌似数组的“数组”就是“伪数组”；典型的伪数组是函数参数列表 <code>arguments</code> 对象以及 DOM API 返回的元素集合。</p>
-</li>
-<li><p>使用 <code>forEach()</code> 方法可以遍历调用它的数组，它的参数必需接收一个函数（另一个参数是可选的），这个函数接收三个参数，第一个参数是必需的，代表数组的每一项数据，第二个是数据对应的下标，第三个是数据对应的数组。</p>
-</li>
-<li><p><code>forEach()</code> 循环的数组，是调用它的数组，是用 <code>this</code> 操作符实现的；然后在内部循环这个数组，分别将其每项数据和下标返回以供使用。</p>
-</li>
-<li><p>数组的排序方法 <code>sort()</code> 默认将数组内数据按字符编码顺序排序，这个排序会改变原数组；如果要按其他标准排序，可以传入一个比较函数；该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数 a 和 b，其返回值如下：</p>
-<ul>
-<li><p>若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。</p>
-</li>
-<li><p>若 a 等于 b，则返回 0。</p>
-</li>
-<li><p>若 a 大于 b，则返回一个大于 0 的值。</p>
-</li>
-</ul>
-</li>
-<li><p><code>join()</code> 方法可以使用指定字符串连接数组各项后，将数组转换为一个字符串后返回这个字符串，原数组不受影响。</p>
-</li>
-<li><p><code>concat()</code> 方法可以将多个数组拼合成一个新数组后返回这个新数组，原数组不受影响；还可以利用它返回一个新数组的特性，来完全复制一个数组。</p>
-</li>
-<li><p><code>map()</code> 方法和 <code>forEach()</code> 方法遍历数组的功能完全一样，但区别在于：</p>
-<ul>
-<li><p><code>map()</code> 可以将原数组的每个元素在调用函数处理后的值，返回为一个新数组；也可以利用这些返回值组成任意想要的值来返回；<code>map()</code> 不会检测空数组。</p>
-</li>
-<li><p><code>forEach()</code> 本身没有返回值，但是它会忽略空数组。</p>
-</li>
-</ul>
-</li>
-<li><p><code>filter()</code> 方法可以按照指定的条件，过滤掉数组中不符合这个条件的数组元素，并将符合条件的元素作为一个新数组返回；它接收一个函数作为参数，这个函数接收三个参数，可以参考 <code>forEach()</code> 方法内的函数参数。</p>
-</li>
-<li><p><code>reduce()</code> 方法的第一个参数是一个函数，此函数称为“累加器”，数组中的每个值从左到右开始缩减，最终计算称为一个值并返回；除了累加器，<code>reduce()</code> 的另一个参数是一个传递给参数的初始值，也就是说，以这个初始值为基数进行计算；累加器的参数有四个，第一个是必需值，表示初始值或者每次计算后的返回值，它会参与到下一次计算；第二个也是必须值，表示数组中的当前元素；剩下的两个一个是当前元素的索引，另一个则是当前元素所属的数组，这两个非必须值。例子：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> total = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> previousValue + currentValue;</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(total); <span class="comment">// 30</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 <code>reduce()</code> 方法可以模拟 <code>map()</code> 和 <code>filter()</code> 方法，示例代码：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// map方法</span></span><br><span class="line"><span class="keyword">var</span> mapArr = arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(mapArr.join()); <span class="comment">// 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟map方法</span></span><br><span class="line"><span class="keyword">var</span> mapArrRe = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    previousValue.push(currentValue * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> previousValue;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="built_in">console</span>.log(mapArrRe.join()); <span class="comment">// 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter方法</span></span><br><span class="line"><span class="keyword">var</span> filterArr = arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(filterArr.join()); <span class="comment">// 2, 4, 6, 8, 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟filter方法</span></span><br><span class="line"><span class="keyword">var</span> filterArrRe = arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">previousValue, currentValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (currentValue % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        previousValue.push(currentValue);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> previousValue;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="built_in">console</span>.log(filterArrRe.join()); <span class="comment">// 2, 4, 6, 8, 10</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/05/25/前端系统课程-25-JavaScript-数组/" data-id="ck0wbkdil00134wmxgbtydpst" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/05/28/前端系统课程-28-jQuery-不过如此/" data-id="ckbndwqzg001f5cmxf88yzl9l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -1210,7 +1117,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录/">开发记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录/">开发记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
     </div>
   </div>
 
@@ -1220,7 +1127,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/SASS/" style="font-size: 10px;">SASS</a> <a href="/tags/开发记录/" style="font-size: 15px;">开发记录</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/SASS/" style="font-size: 10px;">SASS</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/开发记录/" style="font-size: 15px;">开发记录</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
     </div>
   </div>
 
@@ -1229,7 +1136,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -1242,23 +1149,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器</a>
+            <a href="/2019/10/28/开发记录-Weex-日志-开发流水账/">开发记录 (Weex) - 日志: 开发流水账</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/30/开发记录-JS-备忘-深拷贝和浅拷贝/">开发记录 (JS) - 备忘: 深拷贝和浅拷贝</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/开发记录-Weex-经验-在-Weex-开发中遇到的“大坑小坑”/">开发记录 (Weex) - 经验: 在 Weex 开发中遇到的“大坑小坑”</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个 SSH key 以对应不同的 Git 服务器</a>
           </li>
         
           <li>
             <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/">前端系统课程 - 43. Cookie 与登录注册</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/19/前端系统课程-42-画一只皮卡丘/">前端系统课程 - 42. 画一只皮卡丘</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/08/前端系统课程-41-会动的简历/">前端系统课程 - 41. 会动的简历</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/08/前端系统课程-40-进阶考试及相关知识/">前端系统课程 - 40. 进阶考试及相关知识</a>
           </li>
         
       </ul>
@@ -1273,7 +1180,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 诸葛战鹰<br>
+      &copy; 2020 诸葛战鹰<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

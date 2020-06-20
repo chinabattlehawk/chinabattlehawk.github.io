@@ -66,6 +66,139 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-开发记录-Weex-日志-开发流水账" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/28/开发记录-Weex-日志-开发流水账/" class="article-date">
+  <time datetime="2019-10-28T04:15:27.000Z" itemprop="datePublished">2019-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/28/开发记录-Weex-日志-开发流水账/">开发记录 (Weex) - 日志: 开发流水账</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="191028"><a href="#191028" class="headerlink" title="191028"></a>191028</h2><p>项目启动报错，关键信息：</p>
+<p><code>Node Sass could not find a binding for your current environment: Windows 64-bit with Node.js 12.x</code><br><code>Found bindings for the following environments:  - Windows 64-bit with Node.js 10.x</code></p>
+<p>原因是项目中的 Node Sass 依赖组件的版本低，不支持新版 Node.js，经查后，升级即可：</p>
+<p><code>npm i node-sass -D</code></p>
+<p>升级后解决。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2019/10/28/开发记录-Weex-日志-开发流水账/" data-id="ckbndwr3b002l5cmx9ori9wzq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-开发记录-JS-备忘-深拷贝和浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/30/开发记录-JS-备忘-深拷贝和浅拷贝/" class="article-date">
+  <time datetime="2019-09-30T02:12:27.000Z" itemprop="datePublished">2019-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/30/开发记录-JS-备忘-深拷贝和浅拷贝/">开发记录 (JS) - 备忘: 深拷贝和浅拷贝</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h2><p>只对对象的顶层属性做简单的直接赋值操作，不会对下一层属性及更深层属性进行深拷贝，适合用来样式合并。</p>
+<h2 id="JSON-parse-JSON-stringify-obj"><a href="#JSON-parse-JSON-stringify-obj" class="headerlink" title="JSON.parse(JSON.stringify(obj))"></a>JSON.parse(JSON.stringify(obj))</h2><p>如果有属性是 Function 或 Undefiend 或 Null 这些 JSON 中不支持的类型，则该属性会被移除；Date 对象数据，则会无法还原。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2019/09/30/开发记录-JS-备忘-深拷贝和浅拷贝/" data-id="ckbndwr2u002f5cmxr1dnp4n2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发记录/">开发记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-开发记录-Weex-经验-在-Weex-开发中遇到的“大坑小坑”" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/27/开发记录-Weex-经验-在-Weex-开发中遇到的“大坑小坑”/" class="article-date">
+  <time datetime="2019-09-27T01:58:44.000Z" itemprop="datePublished">2019-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/27/开发记录-Weex-经验-在-Weex-开发中遇到的“大坑小坑”/">开发记录 (Weex) - 经验: 在 Weex 开发中遇到的“大坑小坑”</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是“踩坑”记录，排序不分先后：</p>
+<h2 id="在-Weex-中"><a href="#在-Weex-中" class="headerlink" title="在 Weex 中"></a>在 Weex 中</h2><ul>
+<li>主要布局方式是 Flex，不支持浮动，支持定位。定位中脱离文档流的模式如 <code>absolute</code>，是不参与 Flex 布局的，就是说 Flex 属性无法在添加这种模式的元素上生效。</li>
+<li>脱离文档流的元素，可以用 <code>left: 0</code> 和 <code>right: 0</code> 来达到 <code>width: 100%</code> 的效果；<code>height: 100%</code> 同理。</li>
+<li>不支持对象语法绑定 <code>class</code>，需要使用数组语法，例如 <code>:class=&quot;[isActive ? &#39;active&#39; : &#39;&#39; ]&quot;</code>。</li>
+<li>不支持使用嵌套语法编写样式。</li>
+<li>不支持 <code>em</code> 、<code>rem</code> 以及百分比等长度单位，只能使用 <code>px</code>。</li>
+<li>使用 <code>&lt;image&gt;</code> 组件代替 <code>&lt;img&gt;</code> 标签，不支持本地图片，并需要指定宽高属性，否则无法显示。</li>
+<li>文本标签 <code>&lt;text&gt;</code> 对于“回车”比较敏感，会将其显示为一个空白字符，导致各种样式问题，格式化代码时要注意。</li>
+</ul>
+<h2 id="文字溢出截断并显示省略号"><a href="#文字溢出截断并显示省略号" class="headerlink" title="文字溢出截断并显示省略号"></a>文字溢出截断并显示省略号</h2><p>常规页面中，单行文字溢出后，截断并显示省略号的方法是，首先为目标元素设置宽度，然后设置以下样式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 溢出隐藏*/</span></span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line"><span class="comment">/* 强制不换行 */</span></span><br><span class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</span><br><span class="line"><span class="comment">/* 溢出显示省略号 */</span></span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br></pre></td></tr></table></figure>
+<p>在 Weex 中上面的样式行不通，为目标元素设置宽度后，设置样式为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 溢出显示省略号 */</span></span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line"><span class="comment">/* 设置行数，超出这个值后截断 */</span></span><br><span class="line"><span class="selector-tag">lines</span>: 1;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.battlehawk.cn/2019/09/27/开发记录-Weex-经验-在-Weex-开发中遇到的“大坑小坑”/" data-id="ckbndwr3i002m5cmx9e9466iw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Weex/">Weex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发记录/">开发记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" class="article-date">
@@ -80,7 +213,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器</a>
+      <a class="article-title" href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个 SSH key 以对应不同的 Git 服务器</a>
     </h1>
   
 
@@ -164,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" data-id="ck0wbkdjo00294wmx8idquwbn" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/" data-id="ckbndwr2z002h5cmx0c6q9aj4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发记录/">开发记录</a></li></ul>
@@ -202,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-43-Cookie-与登录注册/" data-id="ck0wbkdjj00234wmx9cju7h7r" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-43-Cookie-与登录注册/" data-id="ckbndwr2500295cmx3e8t2an1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -241,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="ck0wbkdjh00214wmxbdq12kni" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/19/前端系统课程-42-画一只皮卡丘/" data-id="ckbndwr2100275cmx5upox3ee" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -309,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-41-会动的简历/" data-id="ck0wbkdjf001z4wmx89klnmrj" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-41-会动的简历/" data-id="ckbndwr1w00255cmxrc6urt47" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -347,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-40-进阶考试及相关知识/" data-id="ck0wbkdjd001x4wmxjk44gla6" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/08/08/前端系统课程-40-进阶考试及相关知识/" data-id="ckbndwr1r00235cmx4lm3gohw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -436,7 +569,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/08/前端系统课程-39-面向对象编程/" data-id="ck0wbkdjb001v4wmxh21e08k6" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/08/前端系统课程-39-面向对象编程/" data-id="ckbndwr1m00215cmx83frsf6p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -474,208 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="ck0wbkdj9001t4wmxxtc1wqni" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-37-给简历添加数据库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/06/前端系统课程-37-给简历添加数据库/" class="article-date">
-  <time datetime="2018-06-06T07:26:07.000Z" itemprop="datePublished">2018-06-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/06/前端系统课程-37-给简历添加数据库/">前端系统课程 - 37. 给简历加数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用-LeanCloud-服务"><a href="#使用-LeanCloud-服务" class="headerlink" title="使用 LeanCloud 服务"></a>使用 LeanCloud 服务</h2><ul>
-<li><p>创建一个应用，选择需要的服务；</p>
-</li>
-<li><p>引入 JS 文件，得到 <code>window.AV</code> 对象；</p>
-</li>
-<li><p>初始化 <code>AV 对象</code>（代码直接拷）；</p>
-</li>
-<li><p>新建一条数据（代码直接拷）。</p>
-</li>
-</ul>
-<h2 id="如何看文档"><a href="#如何看文档" class="headerlink" title="如何看文档"></a>如何看文档</h2><ul>
-<li><p>CRM 方法，先抄（Copy），然后运行（Run），一步步修改（Modify）为自己想要的代码。</p>
-</li>
-<li><p>善于使用页面内的搜索功能，要学会提炼关键字。</p>
-</li>
-</ul>
-<h2 id="MVC-之-M"><a href="#MVC-之-M" class="headerlink" title="MVC 之 M"></a>MVC 之 M</h2><p>数据模型，也就是 Model 层；简单来说，就是将需要获取和保存等操作数据的相关代码，也封装为一个对象，就像 View 层和 Controller 层那样。</p>
-<h2 id="MVC-到底是什么"><a href="#MVC-到底是什么" class="headerlink" title="MVC 到底是什么"></a>MVC 到底是什么</h2><ul>
-<li><p>它是一种代码组织的思想和形式；将实现一个或一组功能的代码，通过不同的功能分为数据层（Model）、视图层（View）和控制层（Controller）。</p>
-</li>
-<li><p>数据层用来处理要操作的各种数据。</p>
-</li>
-<li><p>视图层用来监听并设置页面上与功能相关的 DOM 元素。</p>
-</li>
-<li><p>控制层通过数据层的数据来更新视图层，通过视图层来告诉数据层如何操作数据。</p>
-</li>
-<li><p>它们之间的运作流程是：视图层发生改变后，控制层会监听到这些变化，并将改变后的操作传递到数据层，数据层通过控制层的命令来进行数据发送或获取新数据，再将这些操作完成的数据传递给控制层，控制层通过这些数据，来更新视图层。</p>
-</li>
-<li><p>以上过程可以看出，控制层是连接视图层和数据层的桥梁，而视图层和数据层都是比较纯净并且毫无交集的。</p>
-</li>
-</ul>
-<h2 id="课后拾遗"><a href="#课后拾遗" class="headerlink" title="课后拾遗"></a>课后拾遗</h2><ul>
-<li><code>Promise</code> 对象的第一次 <code>then()</code> 方法中的的两个函数，分别是<strong>请求</strong>成功和<strong>请求</strong>失败后的回调函数；而如果有第二次 <code>then()</code> 方法调用，那么第二次的两个函数，分别是<strong>上一层成功</strong>回调和<strong>上一层两个都失败</strong>后的回调函数。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/06/前端系统课程-37-给简历添加数据库/" data-id="ck0wbkdj8001r4wmxurkwk776" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-36-MVC-之-VC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/05/前端系统课程-36-MVC-之-VC/" class="article-date">
-  <time datetime="2018-06-05T08:13:13.000Z" itemprop="datePublished">2018-06-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/前端系统课程-36-MVC-之-VC/">前端系统课程 - 36. MVC 之 VC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于立即执行函数"><a href="#关于立即执行函数" class="headerlink" title="关于立即执行函数"></a>关于立即执行函数</h2><ul>
-<li><p>由于全局变量容易出错，所以要减少全局变量的使用，尽量使用局部变量；而 ES5 中只有函数才有局部变量。</p>
-</li>
-<li><p>具名函数一般也都是全局变量，所以要使用匿名函数，但是要调用匿名函数就要使其成为表达式，例如前面加 <code>!</code> 取反操作符操作符等方法。</p>
-</li>
-</ul>
-<h2 id="使用闭包"><a href="#使用闭包" class="headerlink" title="使用闭包"></a>使用闭包</h2><p>通过闭包可以使变量不暴露，却可以在函数外部使用，也是一种减少全局变量的常用方式，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++age;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> setAge = person();</span><br><span class="line"><span class="built_in">console</span>.log(setAge()); <span class="comment">// 19</span></span><br><span class="line"><span class="built_in">console</span>.log(setAge()); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
-<h2 id="视图和控制"><a href="#视图和控制" class="headerlink" title="视图和控制"></a>视图和控制</h2><ul>
-<li><p>将不同功能的代码分成不同的独立文件，就是模块化的一种方式。</p>
-</li>
-<li><p>在模块化的基础上，将要操作的 DOM 元素独立为一个对象（View），将这个对象以参数形式传入到控制视图变化的函数中，再将这些控制函数独立为一个对象（Controller）的属性；这样就把操作视图的代码和视图对象分隔开了。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/05/前端系统课程-36-MVC-之-VC/" data-id="ck0wbkdj6001p4wmxct18ciqj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-前端系统课程-35-自己实现-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/04/前端系统课程-35-自己实现-AJAX/" class="article-date">
-  <time datetime="2018-06-04T01:59:09.000Z" itemprop="datePublished">2018-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/04/前端系统课程-35-自己实现-AJAX/">前端系统课程 - 35. 自己实现 AJAX</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="AJAX-设置请求报文"><a href="#AJAX-设置请求报文" class="headerlink" title="AJAX 设置请求报文"></a>AJAX 设置请求报文</h2><ul>
-<li><p>AJAX 对象 <code>open()</code> 方法的第一个参数对应请求报文第一部分中的请求方式，第二个参数则包含了第一部分中的路径和协议，同时包含第二部分中的 <code>Host</code> 内容。</p>
-</li>
-<li><p>使用 <code>setRequestHeader()</code> 方法可以设置请求报文中的第二部分中的内容，这个方法需要在 <code>open()</code> 和 <code>send()</code> 之间使用；接收两个字符串类型的参数，分别是第二部分内容的 key 和 value；例如：<code>setRequestHeader(&#39;Content-Type&#39;, &#39;x-www-form-urlencoded&#39;)</code>。第二部分的有些内容是禁止修改的，例如浏览器（用户）信息。</p>
-</li>
-<li><p>请求报文的第四部分也就是请求体，则需要使用 <code>send()</code> 方法设置，它接收一个字符串类型的参数，对应的就是请求报文体的内容；要注意请求报文体使用 GET 方法发送时，是不会展示的。</p>
-</li>
-</ul>
-<h2 id="AJAX-获取响应报文"><a href="#AJAX-获取响应报文" class="headerlink" title="AJAX 获取响应报文"></a>AJAX 获取响应报文</h2><ul>
-<li><p>响应报文由服务端设置并发送，而用 AJAX 可以获取响应报文；获取第一部分中的状态码就是响应成功后 <code>status</code> 属性的值，状态信息则可以通过 <code>statusText</code> 属性来获取。</p>
-</li>
-<li><p>使用 AJAX 对象的 <code>getAllResponseHeaders()</code> 方法可以获取响应报文第二部分整个内容，返回值是字符串；如果要获取某一个内容的值，可以使用 <code>getResponseHeader()</code> 方法，将要获取内容的 key 传入即可。</p>
-</li>
-<li><p>响应报文的第四报文就是我们最需要的数据，通过 <code>responseText</code> 属性获取即可。</p>
-</li>
-</ul>
-<h2 id="封装-AJAX"><a href="#封装-AJAX" class="headerlink" title="封装 AJAX"></a>封装 AJAX</h2><ul>
-<li><p>如果参数较多，为了使参数更加直观，函数接收参数可以用对象的形式，每个参数就是这个对象的一个属性，属性名可以很好的将参数的功能标示并区分开，这种方式叫做“参数命名”。</p>
-</li>
-<li><p>通过判断函数参数列表的长度或者每个参数的类型，可以让函数接收不同个数或者不同类型的参数，进而做出不同的处理，这就是 JavaScript 中的函数重载。</p>
-</li>
-<li><p>简易封装代码示例：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ajax,</span><br><span class="line">        method = options.method || <span class="string">'GET'</span>,</span><br><span class="line">        url = options.url,</span><br><span class="line">        <span class="keyword">async</span> = options.async || <span class="literal">true</span>,</span><br><span class="line">        headers = options.headers,</span><br><span class="line">        body = options.body,</span><br><span class="line">        success = options.success,</span><br><span class="line">        fail = options.fail;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ajax.open(method, url, <span class="keyword">async</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> headers) &#123;</span><br><span class="line">        <span class="keyword">if</span> (headers.hasOwnProperty(key)) &#123;</span><br><span class="line">            ajax.setRequestHeader(key, headers[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ajax.addEventListener(<span class="string">'readystatechange'</span>, () =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Success!'</span>);</span><br><span class="line">                success.call(<span class="literal">undefined</span>, responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Fail……'</span>);</span><br><span class="line">                fail &amp;&amp; fail.call(<span class="literal">undefined</span>, ajax);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    ajax.send(body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="ES6-中的解构赋值"><a href="#ES6-中的解构赋值" class="headerlink" title="ES6 中的解构赋值"></a>ES6 中的解构赋值</h2><p>前面的封装函数中的参数，除了 AJAX 对象，剩下的都是来自 <code>options</code> 这个对象参数；在 ES6 中，如果参数和对象中属性顺序相同，可以直接写作 <code>{method, url, async, headers, body, success, fail} = options</code>，或者直接将代码块放入参数即可，这是解构赋值的一种应用；还有一个比较常见的应用，例如两个变量交换：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">[a, b] = [b, a];</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p>这种语法在一些语言中很早就实现了。</p>
-<h2 id="ES6-中的-Promise"><a href="#ES6-中的-Promise" class="headerlink" title="ES6 中的 Promise"></a>ES6 中的 Promise</h2><ul>
-<li><p><code>Promise()</code> 是一个全局方法，它可以看做是一种确定函数形式的规范。</p>
-</li>
-<li><p>在 jQuery 的 AJAX 方法调用后，再使用 <code>then()</code> 方法就可以运行成功或失败的回调函数，成功是第一个参数，失败是第二个参数。</p>
-</li>
-<li><p>使用 <code>then()</code> 方法运行的回调函数还可以将操作结果返回，以供下一个 <code>then()</code> 方法使用，这样就可以多结果进行多次处理了，例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(</span><br><span class="line">    ...somcode</span><br><span class="line">).then(</span><br><span class="line">    (responseText) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'第一次处理的'</span> + responseText);</span><br><span class="line">        <span class="keyword">return</span> responseText;</span><br><span class="line">    &#125;,</span><br><span class="line">    (error) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);</span><br><span class="line">        <span class="keyword">return</span> error;</span><br><span class="line">    &#125;</span><br><span class="line">).then(</span><br><span class="line">    responseText =&gt; <span class="built_in">console</span>.log(<span class="string">'上次处理后的'</span> + responseText),</span><br><span class="line">    error =&gt; <span class="built_in">console</span>.log(error)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>then()</code> 方法是 <code>Promise</code> 实例的方法，创建 <code>Promise</code> 实例可以在 AJAX 函数内，直接返回一个实例：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> ajax</span><br><span class="line">        ...</span><br><span class="line">            <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                    resolve.call(<span class="literal">undefined</span>, responseText); <span class="comment">// 成功则调用resolve</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    reject.call(<span class="literal">undefined</span>, ajax); <span class="comment">// 失败则调用reject</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         ...</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.battlehawk.cn/2018/06/04/前端系统课程-35-自己实现-AJAX/" data-id="ck0wbkdj4001n4wmx5n8m97za" class="article-share-link">Share</a>
+      <a data-url="https://blog.battlehawk.cn/2018/06/07/前端系统课程-38-毕设项目实战/" data-id="ckbndwr1h001z5cmx6zv94td5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
@@ -705,7 +637,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录/">开发记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SASS/">SASS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发记录/">开发记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
     </div>
   </div>
 
@@ -715,7 +647,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/SASS/" style="font-size: 10px;">SASS</a> <a href="/tags/开发记录/" style="font-size: 15px;">开发记录</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/SASS/" style="font-size: 10px;">SASS</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/开发记录/" style="font-size: 15px;">开发记录</a> <a href="/tags/课程笔记/" style="font-size: 20px;">课程笔记</a>
     </div>
   </div>
 
@@ -724,7 +656,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -737,23 +669,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个SSH key以对应不同的Git服务器</a>
+            <a href="/2019/10/28/开发记录-Weex-日志-开发流水账/">开发记录 (Weex) - 日志: 开发流水账</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/30/开发记录-JS-备忘-深拷贝和浅拷贝/">开发记录 (JS) - 备忘: 深拷贝和浅拷贝</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/27/开发记录-Weex-经验-在-Weex-开发中遇到的“大坑小坑”/">开发记录 (Weex) - 经验: 在 Weex 开发中遇到的“大坑小坑”</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/开发记录-Git-经验-为同一设备配置多个SSH-key以对应不同的Git服务器/">开发记录 (Git) - 经验: 为同一设备配置多个 SSH key 以对应不同的 Git 服务器</a>
           </li>
         
           <li>
             <a href="/2018/08/19/前端系统课程-43-Cookie-与登录注册/">前端系统课程 - 43. Cookie 与登录注册</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/19/前端系统课程-42-画一只皮卡丘/">前端系统课程 - 42. 画一只皮卡丘</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/08/前端系统课程-41-会动的简历/">前端系统课程 - 41. 会动的简历</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/08/前端系统课程-40-进阶考试及相关知识/">前端系统课程 - 40. 进阶考试及相关知识</a>
           </li>
         
       </ul>
@@ -768,7 +700,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 诸葛战鹰<br>
+      &copy; 2020 诸葛战鹰<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
